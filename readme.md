@@ -1,8 +1,8 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Notes Last Updated: 15/04/2025 - 11:37`
++ `Notes Last Updated: 15/04/2025 - 11:39`
 
-Such is the scale of this appliation and the planning requited, I decided to open this out to its own repository.
+Use this appliation to tally up your Snooker scores as you play. Such is the scale of this application and the planning required, I decided to open this project out to its own repository.
 
 [Link to the Snooker Scorer Application](https://projects.jonniegrieve.co.uk/snooker_scorer)
 
