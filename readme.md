@@ -1,6 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Notes Last Updated: 15/04/2025 - 11:39`
++ `Notes Last Updated: 15/04/2025 - 12:17`
 
 Use this appliation to tally up your Snooker scores as you play. Such is the scale of this application and the planning required, I decided to open this project out to its own repository.
 
@@ -221,11 +221,54 @@ force player to retake
   + `Player 1 Score:` 9 - `Last Break:` 1 - `Snookers Required:` 0 - 
   + `Player 2 Score:` 25 - `Last Break:` 21 - `Snookers Required:` 0
 
-### Flow 3
+### Flow 3 - `pots cueball` - `fouls colour on red shot`
+
+1. `Player 1 At the Table` - **Action**: Player 1 Breaks - No Score
+  + `Points Remaining:` 147
+  + `Player 1 Score:` 0 - `Last Break:` 0 - `Snookers Required:` 0
+  + `Player 2 Score:` 0 - `Last Break:` 0 - `Snookers Required:` 0
+
+2. `Player 2 At the Table` - **Action**: Pots Red - Score: 1
+  + `Points Remaining:` 146
+  + `Player 1 Score:` 0 - `Last Break:` 0 - `Snookers Required:` 0
+  + `Player 2 Score:` 1 - `Last Break:` 1 - `Snookers Required:` 0
+
+3. `Player 2 At the Table` - **Action**: Pots Black - Score: 7
+  + `Points Remaining:` 139
+  + `Player 1 Score:` 0 - `Last Break:` 0 - `Snookers Required:` 0
+  + `Player 2 Score:` 8 - `Last Break:` 8 - `Snookers Required:` 0
+
+4. `Player 2 At the Table` - **Action**: Pots Cueball on Red Shot - Score: 0
+  + `Points Remaining:` 139
+  + `Player 1 Score:` 0 - `Last Break:` 0 - `Snookers Required:` 0
+  + `Player 2 Score:` 8 - `Last Break:` 8 - `Snookers Required:` 0
+
+5. `Player 1 At the Table` - **Action**: Pots Red - Score: 1
+  + `Points Remaining:` 138
+  + `Player 1 Score:` 1 - `Last Break:` 1 - `Snookers Required:` 0
+  + `Player 2 Score:` 8 - `Last Break:` 8 - `Snookers Required:` 0
+
+6. `Player 1 At the Table` - **Action**: Pots Black - Score: 7
+  + `Points Remaining:` 131
+  + `Player 1 Score:` 8 - `Last Break:` 8 - `Snookers Required:` 0
+  + `Player 2 Score:` 8 - `Last Break:` 8 - `Snookers Required:` 0
+
+7. `Player 1 At the Table` - **Action**: Foul Colour Ball on Red Shot - Score: 0
+  + `Points Remaining:` 131
+  + `Player 1 Score:` 8 - `Last Break:` 8 - `Snookers Required:` 0
+  + `Player 2 Score:` 12 - `Last Break:` 8 - `Snookers Required:` 0
+
+8. `Player 2 At the Table` - **Action**: Pots Red - Score: 1
+  + `Points Remaining:` 130
+  + `Player 1 Score:` 8 - `Last Break:` 8 - `Snookers Required:` 0
+  + `Player 2 Score:` 13 - `Last Break:` 1 - `Snookers Required:` 0
+
+9. `Player 2 At the Table` - **Action**: Pots Pink - Score: 7
+  + `Points Remaining:` 123
+  + `Player 1 Score:` 8 - `Last Break:` 8 - `Snookers Required:` 0
+  + `Player 2 Score:` 20 - `Last Break:` 8 - `Snookers Required:` 0
 
 
-
-force player to retake
 
 ## Use Cases
 
@@ -240,10 +283,8 @@ Each new visit to the table starts by shooting for Red Balls.
 + `Scenario:` 1 Red Ball potted. Blue Ball missed.  Points Remaining: 139 - with 14 Reds and 14 Colours available to pot.  S
 + `Scenario:` 4 Red Balls. 3 Colour Balls potted. Blue Ball missed -  Points Remaining: 119 - with 11 Reds and 11 Colours available to pot.
 
-  + 
++ `Scenario` - force player to retake 
 
-+ Use Case 2: Score a Snooker Ball
-+ Use Case 3: Score a Snooker Ball
 
 
 ## Technologies
