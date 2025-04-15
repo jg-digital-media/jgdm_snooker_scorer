@@ -422,5 +422,11 @@ body footer {
 body footer p {
   text-align: center;
 }
+body footer a {
+  color: white;
+}
+body footer a:hover {
+  color: #fff041;
+}
 
 /*# sourceMappingURL=style.css.map */
