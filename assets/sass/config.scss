@@ -1,0 +1,69 @@
+// background colours
+$bg---body: #016c26 ; // 051c0d #016c26  white;
+$bg---primary: black;
+$bg---secondary: #014819; // #46ac0b  #016c26 
+
+
+// colours
+$col---primary: black;
+$col---secondary: white;
+$col---tertiary: #e5ff61;
+
+$col---player--score: #ffe731;
+$col---player--totalscore: #ffe818;
+
+
+// border colours
+$col---border--one: white;
+
+// button background colours
+$bg---button--one: #270202;
+
+$bg---button--two: #2b322a;
+$bg---button--two-hover: #178506;
+
+$bg---player--input: lightgreen;
+$bg---player--input-hover: lightgreen;
+
+
+// ball colours
+$display---ball--yellow: yellow;
+$display---ball--green: green;
+$display---ball--brown: brown;
+$display---ball--blue: blue;
+$display---ball--pink: pink;
+$display---ball--black: #000000;
+$display---ball--red: #cd0000;
+
+
+// font sizes
+$font---size--lg: 30px;
+$font---size--md: 16px;
+$font---size--sm: 12px;
+$font---size--xs: 10px;
+
+$border---style--one: solid black 1px;
+
+$font---size--h1: 39px;
+$font---size--h2: 24px;
+$font---size--h3: 55pt;
+
+
+
+
+// font stack
+
+$font---one: arial, sans-serif;
+$font---two: verdana, sans-serif;
+$font---three: calibri, sans-serif;
+
+$font: $font---one;
+
+// breakpoints
+
+$breakpoint---lg: 1223px; // 1200
+$breakpoint---xl: 1224px; // 1024
+$breakpoint---md: 560px; // 520
+$breakpoint---m: 620px;
+$breakpoint---sm: 520px; // 520
+// $breakpoint---sm: 536px;

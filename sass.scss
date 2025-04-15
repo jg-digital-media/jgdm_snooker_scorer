@@ -1,0 +1,560 @@
+@import "assets/sass/head";
+
+@import "assets/sass/main";
+
+@import "assets/sass/config";
+
+body {
+    
+    color: $col---secondary;
+    background: $bg---body;
+    font-family: $font;
+    
+    nav {
+        
+        text-align: center;
+        background: $bg---primary;
+        color: $col---secondary;
+        /* border: 3px white solid; */        
+        height: 42px;
+        height: auto;
+        width: 100%;
+        
+        p, h1 {
+            
+            position: relative;
+            top: 0px;            
+        }
+        
+        h1 {
+            
+            font-size: $font---size--h1;
+
+            @media (max-width: $breakpoint---md) {
+
+                font-size: 7vw;
+            }
+        }
+    }
+    
+    // index.php
+    main.interface-container {
+
+        display: block;
+        margin: 0 auto;
+
+        @media (min-width: $breakpoint---xl) {
+        
+            width: 1100px;
+        }
+
+        @media (max-width: $breakpoint---lg) {
+
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        @media (max-width: $breakpoint---md) {
+
+            width: 90%;
+        }
+
+        .player---points--status {
+
+            display: flex;
+            font-size: $font---size--lg;
+            margin: 14pt auto;
+            /* justify-content: space-between; */
+            align-items: center;
+            /* border: solid yellow 1px; */
+            
+            @media (max-width: $breakpoint---lg) {
+
+                font-size: 3.3vw;
+            }
+
+            @media (max-width: $breakpoint---md) {
+
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: center;                
+            }
+
+            @media (max-width: $breakpoint---sm) {
+
+                font-size: 5vw;
+                margin: 4pt auto;
+            }
+
+        }
+        
+        .active--player {
+           
+            /* font-size: $font---size--h2; */
+            text-align: center;
+            margin: 0 auto;
+            width: 100%;
+            margin: 0pt auto;
+            /* line-height: 0.1; */
+
+            @media (max-width: $breakpoint---md) {
+
+                    margin: 0pt auto;                    
+                    font-size: 12px;
+                    font-size: 28px;
+            }
+
+            #player_number {
+
+                    color: $col---tertiary;                  
+                    width: 35px;
+                    height: 35px;
+                    margin: 0px 3px;
+                    display: inline-block;
+                    background: radial-gradient(farthest-corner at 30% 7%, white, #cd0000 27%, #cd0000);
+                    border-radius: 50%;
+                    position: relative;
+                    top: 1px;
+                    font-size: 30px;
+                    border: solid #000000 1px;
+                    box-shadow: black 2px 2px 4px 0px;
+
+            }
+           
+        }
+
+        .points--remaining {
+
+           /* font-size: $font---size--h2; */
+           text-align: center;
+           margin: 0 auto;
+           width: 100%;           
+
+           @media (max-width: $breakpoint---md) {
+
+                margin: 10pt auto;
+                font-size: 12px;
+           }
+
+           #points_remaining {
+
+               color: $col---tertiary;
+           }
+
+        }    
+
+        // interface styles to reduce repetition
+        .player---section {
+
+            visibility: visible;
+            background: $bg---secondary;
+            border-radius: 7px;
+            border: solid 1px #21a20d;
+            /* box-shadow: gray -1px 1px 3px 0px; */
+            margin: 15px auto; 
+
+            .player---score {
+
+                border-top-right-radius: 6px;
+                border-top-left-radius: 6px;
+                background: none;
+                margin: 0px auto;  
+                padding: 5px 0;
+                display: flex;                  
+                /* background: linear-gradient(360deg, #ccffb9, #dbff4c);
+                /* background: green; */
+                background: none;
+                background: linear-gradient(180deg, #fff041 96%, #34ff29 6%);
+                
+                .player---at--table {
+                    
+                    background: $display---ball--red;
+                    margin: 5px 15px;
+                    width: 20px;
+                    height: 20px;
+                    border-radius: 50%;
+                    /* vertical-align: top; */
+                    border: solid white 1px;
+                    visibility: visible;
+                }
+
+                .player---number {
+
+                    margin-right: 50pt;
+
+                    h2 {
+
+                        color: #443f3f;
+                    }
+
+                }
+                
+                .player---total--score {
+
+                    color: #443f3f;
+                    color: $col---player--totalscore;
+                    color: #cd0000;
+                    margin: 0px 35px 0 35px;
+                    /* font-size: $font---size--lg; */
+                    /* font-size: 16pt; */
+                    font-size: 13px;
+                    font-size: 13pt;
+                }                   
+
+            }
+
+            .player---potting {
+
+                .player---pot--score {
+
+                    border-radius: 50%;
+                    height: 28px;
+                    width: 28px;
+                    margin: 8px;
+                    display: inline-block;
+                    transition: box-shadow 0.3s ease-in-out;
+
+                    &:hover {
+
+                        box-shadow: wheat 0 0 2px 2px;
+                    }
+
+                    p {
+                        
+                        position: relative;
+                        top: 5px;                        
+                        margin: 0;
+                        padding: 0;
+                        color: $col---secondary;
+                        color: complement($color: #000000);
+                        font-weight: bold;
+                        letter-spacing: 0px;
+                        font-size: 15px;
+                    }
+
+                }
+
+                .player---pot--red {
+
+                    background: $display---ball--red;
+                    content: "";
+                    visibility: visible;
+
+                    p {
+
+                        color: complement($display---ball--red)
+                    }
+
+                }
+
+                .player---pot--yellow {
+
+                    background: $display---ball--yellow;
+                    content: "";
+                    visibility: visible;
+
+                    p {
+
+                        color: complement($display---ball--yellow)
+                    }
+
+                }
+
+                .player---pot--green {
+
+                    background: $display---ball--green;
+                    content: "";
+                    visibility: visible;
+
+                    p {
+
+                        color: complement($display---ball--green);
+                    }
+
+                }
+
+                .player---pot--brown {
+
+                    background: $display---ball--brown;
+                    content: "";
+                    visibility: visible;
+
+                    p {
+
+                        color: complement($display---ball--brown);
+                    }
+
+                }
+
+                .player---pot--blue {
+
+                    background: $display---ball--blue;
+                    content: "";
+                    visibility: visible;
+
+                    p {
+
+                        color: complement($display---ball--blue)
+                    }
+
+                }
+
+                .player---pot--pink {
+
+                    background: $display---ball--pink;
+                    content: "";
+                    visibility: visible;
+
+                    p {
+
+                        color: complement($display---ball--pink);
+                    }
+
+                    p {
+
+                        color: $col---primary;
+                    }
+
+                }
+
+                .player---pot--black {
+
+                    background: $display---ball--black;
+                    content: "";
+                    visibility: visible;
+
+                    p {
+
+                        color: complement($display---ball--black);
+                        color: ($col---secondary);                     
+                    }
+
+                }
+
+                
+            }
+
+            .breaks---and--snookers {
+                
+                display: inline-block;
+                margin: 0px 0px 10px 0px;
+                width: 46%;
+                /* border: solid blue 2px; */
+                line-height: 2;
+                /* position: relative; */
+                /* right: 25px; */
+                text-align: right;
+                font-size: 20pt;
+                vertical-align: top;    
+
+                @media (max-width: $breakpoint---m) {
+
+                    width: 100%;
+                    text-align: center;
+                }                
+
+                @media (max-width: $breakpoint---md){
+
+                    font-size: 12px;
+                }                
+
+                @media (max-width: $breakpoint---m) {
+
+                    width: 100%;
+                    text-align: center;
+                }
+
+                @media (max-width: $breakpoint---md){
+
+                    display: inline-block;
+                    font-size: 12px;
+                    font-size: 12px;
+                    /* padding: 0 31px; */
+                    text-align: center;
+                    margin: 0 auto;
+                }
+
+                div { 
+                    
+                    background: none;                   
+
+                    @media (max-width: $breakpoint---md) {
+
+                        display: inline-block;
+                        font-size: 12px;
+                        padding: 0 31px;
+                        text-align: center;
+                        margin: 0 auto;
+                    }
+
+                    .snookers---required {
+
+                        font-size: 12px;
+
+                        span {
+
+                            color: $col---player--score;
+                        }
+
+                    }                    
+
+                    .last---break {
+
+                        color: $col---player--score;
+
+                    }
+
+                }
+
+            }
+
+        }
+
+        .player---potting {
+
+            width: 52%;
+            /* border: solid 1px orange; */
+            /* width: 50%; */
+            display: inline-block;
+            vertical-align: top;
+
+            @media (max-width: $breakpoint---m) {
+
+                width: 100%;
+                text-align: left;
+            }
+
+            .player---pot--miss {
+
+                // use this selector
+                display: inline-block;
+                border: solid #647a63 1px;
+                border-radius: 6px;
+                background: $bg---button--one;
+                font-size: 13px;
+                margin: 4px;
+                padding: 0 6px;
+                /* width: 59px; */
+                height: 28px;
+
+                transition: box-shadow 0.3s ease-in-out, background 0.3s ease-in-out;
+
+                &:hover {
+
+                    background: lighten($bg---button--one, 13%);
+                }
+
+                @media (max-width: $breakpoint---md) {
+
+                    height: 20px;
+                    width: 20px;
+                }
+
+                @media (max-width: $breakpoint---md) {
+
+                    padding: 5px;
+                    width: auto;
+                }
+
+                &:hover {
+
+                    box-shadow: wheat 0 0 2px 2px;
+                }
+
+                .pot---tally {
+
+                    /* color: white; */
+                    text-align: center;
+                    /* font-size: 13px; */
+                    position: relative;
+                    top: 7px;
+                    cursor: pointer;
+                }
+            }
+
+            .player---pot--score {
+
+                border-radius: 50%;
+                height: 28px;
+                width: 28px;
+                margin: 8px;
+                display: inline-block;
+                transition: box-shadow 0.3s ease-in-out;
+
+                @media (max-width: $breakpoint---md) {
+
+                    height: 20px;
+                    width: 20px;
+                }
+
+                &:hover {
+
+                    box-shadow: wheat 0 0 2px 2px;
+                }
+
+                .pot---tally {
+
+                    /* color: white; */
+                    text-align: center;
+                    font-size: 13px;
+                    position: relative;
+                    top: 7px;
+                    cursor: pointer;
+
+                    @media (max-width: $breakpoint---md) {
+
+                        font-size: 8px;
+                        font-weight: bold;
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+    
+    .app---buttons {
+
+        text-align: center;
+        width: 100%;
+        margin: 15px auto;
+
+        a.app---button {
+
+            text-decoration: none;
+            margin: 0 4px;
+            border-radius: 4px;
+            /* background: #21a20d; */
+            background: $bg---button--two; // #2b322a;
+            padding: 6px 12px;
+            border: $col---border--one solid 1px;
+            color: $col---secondary;
+            font-size: 12px;
+            
+            transition: background 0.2s ease-in-out;
+
+            &:hover {
+
+                background: $bg---button--two-hover
+
+            }
+
+        }
+
+    }
+
+    footer {
+        
+        font-size: $font---size--sm;
+        margin-top: 25px;
+        
+        p {
+            
+            text-align: center;            
+        }       
+        
+    }
+    
+}
