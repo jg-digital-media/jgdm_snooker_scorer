@@ -553,7 +553,17 @@ body {
         p {
             
             text-align: center;            
-        }       
+        }      
+        
+        a {
+
+            color: white;
+            
+            &:hover {
+
+                color: #fff041;
+            }
+        }
         
     }
     
