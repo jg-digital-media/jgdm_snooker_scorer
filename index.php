@@ -106,7 +106,8 @@
             
             <article class="breaks---and--snookers">
                 
-                <div>Last Break: <span class="last---break" id="last---break--p1">0</span></a>
+                <div>Highest Break: <span class="highest---break" id="highest---break--p1">0</span></a></div>
+                <div>Last Break: <span class="last---break" id="last---break--p1">0</span></a></div>
                 <div class="snookers---required">Snookers Required: <span id="snookers---required--p1">0</span></div>
                 
             </article>
@@ -209,8 +210,9 @@
 
             <article class="breaks---and--snookers">
                 
-                <div>Last Break: <span class="last---break" id="last---break--p2">0</span></a>
-                <div class="snookers---required">Snookers Required: <span id="snookers---required--p2">0</span></div>
+                <div>Highest Break: <span class="highest---break" id="highest---break--p1">0</span></a></div>
+                <div>Last Break: <span class="last---break" id="last---break--p1">0</span></a></div>
+                <div class="snookers---required">Snookers Required: <span id="snookers---required--p1">0</span></div>
                 
             </article>
             
