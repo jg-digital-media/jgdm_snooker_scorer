@@ -94,6 +94,12 @@
 
                     <p class="pot---tally" id="tally---potted--foulmiss-p1">FOUL+ MISS</p>
                     
+                </article>          
+
+                <article class="player---one--pot player---pot--miss" id="pot---forfeit--one">  
+
+                    <p class="pot---tally" id="tally---potted--forfeit-p1">FORFEIT</p>
+                    
                 </article>
 
             </article>
@@ -188,6 +194,12 @@
             <article class="player---two--pot player---pot--miss player---two--pot-foulmiss" id="pot---foulmiss--two">  
 
                 <p class="pot---tally" id="tally---potted--foulmiss-p2">FOUL + MISS</p>
+                
+            </article>           
+
+            <article class="player---two--pot player---pot--miss" id="pot---forfeit--two">  
+
+                <p class="pot---tally" id="tally---potted--forfeit-p2">FORFEIT</p>
                 
             </article>
 
