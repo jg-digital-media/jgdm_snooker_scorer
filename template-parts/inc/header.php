@@ -59,6 +59,8 @@
     
     <nav>
         <h1>Snooker Scorer App</h1>
+
+        <img id="snooker---app--logo" src="assets/images/snooker-logo.png" alt="Snooker Logo" title="Snooker Logo" />
     </nav>
 
 
