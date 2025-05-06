@@ -10,7 +10,7 @@ body {
     background: $bg---body;
     font-family: $font;
     
-    nav {
+    header {
         
         text-align: center;
         background: $bg---primary;
@@ -35,7 +35,7 @@ body {
 
             @media (max-width: $breakpoint---md) {
 
-                font-size: 7vw;
+                font-size: $font---size--title;
             }
         }
 
@@ -252,6 +252,8 @@ body {
 
                     background: $display---ball--red;
                     content: "";
+                    background: radial-gradient(farthest-corner at 25% 8%, white, $display---ball--red, 53%, $display---ball--red);
+
                     visibility: visible;
 
                     p {
@@ -265,6 +267,10 @@ body {
 
                     background: $display---ball--yellow;
                     content: "";
+
+                    
+                    background: radial-gradient(farthest-corner at 25% 8%, white, $display---ball--yellow, 53%, $display---ball--yellow);    
+
                     visibility: visible;
 
                     p {
@@ -278,6 +284,8 @@ body {
 
                     background: $display---ball--green;
                     content: "";
+                    
+                    background: radial-gradient(farthest-corner at 25% 8%, white, $display---ball--green, 53%, $display---ball--green);
                     visibility: visible;
 
                     p {
@@ -291,6 +299,9 @@ body {
 
                     background: $display---ball--brown;
                     content: "";
+
+                    
+                    background: radial-gradient(farthest-corner at 25% 8%, white, $display---ball--brown, 53%, $display---ball--brown);
                     visibility: visible;
 
                     p {
@@ -304,6 +315,9 @@ body {
 
                     background: $display---ball--blue;
                     content: "";
+
+                    
+                    background: radial-gradient(farthest-corner at 25% 8%, white, $display---ball--blue, 53%, $display---ball--blue);
                     visibility: visible;
 
                     p {
@@ -317,6 +331,9 @@ body {
 
                     background: $display---ball--pink;
                     content: "";
+
+                    
+                    background: radial-gradient(farthest-corner at 25% 8%, white, $display---ball--pink, 53%, $display---ball--pink);
                     visibility: visible;
 
                     p {
@@ -335,6 +352,9 @@ body {
 
                     background: $display---ball--black;
                     content: "";
+
+                    
+                    background: radial-gradient(farthest-corner at 25% 8%, white, $display---ball--black, 53%, $display---ball--black);
                     visibility: visible;
 
                     p {
@@ -464,13 +484,14 @@ body {
 
                 @media (max-width: $breakpoint---md) {
 
-                    height: 20px;
+                    /* height: 20px; */
+                    /* height: auto; */
                     width: 20px;
                 }
 
                 @media (max-width: $breakpoint---md) {
 
-                    padding: 5px;
+                    /* padding: 5px; */
                     width: auto;
                 }
 
