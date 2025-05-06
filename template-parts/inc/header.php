@@ -57,11 +57,13 @@
 </head>
 <body>
     
-    <nav>
+    <header>
+
         <h1>Snooker Scorer App</h1>
 
         <img id="snooker---app--logo" src="assets/images/snooker-logo.png" alt="Snooker Logo" title="Snooker Logo" />
-    </nav>
+        
+    </header>
 
 
 <?php //echo "<p>header.php</p>"; ?>
