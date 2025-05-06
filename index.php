@@ -78,6 +78,13 @@
                 </article>
                 
                 <br />
+
+                <article class="player---one--pot player---pot--miss player---one--pot-undo" id="put---undo--one">
+
+                    <p class="pot---tally" id="tally---potted--undo-p1">Undo</p>
+
+                </article>
+
                 <article class="player---one--pot player---pot--miss player---one--pot-miss" id="pot---miss--one">  
 
                     <p class="pot---tally" id="tally---potted--miss-p1">MISS</p>
@@ -100,6 +107,20 @@
 
                     <p class="pot---tally" id="tally---potted--forfeit-p1">FORFEIT</p>
                     
+                </article>
+
+                <br />
+
+                <article class="player---points--difference">
+
+                    <span class="points--ahead">
+                        Ahead:  <span id="player---one--ahead">0</span>
+                    </span>
+
+                    <span class="points--remaining" id="player---one--remaining">
+                        Remaining: <span id="player---one--remaining">0</span>
+                    </span>
+
                 </article>
 
             </article>
@@ -180,6 +201,13 @@
             </article>
 
             <br />
+
+            <article class="player---two--pot player---pot--miss player---one--pot-undo" id="put---undo--one">
+
+                <p class="pot---tally" id="tally---potted--undo-p1">Undo</p>
+
+            </article>
+
             <article class="player---two--pot player---pot--miss player---two--pot-miss " id="pot---miss--two">  
 
                 <p class="pot---tally"  id="tally---potted--miss-p2">MISS</p>
@@ -202,6 +230,20 @@
 
                 <p class="pot---tally" id="tally---potted--forfeit-p2">FORFEIT</p>
                 
+            </article>
+
+            <br />
+
+            <article class="player---points--difference">
+                
+                <span class="points--ahead">
+                    Ahead: <span id="player---two--ahead">0</span>
+                </span>
+
+                <span class="points--remaining">
+                    Remaining: <span id="player---two--remaining">0</span>
+                </span>
+
             </article>
 
            
