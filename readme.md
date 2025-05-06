@@ -9,7 +9,7 @@ Use this appliation to tally up your Snooker scores as you play. Such is the sca
 
 ## Planning User Flows
 
-### Flow 1 `complete match flow` - `no fouls` - `failed pots`
+### Flow 1: - `complete match flow` - `no fouls` - `failed pots`
 
 1. `Player 1 At the Table` - **Action**: Player 1 Breaks - No Score
   + `Points Remaining:` 147
@@ -212,7 +212,7 @@ Use this appliation to tally up your Snooker scores as you play. Such is the sca
   + `Player 2 Score:` 48 - `Last Break:` 12 - `Snookers Required:` 0
 
 
-### Flow 2 `incomplete match flow` - `includes fouls + miss` - `failed pots`
+### Flow 2: - `incomplete match flow` - `includes fouls + miss` - `failed pots`
 
 1. `Player 1 At the Table` - **Action**: Player 1 Breaks - No Score
   + `Points Remaining:` 147
@@ -359,7 +359,7 @@ Use this appliation to tally up your Snooker scores as you play. Such is the sca
   + `Player 1 Score:` 45 - `Last Break:` 37 - `Snookers Required:` 0 - 
   + `Player 2 Score:` 25 - `Last Break:` 21 - `Snookers Required:` 0
 
-### Flow 3 - `pots cueball` - `fouls by que ball striking colour on red shot`
+### Flow 3: - `incomplete match flow` - `pots cueball` - `fouls by que ball striking colour on red shot`
 
 1. `Player 1 At the Table` - **Action**: Player 1 Breaks - No Score
   + `Points Remaining:` 147
@@ -456,16 +456,47 @@ Use this appliation to tally up your Snooker scores as you play. Such is the sca
   + `Player 1 Score:` 13 - `Last Break:` 8 - `Snookers Required:` 0
   + `Player 2 Score:` 38 - `Last Break:` 26 - `Snookers Required:` 0
 
+### Flow 4: - `incomplete match flow` - `3 reds potted` - `multiple reds potted`
+
+1. `Player 1 At the Table` - **Action**: Player 1 Breaks - 3 reds
+  + `Points Remaining:` 130
+  + `Player 1 Score:` 3 - `Last Break:` 3 - `Snookers Required:` 0
+  + `Player 2 Score:` 0 - `Last Break:` 0 - `Snookers Required:` 0
+
+2. `Player 1 At the Table` - **Action**: Pots Pink - Score: 6
+  + `Points Remaining:` 123
+  + `Player 1 Score:` 9 - `Last Break:` 9 - `Snookers Required:` 0
+  + `Player 2 Score:` 0 - `Last Break:` 0 - `Snookers Required:` 0
+
+3. `Player 1 At the Table` - **Action**: Pots Red (x2) - Score: 2
+  + `Points Remaining:` 114
+  + `Player 1 Score:` 11 - `Last Break:` 11 - `Snookers Required:` 0
+  + `Player 2 Score:` 0 - `Last Break:` 0 - `Snookers Required:` 0
+  
+4. `Player 1 At the Table` - **Action**: Pots Black - Score: 7
+  + `Points Remaining:` 107
+  + `Player 1 Score:` 18 - `Last Break:` 18 - `Snookers Required:` 0
+  + `Player 2 Score:` 0 - `Last Break:` 0 - `Snookers Required:` 0
+
+5.  `Player 1 At the Table` - **Action**: Pots Red - Score: 1
+  + `Points Remaining:` 106
+  + `Player 1 Score:` 19 - `Last Break:` 19 - `Snookers Required:` 0
+  + `Player 2 Score:` 0 - `Last Break:` 0 - `Snookers Required:` 0
+. 
+
 
 ## Use Cases
 
-
-+ The `points remaining` is depending on the balls still on the table.
++ The `points remaining` is dependant on the balls still on the table.
     + Maximum of 147 points available
     + Maximum of 15 Reds on the table. 
     + 1 Colour Ball on the table. (Yellow 2, Green 3, Brown 4. Blue 5, Pink 6, Black 7)     
     + 1 Colour ball available to pot for Each Red Ball. (e.g 15 Red Balls = 15 Colour Balls)
-    + Each Red Ball pot reduces the number of Snooker balls available and therefore the remaining points available to be scored.
+    + Each Red Ball potted reduces the number of Snooker balls available and therefore the remaining points available to be scored.
+        + `1` red potted reduces the available points by `1`.
+        + `2` reds potted reduces the available points by `9` 2 reds removing **1** chance to shoot for a colourball.
+        + `3` reds potted reduces the available points by `17`. (3 reds 2 colours bypassed)
+    + If a player shoots for a colour and misses, they have the preceding 1 point for the red ball potted and the available points is reduced by `7`.
 
 + Play Alternates between shooting for Red and Colour Balls.
 
