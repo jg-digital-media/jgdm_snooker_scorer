@@ -1,7 +1,7 @@
 /******************************
 
 Snooker Scorer App: 
-Last Update: 28/04/2025 - 13:38
+Last Update: 06/05/2025 - 11:30
 ******************************/
 * {
   padding: 0;
@@ -14,7 +14,7 @@ body {
   background: #016c26;
   font-family: arial, sans-serif;
 }
-body nav {
+body header {
   text-align: center;
   background: black;
   color: white;
@@ -24,21 +24,21 @@ body nav {
   width: 100%;
   padding: 8px 0;
 }
-body nav p, body nav h1 {
+body header p, body header h1 {
   display: inline-block;
   position: relative;
   top: 0px;
   vertical-align: middle;
 }
-body nav h1 {
+body header h1 {
   font-size: 39px;
 }
 @media (max-width: 560px) {
-  body nav h1 {
+  body header h1 {
     font-size: 7vw;
   }
 }
-body nav img#snooker---app--logo {
+body header img#snooker---app--logo {
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -158,12 +158,12 @@ body main.interface-container .player---section .player---score {
 }
 body main.interface-container .player---section .player---score .player---at--table {
   background: #cd0000;
-  margin: 5px 15px;
-  width: 20px;
-  height: 20px;
+  margin: 6px 23px;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
   /* vertical-align: top; */
-  border: solid white 1px;
+  border: solid #972828 2px;
   visibility: visible;
 }
 body main.interface-container .player---section .player---score .player---number {
@@ -186,7 +186,7 @@ body main.interface-container .player---section .player---potting .player---pot-
   border-radius: 50%;
   height: 28px;
   width: 28px;
-  margin: 8px;
+  margin: 10px;
   display: inline-block;
   transition: box-shadow 0.3s ease-in-out;
 }
@@ -207,6 +207,7 @@ body main.interface-container .player---section .player---potting .player---pot-
 body main.interface-container .player---section .player---potting .player---pot--red {
   background: #cd0000;
   content: "";
+  background: radial-gradient(farthest-corner at 25% 8%, white, #cd0000, 53%, #cd0000);
   visibility: visible;
 }
 body main.interface-container .player---section .player---potting .player---pot--red p {
@@ -215,6 +216,7 @@ body main.interface-container .player---section .player---potting .player---pot-
 body main.interface-container .player---section .player---potting .player---pot--yellow {
   background: yellow;
   content: "";
+  background: radial-gradient(farthest-corner at 25% 8%, white, yellow, 53%, yellow);
   visibility: visible;
 }
 body main.interface-container .player---section .player---potting .player---pot--yellow p {
@@ -223,6 +225,7 @@ body main.interface-container .player---section .player---potting .player---pot-
 body main.interface-container .player---section .player---potting .player---pot--green {
   background: green;
   content: "";
+  background: radial-gradient(farthest-corner at 25% 8%, white, green, 53%, green);
   visibility: visible;
 }
 body main.interface-container .player---section .player---potting .player---pot--green p {
@@ -231,6 +234,7 @@ body main.interface-container .player---section .player---potting .player---pot-
 body main.interface-container .player---section .player---potting .player---pot--brown {
   background: brown;
   content: "";
+  background: radial-gradient(farthest-corner at 25% 8%, white, brown, 53%, brown);
   visibility: visible;
 }
 body main.interface-container .player---section .player---potting .player---pot--brown p {
@@ -239,6 +243,7 @@ body main.interface-container .player---section .player---potting .player---pot-
 body main.interface-container .player---section .player---potting .player---pot--blue {
   background: blue;
   content: "";
+  background: radial-gradient(farthest-corner at 25% 8%, white, blue, 53%, blue);
   visibility: visible;
 }
 body main.interface-container .player---section .player---potting .player---pot--blue p {
@@ -247,6 +252,7 @@ body main.interface-container .player---section .player---potting .player---pot-
 body main.interface-container .player---section .player---potting .player---pot--pink {
   background: pink;
   content: "";
+  background: radial-gradient(farthest-corner at 25% 8%, white, pink, 53%, pink);
   visibility: visible;
 }
 body main.interface-container .player---section .player---potting .player---pot--pink p {
@@ -258,6 +264,7 @@ body main.interface-container .player---section .player---potting .player---pot-
 body main.interface-container .player---section .player---potting .player---pot--black {
   background: #000000;
   content: "";
+  background: radial-gradient(farthest-corner at 25% 8%, white, #000000, 53%, #000000);
   visibility: visible;
 }
 body main.interface-container .player---section .player---potting .player---pot--black p {
@@ -358,13 +365,14 @@ body main.interface-container .player---potting .player---pot--miss:hover {
 }
 @media (max-width: 560px) {
   body main.interface-container .player---potting .player---pot--miss {
-    height: 20px;
+    /* height: 20px; */
+    /* height: auto; */
     width: 20px;
   }
 }
 @media (max-width: 560px) {
   body main.interface-container .player---potting .player---pot--miss {
-    padding: 5px;
+    /* padding: 5px; */
     width: auto;
   }
 }
@@ -378,6 +386,22 @@ body main.interface-container .player---potting .player---pot--miss .pot---tally
   position: relative;
   top: 7px;
   cursor: pointer;
+}
+body main.interface-container .player---potting .player---pot--miss #tally---potted--black-p1,
+body main.interface-container .player---potting .player---pot--miss #tally---potted--pink-p1,
+body main.interface-container .player---potting .player---pot--miss #tally---potted--blue-p1,
+body main.interface-container .player---potting .player---pot--miss #tally---potted--brown-p1,
+body main.interface-container .player---potting .player---pot--miss #tally---potted--green-p1,
+body main.interface-container .player---potting .player---pot--miss #tally---potted--yellow-p1,
+body main.interface-container .player---potting .player---pot--miss #tally---potted--red-p1,
+body main.interface-container .player---potting .player---pot--miss #tally---potted--black-p2,
+body main.interface-container .player---potting .player---pot--miss #tally---potted--pink-p2,
+body main.interface-container .player---potting .player---pot--miss #tally---potted--blue-p2,
+body main.interface-container .player---potting .player---pot--miss #tally---potted--brown-p2,
+body main.interface-container .player---potting .player---pot--miss #tally---potted--green-p2,
+body main.interface-container .player---potting .player---pot--miss #tally---potted--yellow-p2,
+body main.interface-container .player---potting .player---pot--miss #tally---potted--red-p2 {
+  opacity: 0;
 }
 body main.interface-container .player---potting .player---pot--score {
   border-radius: 50%;
@@ -409,6 +433,26 @@ body main.interface-container .player---potting .player---pot--score .pot---tall
     font-size: 8px;
     font-weight: bold;
   }
+}
+body main.interface-container .player---potting .player---pot--score #tally---potted--black-p1,
+body main.interface-container .player---potting .player---pot--score #tally---potted--pink-p1,
+body main.interface-container .player---potting .player---pot--score #tally---potted--blue-p1,
+body main.interface-container .player---potting .player---pot--score #tally---potted--brown-p1,
+body main.interface-container .player---potting .player---pot--score #tally---potted--green-p1,
+body main.interface-container .player---potting .player---pot--score #tally---potted--yellow-p1,
+body main.interface-container .player---potting .player---pot--score #tally---potted--red-p1,
+body main.interface-container .player---potting .player---pot--score #tally---potted--black-p2,
+body main.interface-container .player---potting .player---pot--score #tally---potted--pink-p2,
+body main.interface-container .player---potting .player---pot--score #tally---potted--blue-p2,
+body main.interface-container .player---potting .player---pot--score #tally---potted--brown-p2,
+body main.interface-container .player---potting .player---pot--score #tally---potted--green-p2,
+body main.interface-container .player---potting .player---pot--score #tally---potted--yellow-p2,
+body main.interface-container .player---potting .player---pot--score #tally---potted--red-p2 {
+  opacity: 0;
+}
+body main.interface-container .player---potting .player---points--difference {
+  margin: 7px;
+  visibility: hidden;
 }
 body .app---buttons {
   text-align: center;

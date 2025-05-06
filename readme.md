@@ -492,31 +492,31 @@ Use this appliation to tally up your Snooker scores as you play. Such is the sca
     + Maximum of 15 Reds on the table. 
     + 1 Colour Ball on the table. (Yellow 2, Green 3, Brown 4. Blue 5, Pink 6, Black 7)     
     + 1 Colour ball available to pot for Each Red Ball. (e.g 15 Red Balls = 15 Colour Balls)
+    
+    + `Scenario` 130 points remain on the table.  Pot Pink (6) - player scores 6 but since 7 is the maximum score with the black, the points remaining reduces by 7.
     + Each Red Ball potted reduces the number of Snooker balls available and therefore the remaining points available to be scored.
         + `1` red potted reduces the available points by `1`.
         + `2` reds potted reduces the available points by `9` 2 reds removing **1** chance to shoot for a colourball.
         + `3` reds potted reduces the available points by `17`. (3 reds 2 colours bypassed)
     + If a player shoots for a colour and misses, they have the preceding 1 point for the red ball potted and the available points is reduced by `7`.
+    + `Scenario:` 1 Red Ball potted. Blue Ball missed.  Points Remaining: 139 - with 14 Reds and 14 Colours available to pot.  S
+    + `Scenario:` 4 Red Balls. 3 Colour Balls potted. Blue Ball missed -  Points Remaining: 119 - with 11 Reds and 11 Colours available to pot.
+
 
 + Play Alternates between shooting for Red and Colour Balls.
 
 + Each new visit to the table starts by shooting for Red Balls.
 
-+ The player that makes the break is "Player 1"
++ For the purposes of this app, the player that makes the break is "Player 1"
 
-+ There will inevitably be games where a player foerights and th table is not cleared.
++ There will inevitably be frames where a player forfeits the frame and the table is not cleared.
 
-+ There will be occasions where it's not viable for the winning player to clear the table. 
-
-+ 130 points remain.  Pot Pink 6 - scores 6 but since 7 is the maximum score with the black, the points remaining reduces by 7.
++ There will be occasions where it's not viable for the winning player to clear the table. This is a player forfeit and the current scores are recorded as the final frame score.
 
 + By the time we get to the final 6 colour sequence there should be `27` remaining points available. `7 (Black), 6 (Pink), 5 (Blue), 4 (Brown), 3 (Green), 2 (Yellow)`
 
 + To calculate snookers available, `Add the total of player 1 and player 2 scores and subtract this total from 147.  Subtract from remaining points available`
 + Keep track of the highest break per player in a frame
-+ Use Case 1: Score a Snooker Ball
-+ `Scenario:` 1 Red Ball potted. Blue Ball missed.  Points Remaining: 139 - with 14 Reds and 14 Colours available to pot.  S
-+ `Scenario:` 4 Red Balls. 3 Colour Balls potted. Blue Ball missed -  Points Remaining: 119 - with 11 Reds and 11 Colours available to pot.
 
 + `Scenario` - force player to retake 
 
@@ -536,7 +536,7 @@ Use this appliation to tally up your Snooker scores as you play. Such is the sca
 
  + `scenario:` (`points remaining` - `score difference`) 
 
-`
+```
 points	scores	score difference
     27	52-48	4
     25	54-48	6
@@ -545,7 +545,8 @@ points	scores	score difference
     13	66-48	18  2 snookers required
     7	72-48	24	4 Snookers
     0	79-48	31  Game over!
-`
+
+```
 
 ## Technologies
 
