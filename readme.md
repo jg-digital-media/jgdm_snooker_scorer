@@ -219,7 +219,7 @@ Use this appliation to tally up your Snooker scores as you play. Such is the sca
   + `Player 1 Score:` 0 - `Last Break:` 0 - `Snookers Required:` 0
   + `Player 2 Score:` 0 - `Last Break:` 0 - `Snookers Required:` 0
 
-2. `Player 2 At the Table` - **Action**: Fails Pot - No Score
+2. `Player 2 At the Table` - **Action**: Misses Red - No Score
   + `Points Remaining:` 147 
   + `Player 1 Score:` 0 - `Last Break:` 0 - `Snookers Required:` 0     
   + `Player 2 Score:` 0 - `Last Break:` 0 - `Snookers Required:` 0
@@ -239,7 +239,7 @@ Use this appliation to tally up your Snooker scores as you play. Such is the sca
   + `Player 1 Score:` 8 - `Last Break:` 8 - `Snookers Required:` 0 - 
   + `Player 2 Score:` 4 - `Last Break:` 0 - `Snookers Required:` 0
 
-6. `Player 1 At the Table` - **Action**: Player 1.  Forced Retake. Misses Red - Score: 0
+6. `Player 1 At the Table` - **Action**: Player 1. Forced Retake. Misses Red - Score: 0
   + `Points Remaining`: 139  
   + `Player 1 Score:` 8 - `Last Break:` 0 - `Snookers Required:` 0 - 
   + `Player 2 Score:` 4 - `Last Break:` 0 - `Snookers Required:` 0
@@ -285,81 +285,112 @@ Use this appliation to tally up your Snooker scores as you play. Such is the sca
   + `Player 2 Score:` 25 - `Last Break:` 21 - `Snookers Required:` 0
 
 15. `Player 1 At the Table` - **Action**: Pots Pink - Score: 6
-  + `Points Remaining`: 97  
+  + `Points Remaining`: 107  
   + `Player 1 Score:` 15 - `Last Break:` 7 - `Snookers Required:` 0 - 
   + `Player 2 Score:` 25 - `Last Break:` 21 - `Snookers Required:` 0
 
 16. `Player 1 At the Table` - **Action**: Pots Red - Score: 1
-  + `Points Remaining`: 96  
+  + `Points Remaining`: 105  
   + `Player 1 Score:` 16 - `Last Break:` 8 - `Snookers Required:` 0 - 
   + `Player 2 Score:` 25 - `Last Break:` 21 - `Snookers Required:` 0
 
 17. `Player 1 At the Table` - **Action**: Pots Black - Score: 7
-  + `Points Remaining`: 89  
+  + `Points Remaining`: 99  
   + `Player 1 Score:` 23 - `Last Break:` 15 - `Snookers Required:` 0 - 
   + `Player 2 Score:` 25 - `Last Break:` 21 - `Snookers Required:` 0
 
 18. `Player 1 At the Table` - **Action**: Pots Red - Score: 1
-  + `Points Remaining`: 88  
+  + `Points Remaining`: 98  
   + `Player 1 Score:` 24 - `Last Break:` 16 - `Snookers Required:` 0 - 
   + `Player 2 Score:` 25 - `Last Break:` 21 - `Snookers Required:` 0
 
 19. `Player 1 At the Table` - **Action**: Pots Black - Score: 7
-  + `Points Remaining`: 81  
+  + `Points Remaining`: 91  
   + `Player 1 Score:` 31 - `Last Break:` 23 - `Snookers Required:` 0 - 
   + `Player 2 Score:` 25 - `Last Break:` 21 - `Snookers Required:` 0
 
 20. `Player 1 At the Table` - **Action**: Pots Red - Score: 1
-  + `Points Remaining`: 80 
+  + `Points Remaining`: 90 
   + `Player 1 Score:` 32 - `Last Break:` 24 - `Snookers Required:` 0 - 
   + `Player 2 Score:` 25 - `Last Break:` 21 - `Snookers Required:` 0
 
-19. `Player 1 At the Table` - **Action**: Pots Black - Score: 7
-  + `Points Remaining`: 73  
+21. `Player 1 At the Table` - **Action**: Pots Black - Score: 7
+  + `Points Remaining`: 83  
   + `Player 1 Score:` 39 - `Last Break:` 31 - `Snookers Required:` 0 - 
   + `Player 2 Score:` 25 - `Last Break:` 21 - `Snookers Required:` 0
 
-19. `Player 1 At the Table` - **Action**: Pots Red - Score: 1
-  + `Points Remaining`: 72 
+22. `Player 1 At the Table` - **Action**: Pots Red - Score: 1
+  + `Points Remaining`: 82 
   + `Player 1 Score:` 40 - `Last Break:` 32 - `Snookers Required:` 0 - 
   + `Player 2 Score:` 25 - `Last Break:` 21 - `Snookers Required:` 0
 
-19. `Player 1 At the Table` - **Action**: Pots Black - Score: 7
-  + `Points Remaining`: 65  
+23. `Player 1 At the Table` - **Action**: Pots Black - Score: 7
+  + `Points Remaining`: 75  
   + `Player 1 Score:` 37 - `Last Break:` 29 - `Snookers Required:` 0 - 
   + `Player 2 Score:` 25 - `Last Break:` 21 - `Snookers Required:` 0
 
-19. `Player 1 At the Table` - **Action**: Pots Red - Score: 1
-  + `Points Remaining`: 64 
+24. `Player 1 At the Table` - **Action**: Pots Red - Score: 1
+  + `Points Remaining`: 74 
   + `Player 1 Score:` 38 - `Last Break:` 30 - `Snookers Required:` 0 - 
   + `Player 2 Score:` 25 - `Last Break:` 21 - `Snookers Required:` 0
 
-19. `Player 1 At the Table` - **Action**: Pots Black - Score: 7
-  + `Points Remaining`: 57  
+25. `Player 1 At the Table` - **Action**: Pots Black - Score: 7
+  + `Points Remaining`: 67  
   + `Player 1 Score:` 45 - `Last Break:` 37 - `Snookers Required:` 0 - 
   + `Player 2 Score:` 25 - `Last Break:` 21 - `Snookers Required:` 0
 
-19. `Player 1 At the Table` - **Action**: Pots Red - Score: 1
-  + `Points Remaining`: 56 
+26. `Player 1 At the Table` - **Action**: Pots Red - Score: 1
+  + `Points Remaining`: 66 
   + `Player 1 Score:` 46 - `Last Break:` 30 - `Snookers Required:` 0 - 
   + `Player 2 Score:` 25 - `Last Break:` 21 - `Snookers Required:` 0
 
-19. `Player 1 At the Table` - **Action**: Pots Black - Score: 7
-  + `Points Remaining`: 49  
+27. `Player 1 At the Table` - **Action**: Pots Black - Score: 7
+  + `Points Remaining`: 59  
   + `Player 1 Score:` 53 - `Last Break:` 37 - `Snookers Required:` 0 - 
   + `Player 2 Score:` 25 - `Last Break:` 21 - `Snookers Required:` 0
   
-19. `Player 1 At the Table` - **Action**: Pots Red - Score: 1
-  + `Points Remaining`: 48 
+28. `Player 1 At the Table` - **Action**: Pots Red - Score: 1
+  + `Points Remaining`: 58 
   + `Player 1 Score:` 38 - `Last Break:` 30 - `Snookers Required:` 0 - 
   + `Player 2 Score:` 25 - `Last Break:` 21 - `Snookers Required:` 0
 
-19. `Player 1 At the Table` - **Action**: Pots Black - Score: 7
-  + `Points Remaining`: 41  
+29. `Player 1 At the Table` - **Action**: Pots Black - Score: 7
+  + `Points Remaining`: 51  
   + `Player 1 Score:` 45 - `Last Break:` 37 - `Snookers Required:` 0 - 
   + `Player 2 Score:` 25 - `Last Break:` 21 - `Snookers Required:` 0
 
-### Flow 3: - `incomplete match flow` - `pots cueball` - `fouls by que ball striking colour on red shot`
+30. `Player 2 At the Table` - **Action**: Pots Red - Score: 1
+  + `Points Remaining`: 50  
+  + `Player 1 Score:` 45 - `Last Break:` 37 - `Snookers Required:` 0 - 
+  + `Player 2 Score:` 26 - `Last Break:` 21 - `Snookers Required:` 0
+
+31. `Player 2 At the Table` - **Action**: Misses Blue - Score: 0
+  + `Points Remaining`: 43  
+  + `Player 1 Score:` 45 - `Last Break:` 37 - `Snookers Required:` 0 - 
+  + `Player 2 Score:` 26 - `Last Break:` 21 - `Snookers Required:` 0
+
+32. `Player 1 At the Table` - **Action**: Pots Red - Score: 1
+  + `Points Remaining`: 42  
+  + `Player 1 Score:` 46 - `Last Break:` 37 - `Snookers Required:` 0 - 
+  + `Player 2 Score:` 26 - `Last Break:` 21 - `Snookers Required:` 0
+
+33. `Player 1 At the Table` - **Action**: Pots Black - Score: 7
+  + `Points Remaining`: 35  
+  + `Player 1 Score:` 53 - `Last Break:` 37 - `Snookers Required:` 0 - 
+  + `Player 2 Score:` 26 - `Last Break:` 21 - `Snookers Required:` 0
+
+33. `Player 1 At the Table` - **Action**: Pots Red - Score: 1
+  + `Points Remaining`: 34  
+  + `Player 1 Score:` 54 - `Last Break:` 37 - `Snookers Required:` 0 - 
+  + `Player 2 Score:` 26 - `Last Break:` 21 - `Snookers Required:` 0
+
+34. `Player 1 At the Table` - **Action**: Pots Black - Score: 7
+  + `Points Remaining`: 27  
+  + `Player 1 Score:` 61 - `Last Break:` 37 - `Snookers Required:` 0 - 
+  + `Player 2 Score:` 26 - `Last Break:` 21 - `Snookers Required:` 2
+
+
+### Flow 3: - `incomplete match flow` - `pots cueball` - `fouls by cue ball striking colour on red shot`
 
 1. `Player 1 At the Table` - **Action**: Player 1 Breaks - No Score
   + `Points Remaining:` 147
