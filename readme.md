@@ -1,13 +1,17 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Notes Last Updated: 08/05/2025 - 11:16`
++ `Last Updated: 08/05/2025 - 16:46`
 
-Use this appliation to tally up your Snooker scores as you play. Such is the scale of this application and the planning required, I decided to open this project out to its own repository.
+Use this application to tally up your Snooker scores as you play. Such is the scale of this application and the planning required, I decided to open this project out to its own repository.
 
 [Link to the Snooker Scorer Application](https://projects.jonniegrieve.co.uk/snooker_scorer)
 
+## Sections
+
+[Planning User Flows](#planning-user-flows) | [Use Cases](#use-cases) | [Technologies Used](#technologies-used) | [Development](#development) | [Bugs](#identified-bugs) | [Comments](#comments)
 
 ## Planning User Flows
+[Back to Top](#sections)
 
 ### Flow 1: - `complete match flow` - `no fouls` - `failed pots`
 
@@ -517,6 +521,7 @@ Use this appliation to tally up your Snooker scores as you play. Such is the sca
 
 
 ## Use Cases
+[Back to Top](#sections)
 
 + The `points remaining` is dependant on the balls still on the table.
     + Maximum of 147 points available
@@ -580,7 +585,8 @@ points	scores	score difference
 
 ```
 
-## Technologies
+## Technologies Used
+[Back to Top](#sections)
 
 This application is built using the following technologies:
 
@@ -591,6 +597,7 @@ This application is built using the following technologies:
 - SQLite3
 
 ## Development
+[Back to Top](#sections)
 
 ### Tasks - 7 completed items
 
@@ -598,15 +605,25 @@ This application is built using the following technologies:
 
 + `COMPLETED: 08-05-2025` Set the starting value of `#points remaining` to 147
 
-+ `COMPLETED: 08-05-2025` Add application versioning to the footer
++ `COMPLETED: 08-05-2025` Add application versioning to the application footer
  
-+ `TODO:` Click red ball icon `tally---potted--red-p1` (Player 1) to score 1 point player 1 - 
++ `TODO:` Click red ball icon `tally---potted--red-p1` (Player 1) to score 1 point player 1
     + `COMPLETED 08-05-2025:` Reduces `#points_remaining` by 1 to 146
     + `COMPLETED 08-05-2025:` Adds 1 to red ball `#tally---potted--red-p1`
     + `COMPLETED 08-05-2025:` Adds 1 to last break `#last---break--p1`
     + `COMPLETED 08-05-2025:` Adds 1 to highest break `#highest---break--p1`
-    + `TODO:` BUG: Points remaining should not be less than 0
+    + `TODO:` BUG: Points remaining element should not be less than 0
+    + `TODO:` Disable colour balls while player is shooting for red ball
+    + `TODO:` Disable red balls while player is shooting for a colour ball
+    + `TODO:` BUG: Players should not be able to score more than 147 points
+    + `TODO:` Every 2nd red ball potted reduces points available by 7
 
++ `TODO:` Click black ball icon `#tally---potted--black-p1` (Player 1) to score 7 points player 1
++ `TODO:` Click pink ball icon `#tally---potted--pink-p1` (Player 1) to score 6 points player 1
++ `TODO:` Click blue ball icon `#tally---potted--blue-p1` (Player 1) to score 5 points player 1
++ `TODO:` Click brown ball icon `#tally---potted--brown-p1` (Player 1) to score 4 points player 1
++ `TODO:` Click green ball icon `#tally---potted--green-p1` (Player 1) to score 3 points player 1
++ `TODO:` Click yellow ball icon `#tally---potted--yellow-p1` (Player 1) to score 2 points player 1
 
 + `TODO:` Click black ball icon `tally---potted--black-p1` (Player 1) to score 7 point player 1 - 
     + `TODO:` Reduces `#points_remaining` by 7 to 139
@@ -626,7 +643,6 @@ This application is built using the following technologies:
     + `TODO:` Adds 16 to last break `#last---break--p1`
     + `TODO:` Adds 16 to highest break `#highest---break--p1`
 
-
 + `TODO:` About.php should include instructions on what each button does - e.g. "Miss" button refers to a failed pot but legal hit and ends visit to the table.
 
 + `Task 1:` Shoot for colour - MISS
@@ -641,7 +657,13 @@ shoot red - click red ball icon - adds 1 to red ball
 
 The development of this application is currently in progress.
 
+### Identified Bugs
+[Back to Top](#sections)
+
+. . .
+
 ### Comments
+[Back to Top](#sections)
 
 + `v1` - This is probably the most complex and involving application I've ever got myself into. After all the planning I've done and is still to be done I'm now left with trying to decide where and how to start. Because one thing I do will effect the next thing at various times in the weeks and months to come. Several things link together. As an example. The user clicks the Red call icon for player 1. This action effects many moving parts. 1. The player 1 score is increased by 1. 2. The points remaining is reduced by 1. 3. The last break is increased by 1. 4. The highest break is increased by 1. 5. A number 1 is added to the red ball representing the number of times that player 1 has potted a red ball.
 
