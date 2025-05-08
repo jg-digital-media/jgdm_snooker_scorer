@@ -1,6 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Notes Last Updated: 08/05/2025 - 10:55`
++ `Notes Last Updated: 08/05/2025 - 11:16`
 
 Use this appliation to tally up your Snooker scores as you play. Such is the scale of this application and the planning required, I decided to open this project out to its own repository.
 
@@ -592,21 +592,21 @@ This application is built using the following technologies:
 
 ## Development
 
-### Tasks
+### Tasks - 7 completed items
 
 + `COMPLETED: 08-05-2025` Final interface design check
 
 + `COMPLETED: 08-05-2025` Set the starting value of `#points remaining` to 147
 
 + `COMPLETED: 08-05-2025` Add application versioning to the footer
-
-+ `TODO:` About.php should include instructions on what each button does - e.g. "Miss" button refers to a failed pot but legal hit and ends visit to the table.
  
 + `TODO:` Click red ball icon `tally---potted--red-p1` (Player 1) to score 1 point player 1 - 
-    `TODO:` + Reduces `#points_remaining` by 1 to 146
-    `TODO:` + Adds 1 to red ball `#tally---potted--red-p1`
-    `TODO:` + Adds 1 to last break `#last---break--p1`
-    `TODO:` + Adds 1 to highest break `#highest---break--p1`
+    + `COMPLETED 08-05-2025:` Reduces `#points_remaining` by 1 to 146
+    + `COMPLETED 08-05-2025:` Adds 1 to red ball `#tally---potted--red-p1`
+    + `COMPLETED 08-05-2025:` Adds 1 to last break `#last---break--p1`
+    + `COMPLETED 08-05-2025:` Adds 1 to highest break `#highest---break--p1`
+    + `TODO:` BUG: Points remaining should not be less than 0
+
 
 + `TODO:` Click black ball icon `tally---potted--black-p1` (Player 1) to score 7 point player 1 - 
     + `TODO:` Reduces `#points_remaining` by 7 to 139
@@ -625,6 +625,9 @@ This application is built using the following technologies:
     + `TODO:` Adds 1 to black ball `#tally---potted--pink-p1`
     + `TODO:` Adds 16 to last break `#last---break--p1`
     + `TODO:` Adds 16 to highest break `#highest---break--p1`
+
+
++ `TODO:` About.php should include instructions on what each button does - e.g. "Miss" button refers to a failed pot but legal hit and ends visit to the table.
 
 + `Task 1:` Shoot for colour - MISS
 
