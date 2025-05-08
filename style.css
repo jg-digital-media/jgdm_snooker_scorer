@@ -1,7 +1,7 @@
 /******************************
 
 Snooker Scorer App: 
-Last Update: 06/05/2025 - 11:30
+Last Update: 08/05/2025 - 10:52
 ******************************/
 * {
   padding: 0;
@@ -165,6 +165,12 @@ body main.interface-container .player---section .player---score .player---at--ta
   /* vertical-align: top; */
   border: solid #972828 2px;
   visibility: visible;
+}
+body main.interface-container .player---section .player---score #player---1--table {
+  visibility: visible;
+}
+body main.interface-container .player---section .player---score #player---2--table {
+  visibility: hidden;
 }
 body main.interface-container .player---section .player---score .player---number {
   margin-right: 50pt;
@@ -454,6 +460,18 @@ body main.interface-container .player---potting .player---points--difference {
   margin: 7px;
   visibility: hidden;
 }
+body main.interface-container .player---potting .player---points--difference .points---ahead #player---one--ahead {
+  color: #ffe731;
+}
+body main.interface-container .player---potting .player---points--difference .points---ahead #player---two--ahead {
+  color: #ffe731;
+}
+body main.interface-container .player---potting .player---points--difference .points---remaining #player---one--remaining {
+  color: #ffe731;
+}
+body main.interface-container .player---potting .player---points--difference .points---remaining #player---two--remaining {
+  color: #ffe731;
+}
 body .app---buttons {
   text-align: center;
   width: 100%;
@@ -477,12 +495,18 @@ body .app---buttons a.app---button:hover {
 body footer {
   font-size: 12px;
   margin-top: 25px;
+  margin-bottom: 5px;
 }
 body footer p {
   text-align: center;
 }
+body footer p #app_versioning {
+  font-size: 10px;
+  padding: 0 8px;
+}
 body footer a {
   color: white;
+  transition: color 0.3s ease-in-out;
 }
 body footer a:hover {
   color: #fff041;
