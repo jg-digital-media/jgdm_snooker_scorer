@@ -1,4 +1,4 @@
-console.log("app.js connected - 08-05-2023 - 11:11");
+console.log("app.js connected - 08-05-2023 - 17:07");
 
 // Set the points remaining to 147
 document.getElementById('points_remaining').textContent = '147';
@@ -20,6 +20,8 @@ document.addEventListener("DOMContentLoaded", function() {
     let p1HighestBreak = 0;
     let remainingPoints = 147;
     
+
+    // shoot attempt - red ball - player 1
     redBallP1.addEventListener("click", function() {
 
         // Add 1 to player 1's score
@@ -44,6 +46,18 @@ document.addEventListener("DOMContentLoaded", function() {
         redTallyP1.style.visibility = "visible";
         redTallyP1.style.opacity = "1";
     });
+
+    // TODO: shoot attempt - colour ball Black - player 1
+
+    // TODO: shoot attempt - colour ball Pink - player 1
+
+    // TODO: shoot attempt - colour ball Blue - player 1
+
+    // TODO: shoot attempt - colour ball Brown - player 1
+
+    // TODO: shoot attempt - colour ball Green - player 1
+
+    // TODO: shoot attempt - colour ball Yellow - player 1  
 
 });
 
