@@ -1,6 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Notes Last Updated: 08/05/2025 - 08:46`
++ `Notes Last Updated: 08/05/2025 - 10:55`
 
 Use this appliation to tally up your Snooker scores as you play. Such is the scale of this application and the planning required, I decided to open this project out to its own repository.
 
@@ -594,11 +594,11 @@ This application is built using the following technologies:
 
 ### Tasks
 
-+ `TODO:` Final interface design check
++ `COMPLETED: 08-05-2025` Final interface design check
 
-+ `TODO:` Set the starting value of `#points remaining` to 147
++ `COMPLETED: 08-05-2025` Set the starting value of `#points remaining` to 147
 
-+ `TODO:` Add application versioning to the footer
++ `COMPLETED: 08-05-2025` Add application versioning to the footer
 
 + `TODO:` About.php should include instructions on what each button does - e.g. "Miss" button refers to a failed pot but legal hit and ends visit to the table.
  
