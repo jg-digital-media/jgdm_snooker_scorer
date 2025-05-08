@@ -1,14 +1,17 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Last Updated: 08/05/2025 - 16:46`
++ `Last Updated: 08/05/2025 - 16:49`
+
+## Sections
+
+[Intro](#intro
+) | [Planning User Flows](#planning-user-flows) | [Use Cases](#use-cases) | [Technologies Used](#technologies-used) | [Development](#development) | [Bugs](#identified-bugs) | [Comments](#comments)
+
+## Intro
 
 Use this application to tally up your Snooker scores as you play. Such is the scale of this application and the planning required, I decided to open this project out to its own repository.
 
 [Link to the Snooker Scorer Application](https://projects.jonniegrieve.co.uk/snooker_scorer)
-
-## Sections
-
-[Planning User Flows](#planning-user-flows) | [Use Cases](#use-cases) | [Technologies Used](#technologies-used) | [Development](#development) | [Bugs](#identified-bugs) | [Comments](#comments)
 
 ## Planning User Flows
 [Back to Top](#sections)
