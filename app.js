@@ -1,7 +1,10 @@
-console.log("app.js connected - 12-12-2023 - 15:00");
+console.log("app.js connected - 08-05-2023 - 10:30");
+
+// Set the points remaining to 147
+document.getElementById('points_remaining').textContent = '147';
 
 
-document.addEventListener("DOMContentLoaded", function() {
+/* document.addEventListener("DOMContentLoaded", function() {
     // Get elements
     const pointsRemaining = document.getElementById("points_remaining");
     const playerOneInput = document.getElementById("player_one");
@@ -32,3 +35,4 @@ document.addEventListener("DOMContentLoaded", function() {
     // Event listener for player_two input
     playerTwoInput.addEventListener("input", updatePointsRemaining);
 });
+ */
