@@ -1,8 +1,51 @@
-console.log("app.js connected - 08-05-2023 - 10:30");
+console.log("app.js connected - 08-05-2023 - 11:11");
 
 // Set the points remaining to 147
 document.getElementById('points_remaining').textContent = '147';
 
+// Event listener for red ball for player 1
+document.addEventListener("DOMContentLoaded", function() {
+
+    // Get elements
+    const redBallP1 = document.getElementById("pot---red--one");
+    const p1Score = document.getElementById("p1---score");
+    const pointsRemaining = document.getElementById("points_remaining");
+    const highestBreakP1 = document.getElementById("highest---break--p1");
+    const lastBreakP1 = document.getElementById("last---break--p1");
+    const redTallyP1 = document.getElementById("tally---potted--red-p1");
+    
+    // Initialize variables
+    let p1CurrentScore = 0;
+    let p1CurrentBreak = 0;
+    let p1HighestBreak = 0;
+    let remainingPoints = 147;
+    
+    redBallP1.addEventListener("click", function() {
+
+        // Add 1 to player 1's score
+        p1CurrentScore += 1;
+        p1Score.textContent = p1CurrentScore;
+        
+        // Add 1 to current break
+        p1CurrentBreak += 1;
+        lastBreakP1.textContent = p1CurrentBreak;
+        
+        // Update highest break if needed
+        if (p1CurrentBreak > p1HighestBreak) {
+            p1HighestBreak = p1CurrentBreak;
+            highestBreakP1.textContent = p1HighestBreak;
+        }
+        
+        // Reduce points remaining by 1
+        remainingPoints -= 1;
+        pointsRemaining.textContent = remainingPoints;
+        
+        // Make the red ball tally visible
+        redTallyP1.style.visibility = "visible";
+        redTallyP1.style.opacity = "1";
+    });
+
+});
 
 /* document.addEventListener("DOMContentLoaded", function() {
     // Get elements
