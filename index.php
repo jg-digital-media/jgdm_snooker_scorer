@@ -8,7 +8,7 @@
         <section class="player---points--status">
 
             <aside class="active--player">Player <span id="player_number">1</span> is at the table! </aside>
-            <aside class="points--remaining">Points Remaining: <span id="points_remaining">0</span></aside>
+            <aside class="points--remaining">Points Remaining: <span id="points_remaining"></span></aside>
 
         </section>
 
@@ -113,11 +113,11 @@
 
                 <article class="player---points--difference">
 
-                    <span class="points--ahead">
+                    <span class="points---ahead">
                         Ahead:  <span id="player---one--ahead">0</span>
                     </span>
 
-                    <span class="points--remaining" id="player---one--remaining">
+                    <span class="points---remaining" id="player---one--remaining">
                         Remaining: <span id="player---one--remaining">0</span>
                     </span>
 
@@ -236,11 +236,11 @@
 
             <article class="player---points--difference">
                 
-                <span class="points--ahead">
+                <span class="points---ahead">
                     Ahead: <span id="player---two--ahead">0</span>
                 </span>
 
-                <span class="points--remaining">
+                <span class="points---remaining">
                     Remaining: <span id="player---two--remaining">0</span>
                 </span>
 

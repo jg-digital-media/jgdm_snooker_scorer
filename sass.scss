@@ -192,6 +192,16 @@ body {
                     visibility: visible;
                 }
 
+                // player 1 at table icon visible by default
+                #player---1--table {
+                    visibility: visible;
+                }
+
+                // player 2 at table icon visible by default
+                #player---2--table {
+                    visibility: hidden;
+                }
+
                 .player---number {
 
                     margin-right: 50pt;
@@ -430,7 +440,7 @@ body {
 
                         span {
 
-                            color: #ff5e00;
+                            color: $col---player--snookersrequired;
                         }
                         
                     }                    
@@ -585,8 +595,7 @@ body {
                 #tally---potted--red-p2 {
 
                     opacity: 0;
-                }
-                
+                } 
 
             }
 
@@ -594,6 +603,34 @@ body {
 
                 margin: 7px;
                 visibility: hidden;
+
+                .points---ahead {
+
+                    #player---one--ahead {
+
+                        color: $col---player--score;
+                    }
+
+                    #player---two--ahead {
+
+                        color: $col---player--score;
+                    }
+
+                }
+
+                .points---remaining {
+                    
+                    #player---one--remaining {
+
+                        color: $col---player--score;
+                    }                    
+
+                    #player---two--remaining {
+
+                        color: $col---player--score;
+                    }   
+
+                }
             }
 
         }
@@ -634,21 +671,31 @@ body {
         
         font-size: $font---size--sm;
         margin-top: 25px;
+        margin-bottom: 5px;
         
         p {
             
-            text-align: center;            
+            text-align: center;  
+            
+            #app_versioning {
+
+                font-size: 10px;
+                padding: 0 8px;
+            }
+
         }      
         
         a {
 
-            color: white;
+            color: $col---link--primary;
+            transition: color .3s ease-in-out;
             
             &:hover {
 
-                color: #fff041;
+                color: $col---link--primary-hover;
             }
         }
+
         
     }
     
