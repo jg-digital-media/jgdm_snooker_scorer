@@ -1,6 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Notes Last Updated: 06/05/2025 - 13:14`
++ `Notes Last Updated: 08/05/2025 - 08:46`
 
 Use this appliation to tally up your Snooker scores as you play. Such is the scale of this application and the planning required, I decided to open this project out to its own repository.
 
@@ -597,6 +597,10 @@ This application is built using the following technologies:
 + `TODO:` Final interface design check
 
 + `TODO:` Set the starting value of `#points remaining` to 147
+
++ `TODO:` Add application versioning to the footer
+
++ `TODO:` About.php should include instructions on what each button does - e.g. "Miss" button refers to a failed pot but legal hit and ends visit to the table.
  
 + `TODO:` Click red ball icon `tally---potted--red-p1` (Player 1) to score 1 point player 1 - 
     `TODO:` + Reduces `#points_remaining` by 1 to 146
@@ -633,3 +637,22 @@ shoot red - click red ball icon - adds 1 to red ball
 `player 1`
 
 The development of this application is currently in progress.
+
+### Comments
+
++ `v1` - This is probably the most complex and involving application I've ever got myself into. After all the planning I've done and is still to be done I'm now left with trying to decide where and how to start. Because one thing I do will effect the next thing at various times in the weeks and months to come. Several things link together. As an example. The user clicks the Red call icon for player 1. This action effects many moving parts. 1. The player 1 score is increased by 1. 2. The points remaining is reduced by 1. 3. The last break is increased by 1. 4. The highest break is increased by 1. 5. A number 1 is added to the red ball representing the number of times that player 1 has potted a red ball.
+
+And since we're representing a potted ball, player 1 remains at the table and in the game; they will now be shooting for a colour ball.  
+
+There's enough to be getting on with there. But I can sense more to do because I'm wondering if we need to grey out the colour balls until we've actually registered that a red ball has been potted and vice versa.
+
+Elements affected by the red ball potted:
+
+    + `#player---1--table` - The red icon marks the player who is at the table. (Player 1 in this case) It is invisble by default for player 2.
+    + `#player_number` - The number is to revert between 1 and 2, depending on who is at the table.
+    + `#tally---potted--red-p1` - The number of red balls potted by player 1
+    + `#highest---break--p1` - The last highest break made by player 1
+    + `#last---break--p1` - The total of the last break made - (a "break" is a visit to the table)
+    + `#p1---score` - The Total Scored by Player 1 which is the total accumulation of breaks and scored and penalty points given.
+    + `#points_remaining` - The number of points remaining in the game.
+
