@@ -1,6 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Last Updated: 09/05/2025 - 12:48`
++ `Last Updated: 09/05/2025 - 17:12`
 
 ## Sections
 
@@ -673,10 +673,9 @@ This application is built using the following technologies:
     + `COMPLETED: 09-05-2025:` Adds 1 to yellow ball `#tally---potted--black-p1`
     + `COMPLETED: 09-05-2025:` Increment last break tally by 2 `#last---break--p1`
     + `COMPLETED: 09-05-2025:` Adds 2 to highest break `#highest---break--p1`    
-    + `COMPLETED: 09-05-2025:` increments text content 1 to yellow ball `#tally---potted--yellow-p1`
-    
+    + `COMPLETED: 09-05-2025:` increments text content 1 to yellow ball `#tally---potted--yellow-p1`    
 
-+ `TODO:` Implement Re-rack Button - reset button (`#reset---app`)
++ `TODO:` Implement Re-rack Button - "Reset" button - change to "Re-rack button (`#reset---app`)
 
 + `TODO:` Stop counting highest and last break when `#points_remaining`is at 0.
 
@@ -685,12 +684,18 @@ This application is built using the following technologies:
 + `TODO:` Disable red balls while player is shooting for a colour ball
 
 + `TODO:` BUG: Players should not be able to score more than 147 points. (Stop the game when the points remaining is at 0)
+  + no more points added to `#p1---score`
+  + no further changes to `#highest---break--p1`
+  + no further changes to `#last---break--p1`
 
 + `TODO:` Handling scoring and points remaining when the player scores 2 reds
+  + Click red ball icon to pot 1 red ball and move to shooting for a colour ball.
+  + Click red ball twice to pot 2 red balls and move to shooting for a colour ball.
+  + Apply button for more than 1 red ball potted. 
 
 + `TODO:` Shouldn't take the missed points into account until I simulate shooting for a colour after the 2 reds at once? 
 
-+ `TODO:` Recreate 147 Break (15 Reds + 6 Colours Black Pink Blue Green Brown Green) 
++ `TODO:` Recreate 147 Break (15 Reds + 15 Blacks + 6 Colour sequence - `Yellow Green Brown Blue Pink Black`) 
 
 * `TODO:` Check the highest break is updated correctly - player 1
 
