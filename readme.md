@@ -1,6 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Last Updated: 09/05/2025 - 12:40`
++ `Last Updated: 09/05/2025 - 12:48`
 
 ## Sections
 
@@ -602,7 +602,7 @@ This application is built using the following technologies:
 ## Development
 [Back to Top](#sections)
 
-### Tasks - 40 completed items
+### Tasks - 46 completed items
 
 + `COMPLETED: 08-05-2025` Final interface design check
 
@@ -674,6 +674,9 @@ This application is built using the following technologies:
     + `COMPLETED: 09-05-2025:` Increment last break tally by 2 `#last---break--p1`
     + `COMPLETED: 09-05-2025:` Adds 2 to highest break `#highest---break--p1`    
     + `COMPLETED: 09-05-2025:` increments text content 1 to yellow ball `#tally---potted--yellow-p1`
+    
+
++ `TODO:` Implement Re-rack Button - reset button (`#reset---app`)
 
 + `TODO:` Stop counting highest and last break when `#points_remaining`is at 0.
 
@@ -681,16 +684,16 @@ This application is built using the following technologies:
 
 + `TODO:` Disable red balls while player is shooting for a colour ball
 
-+ `TODO:` BUG: Players should not be able to score more than 147 points
++ `TODO:` BUG: Players should not be able to score more than 147 points. (Stop the game when the points remaining is at 0)
+
++ `TODO:` Handling scoring and points remaining when the player scores 2 reds
 
 + `TODO:` Shouldn't take the missed points into account until I simulate shooting for a colour after the 2 reds at once? 
 
 + `TODO:` Recreate 147 Break (15 Reds + 6 Colours Black Pink Blue Green Brown Green) 
 
-+ `TODO:` Implement Re-rack Button - reset button (`#reset---app`)
-
-
 * `TODO:` Check the highest break is updated correctly - player 1
+
 * `TODO:` Check the highest break is updated correctly - player 2
 
 + `TODO:` Click black ball icon `tally---potted--black-p1` (Player 1) to score 7 point player 1 - 
@@ -740,3 +743,6 @@ Elements affected by the red ball potted:
     + `#p1---score` - The Total Scored by Player 1 which is the total accumulation of breaks and scored and penalty points given.
     + `#points_remaining` - The number of points remaining in the game.
 
++ `v2` - I've got as far as implementing the UX feature of indicating which balls player 1 has potted and how many times that ball as been potted.  I've also updated the scores in each turn for the total player score; the last break made and the highest break. All of this, assumes that the player has not scored 2 reds in a row, has not missed a shot and goes all the way to a 147 break. There's the whole busines to come of handling what happens when the oppononent player comes to the table. We haven't yet thought about the turned based nature of this app. 
+
+... 
