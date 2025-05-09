@@ -1,6 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Last Updated: 08/05/2025 - 17:06`
++ `Last Updated: 09/05/2025 - 09:25`
 
 ## Sections
 
@@ -602,66 +602,73 @@ This application is built using the following technologies:
 ## Development
 [Back to Top](#sections)
 
-### Tasks - 7 completed items
+### Tasks - 31 completed items
 
 + `COMPLETED: 08-05-2025` Final interface design check
 
 + `COMPLETED: 08-05-2025` Set the starting value of `#points remaining` to 147
 
 + `COMPLETED: 08-05-2025` Add application versioning to the application footer
- 
+
++ `TODO:` Colour Sequence must be taken into account when calculating the remaining points available
+
++ `TODO:` BUG: Points remaining element should not be less than 0
+
++ `TODO:` Disable colour balls while player is shooting for red ball. opacity setting - disabled state
+
++ `TODO:` Disable red balls while player is shooting for a colour ball
+
++ `TODO:` BUG: Players should not be able to score more than 147 points
+
++ `TODO:` Every 2nd red ball potted reduces points available by 7
+
+
 + `TODO:` Click red ball icon `tally---potted--red-p1` (Player 1) to score 1 point player 1
     + `COMPLETED 08-05-2025:` Reduces `#points_remaining` by 1 to 146
     + `COMPLETED 08-05-2025:` Adds 1 to red ball `#tally---potted--red-p1`
     + `COMPLETED 08-05-2025:` Adds 1 to last break `#last---break--p1`
     + `COMPLETED 08-05-2025:` Adds 1 to highest break `#highest---break--p1`
-    + `TODO:` BUG: Points remaining element should not be less than 0
-    + `TODO:` Disable colour balls while player is shooting for red ball. opacity setting - disabled state
-    + `TODO:` Disable red balls while player is shooting for a colour ball
-    + `TODO:` BUG: Players should not be able to score more than 147 points
-    + `TODO:` Every 2nd red ball potted reduces points available by 7
 
 + `TODO:` shoot attempt - colour ball Black - player 1
 
-    + `TODO:` Reduces `#points_remaining` by 7 to 139
-    + `TODO:` Adds 1 to black ball `#tally---potted--black-p1`
-    + `TODO:` Increment last break tally by 7 `#last---break--p1`
-    + `TODO:` Adds 7 to highest break `#highest---break--p1`
+    + `COMPLETED: 09-05-2025:` Reduces `#points_remaining` by 7 to 139
+    + `COMPLETED: 09-05-2025:` Adds 1 to black ball `#tally---potted--black-p1`
+    + `COMPLETED: 09-05-2025:` Increment last break tally by 7 `#last---break--p1`
+    + `COMPLETED: 09-05-2025:` Adds 7 to highest break `#highest---break--p1`
 
 + `TODO:` shoot attempt - colour ball Pink - player 1
 
-    + `TODO:` Reduces `#points_remaining` by 7 to 139    
-    + `TODO:` Adds 1 to pink ball `#tally---potted--pink-p1`
-    + `TODO:` Increment last break tally by 7 `#last---break--p1`
-    + `TODO:` Adds 6 to highest break `#highest---break--p1`
+    + `COMPLETED: 09-05-2025:` Reduces `#points_remaining` by 7 to 139    
+    + `COMPLETED: 09-05-2025:` Adds 1 to pink ball `#tally---potted--pink-p1`
+    + `COMPLETED: 09-05-2025:` Increment last break tally by 7 `#last---break--p1`
+    + `COMPLETED: 09-05-2025:` Adds 6 to highest break `#highest---break--p1`
 
 + `TODO:` shoot attempt - colour ball Blue - player 1
 
-    + `TODO:` Reduces `#points_remaining` by 7 to 139    
-    + `TODO:` Adds 1 to blue ball `#tally---potted--blue-p1`
-    + `TODO:` Increment last break tally by 5 `#last---break--p1`
-    + `TODO:` Adds 5 to highest break `#highest---break--p1`
+    + `COMPLETED: 09-05-2025:` Reduces `#points_remaining` by 7 to 139    
+    + `COMPLETED: 09-05-2025:` Adds 1 to blue ball `#tally---potted--blue-p1`
+    + `COMPLETED: 09-05-2025:` Increment last break tally by 5 `#last---break--p1`
+    + `COMPLETED: 09-05-2025:` Adds 5 to highest break `#highest---break--p1`
 
 + `TODO:` shoot attempt - colour ball Brown - player 1
 
-    + `TODO:` Reduces `#points_remaining` by 7 to 139    
-    + `TODO:` Adds 1 to brown ball `#tally---potted--black-p1`
-    + `TODO:` Increment last break tally by 4 `#last---break--p1`
-    + `TODO:` Adds 4 to highest break `#highest---break--p1`
+    + `COMPLETED: 09-05-2025:` Reduces `#points_remaining` by 7 to 139    
+    + `COMPLETED: 09-05-2025:` Adds 1 to brown ball `#tally---potted--black-p1`
+    + `COMPLETED: 09-05-2025:` Increment last break tally by 4 `#last---break--p1`
+    + `COMPLETED: 09-05-2025:` Adds 4 to highest break `#highest---break--p1`
 
 + `TODO:` shoot attempt - colour ball Green - player 1
 
-    + `TODO:` Reduces `#points_remaining` by 7 to 139    
-    + `TODO:` Adds 1 to green ball `#tally---potted--black-p1`
-    + `TODO:` Increment last break tally by 3 `#last---break--p1`
-    + `TODO:` Adds 3 to highest break `#highest---break--p1`
+    + `COMPLETED: 09-05-2025:` Reduces `#points_remaining` by 7 to 139    
+    + `COMPLETED: 09-05-2025:` Adds 1 to green ball `#tally---potted--black-p1`
+    + `COMPLETED: 09-05-2025:` Increment last break tally by 3 `#last---break--p1`
+    + `COMPLETED: 09-05-2025:` Adds 3 to highest break `#highest---break--p1`
 
 + `TODO:` shoot attempt - colour ball Yellow - player 1
-    + `TODO:` Reduces `#points_remaining` by 7 to 139 
-    
-    + `TODO:` Adds 1 to yellow ball `#tally---potted--black-p1`
-    + `TODO:` Increment last break tally by 2 `#last---break--p1`
-    + `TODO:` Adds 2 to highest break `#highest---break--p1`
+    + `COMPLETED: 09-05-2025:` Reduces `#points_remaining` by 7 to 139
+    + `COMPLETED: 09-05-2025:` Adds 1 to yellow ball `#tally---potted--black-p1`
+    + `COMPLETED: 09-05-2025:` Increment last break tally by 2 `#last---break--p1`
+    + `COMPLETED: 09-05-2025:` Adds 2 to highest break `#highest---break--p1`
 
 
 + `TODO:` Click black ball icon `#tally---potted--black-p1` (Player 1) to score 7 points player 1
@@ -670,6 +677,8 @@ This application is built using the following technologies:
 + `TODO:` Click brown ball icon `#tally---potted--brown-p1` (Player 1) to score 4 points player 1
 + `TODO:` Click green ball icon `#tally---potted--green-p1` (Player 1) to score 3 points player 1
 + `TODO:` Click yellow ball icon `#tally---potted--yellow-p1` (Player 1) to score 2 points player 1
+* `TODO:` Check the highest break is updated correctly - player 1
+* `TODO:` Check the highest break is updated correctly - player 2
 
 
 + `TODO:` Click black ball icon `tally---potted--black-p1` (Player 1) to score 7 point player 1 - 
