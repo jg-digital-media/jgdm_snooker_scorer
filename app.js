@@ -1,4 +1,4 @@
-console.log("app.js connected - 09-05-2023 - 10:06");
+console.log("app.js connected - 09-05-2023 - 12:29");
 
 // Set the points remaining to 147
 document.getElementById('points_remaining').textContent = '147';
@@ -32,6 +32,23 @@ document.addEventListener("DOMContentLoaded", function() {
     let p1CurrentBreak = 0;
     let p1HighestBreak = 0;
     let remainingPoints = 147;
+
+    // Function to check and update remaining points based on game stage
+    function updateRemainingPoints(pointsToDeduct) {
+        // If we're in the final stage (27 points or less remaining)
+        if (remainingPoints <= 27) {
+            // In the final stage, we deduct the actual value of the ball
+            // Yellow=2, Green=3, Brown=4, Blue=5, Pink=6, Black=7
+            remainingPoints -= pointsToDeduct;
+        } else {
+            // In normal play, we deduct 1 for red and 7 for colors (as they return to the table)
+            remainingPoints -= (pointsToDeduct === 1) ? 1 : 7;
+        }
+        
+        // Ensure we don't go below zero
+        remainingPoints = Math.max(0, remainingPoints);
+        pointsRemaining.textContent = remainingPoints;
+    }
     
 
     // shoot attempt - red ball - player 1
@@ -50,10 +67,8 @@ document.addEventListener("DOMContentLoaded", function() {
             p1HighestBreak = p1CurrentBreak;
             highestBreakP1.textContent = p1HighestBreak;
         }
-        
-        // Reduce points remaining by 1
-        remainingPoints -= 1;
-        pointsRemaining.textContent = remainingPoints;
+
+        updateRemainingPoints(1);        
         
         // Make the red ball tally visible
         redTallyP1.style.visibility = "visible";
@@ -81,11 +96,10 @@ document.addEventListener("DOMContentLoaded", function() {
             p1HighestBreak = p1CurrentBreak;
             highestBreakP1.textContent = p1HighestBreak;
         }
-        
-        // Reduce points remaining by 7
-        remainingPoints -= 7;
-        pointsRemaining.textContent = remainingPoints;
-        
+
+        // Reduce points remaining appropriately
+        updateRemainingPoints(7);
+                
         // Make the black ball tally visible
         blackTallyP1.style.visibility = "visible";
         blackTallyP1.style.opacity = "1";
@@ -112,10 +126,9 @@ document.addEventListener("DOMContentLoaded", function() {
             p1HighestBreak = p1CurrentBreak;
             highestBreakP1.textContent = p1HighestBreak;
         }
-        
-        // Reduce points remaining by 7
-        remainingPoints -= 7;
-        pointsRemaining.textContent = remainingPoints;
+
+        // Reduce points remaining appropriately
+        updateRemainingPoints(6);
         
         // Make the pink ball tally visible
         pinkTallyP1.style.visibility = "visible";
@@ -144,12 +157,11 @@ document.addEventListener("DOMContentLoaded", function() {
             p1HighestBreak = p1CurrentBreak;
             highestBreakP1.textContent = p1HighestBreak;
         }
+
+        // Reduce points remaining appropriately
+        updateRemainingPoints(5);
         
-        // Reduce points remaining by 7
-        remainingPoints -= 7;
-        pointsRemaining.textContent = remainingPoints;
-        
-        // Make the blue ball tally visible
+                // Make the blue ball tally visible
         blueTallyP1.style.visibility = "visible";
         blueTallyP1.style.opacity = "1";
         
@@ -175,11 +187,10 @@ document.addEventListener("DOMContentLoaded", function() {
             p1HighestBreak = p1CurrentBreak;
             highestBreakP1.textContent = p1HighestBreak;
         }
-        
-        // Reduce points remaining by 7
-        remainingPoints -= 7;
-        pointsRemaining.textContent = remainingPoints;
-        
+
+        // Reduce points remaining appropriately
+        updateRemainingPoints(4);
+                
         // Make the brown ball tally visible
         brownTallyP1.style.visibility = "visible";
         brownTallyP1.style.opacity = "1";
@@ -206,11 +217,10 @@ document.addEventListener("DOMContentLoaded", function() {
             p1HighestBreak = p1CurrentBreak;
             highestBreakP1.textContent = p1HighestBreak;
         }
-        
-        // Reduce points remaining by 7
-        remainingPoints -= 7;
-        pointsRemaining.textContent = remainingPoints;
-        
+
+        // Reduce points remaining appropriately
+        updateRemainingPoints(3);
+                
         // Make the green ball tally visible
         greenTallyP1.style.visibility = "visible";
         greenTallyP1.style.opacity = "1";
@@ -236,10 +246,9 @@ document.addEventListener("DOMContentLoaded", function() {
             p1HighestBreak = p1CurrentBreak;
             highestBreakP1.textContent = p1HighestBreak;
         }
-        
-        // Reduce points remaining by 7
-        remainingPoints -= 7;
-        pointsRemaining.textContent = remainingPoints;
+
+        // Reduce points remaining appropriately
+        updateRemainingPoints(2);        
         
         // Make the yellow ball tally visible
         yellowTallyP1.style.visibility = "visible";
