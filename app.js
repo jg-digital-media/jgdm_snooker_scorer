@@ -1,4 +1,4 @@
-console.log("app.js connected - 12-05-2023 - 12:10");
+console.log("app.js connected - 12-05-2023 - 17:09");
 
 // Set the points remaining to 147
 document.getElementById('points_remaining').textContent = '147';
@@ -32,6 +32,11 @@ document.addEventListener("DOMContentLoaded", function() {
     let p1CurrentBreak = 0;
     let p1HighestBreak = 0;
     let remainingPoints = 147;
+    let lastBallWasRed = false; // Track if the last ball potted was a red
+    let consecutiveRedCount = 0; // Track consecutive red balls potted
+    let totalRedsPotted = 0; // Track total number of reds potted
+    let redClickCount = 0; // Separate counter just for red ball clicks
+    let shootingForRed = true; // Track whether player is shooting for a red or color
 
     // Function to check and update remaining points based on game stage
     function updateRemainingPoints(pointsToDeduct) {
@@ -50,10 +55,100 @@ document.addEventListener("DOMContentLoaded", function() {
         pointsRemaining.textContent = remainingPoints;
     }
     
+    // Function to update which balls are enabled/disabled based on game state
+    function updateAvailableBalls() {
+        // Get all ball elements
+        const redBall = document.getElementById("pot---red--one");
+        const yellowBall = document.getElementById("pot---yellow--one");
+        const greenBall = document.getElementById("pot---green--one");
+        const brownBall = document.getElementById("pot---brown--one");
+        const blueBall = document.getElementById("pot---blue--one");
+        const pinkBall = document.getElementById("pot---pink--one");
+        const blackBall = document.getElementById("pot---black--one");
+        
+        // Array of all color balls
+        const colorBalls = [yellowBall, greenBall, brownBall, blueBall, pinkBall, blackBall];
+        
+        if (shootingForRed) {
+            // If shooting for red, enable red and disable colors
+            if (redClickCount < 15) {
+                redBall.style.pointerEvents = "auto";
+                redBall.style.opacity = "1";
+            } else {
+                // If all reds are potted, disable red
+                redBall.style.pointerEvents = "none";
+                redBall.style.opacity = "0.5";
+            }
+            
+            // Disable all color balls
+            colorBalls.forEach(ball => {
+                ball.style.pointerEvents = "none";
+                ball.style.opacity = "0.5";
+            });
+        } else {
+            // If shooting for color, disable red and enable colors
+            redBall.style.pointerEvents = "none";
+            redBall.style.opacity = "0.5";
+            
+            // Enable all color balls
+            colorBalls.forEach(ball => {
+                ball.style.pointerEvents = "auto";
+                ball.style.opacity = "1";
+            });
+            
+            // If in final sequence (all reds potted), handle colors differently
+            if (redClickCount >= 15 && remainingPoints <= 27) {
+                // In the final sequence, colors must be potted in order
+                // Yellow, Green, Brown, Blue, Pink, Black
+                
+                // Determine which color should be enabled based on remaining points
+                if (remainingPoints === 27) {
+                    // Only yellow is available (27 points remaining)
+                    enableOnlyBall(yellowBall, colorBalls);
+                } else if (remainingPoints === 25) {
+                    // Only green is available (25 points remaining)
+                    enableOnlyBall(greenBall, colorBalls);
+                } else if (remainingPoints === 22) {
+                    // Only brown is available (22 points remaining)
+                    enableOnlyBall(brownBall, colorBalls);
+                } else if (remainingPoints === 18) {
+                    // Only blue is available (18 points remaining)
+                    enableOnlyBall(blueBall, colorBalls);
+                } else if (remainingPoints === 13) {
+                    // Only pink is available (13 points remaining)
+                    enableOnlyBall(pinkBall, colorBalls);
+                } else if (remainingPoints === 7) {
+                    // Only black is available (7 points remaining)
+                    enableOnlyBall(blackBall, colorBalls);
+                }
+            }
+        }
+    }
+
+    // Helper function to enable only one ball and disable others
+    function enableOnlyBall(ballToEnable, allBalls) {
+        allBalls.forEach(ball => {
+            if (ball === ballToEnable) {
+                ball.style.pointerEvents = "auto";
+                ball.style.opacity = "1";
+            } else {
+                ball.style.pointerEvents = "none";
+                ball.style.opacity = "0.5";
+            }
+        });
+    }
 
     // shoot attempt - red ball - player 1
     redBallP1.addEventListener("click", function() {
-
+        // Check if we've already clicked the red ball 15 times
+        if (redClickCount >= 15) {
+            console.log("Maximum number of red ball clicks (15) reached");
+            return; // Exit the function early
+        }
+        
+        // Increment the red click counter
+        redClickCount++;
+        
         // Add 1 to player 1's score
         p1CurrentScore += 1;
         p1Score.textContent = p1CurrentScore;
@@ -67,17 +162,40 @@ document.addEventListener("DOMContentLoaded", function() {
             p1HighestBreak = p1CurrentBreak;
             highestBreakP1.textContent = p1HighestBreak;
         }
-
-        updateRemainingPoints(1);        
+        
+        // Check if the last ball was also a red
+        if (lastBallWasRed) {
+            // This is a consecutive red ball
+            consecutiveRedCount++;
+            // For 2nd red, deduct 7 more (8 total)
+            // For 3rd red, deduct 1 more (9 total)
+            // For 4th red, deduct 7 more (16 total)
+            // And so on...
+            updateRemainingPoints(consecutiveRedCount % 2 === 0 ? 7 : 1);
+        } else {
+            // This is the first red after a color
+            consecutiveRedCount = 1;
+            updateRemainingPoints(1);
+        }
+        
+        // Set lastBallWasRed to true
+        lastBallWasRed = true;
+        
+        // Now shooting for color
+        shootingForRed = false;
+        
+        // Increment total reds potted
+        totalRedsPotted++;
         
         // Make the red ball tally visible
         redTallyP1.style.visibility = "visible";
         redTallyP1.style.opacity = "1";
         
-        // Increment the red ball tally
-        let currentTally = parseInt(redTallyP1.textContent) || 0;
-        currentTally++;
-        redTallyP1.textContent = currentTally;
+        // Update the red ball tally display
+        redTallyP1.textContent = redClickCount;
+        
+        // Update available balls
+        updateAvailableBalls();
     });
 
     // TODO: shoot attempt - colour ball Black - player 1
@@ -250,6 +368,17 @@ document.addEventListener("DOMContentLoaded", function() {
         // Reduce points remaining appropriately
         updateRemainingPoints(2);        
         
+        // Set lastBallWasRed to false
+        lastBallWasRed = false;
+        
+        // Now shooting for red (unless in final sequence)
+        if (redClickCount < 15) {
+            shootingForRed = true;
+        } else if (remainingPoints > 0) {
+            // In final sequence, continue with colors
+            shootingForRed = false;
+        }
+        
         // Make the yellow ball tally visible
         yellowTallyP1.style.visibility = "visible";
         yellowTallyP1.style.opacity = "1";
@@ -258,6 +387,9 @@ document.addEventListener("DOMContentLoaded", function() {
         let currentTally = parseInt(yellowTallyP1.textContent) || 0;
         currentTally++;
         yellowTallyP1.textContent = currentTally;
+        
+        // Update available balls
+        updateAvailableBalls();
     });
     
     // Get the reset button
@@ -274,6 +406,9 @@ document.addEventListener("DOMContentLoaded", function() {
         // Reset game state variables
         lastBallWasRed = false;
         consecutiveRedCount = 0;
+        totalRedsPotted = 0; // Reset total reds potted
+        redClickCount = 0; // Reset red click counter
+        shootingForRed = true; // Start shooting for red
         
         // Reset points remaining to 147
         remainingPoints = 147;
@@ -307,6 +442,9 @@ document.addEventListener("DOMContentLoaded", function() {
         document.getElementById("player_number").textContent = "1";
         
         console.log("Game reset - table re-racked");
+        
+        // Update available balls
+        updateAvailableBalls();
     }
     
     // Add click event listener to the reset button
@@ -320,6 +458,9 @@ document.addEventListener("DOMContentLoaded", function() {
             location.reload();
         }, 1000); 
     });
+
+    // Set initial available balls
+    updateAvailableBalls();
 });
 
 /* document.addEventListener("DOMContentLoaded", function() {
