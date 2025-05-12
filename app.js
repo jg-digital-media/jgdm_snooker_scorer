@@ -1,4 +1,4 @@
-console.log("app.js connected - 09-05-2023 - 12:29");
+console.log("app.js connected - 12-05-2023 - 12:10");
 
 // Set the points remaining to 147
 document.getElementById('points_remaining').textContent = '147';
@@ -260,6 +260,66 @@ document.addEventListener("DOMContentLoaded", function() {
         yellowTallyP1.textContent = currentTally;
     });
     
+    // Get the reset button
+    const resetButton = document.getElementById("reset---app");
+    
+    // Function to re-rack the table (reset the game)
+    function reRackTable() {
+        // Reset scores and breaks
+        p1CurrentScore = 0;
+        p1CurrentBreak = 0;
+        p1Score.textContent = "0";
+        lastBreakP1.textContent = "0";
+        
+        // Reset game state variables
+        lastBallWasRed = false;
+        consecutiveRedCount = 0;
+        
+        // Reset points remaining to 147
+        remainingPoints = 147;
+        pointsRemaining.textContent = "147";
+        
+        // Reset all ball tallies
+        redTallyP1.textContent = "";
+        yellowTallyP1.textContent = "";
+        greenTallyP1.textContent = "";
+        brownTallyP1.textContent = "";
+        blueTallyP1.textContent = "";
+        pinkTallyP1.textContent = "";
+        blackTallyP1.textContent = "";
+        
+        // Hide all ball tallies
+        redTallyP1.style.visibility = "hidden";
+        yellowTallyP1.style.visibility = "hidden";
+        greenTallyP1.style.visibility = "hidden";
+        brownTallyP1.style.visibility = "hidden";
+        blueTallyP1.style.visibility = "hidden";
+        pinkTallyP1.style.visibility = "hidden";
+        blackTallyP1.style.visibility = "hidden";
+        
+        // Reset player 2's score if needed
+        const p2Score = document.getElementById("p2---score");
+        if (p2Score) {
+            p2Score.textContent = "0";
+        }
+        
+        // Reset player at table indicator
+        document.getElementById("player_number").textContent = "1";
+        
+        console.log("Game reset - table re-racked");
+    }
+    
+    // Add click event listener to the reset button
+    resetButton.addEventListener("click", function(event) {
+
+        event.preventDefault(); // Prevent default link behavior
+        // reRackTable();        
+
+        setTimeout(function () {
+
+            location.reload();
+        }, 1000); 
+    });
 });
 
 /* document.addEventListener("DOMContentLoaded", function() {
