@@ -1,6 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Last Updated: 12/05/2025 - 17:11`
++ `Last Updated: 12/05/2025 - 17:21`
 
 ## Sections
 
@@ -526,7 +526,7 @@ Use this application to tally up your Snooker scores as you play. Such is the sc
 ## Use Cases
 [Back to Top](#sections)
 
-+ The `points remaining` is dependant on the balls still on the table.
++ The `points remaining` is dependent on the balls still on the table.
     + Maximum of 147 points available
     + Maximum of 15 Reds on the table. 
     + 1 Colour Ball on the table. (Yellow 2, Green 3, Brown 4. Blue 5, Pink 6, Black 7)     
@@ -546,7 +546,7 @@ Use this application to tally up your Snooker scores as you play. Such is the sc
 
 + Each new visit to the table starts by shooting for Red Balls.
 
-+ For the purposes of this app, the player that makes the break is "Player 1"
++ For the purposes of this app, the player that makes the break is "Player 1". More often than not, no balls are potted in the first strike of the cue ball which is a "Miss".
 
 + There will inevitably be frames where a player forfeits the frame and the table is not cleared.
 
