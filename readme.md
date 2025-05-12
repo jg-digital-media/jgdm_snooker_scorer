@@ -1,6 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Last Updated: 12/05/2025 - 13:50`
++ `Last Updated: 12/05/2025 - 17:11`
 
 ## Sections
 
@@ -533,14 +533,14 @@ Use this application to tally up your Snooker scores as you play. Such is the sc
     + 1 Colour ball available to pot for Each Red Ball. (e.g 15 Red Balls = 15 Colour Balls)
     
     + `Scenario` 130 points remain on the table.  Pot Pink (6) - player scores 6 but since 7 is the maximum score with the black, the points remaining reduces by 7.
-    + Each Red Ball potted reduces the number of Snooker balls available and therefore the remaining points available to be scored.
-        + `1` red potted reduces the available points by `1`.
-        + `2` reds potted reduces the available points by `9` 2 reds removing **1** chance to shoot for a colourball.
-        + `3` reds potted reduces the available points by `17`. (3 reds 2 colours bypassed)
-    + If a player shoots for a colour and misses, they have the preceding 1 point for the red ball potted and the available points is reduced by `7`.
-    + `Scenario:` 1 Red Ball potted. Blue Ball missed.  Points Remaining: 139 - with 14 Reds and 14 Colours available to pot.  S
-    + `Scenario:` 4 Red Balls. 3 Colour Balls potted. Blue Ball missed -  Points Remaining: 119 - with 11 Reds and 11 Colours available to pot.
 
+    + Each Red Ball potted reduces the number of Snooker colour balls available to be potted;  and therefore the remaining points available to be scored.
+        + `1` red potted reduces the available points by `1`. The player shoots for the next colour.
+        + `2` reds potted reduces the available points by `9` 2 reds removing **1** chance to shoot for a colour ball. The player shoots for the next colour as normal.
+        + `3` reds potted reduces the available points by `10`. (3 reds - 1 colour ball bypassed). The player shoots for the next colour as normal.
+    + If a player shoots for a colour and misses, they have the preceding 1 point for the red ball potted. The next player shoots for a red ball and the available points is reduced by `7`.
+        + `Scenario:` 1 Red Ball potted. Blue Ball missed.  Points Remaining: 139 - with 14 Reds and 14 Colours available to pot.  S
+        + `Scenario:` 4 Red Balls. 3 Colour Balls potted. Blue Ball missed -  Points Remaining: 119 - with 11 Reds and 11 Colours available to pot.
 
 + Play Alternates between shooting for Red and Colour Balls.
 
@@ -554,6 +554,7 @@ Use this application to tally up your Snooker scores as you play. Such is the sc
 
 + By the time we get to the final 6 colour sequence there should be `27` remaining points available. `7 (Black), 6 (Pink), 5 (Blue), 4 (Brown), 3 (Green), 2 (Yellow)`
     + Need to let the application know somehow that the final 6 colour sequence means the reduction is absolute and not relative to further respotting of colour balls.
+    + 15 Reds 16 blacks, 1 Pink, 1 Blue, 1 Brown, 1 Green, 1 Yellow is a 147 break
 
 + To calculate snookers available, `Add the total of player 1 and player 2 scores and subtract this total from 147.  Subtract from remaining points available`
 + Keep track of the highest break per player in a frame
@@ -678,6 +679,19 @@ This application is built using the following technologies:
 + `COMPLETED: 12-05-2025:` link to about page on version number in footer element
 
 + `COMPLETED: 12-05-2025` Implement Re-rack Button - "Reset" button - change to "Re-rack button (`#reset---app`)
+
++ `TODO: `Finish turn based play between red and yellow ball
+
++ `TODO: `Fix bug with colour sequence not working after green ball (happens after red and yellow ball)
+
++ `TODO:` Track number of times Red ball has been potted `#pot---red--one` (no more than 15)
++ `TODO:` Track number of times Yellow ball has been potted `#pot---red--yellow` (no more than 16)
++ `TODO:` Track number of times Green ball has been potted `#pot---red--green` (no more than 16)
++ `TODO:` Track number of times Brown ball has been potted `#pot---red--brown` (no more than 16)
++ `TODO:` Track number of times Black ball has been potted `#pot---red--blue` (no more than 16)
++ `TODO:` Track number of times Pink ball has been potted `#pot---red--pink` (no more than 16)
++ `TODO:` Track number of times Black ball has been potted `#pot---red--black` (no more than 16)
+    + it's possible, however unlikely it might be that a player can pot a colour ball 16 times, including the colour sequence. (15 reds, 15 of a single colour and the colour sequnce e.g. 15 Reds, 15 Yellows, Yellow, Green, Brown, Blue, Pink, Black)
 
 + `TODO:` Stop counting highest and last break when `#points_remaining`is at 0.
 
@@ -824,3 +838,9 @@ resetButton.addEventListener("click", function(event) {
 + All of this, assumes that the player has not scored 2 reds in a row, has not missed a shot and goes all the way to a 147 break. We haven't yet thought about the turn based nature of this app. There's the whole business to come of handling what happens when the opponent player comes to the table.
 
 + `v1.0.2` - I've added a link to the about page on the version number in the footer element and added some initial copy for about.php page.  Also I've created a "Re-rack" Table function to reset the game at any time without the need to use user-agent refresh buttons.
+
++ `v1.0.3` - Well, it's been a bit of a day (`12-05-2025`) trying to start getting some turned based play working with this app. But... for now, I've made a little achievement by gettin turn play working by switching between the red and the yellow ball. The colour sequence does stop working after the green ball which is a bug that needs looking at. 
+
++ But after some struggling around for most of the day I'm taking this as a win.
+
++ I'm still working on a way to handle 2 red balls being potted in the same shot but I think it's sensible at this stage to assume one red at a time till we get this turn play working.
