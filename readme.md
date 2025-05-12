@@ -1,6 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Last Updated: 12/05/2025 - 12:00`
++ `Last Updated: 12/05/2025 - 12:08`
 
 ## Sections
 
@@ -602,7 +602,7 @@ This application is built using the following technologies:
 ## Development
 [Back to Top](#sections)
 
-### Tasks - 46 completed items
+### Tasks - 48 completed items
 
 + `COMPLETED: 08-05-2025` Final interface design check
 
@@ -732,7 +732,71 @@ The development of this application is currently in progress.
 [Back to Top](#sections)
 
 
-`1` - the `rerackTable()` app currently pushes player one score buttons down a row until all colours are pressed. Have replaced with a `location.reload` method on the "Re-reack" button for now.  - `12-05-2025`
++ `1` - the `rerackTable()` app currently pushes player one score buttons down a row until all colours are pressed. Have replaced with a `location.reload` method on the "Re-reack" button for now.  - `12-05-2025`
+
+```javascript
+
+
+// Function to re-rack the table (reset the game)
+function reRackTable() {
+    // Reset scores and breaks
+    p1CurrentScore = 0;
+    p1CurrentBreak = 0;
+    p1Score.textContent = "0";
+    lastBreakP1.textContent = "0";
+    
+    // Reset game state variables
+    lastBallWasRed = false;
+    consecutiveRedCount = 0;
+    
+    // Reset points remaining to 147
+    remainingPoints = 147;
+    pointsRemaining.textContent = "147";
+    
+    // Reset all ball tallies
+    redTallyP1.textContent = "";
+    yellowTallyP1.textContent = "";
+    greenTallyP1.textContent = "";
+    brownTallyP1.textContent = "";
+    blueTallyP1.textContent = "";
+    pinkTallyP1.textContent = "";
+    blackTallyP1.textContent = "";
+    
+    // Hide all ball tallies
+    redTallyP1.style.visibility = "hidden";
+    yellowTallyP1.style.visibility = "hidden";
+    greenTallyP1.style.visibility = "hidden";
+    brownTallyP1.style.visibility = "hidden";
+    blueTallyP1.style.visibility = "hidden";
+    pinkTallyP1.style.visibility = "hidden";
+    blackTallyP1.style.visibility = "hidden";
+    
+    // Reset player 2's score if needed
+    const p2Score = document.getElementById("p2---score");
+    if (p2Score) {
+        p2Score.textContent = "0";
+    }
+    
+    // Reset player at table indicator
+    document.getElementById("player_number").textContent = "1";
+    
+    console.log("Game reset - table re-racked");
+}
+
+resetButton.addEventListener("click", function(event) {
+
+        event.preventDefault(); // Prevent default link behavior
+        // reRackTable();        
+
+        setTimeout(function () {
+
+            location.reload();
+        }, 1000); 
+    });
+    
+
+```
+
 
 . . .
 
