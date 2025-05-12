@@ -635,6 +635,80 @@ body {
 
         }
 
+        .about---the---app-section {
+            
+            margin: 20pt auto;
+            max-width: 800px;
+            padding: 0 15px;
+
+            font-size: 12px;
+            width: 390px;
+
+            #back---home--btn {
+
+                display: block;
+                margin: 20pt auto;
+                /* width: 100%; */
+                width: 170px;
+                text-align: center;
+                padding: 10px;
+                border: 2px solid #e5ff61;
+                border-radius: 4px;
+                border-radius: 4px;
+                color: white;
+                color: #e5ff61;
+                text-decoration: none;
+                background-position-x: 3px;
+                background-position-y: 3px;
+
+                transition: background .3s ease-in-out;
+
+                &:hover {
+
+                    background: #34ff29;
+                    background: #016c26;
+                    background: url(assets/images/snooker-icon-btn.png), #016c26;
+                    background-repeat: no-repeat;
+                    background-position-x: 3px;
+                    background-position-y: 3px;
+                    background-size: 27px;
+                }
+            }
+
+            h2, h3 {
+
+                margin: 0;
+                color: #e5ff61;
+            }
+            
+            h2.about---the--app-subheading {
+
+                margin-top: 0;
+                color: #e5ff61;
+            }
+
+            p {
+
+                margin: 9pt 0;
+                line-height: 2.1;
+
+                a {
+
+                    color: #e5ff61;
+                    text-decoration: underline;
+                    transition: color .3s ease-in-out;
+
+                    &:hover {
+
+                        color: #e5ff61;
+                        text-decoration: none;
+                    }
+                }
+
+            }
+
+        }
+
     }
     
     .app---buttons {

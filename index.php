@@ -263,7 +263,7 @@
         <section class="app---buttons">
 
             <a href="javascript:void(0);" class="app---button" id="reset---app">Reset</a>
-            <a href="javascript:void(0);" class="app---button" id="app--app">About</a>
+            <a href="about.php" class="app---button" id="app--app">About</a>
             
         </section>
 
