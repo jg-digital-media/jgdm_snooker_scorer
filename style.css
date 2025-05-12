@@ -472,6 +472,60 @@ body main.interface-container .player---potting .player---points--difference .po
 body main.interface-container .player---potting .player---points--difference .points---remaining #player---two--remaining {
   color: #ffe731;
 }
+body main.interface-container .about---the---app-section {
+  margin: 20pt auto;
+  max-width: 800px;
+  padding: 0 15px;
+  font-size: 12px;
+  width: 390px;
+}
+body main.interface-container .about---the---app-section #back---home--btn {
+  display: block;
+  margin: 20pt auto;
+  /* width: 100%; */
+  width: 170px;
+  text-align: center;
+  padding: 10px;
+  border: 2px solid #e5ff61;
+  border-radius: 4px;
+  border-radius: 4px;
+  color: white;
+  color: #e5ff61;
+  text-decoration: none;
+  background-position-x: 3px;
+  background-position-y: 3px;
+  transition: background 0.3s ease-in-out;
+}
+body main.interface-container .about---the---app-section #back---home--btn:hover {
+  background: #34ff29;
+  background: #016c26;
+  background: url(assets/images/snooker-icon-btn.png), #016c26;
+  background-repeat: no-repeat;
+  background-position-x: 3px;
+  background-position-y: 3px;
+  background-size: 27px;
+}
+body main.interface-container .about---the---app-section h2, body main.interface-container .about---the---app-section h3 {
+  margin: 0;
+  color: #e5ff61;
+}
+body main.interface-container .about---the---app-section h2.about---the--app-subheading {
+  margin-top: 0;
+  color: #e5ff61;
+}
+body main.interface-container .about---the---app-section p {
+  margin: 9pt 0;
+  line-height: 2.1;
+}
+body main.interface-container .about---the---app-section p a {
+  color: #e5ff61;
+  text-decoration: underline;
+  transition: color 0.3s ease-in-out;
+}
+body main.interface-container .about---the---app-section p a:hover {
+  color: #e5ff61;
+  text-decoration: none;
+}
 body .app---buttons {
   text-align: center;
   width: 100%;
