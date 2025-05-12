@@ -1,6 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Last Updated: 09/05/2025 - 17:12`
++ `Last Updated: 12/05/2025 - 12:00`
 
 ## Sections
 
@@ -675,7 +675,9 @@ This application is built using the following technologies:
     + `COMPLETED: 09-05-2025:` Adds 2 to highest break `#highest---break--p1`    
     + `COMPLETED: 09-05-2025:` increments text content 1 to yellow ball `#tally---potted--yellow-p1`    
 
-+ `TODO:` Implement Re-rack Button - "Reset" button - change to "Re-rack button (`#reset---app`)
++ `COMPLETED: 12-05-2025:` link to about page on version number in footer element
+
++ `COMPLETED: 12-05-2025` Implement Re-rack Button - "Reset" button - change to "Re-rack button (`#reset---app`)
 
 + `TODO:` Stop counting highest and last break when `#points_remaining`is at 0.
 
@@ -714,6 +716,8 @@ This application is built using the following technologies:
 
 + `Task 1:` Shoot for colour - MISS
 
++ `TODO:` Consider reworking about.php and its content as a modal area for index.php
+
 `player 2`
 
 shoot red - click red ball icon
@@ -727,27 +731,32 @@ The development of this application is currently in progress.
 ### Identified Bugs
 [Back to Top](#sections)
 
+
+`1` - the `rerackTable()` app currently pushes player one score buttons down a row until all colours are pressed. Have replaced with a `location.reload` method on the "Re-reack" button for now.  - `12-05-2025`
+
 . . .
 
 ### Comments
 [Back to Top](#sections)
 
-+ `v1` - This is probably the most complex and involving application I've ever got myself into. After all the planning I've done and is still to be done I'm now left with trying to decide where and how to start. Because one thing I do will effect the next thing at various times in the weeks and months to come. Several things link together. As an example. The user clicks the Red call icon for player 1. This action effects many moving parts. 1. The player 1 score is increased by 1. 2. The points remaining is reduced by 1. 3. The last break is increased by 1. 4. The highest break is increased by 1. 5. A number 1 is added to the red ball representing the number of times that player 1 has potted a red ball.
++ `v1.0.0` - This is probably the most complex and involving application I've ever got myself into. After all the planning I've done and is still to be done I'm now left with trying to decide where and how to start. Because one thing I do will effect the next thing at various times in the weeks and months to come. Several things link together. As an example. The user clicks the Red call icon for player 1. This action effects many moving parts. 1. The player 1 score is increased by 1. 2. The points remaining is reduced by 1. 3. The last break is increased by 1. 4. The highest break is increased by 1. 5. A number 1 is added to the red ball representing the number of times that player 1 has potted a red ball.
 
-And since we're representing a potted ball, player 1 remains at the table and in the game; they will now be shooting for a colour ball.  
++ And since we're representing a potted ball, player 1 remains at the table and in the game; they will now be shooting for a colour ball.  
 
-There's enough to be getting on with there. But I can sense more to do because I'm wondering if we need to grey out the colour balls until we've actually registered that a red ball has been potted and vice versa.
++ There's enough to be getting on with there. But I can sense more to do because I'm wondering if we need to grey out the colour balls until we've actually registered that a red ball has been potted and vice versa.
 
-Elements affected by the red ball potted:
++ Elements affected by the red ball potted:
 
-    + `#player---1--table` - The red icon marks the player who is at the table. (Player 1 in this case) It is invisble by default for player 2.
-    + `#player_number` - The number is to revert between 1 and 2, depending on who is at the table.
-    + `#tally---potted--red-p1` - The number of red balls potted by player 1
-    + `#highest---break--p1` - The last highest break made by player 1
-    + `#last---break--p1` - The total of the last break made - (a "break" is a visit to the table)
-    + `#p1---score` - The Total Scored by Player 1 which is the total accumulation of breaks and scored and penalty points given.
-    + `#points_remaining` - The number of points remaining in the game.
+  + `#player---1--table` - The red icon marks the player who is at the table. (Player 1 in this case) It is invisble by default for player 2.
+  + `#player_number` - The number is to revert between 1 and 2, depending on who is at the table.
+  + `#tally---potted--red-p1` - The number of red balls potted by player 1
+  + `#highest---break--p1` - The last highest break made by player 1
+  + `#last---break--p1` - The total of the last break made - (a "break" is a visit to the table)
+  + `#p1---score` - The Total Scored by Player 1 which is the total accumulation of breaks and scored and penalty points given.
+  + `#points_remaining` - The number of points remaining in the game.
 
-+ `v2` - I've got as far as implementing the UX feature of indicating which balls player 1 has potted and how many times that ball as been potted.  I've also updated the scores in each turn for the total player score; the last break made and the highest break. All of this, assumes that the player has not scored 2 reds in a row, has not missed a shot and goes all the way to a 147 break. There's the whole busines to come of handling what happens when the oppononent player comes to the table. We haven't yet thought about the turned based nature of this app. 
++ `v1.0.1` - I've got as far as implementing the UX feature of indicating which balls player 1 has potted and how many times that ball as been potted. I've also updated the scores in each turn for the total player score; the last break made and the highest break. 
 
-... 
++ All of this, assumes that the player has not scored 2 reds in a row, has not missed a shot and goes all the way to a 147 break. We haven't yet thought about the turn based nature of this app. There's the whole business to come of handling what happens when the opponent player comes to the table.
+
++ `v1.0.2` - I've added a link to the about page on the version number in the footer element and added some initial copy for about.php page.  Also I've created a "Re-rack" Table function to reset the game at any time without the need to use user-agent refresh buttons.
