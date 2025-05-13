@@ -79,7 +79,7 @@
                 
                 <br />
 
-                <article class="player---one--pot player---pot--miss player---one--pot-undo" id="put---undo--one">
+                <article class="player---one--pot player---pot--miss player---one--pot-undo" id="pot---undo--one">
 
                     <p class="pot---tally" id="tally---potted--undo-p1">Undo</p>
 
