@@ -1,11 +1,13 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Last Updated: 12/05/2025 - 17:21`
++ `Last Updated: 13/05/2025 - 11:07`
 
 ## Sections
 
 [Intro](#intro
-) | [Planning User Flows](#planning-user-flows) | [Use Cases](#use-cases) | [Technologies Used](#technologies-used) | [Development](#development) | [Bugs](#identified-bugs) | [Comments](#comments) | [Repository](https://github.com/jg-digital-media/jgdm_snooker_scorer)* External
+) | [Planning User Flows](#planning-user-flows) | [Use Cases](#use-cases) | [Technologies Used](#technologies-used) | [Development](#development) | [Bugs](#identified-bugs) | [Comments](#comments) | [Online](https://projects.jonniegrieve.co.uk/snooker_scorer)* External
+
+Clone to your system `git clone https://github.com/jg-digital-media/jgdm_snooker_scorer.git`
 
 ## Intro
 
@@ -603,7 +605,7 @@ This application is built using the following technologies:
 ## Development
 [Back to Top](#sections)
 
-### Tasks - 48 completed items
+### Tasks - 63 completed items
 
 + `COMPLETED: 08-05-2025` Final interface design check
 
@@ -622,14 +624,14 @@ This application is built using the following technologies:
 + `COMPLETED: 09-05-2025:` Click green ball icon `#tally---potted--green-p1` (Player 1) to score 3 points
 + `COMPLETED: 09-05-2025:` Click yellow ball icon `#tally---potted--yellow-p1` (Player 1) to score 2 points
 
-+ `TODO:` Click red ball icon `tally---potted--red-p1` (Player 1) to score 1 point player 1
++ `COMPLETED: 13-05-2023` Click red ball icon `tally---potted--red-p1` (Player 1) to score 1 point player 1
     + `COMPLETED: 08-05-2025:` Reduces `#points_remaining` by 1 to 146
     + `COMPLETED: 08-05-2025:` Adds 1 to red ball `#tally---potted--red-p1`
     + `COMPLETED: 08-05-2025:` Adds 1 to last break `#last---break--p1`
     + `COMPLETED: 08-05-2025:` Adds 1 to highest break `#highest---break--p1`
     + `COMPLETED: 09-05-2025:` increments text content 1 to red ball `#tally---potted--red-p1`
 
-+ `TODO:` shoot attempt - colour ball Black - player 1
++ `COMPLETED: 13-05-2025` Shoot attempt - colour ball Black - player 1
 
     + `COMPLETED: 09-05-2025:` Reduces `#points_remaining` by 7 to 139
     + `COMPLETED: 09-05-2025:` Adds 1 to black ball `#tally---potted--black-p1`
@@ -637,7 +639,7 @@ This application is built using the following technologies:
     + `COMPLETED: 09-05-2025:` Adds 7 to highest break `#highest---break--p1`    
     + `COMPLETED: 09-05-2025:` increments text content 1 to black ball `#tally---potted--black-p1`
 
-+ `TODO:` shoot attempt - colour ball Pink - player 1
++ `COMPLETED: 13-05-2025` Shoot attempt - colour ball Pink - player 1
 
     + `COMPLETED: 09-05-2025:` Reduces `#points_remaining` by 7 to 139    
     + `COMPLETED: 09-05-2025:` Adds 1 to pink ball `#tally---potted--pink-p1`
@@ -645,7 +647,7 @@ This application is built using the following technologies:
     + `COMPLETED: 09-05-2025:` Adds 6 to highest break `#highest---break--p1`    
     + `COMPLETED: 09-05-2025:` increments text content 1 to pink ball `#tally---potted--pink-p1`
 
-+ `TODO:` shoot attempt - colour ball Blue - player 1
++ `COMPLETED: 13-05-2025` Shoot attempt - colour ball Blue - player 1
 
     + `COMPLETED: 09-05-2025:` Reduces `#points_remaining` by 7 to 139    
     + `COMPLETED: 09-05-2025:` Adds 1 to blue ball `#tally---potted--blue-p1`
@@ -653,7 +655,7 @@ This application is built using the following technologies:
     + `COMPLETED: 09-05-2025:` Adds 5 to highest break `#highest---break--p1`
     + `COMPLETED: 09-05-2025:` increments text content 1 to blue ball `#tally---potted--blue-p1`
 
-+ `TODO:` shoot attempt - colour ball Brown - player 1
++ `COMPLETED: 13-05-2025` Shoot attempt - colour ball Brown - player 1
 
     + `COMPLETED: 09-05-2025:` Reduces `#points_remaining` by 7 to 139    
     + `COMPLETED: 09-05-2025:` Adds 1 to brown ball `#tally---potted--black-p1`
@@ -661,7 +663,7 @@ This application is built using the following technologies:
     + `COMPLETED: 09-05-2025:` Adds 4 to highest break `#highest---break--p1`
     + `COMPLETED: 09-05-2025:` increments text content 1 to brown ball `#tally---potted--brown-p1`
 
-+ `TODO:` shoot attempt - colour ball Green - player 1
++ `COMPLETED: 13-05-2025` Shoot attempt - colour ball Green - player 1
 
     + `COMPLETED: 09-05-2025:` Reduces `#points_remaining` by 7 to 139    
     + `COMPLETED: 09-05-2025:` Adds 1 to green ball `#tally---potted--black-p1`
@@ -669,20 +671,40 @@ This application is built using the following technologies:
     + `COMPLETED: 09-05-2025:` Adds 3 to highest break `#highest---break--p1`    
     + `COMPLETED: 09-05-2025:` increments text content 1 to green ball `#tally---potted--green-p1`
 
-+ `TODO:` shoot attempt - colour ball Yellow - player 1
++ `COMPLETED: 13-05-2025` Shoot attempt - colour ball Yellow - player 1
     + `COMPLETED: 09-05-2025:` Reduces `#points_remaining` by 7 to 139
     + `COMPLETED: 09-05-2025:` Adds 1 to yellow ball `#tally---potted--black-p1`
     + `COMPLETED: 09-05-2025:` Increment last break tally by 2 `#last---break--p1`
     + `COMPLETED: 09-05-2025:` Adds 2 to highest break `#highest---break--p1`    
     + `COMPLETED: 09-05-2025:` increments text content 1 to yellow ball `#tally---potted--yellow-p1`    
 
-+ `COMPLETED: 12-05-2025:` link to about page on version number in footer element
++ `COMPLETED: 12-05-2025:` Link to about page on version number in footer element
 
 + `COMPLETED: 12-05-2025` Implement Re-rack Button - "Reset" button - change to "Re-rack button (`#reset---app`)
 
-+ `TODO: `Finish turn based play between red and yellow ball
++ `COMPLETED: 13-05-2023` Finish turn based play between red and yellow ball
 
-+ `TODO: `Fix bug with colour sequence not working after green ball (happens after red and yellow ball)
++ `COMPLETED: 13-05-2023` Disable colour balls while player is shooting for red ball. opacity setting - disabled state
+
++ `COMPLETED: 13-05-2023` Disable red balls while player is shooting for a colour ball
+
++ `COMPLETED: 13-05-2023` Fix bug with colour sequence not working after green ball (happens after red and yellow ball)
+
++ `COMPLETED: 13-05-2023` If the points remaining reaches 0, the frame is over. disable any point scoring buttons so high score and last break are not updated.
+
++ `COMPLETED: 13-05-2023` Recreate 147 Break (15 Reds + 15 Blacks + 6 Colour sequence - `Yellow Green Brown Blue Pink Black`) 
+
++ `COMPLETED: 13-05-2023` Handle colour sequence so the player clicks the order of colours in the sequence - 
+    if on yellow, disable all other colours
+    if on green, disable all other colours
+    if on brown, disable all other colours... etc
+    This is for player 1 only.
+
++ `COMPLETED: 13-05-2023` BUG: Players should not be able to score more than 147 points.
+  + no more points added to `#p1---score`
+  + no further changes to `#highest---break--p1`
+  + no further changes to `#last---break--p1`
+  
 
 + `TODO:` Track number of times Red ball has been potted `#pot---red--one` (no more than 15)
 + `TODO:` Track number of times Yellow ball has been potted `#pot---red--yellow` (no more than 16)
@@ -693,16 +715,10 @@ This application is built using the following technologies:
 + `TODO:` Track number of times Black ball has been potted `#pot---red--black` (no more than 16)
     + it's possible, however unlikely it might be that a player can pot a colour ball 16 times, including the colour sequence. (15 reds, 15 of a single colour and the colour sequnce e.g. 15 Reds, 15 Yellows, Yellow, Green, Brown, Blue, Pink, Black)
 
-+ `TODO:` Stop counting highest and last break when `#points_remaining`is at 0.
++ `TODO:` Stop counting highest and last break when `#points_remaining`is at 0 (Player 2).
 
-+ `TODO:` Disable colour balls while player is shooting for red ball. opacity setting - disabled state
++ Disable foul and miss buttons when points remaining is at 0 (Player 2)
 
-+ `TODO:` Disable red balls while player is shooting for a colour ball
-
-+ `TODO:` BUG: Players should not be able to score more than 147 points. (Stop the game when the points remaining is at 0)
-  + no more points added to `#p1---score`
-  + no further changes to `#highest---break--p1`
-  + no further changes to `#last---break--p1`
 
 + `TODO:` Handling scoring and points remaining when the player scores 2 reds
   + Click red ball icon to pot 1 red ball and move to shooting for a colour ball.
@@ -710,8 +726,6 @@ This application is built using the following technologies:
   + Apply button for more than 1 red ball potted. 
 
 + `TODO:` Shouldn't take the missed points into account until I simulate shooting for a colour after the 2 reds at once? 
-
-+ `TODO:` Recreate 147 Break (15 Reds + 15 Blacks + 6 Colour sequence - `Yellow Green Brown Blue Pink Black`) 
 
 * `TODO:` Check the highest break is updated correctly - player 1
 
@@ -721,12 +735,8 @@ This application is built using the following technologies:
     + `TODO:` Adds 8 to last break `#last---break--p1`
     + `TODO:` Adds 8 to highest break `#highest---break--p1` 
 
-+ `TODO:` About.php should include instructions on what each button does - e.g. "Miss" button refers to a failed pot but legal hit and ends visit to the table.
++ `TODO:` about.php should include instructions on what each button does - e.g. "Miss" button refers to a failed pot but legal hit and ends visit to the table.
 
-+ `TODO`: Handle colour sequence so the player clicks the order of colours in the sequence - 
-    if on yellow, disable all other colours
-    if on green, disable all other colours
-    if on brown, disable all other colours... etc
 
 + `Task 1:` Shoot for colour - MISS
 
