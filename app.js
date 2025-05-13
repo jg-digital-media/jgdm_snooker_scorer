@@ -1,4 +1,4 @@
-console.log("app.js connected - 12-05-2023 - 17:09");
+console.log("app.js connected - 13-05-2023 - 09:24");
 
 // Set the points remaining to 147
 document.getElementById('points_remaining').textContent = '147';
@@ -217,6 +217,17 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // Reduce points remaining appropriately
         updateRemainingPoints(7);
+        
+        // Set lastBallWasRed to false
+        lastBallWasRed = false;
+
+        // Now shooting for red (unless in final sequence)
+        if (redClickCount < 15) {
+            shootingForRed = true;
+        } else if (remainingPoints > 0) {
+            // In final sequence, continue with colors
+            shootingForRed = false;
+        }
                 
         // Make the black ball tally visible
         blackTallyP1.style.visibility = "visible";
@@ -226,6 +237,9 @@ document.addEventListener("DOMContentLoaded", function() {
         let currentTally = parseInt(blackTallyP1.textContent) || 0;
         currentTally++;
         blackTallyP1.textContent = currentTally;
+
+        // Update available balls
+        updateAvailableBalls();
     });
 
     // TODO: shoot attempt - colour ball Pink - player 1    
@@ -248,6 +262,17 @@ document.addEventListener("DOMContentLoaded", function() {
         // Reduce points remaining appropriately
         updateRemainingPoints(6);
         
+        // Set lastBallWasRed to false
+        lastBallWasRed = false;
+
+        // Now shooting for red (unless in final sequence)
+        if (redClickCount < 15) {
+            shootingForRed = true;
+        } else if (remainingPoints > 0) {
+            // In final sequence, continue with colors
+            shootingForRed = false;
+        }
+        
         // Make the pink ball tally visible
         pinkTallyP1.style.visibility = "visible";
         pinkTallyP1.style.opacity = "1";
@@ -256,6 +281,9 @@ document.addEventListener("DOMContentLoaded", function() {
         let currentTally = parseInt(pinkTallyP1.textContent) || 0;
         currentTally++;
         pinkTallyP1.textContent = currentTally;
+
+        // Update available balls
+        updateAvailableBalls();
     });
 
 
@@ -279,7 +307,18 @@ document.addEventListener("DOMContentLoaded", function() {
         // Reduce points remaining appropriately
         updateRemainingPoints(5);
         
-                // Make the blue ball tally visible
+        // Set lastBallWasRed to false
+        lastBallWasRed = false;
+
+        // Now shooting for red (unless in final sequence)
+        if (redClickCount < 15) {
+            shootingForRed = true;
+        } else if (remainingPoints > 0) {
+            // In final sequence, continue with colors
+            shootingForRed = false;
+        }
+        
+        // Make the blue ball tally visible
         blueTallyP1.style.visibility = "visible";
         blueTallyP1.style.opacity = "1";
         
@@ -287,6 +326,9 @@ document.addEventListener("DOMContentLoaded", function() {
         let currentTally = parseInt(blueTallyP1.textContent) || 0;
         currentTally++;
         blueTallyP1.textContent = currentTally;
+
+        // Update available balls
+        updateAvailableBalls();
     });
 
     // TODO: shoot attempt - colour ball Brown - player 1
@@ -308,6 +350,17 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // Reduce points remaining appropriately
         updateRemainingPoints(4);
+
+        // Set lastBallWasRed to false
+        lastBallWasRed = false;
+        
+        // Now shooting for red (unless in final sequence)
+        if (redClickCount < 15) {
+            shootingForRed = true;
+        } else if (remainingPoints > 0) {
+            // In final sequence, continue with colors
+            shootingForRed = false;
+        }
                 
         // Make the brown ball tally visible
         brownTallyP1.style.visibility = "visible";
@@ -317,6 +370,9 @@ document.addEventListener("DOMContentLoaded", function() {
         let currentTally = parseInt(brownTallyP1.textContent) || 0;
         currentTally++;
         brownTallyP1.textContent = currentTally;
+
+        // Update available balls
+        updateAvailableBalls();
     });
 
     // TODO: shoot attempt - colour ball Green - player 1
@@ -338,6 +394,17 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // Reduce points remaining appropriately
         updateRemainingPoints(3);
+
+        // Set lastBallWasRed to false
+        lastBallWasRed = false;
+        
+        // Now shooting for red (unless in final sequence)
+        if (redClickCount < 15) {
+            shootingForRed = true;
+        } else if (remainingPoints > 0) {
+            // In final sequence, continue with colors
+            shootingForRed = false;
+        }        
                 
         // Make the green ball tally visible
         greenTallyP1.style.visibility = "visible";
@@ -347,6 +414,9 @@ document.addEventListener("DOMContentLoaded", function() {
         let currentTally = parseInt(greenTallyP1.textContent) || 0;
         currentTally++;
         greenTallyP1.textContent = currentTally;
+
+        // Update available balls
+        updateAvailableBalls();
     });
 
     // Yellow ball pot event listener for player 1  
