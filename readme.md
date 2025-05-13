@@ -1,6 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Last Updated: 13/05/2025 - 11:07`
++ `Last Updated: 13/05/2025 - 12:17`
 
 ## Sections
 
@@ -853,4 +853,12 @@ resetButton.addEventListener("click", function(event) {
 
 + But after some struggling around for most of the day I'm taking this as a win.
 
-+ I'm still working on a way to handle 2 red balls being potted in the same shot but I think it's sensible at this stage to assume one red at a time till we get this turn play working.
++ I'm still working on a way to handle 2 red balls being potted in the same shot but I think it's sensible at this stage to assume one red at a time till we get this turn play working. And that's the approach I took.  
+
++ By the next day I'd been able to get the turn play working with the red and colour balls as well as taking into account the colour sequence.  So. Where we stand now is that we are playing through a standard 1 frame visit where the player
+   + Commits no fouls
+   + Pots 15 Reds and 15 colours with no misses.
+   + Goes through the colour sequence at 27 points remaining `#points_remaining`.
+   + Can operate a 147 maximum break.
+   + Cannot recreate a situation where a player score more than one red in the same shot.
+   + Cannot shoot for any more balls or foul buttons when the points remaining `#points_remaining` is at 0
