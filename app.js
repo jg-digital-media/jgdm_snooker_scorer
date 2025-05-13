@@ -1,4 +1,4 @@
-console.log("app.js connected - 13-05-2023 - 09:24");
+console.log("app.js connected - 13-05-2023 - 10:41");
 
 // Set the points remaining to 147
 document.getElementById('points_remaining').textContent = '147';
@@ -19,6 +19,8 @@ document.addEventListener("DOMContentLoaded", function() {
     const pointsRemaining = document.getElementById("points_remaining");
     const highestBreakP1 = document.getElementById("highest---break--p1");
     const lastBreakP1 = document.getElementById("last---break--p1");
+
+    //
     const redTallyP1 = document.getElementById("tally---potted--red-p1")
     const blackTallyP1 = document.getElementById("tally---potted--black-p1");
     const pinkTallyP1 = document.getElementById("tally---potted--pink-p1");
@@ -26,6 +28,14 @@ document.addEventListener("DOMContentLoaded", function() {
     const brownTallyP1 = document.getElementById("tally---potted--brown-p1");
     const greenTallyP1 = document.getElementById("tally---potted--green-p1");
     let yellowTallyP1 = document.getElementById("tally---potted--yellow-p1");
+
+    // frame buttons (player 1)
+
+    const potUndoOne = document.getElementById("pot---undo--one");
+    const potMissOne = document.getElementById("pot---miss--one");
+    const potFoulOne = document.getElementById("pot---foul--one");
+    const potFoulMissOne = document.getElementById("pot---foulmiss--one");
+    const potForfeitOne = document.getElementById("pot---forfeit--one"); 
     
     // Initialize variables
     let p1CurrentScore = 0;
@@ -68,6 +78,33 @@ document.addEventListener("DOMContentLoaded", function() {
         
         // Array of all color balls
         const colorBalls = [yellowBall, greenBall, brownBall, blueBall, pinkBall, blackBall];
+        
+        // If there are no points remaining, disable all balls (frame is over)
+        if (remainingPoints === 0) {
+            redBall.style.pointerEvents = "none";
+            redBall.style.opacity = "0.5";
+            
+            colorBalls.forEach(ball => {
+                ball.style.pointerEvents = "none";
+                ball.style.opacity = "0.5";
+            });
+            
+            potUndoOne.style.pointerEvents = "none";
+            potMissOne.style.pointerEvents = "none";
+            potFoulOne.style.pointerEvents = "none";  
+            potFoulMissOne.style.pointerEvents = "none";
+            potForfeitOne.style.pointerEvents = "none";
+
+            potUndoOne.style.opacity = "0.4";            
+            potMissOne.style.opacity = "0.4";            
+            potFoulOne.style.opacity = "0.4";            
+            potFoulMissOne.style.opacity = "0.4";            
+            potForfeitOne.style.opacity = "0.4";   
+
+
+            console.log("Frame complete - table cleared!");
+            return;
+        }
         
         if (shootingForRed) {
             // If shooting for red, enable red and disable colors
@@ -227,6 +264,11 @@ document.addEventListener("DOMContentLoaded", function() {
         } else if (remainingPoints > 0) {
             // In final sequence, continue with colors
             shootingForRed = false;
+        }
+
+        // Check if the game is over
+        if (remainingPoints === 0) {
+            console.log("Frame complete - table cleared!");
         }
                 
         // Make the black ball tally visible
