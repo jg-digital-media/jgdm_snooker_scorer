@@ -1,6 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Last Updated: 13/05/2025 - 12:17`
++ `Last Updated: 14/05/2025 - 15:37`
 
 ## Sections
 
@@ -705,6 +705,17 @@ This application is built using the following technologies:
   + no further changes to `#highest---break--p1`
   + no further changes to `#last---break--p1`
   
++ `COMPLETED: 14-05-2023` Add apply button which will be linked to red ball player 1 `#apply_tally--red--p1`
+
++ `COMPLETED: 14-05-202` allow multiple tallies to be added for red ball before clicking the apply button to shoot for a colour ball
+
++ `COMPLETED: 14-05-202` Fix a bug where the the tally for the red ball resets and does not keep the tally. - introduced after applying the red red ball tally to player 1 - the tally was being reset to 0 when the player 1 score was updated.
+
+
++ `TODO:` What about finding a way to count the number of legal pots for a red (multiple pots of a red ball are legal) and comparing this to 15 Reds - and using this to calculate the number of points remaining as 27. We could use incremental counting of the number of clicks of `#tally---potted--black-p1` to do this.
+
+
++ `TODO:` Remove the apply link under the red ball from view shooting for colour balls. This is a UX distraction and is not needed when shooting for a colour.
 
 + `TODO:` Track number of times Red ball has been potted `#pot---red--one` (no more than 15)
 + `TODO:` Track number of times Yellow ball has been potted `#pot---red--yellow` (no more than 16)
@@ -862,3 +873,32 @@ resetButton.addEventListener("click", function(event) {
    + Can operate a 147 maximum break.
    + Cannot recreate a situation where a player score more than one red in the same shot.
    + Cannot shoot for any more balls or foul buttons when the points remaining `#points_remaining` is at 0
+
++ `1.0.4` - So we've come to the point now where we've got the scoring system working to a certain degree. To the degree that a range of reds and colours can be potted, minus any eventuality where the second player gets to the table. Perversley we haven't yet taken into account the common scenario where the player doesn't pot anything on their break (A "miss"). So soon we'll have to open up the turn based place to bring player 2 into play. 
+
++ At that point, we'll have to link a number of things together, such as the `#points_remaining...`... tracking the number of balls potted and therefore the ones remaining across both players.
+
++ But I don't want to do that before we've finally expanded scoring system working so it takes into account multiple reds potted in the same shot.
+
++ To attempt this, I've added a `#apply_tally--red--p1` link to the player 1 potting section. This will allow us to click multiple times to apply the tally to the player 1 red ball. We then click this link rather than the red ball icon to switch to colour balls as normal. 
+
++ I'd also like to attempt to differentiate between the number of times reds have been legally potted as apposed to the number of reds that have actually been potted, which is an important distinction.  For example a player might pot 2 reds in one shot, which is legal.  But that would then take the player to 15 reds in 14 legal pots.
+
+```html
+
+    <a href="#" id="apply_tally--red--p1" class="potting---tally">Apply</a>                
+    <br />
+```
+
+```css
+a#apply_tally---red--p1 {
+
+	color: yellow;
+    font-size: 12px;
+    margin: 0 10px;
+    position: relative;
+    bottom: 7px;
+    visibility: hidden;
+
+}
+```
