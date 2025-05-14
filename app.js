@@ -1,4 +1,4 @@
-console.log("app.js connected - 13-05-2023 - 10:41");
+console.log("app.js connected - 14-05-2023 - 14:31");
 
 // Set the points remaining to 147
 document.getElementById('points_remaining').textContent = '147';
@@ -47,6 +47,12 @@ document.addEventListener("DOMContentLoaded", function() {
     let totalRedsPotted = 0; // Track total number of reds potted
     let redClickCount = 0; // Separate counter just for red ball clicks
     let shootingForRed = true; // Track whether player is shooting for a red or color
+
+    // Get the apply button for red ball tally
+    const applyRedTallyP1 = document.getElementById("apply_tally---red--p1");
+    
+    // Variables to track temporary red ball tallying
+    let tempRedTally = 0;
 
     // Function to check and update remaining points based on game stage
     function updateRemainingPoints(pointsToDeduct) {
@@ -177,21 +183,38 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // shoot attempt - red ball - player 1
     redBallP1.addEventListener("click", function() {
-        // Check if we've already clicked the red ball 15 times
-        if (redClickCount >= 15) {
+        // Check if we've already clicked the red ball 15 times in total
+        if (redClickCount + tempRedTally >= 15) {
             console.log("Maximum number of red ball clicks (15) reached");
             return; // Exit the function early
         }
         
-        // Increment the red click counter
-        redClickCount++;
+        // Increment temporary tally
+        tempRedTally++;
         
-        // Add 1 to player 1's score
-        p1CurrentScore += 1;
+        // Make the red ball tally visible and update display
+        redTallyP1.style.visibility = "visible";
+        redTallyP1.style.opacity = "1";
+        
+        // Show the current tally plus the existing count
+        redTallyP1.textContent = redClickCount + tempRedTally;
+    });
+
+    // Add event listener for the apply button
+    applyRedTallyP1.addEventListener("click", function(event) {
+        event.preventDefault(); // Prevent default link behavior
+        
+        // Only proceed if there are reds to apply
+        if (tempRedTally === 0) {
+            return;
+        }
+        
+        // Add points to player's score (1 point per red)
+        p1CurrentScore += tempRedTally;
         p1Score.textContent = p1CurrentScore;
         
-        // Add 1 to current break
-        p1CurrentBreak += 1;
+        // Add to current break
+        p1CurrentBreak += tempRedTally;
         lastBreakP1.textContent = p1CurrentBreak;
         
         // Update highest break if needed
@@ -200,20 +223,20 @@ document.addEventListener("DOMContentLoaded", function() {
             highestBreakP1.textContent = p1HighestBreak;
         }
         
-        // Check if the last ball was also a red
-        if (lastBallWasRed) {
-            // This is a consecutive red ball
-            consecutiveRedCount++;
-            // For 2nd red, deduct 7 more (8 total)
-            // For 3rd red, deduct 1 more (9 total)
-            // For 4th red, deduct 7 more (16 total)
-            // And so on...
-            updateRemainingPoints(consecutiveRedCount % 2 === 0 ? 7 : 1);
-        } else {
-            // This is the first red after a color
-            consecutiveRedCount = 1;
-            updateRemainingPoints(1);
+        // Update remaining points based on number of reds potted
+        for (let i = 0; i < tempRedTally; i++) {
+            // Check if this is a consecutive red
+            if (lastBallWasRed) {
+                consecutiveRedCount++;
+                updateRemainingPoints(consecutiveRedCount % 2 === 0 ? 7 : 1);
+            } else {
+                consecutiveRedCount = 1;
+                updateRemainingPoints(1);
+            }
         }
+        
+        // Update red click count (add the temporary tally)
+        redClickCount += tempRedTally;
         
         // Set lastBallWasRed to true
         lastBallWasRed = true;
@@ -221,15 +244,8 @@ document.addEventListener("DOMContentLoaded", function() {
         // Now shooting for color
         shootingForRed = false;
         
-        // Increment total reds potted
-        totalRedsPotted++;
-        
-        // Make the red ball tally visible
-        redTallyP1.style.visibility = "visible";
-        redTallyP1.style.opacity = "1";
-        
-        // Update the red ball tally display
-        redTallyP1.textContent = redClickCount;
+        // Reset temporary tally
+        tempRedTally = 0;
         
         // Update available balls
         updateAvailableBalls();
@@ -554,6 +570,9 @@ document.addEventListener("DOMContentLoaded", function() {
         document.getElementById("player_number").textContent = "1";
         
         console.log("Game reset - table re-racked");
+        
+        // Reset temporary tally
+        tempRedTally = 0;
         
         // Update available balls
         updateAvailableBalls();
