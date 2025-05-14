@@ -78,6 +78,9 @@
                 </article>
                 
                 <br />
+                
+                <a href="#" id="apply_tally---red--p1" class="potting---tally">Apply</a>                
+                <br />
 
                 <article class="player---one--pot player---pot--miss player---one--pot-undo" id="pot---undo--one">
 
