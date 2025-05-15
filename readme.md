@@ -1,6 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Last Updated: 15/05/2025 - 07:40`
++ `Last Updated: 15/05/2025 - 13:54`
 
 ## Sections
 
@@ -222,6 +222,7 @@ Use this application to tally up your Snooker scores as you play. Such is the sc
 
 
 ### Flow 2: - `incomplete match flow` - `includes fouls + miss` - `failed pots`
+[Back to Top](#sections)
 
 1. `Player 1 At the Table` - **Action**: Player 1 Breaks - No Score
   + `Points Remaining:` 147
@@ -522,8 +523,164 @@ Use this application to tally up your Snooker scores as you play. Such is the sc
   + `Points Remaining:` 106
   + `Player 1 Score:` 19 - `Last Break:` 19 - `Snookers Required:` 0
   + `Player 2 Score:` 0 - `Last Break:` 0 - `Snookers Required:` 0
-. 
 
+### Flow 5: - `match flow` - `2 reds potted` - `multiple reds potted`
+
+
+1. `Player 1 At the Table` - **Action**: Player 1 Breaks - Pots Red (1) - Score: 1
+  + `Points Remaining:` 146
+  + `Player 1 Score:` 1 - `Last Break:` 1 - `Snookers Required:` 0
+  + `Player 2 Score:` 0 - `Last Break:` 0 - `Snookers Required:` 0
+
+2. `Player 1 At the Table` - **Action**: Pots Black (Colour 1) - Score: 7
+  + `Points Remaining:` 139
+  + `Player 1 Score:` 8 - `Last Break:` 8 - `Snookers Required:` 0
+  + `Player 2 Score:` 0 - `Last Break:` 0 - `Snookers Required:` 0
+
+3. `Player 1 At the Table` - **Action**: Pots Red (2)  - Score: 1
+  + `Points Remaining:` 138
+  + `Player 1 Score:` 9 - `Last Break:` 9 - `Snookers Required:` 0
+  + `Player 2 Score:` 0 - `Last Break:` 0 - `Snookers Required:` 0
+
+4. `Player 1 At the Table` - **Action**: Pots Black (Colour 2) - Score: 7
+  + `Points Remaining:` 131
+  + `Player 1 Score:` 16 - `Last Break:` 16 - `Snookers Required:` 0
+  + `Player 2 Score:` 0 - `Last Break:` 0 - `Snookers Required:` 0
+
+5. `Player 1 At the Table` - **Action**: Pots Red (3) - Score: 1
+  + `Points Remaining:` 130
+  + `Player 1 Score:` 17 - `Last Break:` 17 - `Snookers Required:` 0
+  + `Player 2 Score:` 0 - `Last Break:` 0 - `Snookers Required:` 0
+
+6. `Player 1 At the Table` - **Action**: Pots Black (Colour 3) - Score: 7
+  + `Points Remaining:` 123
+  + `Player 1 Score:` 24 - `Last Break:` 24 - `Snookers Required:` 0
+  + `Player 2 Score:` 0 - `Last Break:` 0 - `Snookers Required:` 0
+  
+7. `Player 1 At the Table` - **Action**: Pots Red (x2) - Score: 2
+  + `Points Remaining:` 121  (114 - 7 missed points)
+  + `Player 1 Score:` 26 - `Last Break:` 26 - `Snookers Required:` 0
+  + `Player 2 Score:` 0 - `Last Break:` 0 - `Snookers Required:` 0
+  
+8. `Player 1 At the Table` - **Action**: Pots Pink (Colour 4) - Score: 6
+  + `Points Remaining:` 114 (107 - 7 missed points)
+  + `Player 1 Score:` 32 - `Last Break:` 32 - `Snookers Required:` 0
+  + `Player 2 Score:` 0 - `Last Break:` 0 - `Snookers Required:` 0
+
+9. `Player 1 At the Table` - **Action**: Pots Red (6) - Score: 1
+  + `Points Remaining:` 113 (106 - 7 missed points)
+  + `Player 1 Score:` 1 - `Last Break:` 1 - `Snookers Required:` 0
+  + `Player 2 Score:` 0 - `Last Break:` 0 - `Snookers Required:` 0
+
+10. `Player 1 At the Table` - **Action**: Pots Black (Colour 5) - Score: 7
+  + `Points Remaining:` 106 (99 - 7 missed points)
+  + `Player 1 Score:` 1 - `Last Break:` 1 - `Snookers Required:` 0
+  + `Player 2 Score:` 0 - `Last Break:` 0 - `Snookers Required:` 0
+
+11. `Player 1 At the Table` - **Action**: Pots Red (7) - Score: 1
+  + `Points Remaining:` 105 (98 - 7 missed points)
+  + `Player 1 Score:` 1 - `Last Break:` 1 - `Snookers Required:` 0
+  + `Player 2 Score:` 0 - `Last Break:` 0 - `Snookers Required:` 0
+
+12. `Player 1 At the Table` - **Action**: Pots Black (Colour 6) - Score: 7
+  + `Points Remaining:` 98 (91 - 7 missed points)
+  + `Player 1 Score:` 1 - `Last Break:` 1 - `Snookers Required:` 0
+  + `Player 2 Score:` 0 - `Last Break:` 0 - `Snookers Required:` 0
+
+13. `Player 1 At the Table` - **Action**: Pots Red (8) - Score: 1
+  + `Points Remaining:` 97 (90 - 7 missed points)
+  + `Player 1 Score:` 1 - `Last Break:` 1 - `Snookers Required:` 0
+  + `Player 2 Score:` 0 - `Last Break:` 0 - `Snookers Required:` 0
+
+14. `Player 1 At the Table` - **Action**: Pots Black (Colour 7) - Score: 7
+  + `Points Remaining:` 90 (83 - 7 missed points)
+  + `Player 1 Score:` 1 - `Last Break:` 1 - `Snookers Required:` 0
+  + `Player 2 Score:` 0 - `Last Break:` 0 - `Snookers Required:` 0
+
+15. `Player 1 At the Table` - **Action**: Pots Red (9) - Score: 1
+  + `Points Remaining:` 89 (82 - 7 missed points)
+  + `Player 1 Score:` 1 - `Last Break:` 1 - `Snookers Required:` 0
+  + `Player 2 Score:` 0 - `Last Break:` 0 - `Snookers Required:` 0
+
+16. `Player 1 At the Table` - **Action**: Pots Black (Colour 8) - Score: 7
+  + `Points Remaining:` 82 (75 - 7 missed points)
+  + `Player 1 Score:` 1 - `Last Break:` 1 - `Snookers Required:` 0
+  + `Player 2 Score:` 0 - `Last Break:` 0 - `Snookers Required:` 0
+
+17. `Player 1 At the Table` - **Action**: Pots Red (10) - Score: 1
+  + `Points Remaining:` 81 (74 - 7 missed points)
+  + `Player 1 Score:` 1 - `Last Break:` 1 - `Snookers Required:` 0
+  + `Player 2 Score:` 0 - `Last Break:` 0 - `Snookers Required:` 0
+
+18. `Player 1 At the Table` - **Action**: Pots Black (Colour 9) - Score: 7
+  + `Points Remaining:` 74 (67 - 7 missed points)
+  + `Player 1 Score:` 1 - `Last Break:` 1 - `Snookers Required:` 0
+  + `Player 2 Score:` 0 - `Last Break:` 0 - `Snookers Required:` 0
+
+19. `Player 1 At the Table` - **Action**: Pots Red (11) - Score: 1
+  + `Points Remaining:` 73 (66 - 7 missed points)
+  + `Player 1 Score:` 1 - `Last Break:` 1 - `Snookers Required:` 0
+  + `Player 2 Score:` 0 - `Last Break:` 0 - `Snookers Required:` 0
+
+20. `Player 1 At the Table` - **Action**: Pots Black (Colour 10) - Score: 7
+  + `Points Remaining:` 66 (59 - 7 missed points)
+  + `Player 1 Score:` 1 - `Last Break:` 1 - `Snookers Required:` 0
+  + `Player 2 Score:` 0 - `Last Break:` 0 - `Snookers Required:` 0
+
+21. `Player 1 At the Table` - **Action**: Pots Red (12) - Score: 1
+  + `Points Remaining:` 65 (58 - 7 missed points)
+  + `Player 1 Score:` 1 - `Last Break:` 1 - `Snookers Required:` 0
+  + `Player 2 Score:` 0 - `Last Break:` 0 - `Snookers Required:` 0
+
+22. `Player 1 At the Table` - **Action**: Pots Black (Colour 11) - Score: 7
+  + `Points Remaining:` 58 (51 - 7 missed points)
+  + `Player 1 Score:` 1 - `Last Break:` 1 - `Snookers Required:` 0
+  + `Player 2 Score:` 0 - `Last Break:` 0 - `Snookers Required:` 0
+
+23. `Player 1 At the Table` - **Action**: Pots Red (13) - Score: 1
+  + `Points Remaining:` 57 (50 - 7 missed points)
+  + `Player 1 Score:` 1 - `Last Break:` 1 - `Snookers Required:` 0
+  + `Player 2 Score:` 0 - `Last Break:` 0 - `Snookers Required:` 0
+
+24. `Player 1 At the Table` - **Action**: Pots Black (Colour 12) - Score: 7
+  + `Points Remaining:` 50 (43 - 7 missed points)
+  + `Player 1 Score:` 1 - `Last Break:` 1 - `Snookers Required:` 0
+  + `Player 2 Score:` 0 - `Last Break:` 0 - `Snookers Required:` 0
+
+25. `Player 1 At the Table` - **Action**: Pots Red (14) - Score: 1
+  + `Points Remaining:` 49 (42 - 7 missed points)
+  + `Player 1 Score:` 1 - `Last Break:` 1 - `Snookers Required:` 0
+  + `Player 2 Score:` 0 - `Last Break:` 0 - `Snookers Required:` 0
+
+26. `Player 1 At the Table` - **Action**: Pots Black (Colour 13) - Score: 7
+  + `Points Remaining:` 42 (35 - 7 missed points)
+  + `Player 1 Score:` 1 - `Last Break:` 1 - `Snookers Required:` 0
+  + `Player 2 Score:` 0 - `Last Break:` 0 - `Snookers Required:` 0
+
+27. `Player 1 At the Table` - **Action**: Pots Red (2) - Score: 1
+  + `Points Remaining:` 41 (34 - 7 missed points)
+  + `Player 1 Score:` 1 - `Last Break:` 1 - `Snookers Required:` 0
+  + `Player 2 Score:` 0 - `Last Break:` 0 - `Snookers Required:` 0
+
+28. `Player 1 At the Table` - **Action**: Pots Black (Colour 14) - Score: 7
+  + `Points Remaining:` 34 (27 - 7 missed points)
+  + `Player 1 Score:` 1 - `Last Break:` 1 - `Snookers Required:` 0
+  + `Player 2 Score:` 0 - `Last Break:` 0 - `Snookers Required:` 0
+
+After 15 reds potted and the last colour
+
+29. `Player 1 At the Table` - **Action**: Pots Yellow (Colour 15 Sequence Starts)  - Score: 7
+  + `Points Remaining:` 25
+  + `Player 1 Score:` 1 - `Last Break:` 1 - `Snookers Required:` 0
+  + `Player 2 Score:` 0 - `Last Break:` 0 - `Snookers Required:` 0
+
++ Green
++ Brown
++ Blue
++ Pink
++ Black
+
+  
 
 ## Use Cases
 [Back to Top](#sections)
@@ -605,7 +762,7 @@ This application is built using the following technologies:
 ## Development
 [Back to Top](#sections)
 
-### Tasks - 67 completed items
+### Tasks - 70 completed items
 
 + `COMPLETED: 08-05-2025` Final interface design check
 
@@ -711,10 +868,13 @@ This application is built using the following technologies:
 
 + `COMPLETED: 14-05-202` Fix a bug where the the tally for the red ball resets and does not keep the tally. - introduced after applying the red red ball tally to player 1 - the tally was being reset to 0 when the player 1 score was updated.
 
++ `COMPLETED: 15-05-202` What about finding a way to count the number of legal pots for a red (multiple pots of a red ball are legal) and comparing this to 15 Reds - and using this to calculate the number of points remaining as 27. We could use incremental counting of the number of clicks of `#tally---potted--black-p1` to do this.
 
-+ `TODO:` What about finding a way to count the number of legal pots for a red (multiple pots of a red ball are legal) and comparing this to 15 Reds - and using this to calculate the number of points remaining as 27. We could use incremental counting of the number of clicks of `#tally---potted--black-p1` to do this.
++ `COMPLETED: 15-05-202` Remove the apply link under the red ball from view shooting for colour balls. This is a UX distraction and is not needed when shooting for a colour.
 
-+ `TODO:` Remove the apply link under the red ball from view shooting for colour balls. This is a UX distraction and is not needed when shooting for a colour.
++ `COMPLETED: 15-05-202` Remove apply link from view when the frame ends. `points---remaining` is at 0 (Player 1).
+
++ `COMPLETED: 15-05-202` Remove apply link from view when the colour sequence begins (Player 1).
 
 + `TODO:` Player does not make a pot when making a break. (Player1)
 
@@ -875,7 +1035,7 @@ resetButton.addEventListener("click", function(event) {
    + Cannot recreate a situation where a player score more than one red in the same shot.
    + Cannot shoot for any more balls or foul buttons when the points remaining `#points_remaining` is at 0
 
-+ `1.0.4` - So we've come to the point now where we've got the scoring system working to a certain degree. To the degree that a range of reds and colours can be potted, minus any eventuality where the second player gets to the table. Perversley we haven't yet taken into account the common scenario where the player doesn't pot anything on their break (A "miss"). So soon we'll have to open up the turn based place to bring player 2 into play. 
++ `v1.0.4` - So we've come to the point now where we've got the scoring system working to a certain degree. To the degree that a range of reds and colours can be potted, minus any eventuality where the second player gets to the table. Perversley we haven't yet taken into account the common scenario where the player doesn't pot anything on their break (A "miss"). So soon we'll have to open up the turn based place to bring player 2 into play. 
 
 + At that point, we'll have to link a number of things together, such as the `#points_remaining`; tracking the indiviual player scores; tracking the number of balls potted and therefore the ones remaining across both players.
 
@@ -903,3 +1063,11 @@ a#apply_tally---red--p1 {
 ```
 
 + I'd also like to attempt to differentiate between the number of times reds have been legally potted in a given shot as opposed to the number of reds that have *actually* been potted, which is an important distinction. For example a player might pot 2 reds in one shot, which is legal.  But that would then take the player to 15 reds in 14 legal pots.
+
++ `v1.0.5` - In Snooker, You only "lock in" the actual loss once you finish reds and see how many colour slots we never got to use. But for the purposes of this app, we are calculating the points remaining after every colour proceeeding a red ball. What this means is that 2 reds in a single shot will be counted as 2 points for a red and deducts only 2 from the remaining points. 
+
++ This part has taken a lot of work. But I think I've worked out a solution that works well for handling multi-red shots. That works because scores of 2 or more of a red ball when shooting for red is a legal shot.  
+
++ I had thought of trying to force this change after the last red and colour combination but I couldn't generate a solution without causing too many other bugs and issues in the script.
+
++ Finally for this part, I've modified the "apply" button to only show when the player is shooting for a red ball. It's a not needed when shooting for a colour and otherwise becomes a distraction.
