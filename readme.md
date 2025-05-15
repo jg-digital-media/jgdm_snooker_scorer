@@ -1,6 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Last Updated: 15/05/2025 - 17:29`
++ `Last Updated: 15/05/2025 - 17:33`
 
 ## Sections
 
@@ -897,6 +897,7 @@ The development of this application is currently in progress.
 
 + `TODO:` Replicate functionality of player 1 with player 2. 
 
++ `TODO:` Disable player 2 buttons at frame end
 
 + `TODO:` Stop counting highest and last break when `#points_remaining`is at 0 (Player 2).
 
