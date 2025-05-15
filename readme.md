@@ -1,6 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Last Updated: 15/05/2025 - 13:54`
++ `Last Updated: 15/05/2025 - 17:29`
 
 ## Sections
 
@@ -762,7 +762,10 @@ This application is built using the following technologies:
 ## Development
 [Back to Top](#sections)
 
-### Tasks - 70 completed items
+### Tasks - 74 completed items
+
+The development of this application is currently in progress.
+
 
 + `COMPLETED: 08-05-2025` Final interface design check
 
@@ -839,44 +842,65 @@ This application is built using the following technologies:
 
 + `COMPLETED: 12-05-2025` Implement Re-rack Button - "Reset" button - change to "Re-rack button (`#reset---app`)
 
-+ `COMPLETED: 13-05-2023` Finish turn based play between red and yellow ball
++ `COMPLETED: 13-05-2025` Finish turn based play between red and yellow ball
 
-+ `COMPLETED: 13-05-2023` Disable colour balls while player is shooting for red ball. opacity setting - disabled state
++ `COMPLETED: 13-05-2025` Disable colour balls while player is shooting for red ball. opacity setting - disabled state
 
-+ `COMPLETED: 13-05-2023` Disable red balls while player is shooting for a colour ball
++ `COMPLETED: 13-05-2025` Disable red balls while player is shooting for a colour ball
 
-+ `COMPLETED: 13-05-2023` Fix bug with colour sequence not working after green ball (happens after red and yellow ball)
++ `COMPLETED: 13-05-2025` Fix bug with colour sequence not working after green ball (happens after red and yellow ball)
 
-+ `COMPLETED: 13-05-2023` If the points remaining reaches 0, the frame is over. disable any point scoring buttons so high score and last break are not updated.
++ `COMPLETED: 13-05-2025` If the points remaining reaches 0, the frame is over. disable any point scoring buttons so high score and last break are not updated.
 
-+ `COMPLETED: 13-05-2023` Recreate 147 Break (15 Reds + 15 Blacks + 6 Colour sequence - `Yellow Green Brown Blue Pink Black`) 
++ `COMPLETED: 13-05-2025` Recreate 147 Break (15 Reds + 15 Blacks + 6 Colour sequence - `Yellow Green Brown Blue Pink Black`) 
 
-+ `COMPLETED: 13-05-2023` Handle colour sequence so the player clicks the order of colours in the sequence - 
++ `COMPLETED: 13-05-2025` Handle colour sequence so the player clicks the order of colours in the sequence - 
     if on yellow, disable all other colours
     if on green, disable all other colours
     if on brown, disable all other colours... etc
     This is for player 1 only.
 
-+ `COMPLETED: 13-05-2023` BUG: Players should not be able to score more than 147 points.
++ `COMPLETED: 13-05-2025` BUG: Players should not be able to score more than 147 points.
   + no more points added to `#p1---score`
   + no further changes to `#highest---break--p1`
   + no further changes to `#last---break--p1`
   
-+ `COMPLETED: 14-05-2023` Add apply button which will be linked to red ball player 1 `#apply_tally--red--p1`
++ `COMPLETED: 14-05-2025` Add apply button which will be linked to red ball player 1 `#apply_tally--red--p1`
 
-+ `COMPLETED: 14-05-202` allow multiple tallies to be added for red ball before clicking the apply button to shoot for a colour ball
++ `COMPLETED: 14-05-2025` allow multiple tallies to be added for red ball before clicking the apply button to shoot for a colour ball
 
-+ `COMPLETED: 14-05-202` Fix a bug where the the tally for the red ball resets and does not keep the tally. - introduced after applying the red red ball tally to player 1 - the tally was being reset to 0 when the player 1 score was updated.
++ `COMPLETED: 14-05-2025` Fix a bug where the the tally for the red ball resets and does not keep the tally. - introduced after applying the red red ball tally to player 1 - the tally was being reset to 0 when the player 1 score was updated.
 
-+ `COMPLETED: 15-05-202` What about finding a way to count the number of legal pots for a red (multiple pots of a red ball are legal) and comparing this to 15 Reds - and using this to calculate the number of points remaining as 27. We could use incremental counting of the number of clicks of `#tally---potted--black-p1` to do this.
++ `COMPLETED: 15-05-2025` Apply button for more than 1 red ball potted. 
 
-+ `COMPLETED: 15-05-202` Remove the apply link under the red ball from view shooting for colour balls. This is a UX distraction and is not needed when shooting for a colour.
++ `COMPLETED: 15-05-2025` What about finding a way to count the number of legal pots for a red (multiple pots of a red ball are legal) and comparing this to 15 Reds - and using this to calculate the number of points remaining as 27. We could use incremental counting of the number of clicks of `#tally---potted--black-p1` to do this.
 
-+ `COMPLETED: 15-05-202` Remove apply link from view when the frame ends. `points---remaining` is at 0 (Player 1).
++ `COMPLETED: 15-05-2025` Remove the apply link under the red ball from view shooting for colour balls. This is a UX distraction and is not needed when shooting for a colour.
 
-+ `COMPLETED: 15-05-202` Remove apply link from view when the colour sequence begins (Player 1).
++ `COMPLETED: 15-05-2025` Remove apply link from view when the frame ends `points---remaining` is at 0 (Player 1).
 
-+ `TODO:` Player does not make a pot when making a break. (Player1)
++ `COMPLETED: 15-05-2025` Remove apply link from view when the colour sequence begins (Player 1).
+
++ `COMPLETED: 15-05-2025` Handling player scoring and points remaining when the player scores 2 reds
+ 
++ `COMPLETED: 15-05-2025` Apply button for more than 1 red ball potted. Click red ball icon to pot 1 red ball and move to shooting for a colour ball.
+
++ `COMPLETED: 15-05-2025` Apply button for more than 1 red ball potted. Click red ball icon twice to pot 2 red balls and move to shooting for a colour ball.
+
++ `TODO:` Shouldn't take the missed points into account until I simulate shooting for a colour after the 2 reds at once? 
+
++ `TODO:` Player does not make a pot when making a break - a "MISS". (Player 1)
++ `TODO:` Track which player is at the table
++ `TODO:` Player 2 at the table - misses ball should revert back to player 1 at the table
++ `TODO:` Revert between player 1 and player 2 at the table
++ `TODO:` Visibility of player at the table - `#player---1--table` or `#player---2--table`.
+
++ `TODO:` Replicate functionality of player 1 with player 2. 
+
+
++ `TODO:` Stop counting highest and last break when `#points_remaining`is at 0 (Player 2).
+
++ `TODO:` Disable foul and miss buttons when points remaining is at 0 (Player 2)
 
 + `TODO:` Track number of times Red ball has been potted `#pot---red--one` (no more than 15)
 + `TODO:` Track number of times Yellow ball has been potted `#pot---red--yellow` (no more than 16)
@@ -887,17 +911,10 @@ This application is built using the following technologies:
 + `TODO:` Track number of times Black ball has been potted `#pot---red--black` (no more than 16)
     + it's possible, however unlikely it might be that a player can pot a colour ball 16 times, including the colour sequence. (15 reds, 15 of a single colour and the colour sequnce e.g. 15 Reds, 15 Yellows, Yellow, Green, Brown, Blue, Pink, Black)
 
-+ `TODO:` Stop counting highest and last break when `#points_remaining`is at 0 (Player 2).
 
-+ Disable foul and miss buttons when points remaining is at 0 (Player 2)
++ `TODO:` Disable foul and miss buttons when points remaining is at 0 (Player 2)
 
-
-+ `TODO:` Handling scoring and points remaining when the player scores 2 reds
-  + Click red ball icon to pot 1 red ball and move to shooting for a colour ball.
-  + Click red ball twice to pot 2 red balls and move to shooting for a colour ball.
-  + Apply button for more than 1 red ball potted. 
-
-+ `TODO:` Shouldn't take the missed points into account until I simulate shooting for a colour after the 2 reds at once? 
++ `TODO:` Change the styling of the snooker ball icons so they stand out more - more visual clarity required against the main background and also as disabled elements. 
 
 * `TODO:` Check the highest break is updated correctly - player 1
 
@@ -909,26 +926,20 @@ This application is built using the following technologies:
 
 + `TODO:` about.php should include instructions on what each button does - e.g. "Miss" button refers to a failed pot but legal hit and ends visit to the table.
 
-
-+ `Task 1:` Shoot for colour - MISS
++ `TODO:` Shoot for red - MISS button
++ `TODO:` Shoot for colour - MISS button
++ `TODO:` Shoot for red - FOUL button
++ `TODO:` Shoot for colour - FOUL button    
++ `TODO:` Shoot for red - FOUL + MISS button
++ `TODO:` Shoot for colour - FOUL + MISS button
 
 + `TODO:` Consider reworking about.php and its content as a modal area for index.php
-
-`player 2`
-
-shoot red - click red ball icon
-shoot colour - black
-shoot red - click red ball icon - adds 1 to red ball
-
-`player 1`
-
-The development of this application is currently in progress.
 
 ### Identified Bugs
 [Back to Top](#sections)
 
 
-+ `1` - the `rerackTable()` app currently pushes player one score buttons down a row until all colours are pressed. Have replaced with a `location.reload` method on the "Re-reack" button for now.  - `12-05-2025`
++ `1` - the `rerackTable()` method currently pushes player one score buttons down a row until all colours are pressed. Have replaced with a `location.reload` method on the "Re-reack" button for now.  - `12-05-2025`
 
 ```javascript
 
@@ -1071,3 +1082,5 @@ a#apply_tally---red--p1 {
 + I had thought of trying to force this change after the last red and colour combination but I couldn't generate a solution without causing too many other bugs and issues in the script.
 
 + Finally for this part, I've modified the "apply" button to only show when the player is shooting for a red ball. It's a not needed when shooting for a colour and otherwise becomes a distraction.
+
++ `v1.0.6` - Working on the "miss" button and implementing the beginnings of turn based play between the 2 players.
