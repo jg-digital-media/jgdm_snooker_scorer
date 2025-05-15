@@ -1,7 +1,7 @@
 /******************************
 
 Snooker Scorer App: 
-Last Update: 14/05/2025 - 15:37
+Last Update: 15/05/2025 - 13:55
 ******************************/
 * {
   padding: 0;
@@ -277,14 +277,15 @@ body main.interface-container .player---section .player---potting .player---pot-
   color: black;
   color: white;
 }
-body main.interface-container .player---section .player---potting a#apply_tally---red--p1 {
+body main.interface-container .player---section .player---potting a#apply_tally---red--p1,
+body main.interface-container .player---section .player---potting a#apply_tally---red--p2 {
   color: yellow;
   font-size: 12px;
   margin: 0 10px;
   position: relative;
   bottom: 7px;
   visibility: hidden;
-  visibility: visible;
+  /* visibility: visible; */
 }
 body main.interface-container .player---section .breaks---and--snookers {
   display: inline-block;
