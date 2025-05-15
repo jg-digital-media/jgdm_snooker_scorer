@@ -1,8 +1,5 @@
 <?php require "template-parts/inc/header.php"; ?>
 
-<?php //echo "<p>index.php</p>"; ?>
-
-
     <main class="interface-container">
 
         <section class="player---points--status">
