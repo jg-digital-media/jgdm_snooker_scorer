@@ -1,4 +1,4 @@
-console.log("app.js connected - 15-05-2023 - 13:17");
+console.log("app.js connected - 15-05-2023 - 13:27");
 
 // Set the points remaining to 147
 document.getElementById('points_remaining').textContent = '147';
@@ -52,6 +52,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Get the apply button for red ball tally
     const applyRedTallyP1 = document.getElementById("apply_tally---red--p1");
+    
+    // Hide the apply button by default
+    applyRedTallyP1.style.visibility = "hidden";
+    applyRedTallyP1.style.opacity = "0";
     
     // Variables to track temporary red ball tallying
     let tempRedTally = 0;
@@ -138,10 +142,20 @@ document.addEventListener("DOMContentLoaded", function() {
             if (redClickCount < 15) {
                 redBall.style.pointerEvents = "auto";
                 redBall.style.opacity = "1";
+                
+                // If there's only one red left, hide the apply button
+                if (redClickCount === 14) {
+                    applyRedTallyP1.style.visibility = "hidden";
+                    applyRedTallyP1.style.opacity = "0";
+                }
             } else {
                 // If all reds are potted, disable red
                 redBall.style.pointerEvents = "none";
                 redBall.style.opacity = "0.5";
+                
+                // Hide the apply button
+                applyRedTallyP1.style.visibility = "hidden";
+                applyRedTallyP1.style.opacity = "0";
             }
             
             // Disable all color balls
@@ -153,6 +167,10 @@ document.addEventListener("DOMContentLoaded", function() {
             // If shooting for color, disable red and enable colors
             redBall.style.pointerEvents = "none";
             redBall.style.opacity = "0.5";
+            
+            // Hide the apply button when shooting for color
+            applyRedTallyP1.style.visibility = "hidden";
+            applyRedTallyP1.style.opacity = "0";
             
             // If in final sequence (all reds potted), handle colors differently
             if (redClickCount >= 15 && remainingPoints <= 27) {
@@ -219,6 +237,11 @@ document.addEventListener("DOMContentLoaded", function() {
         
         // Show the current tally plus the existing count
         redTallyP1.textContent = redClickCount + tempRedTally;
+        
+        // Make the apply button visible
+        const applyRedTallyP1 = document.getElementById("apply_tally---red--p1");
+        applyRedTallyP1.style.visibility = "visible";
+        applyRedTallyP1.style.opacity = "1";
     });
 
     // Apply button event listener
@@ -270,6 +293,10 @@ document.addEventListener("DOMContentLoaded", function() {
         
         // Reset temporary tally
         tempRedTally = 0;
+        
+        // Hide the apply button since we're now shooting for a color
+        this.style.visibility = "hidden";
+        this.style.opacity = "0";
         
         // Update available balls
         updateAvailableBalls();
@@ -670,6 +697,11 @@ document.addEventListener("DOMContentLoaded", function() {
         
         // Reset temporary tally
         tempRedTally = 0;
+        
+        // Hide the apply button
+        const applyRedTallyP1 = document.getElementById("apply_tally---red--p1");
+        applyRedTallyP1.style.visibility = "hidden";
+        applyRedTallyP1.style.opacity = "0";
         
         // Update available balls
         updateAvailableBalls();
