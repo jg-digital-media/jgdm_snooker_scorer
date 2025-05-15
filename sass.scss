@@ -375,7 +375,8 @@ body {
 
                 }
 
-                a#apply_tally---red--p1 {
+                a#apply_tally---red--p1,
+                a#apply_tally---red--p2 {
 
                     color: yellow;
                     font-size: 12px;
@@ -383,7 +384,7 @@ body {
                     position: relative;
                     bottom: 7px;
                     visibility: hidden;
-                    visibility: visible;
+                    /* visibility: visible; */
 
                 }
                 
