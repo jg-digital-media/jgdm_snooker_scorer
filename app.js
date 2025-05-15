@@ -1,4 +1,4 @@
-console.log("app.js connected - 14-05-2023 - 14:31");
+console.log("app.js connected - 15-05-2023 - 13:17");
 
 // Set the points remaining to 147
 document.getElementById('points_remaining').textContent = '147';
@@ -47,6 +47,8 @@ document.addEventListener("DOMContentLoaded", function() {
     let totalRedsPotted = 0; // Track total number of reds potted
     let redClickCount = 0; // Separate counter just for red ball clicks
     let shootingForRed = true; // Track whether player is shooting for a red or color
+   
+    let multiRedShotCount = 0; // Track how many multi-red shots occurred
 
     // Get the apply button for red ball tally
     const applyRedTallyP1 = document.getElementById("apply_tally---red--p1");
@@ -54,21 +56,40 @@ document.addEventListener("DOMContentLoaded", function() {
     // Variables to track temporary red ball tallying
     let tempRedTally = 0;
 
-    // Function to check and update remaining points based on game stage
-    function updateRemainingPoints(pointsToDeduct) {
-        // If we're in the final stage (27 points or less remaining)
-        if (remainingPoints <= 27) {
-            // In the final stage, we deduct the actual value of the ball
-            // Yellow=2, Green=3, Brown=4, Blue=5, Pink=6, Black=7
-            remainingPoints -= pointsToDeduct;
+    // Function to calculate and update points remaining
+    function updatePointsRemaining() {
+        // If we're in the final color sequence (all reds potted)
+        if (redClickCount >= 15) {
+            // Check if we just potted the last color after the last red
+            if (lastBallWasRed === false && shootingForRed === true) {
+                // We've just potted the last color after the last red
+                // Set to exactly 27 points for the final sequence
+                remainingPoints = 27;
+                pointsRemaining.textContent = remainingPoints;
+            }
         } else {
-            // In normal play, we deduct 1 for red and 7 for colors (as they return to the table)
-            remainingPoints -= (pointsToDeduct === 1) ? 1 : 7;
+            // During normal play with reds on the table
+            // Calculate based on red balls potted and multi-red shots
+            
+            // Start with 147 points
+            // Each red+color combination removes 8 points (1+7)
+            
+            // Calculate how many red+color combinations have been completed
+            let redColorCombosCompleted = redClickCount;
+            
+            // Each regular combo reduces by 8 points
+            let pointsReduced = redColorCombosCompleted * 8;
+            
+            // If we're currently shooting for a color (after potting a red)
+            // we need to account for the red already potted
+            if (!shootingForRed && lastBallWasRed) {
+                pointsReduced -= 7; // We've counted the red (1) but not the color (7) yet
+            }
+            
+            // Calculate remaining points
+            remainingPoints = 147 - pointsReduced;
+            pointsRemaining.textContent = remainingPoints;
         }
-        
-        // Ensure we don't go below zero
-        remainingPoints = Math.max(0, remainingPoints);
-        pointsRemaining.textContent = remainingPoints;
     }
     
     // Function to update which balls are enabled/disabled based on game state
@@ -133,12 +154,6 @@ document.addEventListener("DOMContentLoaded", function() {
             redBall.style.pointerEvents = "none";
             redBall.style.opacity = "0.5";
             
-            // Enable all color balls
-            colorBalls.forEach(ball => {
-                ball.style.pointerEvents = "auto";
-                ball.style.opacity = "1";
-            });
-            
             // If in final sequence (all reds potted), handle colors differently
             if (redClickCount >= 15 && remainingPoints <= 27) {
                 // In the final sequence, colors must be potted in order
@@ -164,6 +179,12 @@ document.addEventListener("DOMContentLoaded", function() {
                     // Only black is available (7 points remaining)
                     enableOnlyBall(blackBall, colorBalls);
                 }
+            } else {
+                // During normal play, enable all color balls
+                colorBalls.forEach(ball => {
+                    ball.style.pointerEvents = "auto";
+                    ball.style.opacity = "1";
+                });
             }
         }
     }
@@ -200,7 +221,7 @@ document.addEventListener("DOMContentLoaded", function() {
         redTallyP1.textContent = redClickCount + tempRedTally;
     });
 
-    // Add event listener for the apply button
+    // Apply button event listener
     applyRedTallyP1.addEventListener("click", function(event) {
         event.preventDefault(); // Prevent default link behavior
         
@@ -208,6 +229,9 @@ document.addEventListener("DOMContentLoaded", function() {
         if (tempRedTally === 0) {
             return;
         }
+        
+        // Check if this is a multi-red shot (more than 1 red)
+        let isMultiRedShot = tempRedTally > 1;
         
         // Add points to player's score (1 point per red)
         p1CurrentScore += tempRedTally;
@@ -223,16 +247,11 @@ document.addEventListener("DOMContentLoaded", function() {
             highestBreakP1.textContent = p1HighestBreak;
         }
         
-        // Update remaining points based on number of reds potted
-        for (let i = 0; i < tempRedTally; i++) {
-            // Check if this is a consecutive red
-            if (lastBallWasRed) {
-                consecutiveRedCount++;
-                updateRemainingPoints(consecutiveRedCount % 2 === 0 ? 7 : 1);
-            } else {
-                consecutiveRedCount = 1;
-                updateRemainingPoints(1);
-            }
+        // If this is a multi-red shot, track the extra reds
+        if (isMultiRedShot) {
+            // Each extra red means one less red+color combo
+            // This affects the final calculation to ensure we end with 27 points
+            multiRedShotCount += (tempRedTally - 1);
         }
         
         // Update red click count (add the temporary tally)
@@ -244,6 +263,11 @@ document.addEventListener("DOMContentLoaded", function() {
         // Now shooting for color
         shootingForRed = false;
         
+        // Update points remaining based on number of reds potted
+        // Each red reduces remaining points by 1
+        remainingPoints -= tempRedTally;
+        pointsRemaining.textContent = remainingPoints;
+        
         // Reset temporary tally
         tempRedTally = 0;
         
@@ -251,233 +275,7 @@ document.addEventListener("DOMContentLoaded", function() {
         updateAvailableBalls();
     });
 
-    // TODO: shoot attempt - colour ball Black - player 1
-    blackBallP1.addEventListener("click", function() {
-
-        // Add 7 to player 1's score
-        p1CurrentScore += 7;
-        p1Score.textContent = p1CurrentScore;
-        
-        // Add 7 to current break
-        p1CurrentBreak += 7;
-        lastBreakP1.textContent = p1CurrentBreak;
-        
-        // Update highest break if needed
-        if (p1CurrentBreak > p1HighestBreak) {
-            p1HighestBreak = p1CurrentBreak;
-            highestBreakP1.textContent = p1HighestBreak;
-        }
-
-        // Reduce points remaining appropriately
-        updateRemainingPoints(7);
-        
-        // Set lastBallWasRed to false
-        lastBallWasRed = false;
-
-        // Now shooting for red (unless in final sequence)
-        if (redClickCount < 15) {
-            shootingForRed = true;
-        } else if (remainingPoints > 0) {
-            // In final sequence, continue with colors
-            shootingForRed = false;
-        }
-
-        // Check if the game is over
-        if (remainingPoints === 0) {
-            console.log("Frame complete - table cleared!");
-        }
-                
-        // Make the black ball tally visible
-        blackTallyP1.style.visibility = "visible";
-        blackTallyP1.style.opacity = "1";
-        
-        // Increment the blackball tally
-        let currentTally = parseInt(blackTallyP1.textContent) || 0;
-        currentTally++;
-        blackTallyP1.textContent = currentTally;
-
-        // Update available balls
-        updateAvailableBalls();
-    });
-
-    // TODO: shoot attempt - colour ball Pink - player 1    
-    pinkBallP1.addEventListener("click", function() {
-
-        // Add 6 to player 1's score
-        p1CurrentScore += 6;
-        p1Score.textContent = p1CurrentScore;
-        
-        // Add 6 to current break
-        p1CurrentBreak += 6;
-        lastBreakP1.textContent = p1CurrentBreak;
-        
-        // Update highest break if needed
-        if (p1CurrentBreak > p1HighestBreak) {
-            p1HighestBreak = p1CurrentBreak;
-            highestBreakP1.textContent = p1HighestBreak;
-        }
-
-        // Reduce points remaining appropriately
-        updateRemainingPoints(6);
-        
-        // Set lastBallWasRed to false
-        lastBallWasRed = false;
-
-        // Now shooting for red (unless in final sequence)
-        if (redClickCount < 15) {
-            shootingForRed = true;
-        } else if (remainingPoints > 0) {
-            // In final sequence, continue with colors
-            shootingForRed = false;
-        }
-        
-        // Make the pink ball tally visible
-        pinkTallyP1.style.visibility = "visible";
-        pinkTallyP1.style.opacity = "1";
-        
-        // Increment the pink ball tally
-        let currentTally = parseInt(pinkTallyP1.textContent) || 0;
-        currentTally++;
-        pinkTallyP1.textContent = currentTally;
-
-        // Update available balls
-        updateAvailableBalls();
-    });
-
-
-    // TODO: shoot attempt - colour ball Blue - player 1
-    blueBallP1.addEventListener("click", function() {
-
-        // Add 5 to player 1's score
-        p1CurrentScore += 5;
-        p1Score.textContent = p1CurrentScore;
-        
-        // Add 5 to current break
-        p1CurrentBreak += 5;
-        lastBreakP1.textContent = p1CurrentBreak;
-        
-        // Update highest break if needed
-        if (p1CurrentBreak > p1HighestBreak) {
-            p1HighestBreak = p1CurrentBreak;
-            highestBreakP1.textContent = p1HighestBreak;
-        }
-
-        // Reduce points remaining appropriately
-        updateRemainingPoints(5);
-        
-        // Set lastBallWasRed to false
-        lastBallWasRed = false;
-
-        // Now shooting for red (unless in final sequence)
-        if (redClickCount < 15) {
-            shootingForRed = true;
-        } else if (remainingPoints > 0) {
-            // In final sequence, continue with colors
-            shootingForRed = false;
-        }
-        
-        // Make the blue ball tally visible
-        blueTallyP1.style.visibility = "visible";
-        blueTallyP1.style.opacity = "1";
-        
-        // Increment the blue ball tally
-        let currentTally = parseInt(blueTallyP1.textContent) || 0;
-        currentTally++;
-        blueTallyP1.textContent = currentTally;
-
-        // Update available balls
-        updateAvailableBalls();
-    });
-
-    // TODO: shoot attempt - colour ball Brown - player 1
-    brownBallP1.addEventListener("click", function() {
-
-        // Add 4 to player 1's score
-        p1CurrentScore += 4;
-        p1Score.textContent = p1CurrentScore;
-        
-        // Add 4 to current break
-        p1CurrentBreak += 4;
-        lastBreakP1.textContent = p1CurrentBreak;
-        
-        // Update highest break if needed
-        if (p1CurrentBreak > p1HighestBreak) {
-            p1HighestBreak = p1CurrentBreak;
-            highestBreakP1.textContent = p1HighestBreak;
-        }
-
-        // Reduce points remaining appropriately
-        updateRemainingPoints(4);
-
-        // Set lastBallWasRed to false
-        lastBallWasRed = false;
-        
-        // Now shooting for red (unless in final sequence)
-        if (redClickCount < 15) {
-            shootingForRed = true;
-        } else if (remainingPoints > 0) {
-            // In final sequence, continue with colors
-            shootingForRed = false;
-        }
-                
-        // Make the brown ball tally visible
-        brownTallyP1.style.visibility = "visible";
-        brownTallyP1.style.opacity = "1";
-        
-        // Increment the brown ball tally
-        let currentTally = parseInt(brownTallyP1.textContent) || 0;
-        currentTally++;
-        brownTallyP1.textContent = currentTally;
-
-        // Update available balls
-        updateAvailableBalls();
-    });
-
-    // TODO: shoot attempt - colour ball Green - player 1
-    greenBallP1.addEventListener("click", function() {
-
-        // Add 3 to player 1's score
-        p1CurrentScore += 3;
-        p1Score.textContent = p1CurrentScore;
-        
-        // Add 3 to current break
-        p1CurrentBreak += 3;
-        lastBreakP1.textContent = p1CurrentBreak;
-        
-        // Update highest break if needed
-        if (p1CurrentBreak > p1HighestBreak) {
-            p1HighestBreak = p1CurrentBreak;
-            highestBreakP1.textContent = p1HighestBreak;
-        }
-
-        // Reduce points remaining appropriately
-        updateRemainingPoints(3);
-
-        // Set lastBallWasRed to false
-        lastBallWasRed = false;
-        
-        // Now shooting for red (unless in final sequence)
-        if (redClickCount < 15) {
-            shootingForRed = true;
-        } else if (remainingPoints > 0) {
-            // In final sequence, continue with colors
-            shootingForRed = false;
-        }        
-                
-        // Make the green ball tally visible
-        greenTallyP1.style.visibility = "visible";
-        greenTallyP1.style.opacity = "1";
-        
-        // Increment the green ball tally
-        let currentTally = parseInt(greenTallyP1.textContent) || 0;
-        currentTally++;
-        greenTallyP1.textContent = currentTally;
-
-        // Update available balls
-        updateAvailableBalls();
-    });
-
-    // Yellow ball pot event listener for player 1  
+    // Yellow ball event listener
     yellowBallP1.addEventListener("click", function() {
         // Add 2 to player 1's score
         p1CurrentScore += 2;
@@ -492,19 +290,33 @@ document.addEventListener("DOMContentLoaded", function() {
             p1HighestBreak = p1CurrentBreak;
             highestBreakP1.textContent = p1HighestBreak;
         }
-
-        // Reduce points remaining appropriately
-        updateRemainingPoints(2);        
         
         // Set lastBallWasRed to false
         lastBallWasRed = false;
         
-        // Now shooting for red (unless in final sequence)
-        if (redClickCount < 15) {
-            shootingForRed = true;
-        } else if (remainingPoints > 0) {
-            // In final sequence, continue with colors
+        // Check if we're in the final color sequence
+        if (redClickCount >= 15 && remainingPoints <= 27) {
+            // We're in the final sequence
+            // Deduct the actual value
+            remainingPoints -= 2;
+            pointsRemaining.textContent = remainingPoints;
+            
+            // Stay in color sequence mode
             shootingForRed = false;
+        } else if (redClickCount >= 15) {
+            // This is the last color after the last red
+            // Set to exactly 27 points for the final sequence
+            remainingPoints = 27;
+            pointsRemaining.textContent = remainingPoints;
+            
+            // Now we're in the final sequence
+            shootingForRed = false;
+        } else {
+            // Normal play - now shooting for red
+            shootingForRed = true;
+            
+            // Update points remaining
+            updatePointsRemaining();
         }
         
         // Make the yellow ball tally visible
@@ -515,6 +327,291 @@ document.addEventListener("DOMContentLoaded", function() {
         let currentTally = parseInt(yellowTallyP1.textContent) || 0;
         currentTally++;
         yellowTallyP1.textContent = currentTally;
+        
+        // Update available balls
+        updateAvailableBalls();
+    });
+
+    // Green ball event listener
+    greenBallP1.addEventListener("click", function() {
+        // Add 3 to player 1's score
+        p1CurrentScore += 3;
+        p1Score.textContent = p1CurrentScore;
+        
+        // Add 3 to current break
+        p1CurrentBreak += 3;
+        lastBreakP1.textContent = p1CurrentBreak;
+        
+        // Update highest break if needed
+        if (p1CurrentBreak > p1HighestBreak) {
+            p1HighestBreak = p1CurrentBreak;
+            highestBreakP1.textContent = p1HighestBreak;
+        }
+        
+        // Set lastBallWasRed to false
+        lastBallWasRed = false;
+        
+        // Check if we're in the final color sequence
+        if (redClickCount >= 15 && remainingPoints <= 27) {
+            // We're in the final sequence
+            // Deduct the actual value
+            remainingPoints -= 3;
+            pointsRemaining.textContent = remainingPoints;
+            
+            // Stay in color sequence mode
+            shootingForRed = false;
+        } else if (redClickCount >= 15) {
+            // This is the last color after the last red
+            // Set to exactly 27 points for the final sequence
+            remainingPoints = 27;
+            pointsRemaining.textContent = remainingPoints;
+            
+            // Now we're in the final sequence
+            shootingForRed = false;
+        } else {
+            // Normal play - now shooting for red
+            shootingForRed = true;
+            
+            // Update points remaining
+            updatePointsRemaining();
+        }
+        
+        // Make the green ball tally visible
+        greenTallyP1.style.visibility = "visible";
+        greenTallyP1.style.opacity = "1";
+        
+        // Increment the green ball tally
+        let currentTally = parseInt(greenTallyP1.textContent) || 0;
+        currentTally++;
+        greenTallyP1.textContent = currentTally;
+        
+        // Update available balls
+        updateAvailableBalls();
+    });
+
+    // Brown ball event listener
+    brownBallP1.addEventListener("click", function() {
+        // Add 4 to player 1's score
+        p1CurrentScore += 4;
+        p1Score.textContent = p1CurrentScore;
+        
+        // Add 4 to current break
+        p1CurrentBreak += 4;
+        lastBreakP1.textContent = p1CurrentBreak;
+        
+        // Update highest break if needed
+        if (p1CurrentBreak > p1HighestBreak) {
+            p1HighestBreak = p1CurrentBreak;
+            highestBreakP1.textContent = p1HighestBreak;
+        }
+        
+        // Set lastBallWasRed to false
+        lastBallWasRed = false;
+        
+        // Check if we're in the final color sequence
+        if (redClickCount >= 15 && remainingPoints <= 27) {
+            // We're in the final sequence
+            // Deduct the actual value
+            remainingPoints -= 4;
+            pointsRemaining.textContent = remainingPoints;
+            
+            // Stay in color sequence mode
+            shootingForRed = false;
+        } else if (redClickCount >= 15) {
+            // This is the last color after the last red
+            // Set to exactly 27 points for the final sequence
+            remainingPoints = 27;
+            pointsRemaining.textContent = remainingPoints;
+            
+            // Now we're in the final sequence
+            shootingForRed = false;
+        } else {
+            // Normal play - now shooting for red
+            shootingForRed = true;
+            
+            // Update points remaining
+            updatePointsRemaining();
+        }
+        
+        // Make the brown ball tally visible
+        brownTallyP1.style.visibility = "visible";
+        brownTallyP1.style.opacity = "1";
+        
+        // Increment the brown ball tally
+        let currentTally = parseInt(brownTallyP1.textContent) || 0;
+        currentTally++;
+        brownTallyP1.textContent = currentTally;
+        
+        // Update available balls
+        updateAvailableBalls();
+    });
+
+    // Blue ball event listener
+    blueBallP1.addEventListener("click", function() {
+        // Add 5 to player 1's score
+        p1CurrentScore += 5;
+        p1Score.textContent = p1CurrentScore;
+        
+        // Add 5 to current break
+        p1CurrentBreak += 5;
+        lastBreakP1.textContent = p1CurrentBreak;
+        
+        // Update highest break if needed
+        if (p1CurrentBreak > p1HighestBreak) {
+            p1HighestBreak = p1CurrentBreak;
+            highestBreakP1.textContent = p1HighestBreak;
+        }
+        
+        // Set lastBallWasRed to false
+        lastBallWasRed = false;
+        
+        // Check if we're in the final color sequence
+        if (redClickCount >= 15 && remainingPoints <= 27) {
+            // We're in the final sequence
+            // Deduct the actual value
+            remainingPoints -= 5;
+            pointsRemaining.textContent = remainingPoints;
+            
+            // Stay in color sequence mode
+            shootingForRed = false;
+        } else if (redClickCount >= 15) {
+            // This is the last color after the last red
+            // Set to exactly 27 points for the final sequence
+            remainingPoints = 27;
+            pointsRemaining.textContent = remainingPoints;
+            
+            // Now we're in the final sequence
+            shootingForRed = false;
+        } else {
+            // Normal play - now shooting for red
+            shootingForRed = true;
+            
+            // Update points remaining
+            updatePointsRemaining();
+        }
+        
+        // Make the blue ball tally visible
+        blueTallyP1.style.visibility = "visible";
+        blueTallyP1.style.opacity = "1";
+        
+        // Increment the blue ball tally
+        let currentTally = parseInt(blueTallyP1.textContent) || 0;
+        currentTally++;
+        blueTallyP1.textContent = currentTally;
+        
+        // Update available balls
+        updateAvailableBalls();
+    });
+
+    // Pink ball event listener
+    pinkBallP1.addEventListener("click", function() {
+        // Add 6 to player 1's score
+        p1CurrentScore += 6;
+        p1Score.textContent = p1CurrentScore;
+        
+        // Add 6 to current break
+        p1CurrentBreak += 6;
+        lastBreakP1.textContent = p1CurrentBreak;
+        
+        // Update highest break if needed
+        if (p1CurrentBreak > p1HighestBreak) {
+            p1HighestBreak = p1CurrentBreak;
+            highestBreakP1.textContent = p1HighestBreak;
+        }
+        
+        // Set lastBallWasRed to false
+        lastBallWasRed = false;
+        
+        // Check if we're in the final color sequence
+        if (redClickCount >= 15 && remainingPoints <= 27) {
+            // We're in the final sequence
+            // Deduct the actual value
+            remainingPoints -= 6;
+            pointsRemaining.textContent = remainingPoints;
+            
+            // Stay in color sequence mode
+            shootingForRed = false;
+        } else if (redClickCount >= 15) {
+            // This is the last color after the last red
+            // Set to exactly 27 points for the final sequence
+            remainingPoints = 27;
+            pointsRemaining.textContent = remainingPoints;
+            
+            // Now we're in the final sequence
+            shootingForRed = false;
+        } else {
+            // Normal play - now shooting for red
+            shootingForRed = true;
+            
+            // Update points remaining
+            updatePointsRemaining();
+        }
+        
+        // Make the pink ball tally visible
+        pinkTallyP1.style.visibility = "visible";
+        pinkTallyP1.style.opacity = "1";
+        
+        // Increment the pink ball tally
+        let currentTally = parseInt(pinkTallyP1.textContent) || 0;
+        currentTally++;
+        pinkTallyP1.textContent = currentTally;
+        
+        // Update available balls
+        updateAvailableBalls();
+    });
+
+    // Black ball event listener
+    blackBallP1.addEventListener("click", function() {
+        // Add 7 to player 1's score
+        p1CurrentScore += 7;
+        p1Score.textContent = p1CurrentScore;
+        
+        // Add 7 to current break
+        p1CurrentBreak += 7;
+        lastBreakP1.textContent = p1CurrentBreak;
+        
+        // Update highest break if needed
+        if (p1CurrentBreak > p1HighestBreak) {
+            p1HighestBreak = p1CurrentBreak;
+            highestBreakP1.textContent = p1HighestBreak;
+        }
+        
+        // Set lastBallWasRed to false
+        lastBallWasRed = false;
+        
+        // Check if we're in the final color sequence
+        if (redClickCount >= 15 && remainingPoints <= 27) {
+            // We're in the final sequence
+            // Deduct the actual value
+            remainingPoints -= 7;
+            pointsRemaining.textContent = remainingPoints;
+            
+            // Stay in color sequence mode
+            shootingForRed = false;
+        } else if (redClickCount >= 15) {
+            // This is the last color after the last red
+            // Set to exactly 27 points for the final sequence
+            remainingPoints = 27;
+            pointsRemaining.textContent = remainingPoints;
+            
+            // Now we're in the final sequence
+            shootingForRed = false;
+        } else {
+            // Normal play - now shooting for red
+            shootingForRed = true;
+            
+            // Update points remaining
+            updatePointsRemaining();
+        }
+        
+        // Make the black ball tally visible
+        blackTallyP1.style.visibility = "visible";
+        blackTallyP1.style.opacity = "1";
+        
+        // Increment the black ball tally
+        let currentTally = parseInt(blackTallyP1.textContent) || 0;
+        currentTally++;
+        blackTallyP1.textContent = currentTally;
         
         // Update available balls
         updateAvailableBalls();
