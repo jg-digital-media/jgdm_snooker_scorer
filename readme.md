@@ -1,6 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Last Updated: 16/05/2025 - 13:44`
++ `Last Updated: 16/05/2025 - 13:58`
 
 ## Sections
 
@@ -1104,6 +1104,9 @@ a#apply_tally---red--p1 {
 
 + The next step is to implement the "MISS" button, which in turn expands the turn based play to include the opponent player. That will have massive implications for the rest of the development of this app.  In the first instance, We're just going to use the "MISS" button to get the opponent player to the table. And then, vice versa (i.e. player 1 misses a pot attempt so player 2 can get to the table).
 
-+ This affects a number of elementt
-  + `#player_number` - The number is to revert between 1 and 2, depending on who is at the table; programatcally change the text content.
++ This affects a number of elements:
+  + `#player_number` - The number is to revert between 1 and 2, depending on who is at the table; programatically change the text content.
+  + `tally---potted--miss-p1` - The button that "misses" a pot attempt by player 1 and brings player 2 to the table.
+  + `tally---potted--miss-p2` -  The button that "misses" a pot attempt by player 2. This will be disabled when player 1 is at the table.
   + `#points_remaining` - The number of points remaining in the game. - This will be reduced by 7 when the player misses an attempt for a colour ball.. unless that colour is part of the final colour sequence.
+  + `player---1--table` - The red icon marks the player who is at the table. This will move to `player---2--table` when Player 1 misses a pot attempt. It will appear back on `player---1--table` when Player 2 misses a pot attempt to indicate that player 1 is back at the table.
