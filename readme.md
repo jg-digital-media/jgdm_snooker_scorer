@@ -1,6 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Last Updated: 15/05/2025 - 17:33`
++ `Last Updated: 16/05/2025 - 13:44`
 
 ## Sections
 
@@ -887,7 +887,7 @@ The development of this application is currently in progress.
 
 + `COMPLETED: 15-05-2025` Apply button for more than 1 red ball potted. Click red ball icon twice to pot 2 red balls and move to shooting for a colour ball.
 
-+ `TODO:` Shouldn't take the missed points into account until I simulate shooting for a colour after the 2 reds at once? 
++ `TODO:` Shouldn't take the missed points into account until I simulate shooting for a colour after the 2 reds at once.
 
 + `TODO:` Player does not make a pot when making a break - a "MISS". (Player 1)
 + `TODO:` Track which player is at the table
@@ -897,7 +897,11 @@ The development of this application is currently in progress.
 
 + `TODO:` Replicate functionality of player 1 with player 2. 
 
++ `TODO:` Implement the "miss" button for player 2.
+
 + `TODO:` Disable player 2 buttons at frame end
++ `TODO:` Disable player 2 buttons when player 1 is at the table
++ `TODO:` Disable player 1 buttons when player 2 is at the table
 
 + `TODO:` Stop counting highest and last break when `#points_remaining`is at 0 (Player 2).
 
@@ -1005,8 +1009,12 @@ resetButton.addEventListener("click", function(event) {
 
 ```
 
+### Future Improvements
 
-. . .
++ Identify how many points ahead or behind a player is - changing depending on point score - to be compared with the points available.
+    + Points Ahead:  45/147 - 0.33
+    + Points Remaining: 147/147 - 1
+    + Points Behind: 147/45 - 2.5   
 
 ### Comments
 [Back to Top](#sections)
@@ -1085,3 +1093,17 @@ a#apply_tally---red--p1 {
 + Finally for this part, I've modified the "apply" button to only show when the player is shooting for a red ball. It's a not needed when shooting for a colour and otherwise becomes a distraction.
 
 + `v1.0.6` - Working on the "miss" button and implementing the beginnings of turn based play between the 2 players.
+
++ So. Where we stand now is that we are playing through a standard 1 frame visit where the player
+   + Commits no fouls
+   + Pots 15 Reds and 15 colours with no misses.
+   + Is able to click or press for up to 15 red balls and at least 1 ball before reaching the colour sequence.
+   + Can go through the colour sequence at 27 points remaining `#points_remaining`.
+   + Can "play" a 147 maximum break.
+   + Cannot shoot for any more balls or foul buttons when the points remaining `#points_remaining` is at 0
+
++ The next step is to implement the "MISS" button, which in turn expands the turn based play to include the opponent player. That will have massive implications for the rest of the development of this app.  In the first instance, We're just going to use the "MISS" button to get the opponent player to the table. And then, vice versa (i.e. player 1 misses a pot attempt so player 2 can get to the table).
+
++ This affects a number of elementt
+  + `#player_number` - The number is to revert between 1 and 2, depending on who is at the table; programatcally change the text content.
+  + `#points_remaining` - The number of points remaining in the game. - This will be reduced by 7 when the player misses an attempt for a colour ball.. unless that colour is part of the final colour sequence.
