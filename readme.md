@@ -1,6 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Last Updated: 19/05/2025 - 07:52`
++ `Last Updated: 19/05/2025 - 17:10`
 
 ## Sections
 
@@ -762,7 +762,7 @@ This application is built using the following technologies:
 ## Development
 [Back to Top](#sections)
 
-### Tasks - 78 completed items
+### Tasks - 82 completed items
 
 The development of this application is currently in progress.
 
@@ -892,7 +892,22 @@ The development of this application is currently in progress.
 + `COMPLETED: 19-05-2025` Player does not make a pot when making a break - a "MISS". (Player 1)
 + `COMPLETED: 19-05-2025` Track which player is at the table
 + `COMPLETED: 19-05-2025` Player 2 at the table - misses ball should revert back to player 1 at the table
-+ `TODO:` Revert to shooting for a red ball after a foul. Player 2 misses a pot attempt - player 1 is at the table to shoot for a red ball.
+
+
++ `COMPLETED: 19-05-2025` Player 1 misses a pot attempt - player 2 is at the table to shoot for a red ball if there are red balls left on the table.
+
++ `COMPLETED: 19-05-2025` Player 2 misses a pot attempt - player 1 is at the table to shoot for a red ball if there are red balls left on the table..
+
++ `COMPLETED: 19-05-2025` Next player reverts to shooting for a red ball after a miss. 
+
++ `COMPLETED: 19-05-2025` If player 2 is set to shoot for a red ball, don't deduct any points remaining from the available points if they miss their shot
+
+
++ `TODO:` disable all player 1 buttons when player 1 miss button is clicked.
++ `TODO:` disable all player 2 buttons when player 2 miss button is clicked.
+
++ `TODO:` Next player reverts to shooting for a red ball after a foul. 
++ `TODO:` Revert to shooting for a red ball after a foul. 
 + `TODO:` Shouldn't take the missed points into account until I simulate shooting for a colour after the 2 reds at once.
 + `TODO`: Last break for player 1 resets when player 1 misses a pot attempt.
 
@@ -1012,6 +1027,10 @@ resetButton.addEventListener("click", function(event) {
 
 ```
 
++ `2` - "Last Break" should not be reset to 0 until a player makes their first successful pot attempt after returning to the table.`
+
+
+
 ### Future Improvements
 
 + Identify how many points ahead or behind a player is - changing depending on point score - to be compared with the points available.
@@ -1116,4 +1135,19 @@ a#apply_tally---red--p1 {
   + `#last---break--p1` - The last break made by player 1 - this will be reset when player 1 misses a pot attempt.
   + `#highest---break--p1` - The highest break made by player 1 - this will remain the same until player 1 achieves a new higher break. Not a change but worth noting.
 
- + currentPlayer text cxontent linked to newPlayer and playerNumber element.
++ currentPlayer (`#player_number`) text content linked to newPlayer and playerNumber element.
+
++ I've left this stage with turn based play in place between the 2 players. Play Reverts bEtween player status icons when missed pot attempts occur. A missed pot attempt on a colour reduces potential points by 7.  A miss on a red ball does not reduce the points remaining.  This is good. 
+
++ We also have taken into account which colour a player is shooting for when thry return to the table after opponent misses a pot attempt.  It will always return to a red ball if there are reds left on the table.
+
++ Where I've left it at for now `19-05-2025` is I'm trying to work out a way to diable the relevent buttons for the player who is not at the table. There must not be way for a player to interact with the buttons when they are not at the table or accidently register points. Especially since we can't undo any actions yet.
+
++ It might be worth trying the following prompt. 
+
+ ```text
+ If a player misses a pot attempt, and the opponent is at the table, the opponent should revert to shooting for a red ball.
+
+```
+
+`v1.0.7` - . . . 
