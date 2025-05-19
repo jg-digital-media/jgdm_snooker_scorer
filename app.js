@@ -1,11 +1,49 @@
-console.log("app.js connected - 15-05-2023 - 13:27");
+console.log("app.js connected - 19-05-2023 - 07:21");
 
 // Set the points remaining to 147
 document.getElementById('points_remaining').textContent = '147';
 
-// Event listener for red ball for player 1
-document.addEventListener("DOMContentLoaded", function() {
+// Initialize variables
+let p1CurrentScore = 0;
+let p2CurrentScore = 0;
+let p1CurrentBreak = 0;
+let p2CurrentBreak = 0;
+let p1HighestBreak = 0;
+let p2HighestBreak = 0;
+let remainingPoints = 147;
+let lastBallWasRed = false;
+let consecutiveRedCount = 0;
+let totalRedsPotted = 0;
+let redClickCount = 0;
+let shootingForRed = true;
+let tempRedTally = 0;
+let multiRedShotCount = 0;
+let currentPlayer = 1;
 
+// Define global references to DOM elements
+let playerNumber, player1Table, player2Table, missP1, missP2;
+
+document.addEventListener("DOMContentLoaded", function() {
+    // Get player elements
+    playerNumber = document.getElementById("player_number");
+    player1Table = document.getElementById("player---1--table");
+    player2Table = document.getElementById("player---2--table");
+    missP1 = document.getElementById("tally---potted--miss-p1");
+    missP2 = document.getElementById("tally---potted--miss-p2");
+    
+    // Set initial player at table
+    playerNumber.textContent = "1";
+    player1Table.style.visibility = "visible";
+    player1Table.style.opacity = "1";
+    player2Table.style.visibility = "hidden";
+    player2Table.style.opacity = "0";
+    
+    // Enable miss button for player 1, disable for player 2
+    missP1.style.pointerEvents = "auto";
+    missP1.style.opacity = "1";
+    missP2.style.pointerEvents = "none";
+    missP2.style.opacity = "0.5";
+    
     // Get pot ball elements - player 1
     const redBallP1 = document.getElementById("pot---red--one");
     const blackBallP1 = document.getElementById("pot---black--one");
@@ -37,19 +75,6 @@ document.addEventListener("DOMContentLoaded", function() {
     const potFoulMissOne = document.getElementById("pot---foulmiss--one");
     const potForfeitOne = document.getElementById("pot---forfeit--one"); 
     
-    // Initialize variables
-    let p1CurrentScore = 0;
-    let p1CurrentBreak = 0;
-    let p1HighestBreak = 0;
-    let remainingPoints = 147;
-    let lastBallWasRed = false; // Track if the last ball potted was a red
-    let consecutiveRedCount = 0; // Track consecutive red balls potted
-    let totalRedsPotted = 0; // Track total number of reds potted
-    let redClickCount = 0; // Separate counter just for red ball clicks
-    let shootingForRed = true; // Track whether player is shooting for a red or color
-   
-    let multiRedShotCount = 0; // Track how many multi-red shots occurred
-
     // Get the apply button for red ball tally
     const applyRedTallyP1 = document.getElementById("apply_tally---red--p1");
     
@@ -57,9 +82,6 @@ document.addEventListener("DOMContentLoaded", function() {
     applyRedTallyP1.style.visibility = "hidden";
     applyRedTallyP1.style.opacity = "0";
     
-    // Variables to track temporary red ball tallying
-    let tempRedTally = 0;
-
     // Function to calculate and update points remaining
     function updatePointsRemaining() {
         // If we're in the final color sequence (all reds potted)
@@ -651,20 +673,37 @@ document.addEventListener("DOMContentLoaded", function() {
     function reRackTable() {
         // Reset scores and breaks
         p1CurrentScore = 0;
+        p2CurrentScore = 0;
         p1CurrentBreak = 0;
-        p1Score.textContent = "0";
-        lastBreakP1.textContent = "0";
+        p2CurrentBreak = 0;
+        p1HighestBreak = 0;
+        p2HighestBreak = 0;
+        
+        // Reset score displays
+        document.getElementById("p1---score").textContent = "0";
+        document.getElementById("p2---score").textContent = "0";
+        document.getElementById("last---break--p1").textContent = "0";
+        const lastBreakP2 = document.getElementById("last---break--p2");
+        if (lastBreakP2) {
+            lastBreakP2.textContent = "0";
+        }
         
         // Reset game state variables
         lastBallWasRed = false;
         consecutiveRedCount = 0;
-        totalRedsPotted = 0; // Reset total reds potted
-        redClickCount = 0; // Reset red click counter
-        shootingForRed = true; // Start shooting for red
+        totalRedsPotted = 0;
+        redClickCount = 0;
+        shootingForRed = true;
+        multiRedShotCount = 0;
+        tempRedTally = 0;
         
         // Reset points remaining to 147
         remainingPoints = 147;
         pointsRemaining.textContent = "147";
+        
+        // Reset to player 1
+        currentPlayer = 1;
+        switchPlayer(1);
         
         // Reset all ball tallies
         redTallyP1.textContent = "";
@@ -683,17 +722,6 @@ document.addEventListener("DOMContentLoaded", function() {
         blueTallyP1.style.visibility = "hidden";
         pinkTallyP1.style.visibility = "hidden";
         blackTallyP1.style.visibility = "hidden";
-        
-        // Reset player 2's score if needed
-        const p2Score = document.getElementById("p2---score");
-        if (p2Score) {
-            p2Score.textContent = "0";
-        }
-        
-        // Reset player at table indicator
-        document.getElementById("player_number").textContent = "1";
-        
-        console.log("Game reset - table re-racked");
         
         // Reset temporary tally
         tempRedTally = 0;
@@ -721,6 +749,48 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Set initial available balls
     updateAvailableBalls();
+
+    // Add event listeners for miss buttons
+    missP1.addEventListener("click", function() {
+        // Switch to player 2
+        switchPlayer(2);
+        
+        // If player was shooting for a color (not in final sequence), reduce points
+        if (!shootingForRed && redClickCount < 15) {
+            // Reduce points by 7 (maximum possible color value)
+            remainingPoints -= 7;
+            pointsRemaining.textContent = remainingPoints;
+        }
+        
+        // Reset current break for player 1
+        p1CurrentBreak = 0;
+        lastBreakP1.textContent = "0";
+        
+        // Update available balls
+        updateAvailableBalls();
+    });
+    
+    missP2.addEventListener("click", function() {
+        // Switch to player 1
+        switchPlayer(1);
+        
+        // If player was shooting for a color (not in final sequence), reduce points
+        if (!shootingForRed && redClickCount < 15) {
+            // Reduce points by 7 (maximum possible color value)
+            remainingPoints -= 7;
+            pointsRemaining.textContent = remainingPoints;
+        }
+        
+        // Reset current break for player 2
+        p2CurrentBreak = 0;
+        const lastBreakP2 = document.getElementById("last---break--p2");
+        if (lastBreakP2) {
+            lastBreakP2.textContent = "0";
+        }
+        
+        // Update available balls
+        updateAvailableBalls();
+    });
 });
 
 /* document.addEventListener("DOMContentLoaded", function() {
@@ -755,3 +825,35 @@ document.addEventListener("DOMContentLoaded", function() {
     playerTwoInput.addEventListener("input", updatePointsRemaining);
 });
  */
+
+// Function to switch player turns at the table
+function switchPlayer(newPlayer) {
+    currentPlayer = newPlayer;
+    
+    // Update player number display
+    playerNumber.textContent = currentPlayer.toString();
+    
+    if (currentPlayer === 1) {
+        player1Table.style.visibility = "visible";
+        player1Table.style.opacity = "1";
+        player2Table.style.visibility = "hidden";
+        player2Table.style.opacity = "0";
+        
+        // Enable miss button for player 1, disable for player 2
+        missP1.style.pointerEvents = "auto";
+        missP1.style.opacity = "1";
+        missP2.style.pointerEvents = "none";
+        missP2.style.opacity = "0.5";
+    } else {
+        player1Table.style.visibility = "hidden";
+        player1Table.style.opacity = "0";
+        player2Table.style.visibility = "visible";
+        player2Table.style.opacity = "1";
+        
+        // Enable miss button for player 2, disable for player 1
+        missP1.style.pointerEvents = "none";
+        missP1.style.opacity = "0.5";
+        missP2.style.pointerEvents = "auto";
+        missP2.style.opacity = "1";
+    }
+}

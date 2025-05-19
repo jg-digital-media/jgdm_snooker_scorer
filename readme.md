@@ -1,6 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Last Updated: 16/05/2025 - 13:58`
++ `Last Updated: 19/05/2025 - 07:52`
 
 ## Sections
 
@@ -762,7 +762,7 @@ This application is built using the following technologies:
 ## Development
 [Back to Top](#sections)
 
-### Tasks - 74 completed items
+### Tasks - 78 completed items
 
 The development of this application is currently in progress.
 
@@ -887,12 +887,15 @@ The development of this application is currently in progress.
 
 + `COMPLETED: 15-05-2025` Apply button for more than 1 red ball potted. Click red ball icon twice to pot 2 red balls and move to shooting for a colour ball.
 
-+ `TODO:` Shouldn't take the missed points into account until I simulate shooting for a colour after the 2 reds at once.
 
-+ `TODO:` Player does not make a pot when making a break - a "MISS". (Player 1)
-+ `TODO:` Track which player is at the table
-+ `TODO:` Player 2 at the table - misses ball should revert back to player 1 at the table
-+ `TODO:` Revert between player 1 and player 2 at the table
++ `COMPLETED: 19-05-2025` Revert between player 1 and player 2 at the table via the "Miss" buttons `#tally---potted--miss-p1` and `#tally---potted--miss-p2`.
++ `COMPLETED: 19-05-2025` Player does not make a pot when making a break - a "MISS". (Player 1)
++ `COMPLETED: 19-05-2025` Track which player is at the table
++ `COMPLETED: 19-05-2025` Player 2 at the table - misses ball should revert back to player 1 at the table
++ `TODO:` Revert to shooting for a red ball after a foul. Player 2 misses a pot attempt - player 1 is at the table to shoot for a red ball.
++ `TODO:` Shouldn't take the missed points into account until I simulate shooting for a colour after the 2 reds at once.
++ `TODO`: Last break for player 1 resets when player 1 misses a pot attempt.
+
 + `TODO:` Visibility of player at the table - `#player---1--table` or `#player---2--table`.
 
 + `TODO:` Replicate functionality of player 1 with player 2. 
@@ -1102,11 +1105,15 @@ a#apply_tally---red--p1 {
    + Can "play" a 147 maximum break.
    + Cannot shoot for any more balls or foul buttons when the points remaining `#points_remaining` is at 0
 
-+ The next step is to implement the "MISS" button, which in turn expands the turn based play to include the opponent player. That will have massive implications for the rest of the development of this app.  In the first instance, We're just going to use the "MISS" button to get the opponent player to the table. And then, vice versa (i.e. player 1 misses a pot attempt so player 2 can get to the table).
++ The next step is to implement the "MISS" button, which in turn expands the turn based play to include the opponent player. That will have massive implications for the rest of the development of this app. In the first instance, we're just going to use the "MISS" button to get the opponent player to the table. And then, vice versa (i.e. player 1 misses a pot attempt so player 2 come to the table).
 
 + This affects a number of elements:
   + `#player_number` - The number is to revert between 1 and 2, depending on who is at the table; programatically change the text content.
-  + `tally---potted--miss-p1` - The button that "misses" a pot attempt by player 1 and brings player 2 to the table.
-  + `tally---potted--miss-p2` -  The button that "misses" a pot attempt by player 2. This will be disabled when player 1 is at the table.
+  + `#tally---potted--miss-p1` - The button that "misses" a pot attempt by player 1 and brings player 2 to the table.
+  + `#tally---potted--miss-p2` - The button that "misses" a pot attempt by player 2. This will be disabled when player 1 is at the table.
   + `#points_remaining` - The number of points remaining in the game. - This will be reduced by 7 when the player misses an attempt for a colour ball.. unless that colour is part of the final colour sequence.
   + `player---1--table` - The red icon marks the player who is at the table. This will move to `player---2--table` when Player 1 misses a pot attempt. It will appear back on `player---1--table` when Player 2 misses a pot attempt to indicate that player 1 is back at the table.
+  + `#last---break--p1` - The last break made by player 1 - this will be reset when player 1 misses a pot attempt.
+  + `#highest---break--p1` - The highest break made by player 1 - this will remain the same until player 1 achieves a new higher break. Not a change but worth noting.
+
+ + currentPlayer text cxontent linked to newPlayer and playerNumber element.
