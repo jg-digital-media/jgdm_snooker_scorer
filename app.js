@@ -1,4 +1,4 @@
-console.log("app.js connected - 19-05-2023 - 07:21");
+console.log("app.js connected - 19-05-2023 - 16:22");
 
 // Set the points remaining to 147
 document.getElementById('points_remaining').textContent = '147';
@@ -752,9 +752,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Add event listeners for miss buttons
     missP1.addEventListener("click", function() {
-        // Switch to player 2
-        switchPlayer(2);
-        
         // If player was shooting for a color (not in final sequence), reduce points
         if (!shootingForRed && redClickCount < 15) {
             // Reduce points by 7 (maximum possible color value)
@@ -766,20 +763,26 @@ document.addEventListener("DOMContentLoaded", function() {
         p1CurrentBreak = 0;
         lastBreakP1.textContent = "0";
         
+        // Force player 2 to shoot for red if there are reds left
+        if (redClickCount < 15) {
+            shootingForRed = true;
+        }
+        
+        // Switch to player 2
+        switchPlayer(2);
+        
         // Update available balls
         updateAvailableBalls();
     });
     
     missP2.addEventListener("click", function() {
-        // Switch to player 1
-        switchPlayer(1);
-        
-        // If player was shooting for a color (not in final sequence), reduce points
+        // Only deduct points if player was shooting for a color (not in final sequence)
         if (!shootingForRed && redClickCount < 15) {
             // Reduce points by 7 (maximum possible color value)
             remainingPoints -= 7;
             pointsRemaining.textContent = remainingPoints;
         }
+        // No deduction if shooting for a red
         
         // Reset current break for player 2
         p2CurrentBreak = 0;
@@ -787,6 +790,14 @@ document.addEventListener("DOMContentLoaded", function() {
         if (lastBreakP2) {
             lastBreakP2.textContent = "0";
         }
+        
+        // Force player 1 to shoot for red if there are reds left
+        if (redClickCount < 15) {
+            shootingForRed = true;
+        }
+        
+        // Switch to player 1
+        switchPlayer(1);
         
         // Update available balls
         updateAvailableBalls();
