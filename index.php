@@ -207,7 +207,7 @@
 
             <article class="player---two--pot player---pot--miss player---two--pot-undo" id="put---undo--two">
 
-                <p class="pot---tally" id="tally---potted--undo-p1">Undo</p>
+                <p class="pot---tally" id="tally---potted--undo-p2">Undo</p>
 
             </article>
 
