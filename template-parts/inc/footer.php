@@ -3,7 +3,7 @@
     <footer>
 
 
-        <p>&copy; <?php echo date('Y'); ?> "Snooker Scorer App". By Jonnie Grieve Digital Media. <a href="https://github.com/jg-digital-media/jgdm_snooker_scorer" target="_blank">Repository</a> <a href="about.php"><span id="app_versioning">v1.0.5</span></a></p>
+        <p>&copy; <?php echo date('Y'); ?> "Snooker Scorer App". By Jonnie Grieve Digital Media. <a href="https://github.com/jg-digital-media/jgdm_snooker_scorer" target="_blank">Repository</a> <a href="about.php"><span id="app_versioning">v1.0.6</span></a></p>
 
     </footer>
 
