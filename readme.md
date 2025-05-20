@@ -1,6 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Last Updated: 19/05/2025 - 17:10`
++ `Last Updated: 20/05/2025 - 10:38`
 
 ## Sections
 
@@ -762,7 +762,7 @@ This application is built using the following technologies:
 ## Development
 [Back to Top](#sections)
 
-### Tasks - 82 completed items
+### Tasks - 86 completed items
 
 The development of this application is currently in progress.
 
@@ -893,7 +893,6 @@ The development of this application is currently in progress.
 + `COMPLETED: 19-05-2025` Track which player is at the table
 + `COMPLETED: 19-05-2025` Player 2 at the table - misses ball should revert back to player 1 at the table
 
-
 + `COMPLETED: 19-05-2025` Player 1 misses a pot attempt - player 2 is at the table to shoot for a red ball if there are red balls left on the table.
 
 + `COMPLETED: 19-05-2025` Player 2 misses a pot attempt - player 1 is at the table to shoot for a red ball if there are red balls left on the table..
@@ -902,16 +901,18 @@ The development of this application is currently in progress.
 
 + `COMPLETED: 19-05-2025` If player 2 is set to shoot for a red ball, don't deduct any points remaining from the available points if they miss their shot
 
++ `COMPLETED: 20-05-2025` disable all player 1 buttons when player 1 miss button is clicked.
++ `COMPLETED: 20-05-2025` disable all player 2 buttons when player 2 miss button is clicked.
++ `COMPLETED: 20-05-2025` "MISS" buttons on both players disable the corresponding player buttons.
 
-+ `TODO:` disable all player 1 buttons when player 1 miss button is clicked.
-+ `TODO:` disable all player 2 buttons when player 2 miss button is clicked.
++ `COMPLETED: 20-05-2025` Visibility of player at the table - `#player---1--table` or `#player---2--table` switches at the end of each turn at the table.
 
 + `TODO:` Next player reverts to shooting for a red ball after a foul. 
 + `TODO:` Revert to shooting for a red ball after a foul. 
 + `TODO:` Shouldn't take the missed points into account until I simulate shooting for a colour after the 2 reds at once.
+
 + `TODO`: Last break for player 1 resets when player 1 misses a pot attempt.
 
-+ `TODO:` Visibility of player at the table - `#player---1--table` or `#player---2--table`.
 
 + `TODO:` Replicate functionality of player 1 with player 2. 
 
@@ -962,7 +963,7 @@ The development of this application is currently in progress.
 [Back to Top](#sections)
 
 
-+ `1` - the `rerackTable()` method currently pushes player one score buttons down a row until all colours are pressed. Have replaced with a `location.reload` method on the "Re-reack" button for now.  - `12-05-2025`
++ `1` - the `rerackTable()` method, as written currently pushes player one score buttons down a row until all colours are pressed. Have replaced with a `location.reload` method on the "Re-reack" button for now.  - `12-05-2025`
 
 ```javascript
 
@@ -1029,7 +1030,7 @@ resetButton.addEventListener("click", function(event) {
 
 + `2` - "Last Break" should not be reset to 0 until a player makes their first successful pot attempt after returning to the table.`
 
-
++ `3` - Ball potting tallies over player 2 ball icons by default. They must not be visible until the user of the application clicks the potted ball icon. `Resolved: 20-05-2025`
 
 ### Future Improvements
 
@@ -1049,13 +1050,13 @@ resetButton.addEventListener("click", function(event) {
 
 + Elements affected by the red ball potted:
 
-  + `#player---1--table` - The red icon marks the player who is at the table. (Player 1 in this case) It is invisble by default for player 2.
-  + `#player_number` - The number is to revert between 1 and 2, depending on who is at the table.
+  + `#player---1--table` - The red icon marks the player who is at the table. (Player 1 in this case) It is invisble by default for player 2
+  + `#player_number` - The number is to revert between 1 and 2, depending on who is at the table
   + `#tally---potted--red-p1` - The number of red balls potted by player 1
   + `#highest---break--p1` - The last highest break made by player 1
   + `#last---break--p1` - The total of the last break made - (a "break" is a visit to the table)
-  + `#p1---score` - The Total Scored by Player 1 which is the total accumulation of breaks and scored and penalty points given.
-  + `#points_remaining` - The number of points remaining in the game.
+  + `#p1---score` - The Total Scored by Player 1 which is the total accumulation of breaks and scored and penalty points given
+  + `#points_remaining` - The number of points remaining in the game
 
 + `v1.0.1` - I've got as far as implementing the UX feature of indicating which balls player 1 has potted and how many times that ball as been potted. I've also updated the scores in each turn for the total player score; the last break made and the highest break. 
 
@@ -1071,10 +1072,10 @@ resetButton.addEventListener("click", function(event) {
 
 + By the next day I'd been able to get the turn play working with the red and colour balls as well as taking into account the colour sequence.  So. Where we stand now is that we are playing through a standard 1 frame visit where the player
    + Commits no fouls
-   + Pots 15 Reds and 15 colours with no misses.
-   + Goes through the colour sequence at 27 points remaining `#points_remaining`.
-   + Can operate a 147 maximum break.
-   + Cannot recreate a situation where a player score more than one red in the same shot.
+   + Pots 15 Reds and 15 colours with no misses
+   + Goes through the colour sequence at 27 points remaining `#points_remaining`
+   + Can operate a 147 maximum break
+   + Cannot recreate a situation where a player score more than one red in the same shot
    + Cannot shoot for any more balls or foul buttons when the points remaining `#points_remaining` is at 0
 
 + `v1.0.4` - So we've come to the point now where we've got the scoring system working to a certain degree. To the degree that a range of reds and colours can be potted, minus any eventuality where the second player gets to the table. Perversley we haven't yet taken into account the common scenario where the player doesn't pot anything on their break (A "miss"). So soon we'll have to open up the turn based place to bring player 2 into play. 
@@ -1114,15 +1115,9 @@ a#apply_tally---red--p1 {
 
 + Finally for this part, I've modified the "apply" button to only show when the player is shooting for a red ball. It's a not needed when shooting for a colour and otherwise becomes a distraction.
 
-+ `v1.0.6` - Working on the "miss" button and implementing the beginnings of turn based play between the 2 players.
++ `v1.0.6` - Working on the "MISS" button and implementing the beginnings of turn based play between the 2 players.
 
-+ So. Where we stand now is that we are playing through a standard 1 frame visit where the player
-   + Commits no fouls
-   + Pots 15 Reds and 15 colours with no misses.
-   + Is able to click or press for up to 15 red balls and at least 1 ball before reaching the colour sequence.
-   + Can go through the colour sequence at 27 points remaining `#points_remaining`.
-   + Can "play" a 147 maximum break.
-   + Cannot shoot for any more balls or foul buttons when the points remaining `#points_remaining` is at 0
++ So. Where we stand now is that we are playing through a standard 1 frame visit where the player.  
 
 + The next step is to implement the "MISS" button, which in turn expands the turn based play to include the opponent player. That will have massive implications for the rest of the development of this app. In the first instance, we're just going to use the "MISS" button to get the opponent player to the table. And then, vice versa (i.e. player 1 misses a pot attempt so player 2 come to the table).
 
@@ -1130,14 +1125,14 @@ a#apply_tally---red--p1 {
   + `#player_number` - The number is to revert between 1 and 2, depending on who is at the table; programatically change the text content.
   + `#tally---potted--miss-p1` - The button that "misses" a pot attempt by player 1 and brings player 2 to the table.
   + `#tally---potted--miss-p2` - The button that "misses" a pot attempt by player 2. This will be disabled when player 1 is at the table.
-  + `#points_remaining` - The number of points remaining in the game. - This will be reduced by 7 when the player misses an attempt for a colour ball.. unless that colour is part of the final colour sequence.
+  + `#points_remaining` - The number of points remaining in the game. - This will be reduced by 7 when the player misses an attempt for a colour ball. Unless that colour is part of the final colour sequence.
   + `player---1--table` - The red icon marks the player who is at the table. This will move to `player---2--table` when Player 1 misses a pot attempt. It will appear back on `player---1--table` when Player 2 misses a pot attempt to indicate that player 1 is back at the table.
   + `#last---break--p1` - The last break made by player 1 - this will be reset when player 1 misses a pot attempt.
   + `#highest---break--p1` - The highest break made by player 1 - this will remain the same until player 1 achieves a new higher break. Not a change but worth noting.
 
 + currentPlayer (`#player_number`) text content linked to newPlayer and playerNumber element.
 
-+ I've left this stage with turn based play in place between the 2 players. Play Reverts bEtween player status icons when missed pot attempts occur. A missed pot attempt on a colour reduces potential points by 7.  A miss on a red ball does not reduce the points remaining.  This is good. 
++ I've left this stage with turn based play in place between the 2 players. Play Reverts bEtween player status icons when missed pot attempts occur. A missed pot attempt on a colour reduces potential points by 7.  A miss on a red ball does not reduce the points remaining. This is good. 
 
 + We also have taken into account which colour a player is shooting for when thry return to the table after opponent misses a pot attempt.  It will always return to a red ball if there are reds left on the table.
 
@@ -1146,8 +1141,56 @@ a#apply_tally---red--p1 {
 + It might be worth trying the following prompt. 
 
  ```text
- If a player misses a pot attempt, and the opponent is at the table, the opponent should revert to shooting for a red ball.
+   Player 1 is at the table by default. 
+
+   Disable all player 2 buttons when player 1 is at the table. Open them up when player 2 is at the table. and vice versa.
+
+   e.g. Player 1 is at the table.
+
+        #tally---potted--yellow-p2
+        #tally---potted--green-p2
+        #tally---potted--brown-p2
+        #tally---potted--blue-p2
+        #tally---potted--pink-p2
+        #tally---potted--black-p2
+        apply_tally---red--p2
+
+        #put---undo--two
+        #pot---miss--two
+        #pot---foul--two
+        #pot---forfeit--two  .disabled
+        #pot---foulmiss--two
+
+ all disabled. Ensure all buttons for  the buttons for player 1 are enabled.
+
+    e.g. Player 2 is at the table.
+
+        #tally---potted--red-p1
+        #tally---potted--yellow-p1
+        #tally---potted--green-p1
+        #tally---potted--brown-p1
+        #tally---potted--blue-p1
+        #tally---potted--pink-p1
+        #tally---potted--black-p1
+        #apply_tally---red--p1
+
+        #put---undo--one
+        #pot---miss--one
+        #pot---foul--one
+        #pot---forfeit--one  
+        #pot---foulmiss--one
+
+ all disabled. Enable all the buttons for player 2
 
 ```
 
-`v1.0.7` - . . . 
++ And in the end, that's what worked. It gave me 2 helper functions `enablePlayerButtons()` and `disablePlayerButtons()` to control the buttons for each player which are triggered at the call of each instance of `switchPlayer()` or more specifically, when the miss buttons are triggered. So we can now switch between 2 players in turn based play when both of the players miss a pot attempt.
+
++ `v1.0.7` - Game Development Status
+
+   + Players commit no fouls
+   + Player 1 Pots up to 15 Reds and 15 colours with misses now possible
+   + Is able to click or press for up to 15 red balls and as many missed shots for a colour before getting to the colour sequence
+   + Can go through the colour sequence at 27 points remaining `#points_remaining`.
+   + Player 1 can "play" a 147 maximum break.
+   + Player 1 cannot shoot for any more balls or foul buttons when the points remaining `#points_remaining` is at 0 
