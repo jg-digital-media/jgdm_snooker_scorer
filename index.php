@@ -157,95 +157,97 @@
 
             <article class="player---potting player---two--potting">
 
-            <!-- POTTED BALL TALLIES (Player 2) ---->
-            <article class="player---pot--score player---two--pot player---pot--red" id="pot---red--two">  
-                
-                <p class="pot---tally" id="tally---potted--red-p2">&nbsp;</p>
+                <!-- POTTED BALL TALLIES (Player 2) ---->
+                <article class="player---pot--score player---two--pot player---pot--red" id="pot---red--two">  
+                    
+                    <p class="pot---tally" id="tally---potted--red-p2">&nbsp;</p>
 
-            </article>
+                </article>
 
-            <article class="player---pot--score player---two--pot player---pot--yellow" id="pot---yellow--two">
-                
-                <p class="pot---tally" id="tally---potted--yellow-p2">&nbsp;</p>
-                
-            </article>
+                <article class="player---pot--score player---two--pot player---pot--yellow" id="pot---yellow--two">
+                    
+                    <p class="pot---tally" id="tally---potted--yellow-p2">&nbsp;</p>
+                    
+                </article>
             
-            <article class="player---pot--score player---two--pot player---pot--green" id="pot---green--two">  
+                <article class="player---pot--score player---two--pot player---pot--green" id="pot---green--two">  
 
-                <p class="pot---tally" id="tally---potted--green-p2">&nbsp;</p>
-                
-            </article>
+                    <p class="pot---tally" id="tally---potted--green-p2">&nbsp;</p>
+                    
+                </article>
             
-            <article class="player---pot--score player---two--pot player---pot--brown" id="pot---brown--two">  
+                <article class="player---pot--score player---two--pot player---pot--brown" id="pot---brown--two">  
 
-                <p class="pot---tally" id="tally---potted--brown-p1">&nbsp;</p>
-                
-            </article>
+                    <p class="pot---tally" id="tally---potted--brown-p1">&nbsp;</p>
+                    
+                </article>
             
-            <article class="player---pot--score player---two--pot player---pot--blue" id="pot---blue--two">  
+                <article class="player---pot--score player---two--pot player---pot--blue" id="pot---blue--two">  
 
-                <p class="pot---tally" id="tally---potted--blue-p2">&nbsp;</p>
-                
-            </article>
+                    <p class="pot---tally" id="tally---potted--blue-p2">&nbsp;</p>
+                    
+                </article>
             
-            <article class="player---pot--score player---two--pot player---pot--pink" id="pot---pink--two">  
+                <article class="player---pot--score player---two--pot player---pot--pink" id="pot---pink--two">  
 
-                <p class="pot---tally" id="tally---potted--pink-p2">&nbsp;</p>
+                    <p class="pot---tally" id="tally---potted--pink-p2">&nbsp;</p>
+                    
+                </article>
                 
-            </article>
-            
-            <article class="player---pot--score player---two--pot player---pot--black " id="pot---black--two">  
+                <article class="player---pot--score player---two--pot player---pot--black " id="pot---black--two">  
 
-                <p class="pot---tally"  id="tally---potted--black-p2">&nbsp;</p>
-                
-            </article>
+                    <p class="pot---tally"  id="tally---potted--black-p2">&nbsp;</p>
+                    
+                </article>
 
-            <br />
-                
-                <a href="#" id="apply_tally---red--p2" class="potting---tally">Apply</a>
-            <br />
+                <br />
+                    
+                    <a href="#" id="apply_tally---red--p2" class="potting---tally">Apply</a>
+                <br />
 
-            <article class="player---two--pot player---pot--miss player---two--pot-undo" id="put---undo--two">
+                <article class="player---two--pot player---pot--miss player---two--pot-undo" id="put---undo--two">
 
-                <p class="pot---tally" id="tally---potted--undo-p2">Undo</p>
+                    <p class="pot---tally" id="tally---potted--undo-p2">Undo</p>
 
-            </article>
+                </article>
 
-            <article class="player---two--pot player---pot--miss player---two--pot-miss " id="pot---miss--two">  
+                <article class="player---two--pot player---pot--miss player---two--pot-miss " id="pot---miss--two">  
 
-                <p class="pot---tally"  id="tally---potted--miss-p2">MISS</p>
-                
-            </article>            
+                    <p class="pot---tally"  id="tally---potted--miss-p2">MISS</p>
+                    
+                </article>            
 
-            <article class="player---two--pot player---pot--miss player---two--pot-foul " id="pot---foul--two">  
+                <article class="player---two--pot player---pot--miss player---two--pot-foul " id="pot---foul--two">  
 
-                <p class="pot---tally"  id="tally---potted--foul-p2">FOUL</p>
-                
-            </article>           
+                    <p class="pot---tally"  id="tally---potted--foul-p2">FOUL</p>
+                    
+                </article>           
 
-            <article class="player---two--pot player---pot--miss player---two--pot-foulmiss" id="pot---foulmiss--two">  
+                <article class="player---two--pot player---pot--miss player---two--pot-foulmiss" id="pot---foulmiss--two">  
 
-                <p class="pot---tally" id="tally---potted--foulmiss-p2">FOUL + MISS</p>
-                
-            </article>           
+                    <p class="pot---tally" id="tally---potted--foulmiss-p2">FOUL + MISS</p>
+                    
+                </article>           
 
-            <article class="player---two--pot player---pot--miss" id="pot---forfeit--two">  
+                <article class="player---two--pot player---pot--miss" id="pot---forfeit--two">  
 
-                <p class="pot---tally" id="tally---potted--forfeit-p2">FORFEIT</p>
-                
-            </article>
+                    <p class="pot---tally" id="tally---potted--forfeit-p2">FORFEIT</p>
+                    
+                </article>
 
-            <br />
+                <br />
 
-            <article class="player---points--difference">
-                
-                <span class="points---ahead">
-                    Ahead: <span id="player---two--ahead">0</span>
-                </span>
+                <article class="player---points--difference">
+                    
+                    <span class="points---ahead">
+                        Ahead: <span id="player---two--ahead">0</span>
+                    </span>
 
-                <span class="points---remaining">
-                    Remaining: <span id="player---two--remaining">0</span>
-                </span>
+                    <span class="points---remaining">
+                        Remaining: <span id="player---two--remaining">0</span>
+                    </span>
+
+                </article>
 
             </article>
 
