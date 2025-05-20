@@ -205,7 +205,7 @@
                 <a href="#" id="apply_tally---red--p2" class="potting---tally">Apply</a>
             <br />
 
-            <article class="player---two--pot player---pot--miss player---one--pot-undo" id="put---undo--one">
+            <article class="player---two--pot player---pot--miss player---two--pot-undo" id="put---undo--two">
 
                 <p class="pot---tally" id="tally---potted--undo-p1">Undo</p>
 
