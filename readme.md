@@ -1,6 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Last Updated: 20/05/2025 - 16:50`
++ `Last Updated: 20/05/2025 - 16:51`
 
 ## Sections
 
@@ -762,7 +762,7 @@ This application is built using the following technologies:
 ## Development
 [Back to Top](#sections)
 
-### Tasks - 86 completed items
+### Tasks - 87 completed items
 
 The development of this application is currently in progress.
 
