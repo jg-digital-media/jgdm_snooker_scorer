@@ -1,4 +1,4 @@
-console.log("app.js connected - 19-05-2023 - 16:22");
+console.log("app.js connected - 20-05-2023 - 09:49");
 
 // Set the points remaining to 147
 document.getElementById('points_remaining').textContent = '147';
@@ -24,12 +24,10 @@ let currentPlayer = 1;
 let playerNumber, player1Table, player2Table, missP1, missP2;
 
 document.addEventListener("DOMContentLoaded", function() {
-    // Get player elements
+    // Initialize player elements
     playerNumber = document.getElementById("player_number");
     player1Table = document.getElementById("player---1--table");
     player2Table = document.getElementById("player---2--table");
-    missP1 = document.getElementById("tally---potted--miss-p1");
-    missP2 = document.getElementById("tally---potted--miss-p2");
     
     // Set initial player at table
     playerNumber.textContent = "1";
@@ -38,7 +36,12 @@ document.addEventListener("DOMContentLoaded", function() {
     player2Table.style.visibility = "hidden";
     player2Table.style.opacity = "0";
     
+    // Initially disable all player 2 buttons
+    disablePlayerButtons(2);
+    
     // Enable miss button for player 1, disable for player 2
+    missP1 = document.getElementById("tally---potted--miss-p1");
+    missP2 = document.getElementById("tally---potted--miss-p2");
     missP1.style.pointerEvents = "auto";
     missP1.style.opacity = "1";
     missP2.style.pointerEvents = "none";
@@ -837,7 +840,47 @@ document.addEventListener("DOMContentLoaded", function() {
 });
  */
 
-// Function to switch player turns at the table
+// Function to disable all buttons for a specific player
+function disablePlayerButtons(playerNum) {
+    const playerSuffix = playerNum === 1 ? "-p1" : "-p2";
+    const playerPrefix = playerNum === 1 ? "--one" : "--two";
+    
+    // Disable all buttons with the player suffix (e.g., "-p1" or "-p2")
+    const playerSuffixButtons = document.querySelectorAll(`[id$="${playerSuffix}"]`);
+    playerSuffixButtons.forEach(button => {
+        button.style.pointerEvents = "none";
+        button.style.opacity = "0.5";
+    });
+    
+    // Disable all buttons with the player prefix (e.g., "--one" or "--two")
+    const playerPrefixButtons = document.querySelectorAll(`[id*="${playerPrefix}"]`);
+    playerPrefixButtons.forEach(button => {
+        button.style.pointerEvents = "none";
+        button.style.opacity = "0.5";
+    });
+}
+
+// Function to enable all buttons for a specific player
+function enablePlayerButtons(playerNum) {
+    const playerSuffix = playerNum === 1 ? "-p1" : "-p2";
+    const playerPrefix = playerNum === 1 ? "--one" : "--two";
+    
+    // Enable all buttons with the player suffix (e.g., "-p1" or "-p2")
+    const playerSuffixButtons = document.querySelectorAll(`[id$="${playerSuffix}"]`);
+    playerSuffixButtons.forEach(button => {
+        button.style.pointerEvents = "auto";
+        button.style.opacity = "1";
+    });
+    
+    // Enable all buttons with the player prefix (e.g., "--one" or "--two")
+    const playerPrefixButtons = document.querySelectorAll(`[id*="${playerPrefix}"]`);
+    playerPrefixButtons.forEach(button => {
+        button.style.pointerEvents = "auto";
+        button.style.opacity = "1";
+    });
+}
+
+// Function to switch players
 function switchPlayer(newPlayer) {
     currentPlayer = newPlayer;
     
@@ -845,26 +888,27 @@ function switchPlayer(newPlayer) {
     playerNumber.textContent = currentPlayer.toString();
     
     if (currentPlayer === 1) {
+        // Player 1 is at the table
         player1Table.style.visibility = "visible";
         player1Table.style.opacity = "1";
         player2Table.style.visibility = "hidden";
         player2Table.style.opacity = "0";
         
-        // Enable miss button for player 1, disable for player 2
-        missP1.style.pointerEvents = "auto";
-        missP1.style.opacity = "1";
-        missP2.style.pointerEvents = "none";
-        missP2.style.opacity = "0.5";
+        // Enable player 1 buttons, disable player 2 buttons
+        enablePlayerButtons(1);
+        disablePlayerButtons(2);
     } else {
+        // Player 2 is at the table
         player1Table.style.visibility = "hidden";
         player1Table.style.opacity = "0";
         player2Table.style.visibility = "visible";
         player2Table.style.opacity = "1";
         
-        // Enable miss button for player 2, disable for player 1
-        missP1.style.pointerEvents = "none";
-        missP1.style.opacity = "0.5";
-        missP2.style.pointerEvents = "auto";
-        missP2.style.opacity = "1";
+        // Enable player 2 buttons, disable player 1 buttons
+        enablePlayerButtons(2);
+        disablePlayerButtons(1);
     }
+    
+    // Update available balls based on game state
+    updateAvailableBalls();
 }
