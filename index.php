@@ -160,43 +160,43 @@
             <!-- POTTED BALL TALLIES (Player 2) ---->
             <article class="player---pot--score player---two--pot player---pot--red" id="pot---red--two">  
                 
-                <p class="pot---tally" id="tally---potted--red-p2">1</p>
+                <p class="pot---tally" id="tally---potted--red-p2">&nbsp;</p>
 
             </article>
 
             <article class="player---pot--score player---two--pot player---pot--yellow" id="pot---yellow--two">
                 
-                <p class="pot---tally" id="tally---potted--yellow-p2">1</p>
+                <p class="pot---tally" id="tally---potted--yellow-p2">&nbsp;</p>
                 
             </article>
             
             <article class="player---pot--score player---two--pot player---pot--green" id="pot---green--two">  
 
-                <p class="pot---tally" id="tally---potted--green-p2">1</p>
+                <p class="pot---tally" id="tally---potted--green-p2">&nbsp;</p>
                 
             </article>
             
             <article class="player---pot--score player---two--pot player---pot--brown" id="pot---brown--two">  
 
-                <p class="pot---tally" id="tally---potted--brown-p1">1</p>
+                <p class="pot---tally" id="tally---potted--brown-p1">&nbsp;</p>
                 
             </article>
             
             <article class="player---pot--score player---two--pot player---pot--blue" id="pot---blue--two">  
 
-                <p class="pot---tally" id="tally---potted--blue-p2">1</p>
+                <p class="pot---tally" id="tally---potted--blue-p2">&nbsp;</p>
                 
             </article>
             
             <article class="player---pot--score player---two--pot player---pot--pink" id="pot---pink--two">  
 
-                <p class="pot---tally" id="tally---potted--pink-p2">1</p>
+                <p class="pot---tally" id="tally---potted--pink-p2">&nbsp;</p>
                 
             </article>
             
             <article class="player---pot--score player---two--pot player---pot--black " id="pot---black--two">  
 
-                <p class="pot---tally"  id="tally---potted--black-p2">1</p>
+                <p class="pot---tally"  id="tally---potted--black-p2">&nbsp;</p>
                 
             </article>
 
@@ -246,10 +246,6 @@
                 <span class="points---remaining">
                     Remaining: <span id="player---two--remaining">0</span>
                 </span>
-
-            </article>
-
-           
 
             </article>
 
