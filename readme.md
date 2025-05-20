@@ -907,22 +907,26 @@ The development of this application is currently in progress.
 
 + `COMPLETED: 20-05-2025` Visibility of player at the table - `#player---1--table` or `#player---2--table` switches at the end of each turn at the table.
 
++ `COMPLETED: 20-05-2025` Implement the "miss" button for player 2.
+
+
++ `TODO:` Replicate functionality of player 1 in player 2.
+
 + `TODO:` Next player reverts to shooting for a red ball after a foul. 
 + `TODO:` Revert to shooting for a red ball after a foul. 
 + `TODO:` Shouldn't take the missed points into account until I simulate shooting for a colour after the 2 reds at once.
 
-+ `TODO`: Last break for player 1 resets when player 1 misses a pot attempt.
++ `TODO`: Last break for player 1 resets when player 1 misses a pot attempt.  Keep this number until the player makes successful pot after returning to the table.
+ayer 2. 
 
 
-+ `TODO:` Replicate functionality of player 1 with player 2. 
-
-+ `TODO:` Implement the "miss" button for player 2.
-
-+ `TODO:` Disable player 2 buttons at frame end
++ `TODO:` Disable all player buttons at frame end
 + `TODO:` Disable player 2 buttons when player 1 is at the table
 + `TODO:` Disable player 1 buttons when player 2 is at the table
 
 + `TODO:` Stop counting highest and last break when `#points_remaining`is at 0 (Player 2).
+
++ `TODO:` Stop counting highest and last break when `#points_remaining`is at 0 (Player 1).
 
 + `TODO:` Disable foul and miss buttons when points remaining is at 0 (Player 2)
 
@@ -933,7 +937,8 @@ The development of this application is currently in progress.
 + `TODO:` Track number of times Black ball has been potted `#pot---red--blue` (no more than 16)
 + `TODO:` Track number of times Pink ball has been potted `#pot---red--pink` (no more than 16)
 + `TODO:` Track number of times Black ball has been potted `#pot---red--black` (no more than 16)
-    + it's possible, however unlikely it might be that a player can pot a colour ball 16 times, including the colour sequence. (15 reds, 15 of a single colour and the colour sequnce e.g. 15 Reds, 15 Yellows, Yellow, Green, Brown, Blue, Pink, Black)
+    
++ it's possible, however unlikely it might be that a player can pot a colour ball 16 times, including the colour sequence. A 147 Break (15 reds, 15 of a single colour and the colour sequnce e.g. 15 Reds, 15 Yellows, Yellow, Green, Brown, Blue, Pink, Black) - H
 
 
 + `TODO:` Disable foul and miss buttons when points remaining is at 0 (Player 2)
@@ -1028,7 +1033,7 @@ resetButton.addEventListener("click", function(event) {
 
 ```
 
-+ `2` - "Last Break" should not be reset to 0 until a player makes their first successful pot attempt after returning to the table.`
++ `2` - "Last Break" should not be reset to 0 until a player makes their first successful pot attempt after returning to the table. - `12-05-2025`
 
 + `3` - Ball potting tallies over player 2 ball icons by default. They must not be visible until the user of the application clicks the potted ball icon. `Resolved: 20-05-2025`
 
@@ -1193,4 +1198,14 @@ a#apply_tally---red--p1 {
    + Is able to click or press for up to 15 red balls and as many missed shots for a colour before getting to the colour sequence
    + Can go through the colour sequence at 27 points remaining `#points_remaining`.
    + Player 1 can "play" a 147 maximum break.
-   + Player 1 cannot shoot for any more balls or foul buttons when the points remaining `#points_remaining` is at 0 
+   + Player 1 cannot shoot for any more balls or foul buttons when the points remaining `#points_remaining` is at 0 #
+
++ We now have to get player 2 into the game and functioning in the same way that player 1 now does. So we have to figure out how to replicate the functionality of player 1 in player 2.
+
++ This means
+   + Player 2 is at the table after a miss or foul by player 1
+   + Player 2 shoots for a red ball first if there is a red ball left on the table
+   + Player 2 shoots for a red and then a colour ball until they miss
+   + Player 2 can "play" a 147 maximum break if player 1 misses before potting another ball.
+
++  
