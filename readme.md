@@ -1,6 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Last Updated: 20/05/2025 - 10:38`
++ `Last Updated: 20/05/2025 - 16:50`
 
 ## Sections
 
@@ -909,6 +909,7 @@ The development of this application is currently in progress.
 
 + `COMPLETED: 20-05-2025` Implement the "miss" button for player 2.
 
++ `TODO:` "MISS!" button for player one should be fixed to disable `#tally---potted--red-p1` red 1 for player 1
 
 + `TODO:` Replicate functionality of player 1 in player 2.
 
@@ -1145,7 +1146,7 @@ a#apply_tally---red--p1 {
 
 + It might be worth trying the following prompt. 
 
- ```text
+ ```
    Player 1 is at the table by default. 
 
    Disable all player 2 buttons when player 1 is at the table. Open them up when player 2 is at the table. and vice versa.
@@ -1207,5 +1208,16 @@ a#apply_tally---red--p1 {
    + Player 2 shoots for a red ball first if there is a red ball left on the table
    + Player 2 shoots for a red and then a colour ball until they miss
    + Player 2 can "play" a 147 maximum break if player 1 misses before potting another ball.
+   + Players 1 and 2 start sharing the points available to be played for as they now compete for points. 
 
-+  
++  This feels like a big part of the challenge and a lot could go wrong and indeed has gone wrong in meeting those goals. I'm going to try planning a new AI prompt to help me get this right.
+
+```
+
+We are going to try and replicate the what Player 1 currently does with Player 2.
+
+This means we'll need to make sure that player 2 is at the table after a miss or foul by player 1 and can shoot for a red ball (if there is one available). If there are no reds left, they shoot for the first colour ball available in the colour sequence (Yellow, Green, Brown, Blue, Pink, Black).
+
+```
+
++ Do we leave it there? Or do we say something in the prompt about how the scorer app will track the points available to be scored for each player? and how they will compete for points?
