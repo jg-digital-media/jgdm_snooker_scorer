@@ -1,4 +1,4 @@
-console.log("app.js connected - 21-05-2023 - 13:25");
+console.log("app.js connected - 21-05-2023 - 16:33");
 
 // Set the points remaining to 147
 document.getElementById('points_remaining').textContent = '147';
@@ -28,170 +28,416 @@ let lastBreakP1, highestBreakP1, p1Score, applyRedTallyP1;
 
 // Function to update which balls are enabled/disabled based on game state
 function updateAvailableBalls() {
-    // Get all ball elements
-    const redBall = document.getElementById("pot---red--one");
-    const yellowBall = document.getElementById("pot---yellow--one");
-    const greenBall = document.getElementById("pot---green--one");
-    const brownBall = document.getElementById("pot---brown--one");
-    const blueBall = document.getElementById("pot---blue--one");
-    const pinkBall = document.getElementById("pot---pink--one");
-    const blackBall = document.getElementById("pot---black--one");
+    console.log("Updating available balls");
+    console.log(`Current player: ${currentPlayer}, Shooting for red: ${shootingForRed}`);
+    console.log(`Red count: ${redClickCount}, Remaining points: ${remainingPoints}`);
     
-    // Array of all color balls
-    const colorBalls = [yellowBall, greenBall, brownBall, blueBall, pinkBall, blackBall];
+    // Get all ball elements for both players
+    const redBallP1 = document.getElementById("pot---red--one");
+    const yellowBallP1 = document.getElementById("pot---yellow--one");
+    const greenBallP1 = document.getElementById("pot---green--one");
+    const brownBallP1 = document.getElementById("pot---brown--one");
+    const blueBallP1 = document.getElementById("pot---blue--one");
+    const pinkBallP1 = document.getElementById("pot---pink--one");
+    const blackBallP1 = document.getElementById("pot---black--one");
     
-    // Get the apply button
+    const redBallP2 = document.getElementById("pot---red--two");
+    const yellowBallP2 = document.getElementById("pot---yellow--two");
+    const greenBallP2 = document.getElementById("pot---green--two");
+    const brownBallP2 = document.getElementById("pot---brown--two");
+    const blueBallP2 = document.getElementById("pot---blue--two");
+    const pinkBallP2 = document.getElementById("pot---pink--two");
+    const blackBallP2 = document.getElementById("pot---black--two");
+    
+    // Get all tally elements for both players
+    const redTallyP1 = document.getElementById("tally---potted--red-p1");
+    const yellowTallyP1 = document.getElementById("tally---potted--yellow-p1");
+    const greenTallyP1 = document.getElementById("tally---potted--green-p1");
+    const brownTallyP1 = document.getElementById("tally---potted--brown-p1");
+    const blueTallyP1 = document.getElementById("tally---potted--blue-p1");
+    const pinkTallyP1 = document.getElementById("tally---potted--pink-p1");
+    const blackTallyP1 = document.getElementById("tally---potted--black-p1");
+    
+    const redTallyP2 = document.getElementById("tally---potted--red-p2");
+    const yellowTallyP2 = document.getElementById("tally---potted--yellow-p2");
+    const greenTallyP2 = document.getElementById("tally---potted--green-p2");
+    const brownTallyP2 = document.getElementById("tally---potted--brown-p2");
+    const blueTallyP2 = document.getElementById("tally---potted--blue-p2");
+    const pinkTallyP2 = document.getElementById("tally---potted--pink-p2");
+    const blackTallyP2 = document.getElementById("tally---potted--black-p2");
+    
+    // Get miss buttons
+    const missP1 = document.getElementById("pot---miss--one");
+    const missP2 = document.getElementById("pot---miss--two");
+    
+    // Arrays of all color balls and tallies for both players
+    const colorBallsP1 = [yellowBallP1, greenBallP1, brownBallP1, blueBallP1, pinkBallP1, blackBallP1];
+    const colorTalliesP1 = [yellowTallyP1, greenTallyP1, brownTallyP1, blueTallyP1, pinkTallyP1, blackTallyP1];
+    
+    const colorBallsP2 = [yellowBallP2, greenBallP2, brownBallP2, blueBallP2, pinkBallP2, blackBallP2];
+    const colorTalliesP2 = [yellowTallyP2, greenTallyP2, brownTallyP2, blueTallyP2, pinkTallyP2, blackTallyP2];
+    
+    // Get the apply buttons
     const applyRedTallyP1 = document.getElementById("apply_tally---red--p1");
+    const applyRedTallyP2 = document.getElementById("apply_tally---red--p2");
     
-    // If there are no points remaining, disable all balls (frame is over)
+    // If there are no points remaining, disable all balls and buttons (frame is over)
     if (remainingPoints === 0) {
-        redBall.style.pointerEvents = "none";
-        redBall.style.opacity = "0.5";
+        console.log("Frame complete - disabling all balls, tallies, and buttons");
         
-        colorBalls.forEach(ball => {
-            ball.style.pointerEvents = "none";
-            ball.style.opacity = "0.5";
+        // Disable all balls and tallies for player 1
+        if (redBallP1) {
+            redBallP1.style.pointerEvents = "none";
+            redBallP1.style.opacity = "0.5";
+        }
+        if (redTallyP1) {
+            redTallyP1.style.pointerEvents = "none";
+            redTallyP1.style.opacity = "0.5";
+        }
+        
+        colorBallsP1.forEach((ball, index) => {
+            if (ball) {
+                ball.style.pointerEvents = "none";
+                ball.style.opacity = "0.5";
+            }
+            if (colorTalliesP1[index]) {
+                colorTalliesP1[index].style.pointerEvents = "none";
+                colorTalliesP1[index].style.opacity = "0.5";
+            }
         });
         
+        // Disable all balls and tallies for player 2
+        if (redBallP2) {
+            redBallP2.style.pointerEvents = "none";
+            redBallP2.style.opacity = "0.5";
+        }
+        if (redTallyP2) {
+            redTallyP2.style.pointerEvents = "none";
+            redTallyP2.style.opacity = "0.5";
+        }
+        
+        colorBallsP2.forEach((ball, index) => {
+            if (ball) {
+                ball.style.pointerEvents = "none";
+                ball.style.opacity = "0.5";
+            }
+            if (colorTalliesP2[index]) {
+                colorTalliesP2[index].style.pointerEvents = "none";
+                colorTalliesP2[index].style.opacity = "0.5";
+            }
+        });
+        
+        // Hide apply buttons
         if (applyRedTallyP1) {
             applyRedTallyP1.style.visibility = "hidden";
             applyRedTallyP1.style.opacity = "0";
+        }
+        if (applyRedTallyP2) {
+            applyRedTallyP2.style.visibility = "hidden";
+            applyRedTallyP2.style.opacity = "0";
+        }
+        
+        // Disable miss buttons
+        if (missP1) {
+            missP1.style.pointerEvents = "none";
+            missP1.style.opacity = "0.5";
+        }
+        if (missP2) {
+            missP2.style.pointerEvents = "none";
+            missP2.style.opacity = "0.5";
+        }
+        
+        // Display a message indicating the frame is over
+        const frameOverMessage = document.createElement("div");
+        frameOverMessage.textContent = "Frame Complete";
+        frameOverMessage.style.position = "fixed";
+        frameOverMessage.style.top = "50%";
+        frameOverMessage.style.left = "50%";
+        frameOverMessage.style.transform = "translate(-50%, -50%)";
+        frameOverMessage.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
+        frameOverMessage.style.color = "white";
+        frameOverMessage.style.padding = "20px";
+        frameOverMessage.style.borderRadius = "10px";
+        frameOverMessage.style.fontSize = "24px";
+        frameOverMessage.style.zIndex = "1000";
+        
+        // Only add the message if it doesn't already exist
+        if (!document.getElementById("frame-over-message")) {
+            frameOverMessage.id = "frame-over-message";
+            document.body.appendChild(frameOverMessage);
         }
         
         console.log("Frame complete - table cleared!");
         return;
+    } else {
+        // Remove the frame over message if it exists
+        const existingMessage = document.getElementById("frame-over-message");
+        if (existingMessage) {
+            existingMessage.remove();
+        }
     }
     
-    // Apply game-state-specific restrictions
+    // Get the current player's balls and tallies
+    const currentPlayerRedBall = currentPlayer === 1 ? redBallP1 : redBallP2;
+    const currentPlayerRedTally = currentPlayer === 1 ? redTallyP1 : redTallyP2;
+    const currentPlayerColorBalls = currentPlayer === 1 ? colorBallsP1 : colorBallsP2;
+    const currentPlayerColorTallies = currentPlayer === 1 ? colorTalliesP1 : colorTalliesP2;
+    const currentPlayerApplyButton = currentPlayer === 1 ? applyRedTallyP1 : applyRedTallyP2;
+    
+    // Get the inactive player's balls and tallies
+    const inactivePlayerRedBall = currentPlayer === 1 ? redBallP2 : redBallP1;
+    const inactivePlayerRedTally = currentPlayer === 1 ? redTallyP2 : redTallyP1;
+    const inactivePlayerColorBalls = currentPlayer === 1 ? colorBallsP2 : colorBallsP1;
+    const inactivePlayerColorTallies = currentPlayer === 1 ? colorTalliesP2 : colorTalliesP1;
+    const inactivePlayerApplyButton = currentPlayer === 1 ? applyRedTallyP2 : applyRedTallyP1;
+    
+    // Disable all balls and tallies for the inactive player
+    if (inactivePlayerRedBall) {
+        inactivePlayerRedBall.style.pointerEvents = "none";
+        inactivePlayerRedBall.style.opacity = "0.5";
+    }
+    if (inactivePlayerRedTally) {
+        inactivePlayerRedTally.style.pointerEvents = "none";
+        inactivePlayerRedTally.style.opacity = "0.5";
+    }
+    if (inactivePlayerApplyButton) {
+        inactivePlayerApplyButton.style.visibility = "hidden";
+        inactivePlayerApplyButton.style.opacity = "0";
+    }
+    
+    inactivePlayerColorBalls.forEach((ball, index) => {
+        if (ball) {
+            ball.style.pointerEvents = "none";
+            ball.style.opacity = "0.5";
+        }
+        if (inactivePlayerColorTallies[index]) {
+            inactivePlayerColorTallies[index].style.pointerEvents = "none";
+            inactivePlayerColorTallies[index].style.opacity = "0.5";
+        }
+    });
+    
+    console.log(`Current player red ball:`, currentPlayerRedBall);
+    console.log(`Current player apply button:`, currentPlayerApplyButton);
+    
+    // Apply game-state-specific restrictions for the current player
     if (shootingForRed) {
+        console.log("Shooting for red - enabling red ball, disabling colors");
+        
         // If shooting for red, enable red and disable colors
         if (redClickCount < 15) {
-            redBall.style.pointerEvents = "auto";
-            redBall.style.opacity = "1";
+            if (currentPlayerRedBall) {
+                currentPlayerRedBall.style.pointerEvents = "auto";
+                currentPlayerRedBall.style.opacity = "1";
+                console.log("Red ball enabled");
+            }
+            if (currentPlayerRedTally) {
+                currentPlayerRedTally.style.pointerEvents = "auto";
+                currentPlayerRedTally.style.opacity = "1";
+                console.log("Red tally enabled");
+            }
             
             // If there's only one red left, hide the apply button
-            if (redClickCount === 14 && applyRedTallyP1) {
-                applyRedTallyP1.style.visibility = "hidden";
-                applyRedTallyP1.style.opacity = "0";
+            if (redClickCount === 14 && currentPlayerApplyButton) {
+                currentPlayerApplyButton.style.visibility = "hidden";
+                currentPlayerApplyButton.style.opacity = "0";
+                console.log("Last red - hiding apply button");
             }
         } else {
             // If all reds are potted, disable red
-            redBall.style.pointerEvents = "none";
-            redBall.style.opacity = "0.5";
+            if (currentPlayerRedBall) {
+                currentPlayerRedBall.style.pointerEvents = "none";
+                currentPlayerRedBall.style.opacity = "0.5";
+                console.log("All reds potted - disabling red ball");
+            }
+            if (currentPlayerRedTally) {
+                currentPlayerRedTally.style.pointerEvents = "none";
+                currentPlayerRedTally.style.opacity = "0.5";
+                console.log("All reds potted - disabling red tally");
+            }
             
             // Hide the apply button
-            if (applyRedTallyP1) {
-                applyRedTallyP1.style.visibility = "hidden";
-                applyRedTallyP1.style.opacity = "0";
+            if (currentPlayerApplyButton) {
+                currentPlayerApplyButton.style.visibility = "hidden";
+                currentPlayerApplyButton.style.opacity = "0";
+                console.log("All reds potted - hiding apply button");
             }
         }
         
-        // Disable all color balls
-        colorBalls.forEach(ball => {
-            ball.style.pointerEvents = "none";
-            ball.style.opacity = "0.5";
+        // Disable all color balls and tallies
+        currentPlayerColorBalls.forEach((ball, index) => {
+            if (ball) {
+                ball.style.pointerEvents = "none";
+                ball.style.opacity = "0.5";
+            }
+            if (currentPlayerColorTallies[index]) {
+                currentPlayerColorTallies[index].style.pointerEvents = "none";
+                currentPlayerColorTallies[index].style.opacity = "0.5";
+            }
         });
+        console.log("All color balls and tallies disabled");
     } else {
+        console.log("Shooting for color - disabling red ball, enabling colors");
+        
         // If shooting for color, disable red and enable colors
-        redBall.style.pointerEvents = "none";
-        redBall.style.opacity = "0.5";
+        if (currentPlayerRedBall) {
+            currentPlayerRedBall.style.pointerEvents = "none";
+            currentPlayerRedBall.style.opacity = "0.5";
+            console.log("Red ball disabled");
+        }
+        if (currentPlayerRedTally) {
+            currentPlayerRedTally.style.pointerEvents = "none";
+            currentPlayerRedTally.style.opacity = "0.5";
+            console.log("Red tally disabled");
+        }
         
         // Hide the apply button when shooting for color
-        if (applyRedTallyP1) {
-            applyRedTallyP1.style.visibility = "hidden";
-            applyRedTallyP1.style.opacity = "0";
+        if (currentPlayerApplyButton) {
+            currentPlayerApplyButton.style.visibility = "hidden";
+            currentPlayerApplyButton.style.opacity = "0";
+            console.log("Shooting for color - hiding apply button");
         }
         
         // If in final sequence (all reds potted), handle colors differently
         if (redClickCount >= 15 && remainingPoints <= 27) {
+            console.log("In final color sequence");
+            
             // In the final sequence, colors must be potted in order
             // Yellow, Green, Brown, Blue, Pink, Black
             
             // Determine which color should be enabled based on remaining points
             if (remainingPoints === 27) {
                 // Only yellow is available (27 points remaining)
-                enableOnlyBall(yellowBall, colorBalls);
+                console.log("Enabling yellow (27 points remaining)");
+                enableOnlyBallAndTally(0, currentPlayerColorBalls, currentPlayerColorTallies);
             } else if (remainingPoints === 25) {
                 // Only green is available (25 points remaining)
-                enableOnlyBall(greenBall, colorBalls);
+                console.log("Enabling green (25 points remaining)");
+                enableOnlyBallAndTally(1, currentPlayerColorBalls, currentPlayerColorTallies);
             } else if (remainingPoints === 22) {
                 // Only brown is available (22 points remaining)
-                enableOnlyBall(brownBall, colorBalls);
+                console.log("Enabling brown (22 points remaining)");
+                enableOnlyBallAndTally(2, currentPlayerColorBalls, currentPlayerColorTallies);
             } else if (remainingPoints === 18) {
                 // Only blue is available (18 points remaining)
-                enableOnlyBall(blueBall, colorBalls);
+                console.log("Enabling blue (18 points remaining)");
+                enableOnlyBallAndTally(3, currentPlayerColorBalls, currentPlayerColorTallies);
             } else if (remainingPoints === 13) {
                 // Only pink is available (13 points remaining)
-                enableOnlyBall(pinkBall, colorBalls);
+                console.log("Enabling pink (13 points remaining)");
+                enableOnlyBallAndTally(4, currentPlayerColorBalls, currentPlayerColorTallies);
             } else if (remainingPoints === 7) {
                 // Only black is available (7 points remaining)
-                enableOnlyBall(blackBall, colorBalls);
+                console.log("Enabling black (7 points remaining)");
+                enableOnlyBallAndTally(5, currentPlayerColorBalls, currentPlayerColorTallies);
             }
         } else {
-            // During normal play, enable all color balls
-            colorBalls.forEach(ball => {
-                ball.style.pointerEvents = "auto";
-                ball.style.opacity = "1";
+            // During normal play, enable all color balls and tallies
+            console.log("Normal play - enabling all color balls and tallies");
+            currentPlayerColorBalls.forEach((ball, index) => {
+                if (ball) {
+                    ball.style.pointerEvents = "auto";
+                    ball.style.opacity = "1";
+                }
+                if (currentPlayerColorTallies[index]) {
+                    currentPlayerColorTallies[index].style.pointerEvents = "auto";
+                    currentPlayerColorTallies[index].style.opacity = "1";
+                }
             });
         }
     }
+    
+    // Always ensure the miss button for the current player is enabled
+    const missButton = document.getElementById(`pot---miss--${currentPlayer === 1 ? 'one' : 'two'}`);
+    if (missButton) {
+        missButton.style.pointerEvents = "auto";
+        missButton.style.opacity = "1";
+        console.log(`Miss button for player ${currentPlayer} enabled`);
+    }
 }
 
-// Helper function to enable only one ball and disable others
-function enableOnlyBall(ballToEnable, allBalls) {
-    allBalls.forEach(ball => {
-        if (ball === ballToEnable) {
-            ball.style.pointerEvents = "auto";
-            ball.style.opacity = "1";
-        } else {
-            ball.style.pointerEvents = "none";
-            ball.style.opacity = "0.5";
+// Helper function to enable only one ball and tally and disable others
+function enableOnlyBallAndTally(index, allBalls, allTallies) {
+    allBalls.forEach((ball, i) => {
+        if (ball) {
+            if (i === index) {
+                ball.style.pointerEvents = "auto";
+                ball.style.opacity = "1";
+            } else {
+                ball.style.pointerEvents = "none";
+                ball.style.opacity = "0.5";
+            }
+        }
+    });
+    
+    allTallies.forEach((tally, i) => {
+        if (tally) {
+            if (i === index) {
+                tally.style.pointerEvents = "auto";
+                tally.style.opacity = "1";
+            } else {
+                tally.style.pointerEvents = "none";
+                tally.style.opacity = "0.5";
+            }
         }
     });
 }
 
 // Function to disable all buttons for a specific player
 function disablePlayerButtons(playerNum) {
-    const playerSuffix = playerNum === 1 ? "-p1" : "-p2";
-    const playerPrefix = playerNum === 1 ? "--one" : "--two";
+    console.log(`Disabling all buttons for player ${playerNum}`);
     
-    // Disable all buttons with the player suffix (e.g., "-p1" or "-p2")
-    const playerSuffixButtons = document.querySelectorAll(`[id$="${playerSuffix}"]`);
-    playerSuffixButtons.forEach(button => {
-        button.style.pointerEvents = "none";
-        button.style.opacity = "0.5";
+    // Disable all elements with IDs containing the player number
+    const allPlayerElements = document.querySelectorAll(`[id*="p${playerNum}"], [id*="${playerNum === 1 ? 'one' : 'two'}"]`);
+    allPlayerElements.forEach(element => {
+        element.style.pointerEvents = "none";
+        element.style.opacity = "0.5";
+        console.log(`Disabled element: ${element.id}`);
     });
     
-    // Disable all buttons with the player prefix (e.g., "--one" or "--two")
-    const playerPrefixButtons = document.querySelectorAll(`[id*="${playerPrefix}"]`);
-    playerPrefixButtons.forEach(button => {
-        button.style.pointerEvents = "none";
-        button.style.opacity = "0.5";
+    // Specifically disable all tally elements
+    const tallyElements = document.querySelectorAll(`[id^="tally"][id*="p${playerNum}"]`);
+    tallyElements.forEach(element => {
+        element.style.pointerEvents = "none";
+        element.style.opacity = "0.5";
+        console.log(`Disabled tally element: ${element.id}`);
     });
+    
+    // Specifically disable all pot elements
+    const potElements = document.querySelectorAll(`[id^="pot"][id*="${playerNum === 1 ? 'one' : 'two'}"]`);
+    potElements.forEach(element => {
+        element.style.pointerEvents = "none";
+        element.style.opacity = "0.5";
+        console.log(`Disabled pot element: ${element.id}`);
+    });
+    
+    // Specifically disable the apply button
+    const applyButton = document.getElementById(`apply_tally---red--p${playerNum}`);
+    if (applyButton) {
+        applyButton.style.pointerEvents = "none";
+        applyButton.style.opacity = "0";
+        applyButton.style.visibility = "hidden";
+        console.log(`Disabled apply button: ${applyButton.id}`);
+    }
 }
 
 // Function to enable all buttons for a specific player
 function enablePlayerButtons(playerNum) {
-    const playerSuffix = playerNum === 1 ? "-p1" : "-p2";
-    const playerPrefix = playerNum === 1 ? "--one" : "--two";
+    console.log(`Enabling buttons for player ${playerNum}`);
     
-    // Enable all buttons with the player suffix (e.g., "-p1" or "-p2")
-    const playerSuffixButtons = document.querySelectorAll(`[id$="${playerSuffix}"]`);
-    playerSuffixButtons.forEach(button => {
-        button.style.pointerEvents = "auto";
-        button.style.opacity = "1";
+    // Enable all elements with IDs containing the player number
+    const allPlayerElements = document.querySelectorAll(`[id*="p${playerNum}"], [id*="${playerNum === 1 ? 'one' : 'two'}"]`);
+    allPlayerElements.forEach(element => {
+        element.style.pointerEvents = "auto";
+        element.style.opacity = "1";
+        console.log(`Enabled element: ${element.id}`);
     });
     
-    // Enable all buttons with the player prefix (e.g., "--one" or "--two")
-    const playerPrefixButtons = document.querySelectorAll(`[id*="${playerPrefix}"]`);
-    playerPrefixButtons.forEach(button => {
-        button.style.pointerEvents = "auto";
-        button.style.opacity = "1";
-    });
+    // The updateAvailableBalls function will handle specific game-state restrictions
 }
 
 // Function to switch players
 function switchPlayer(newPlayer) {
+    console.log(`Switching to player ${newPlayer}`);
     currentPlayer = newPlayer;
     
     // Update player number display
@@ -204,9 +450,11 @@ function switchPlayer(newPlayer) {
         player2Table.style.visibility = "hidden";
         player2Table.style.opacity = "0";
         
-        // Enable player 1 buttons, disable player 2 buttons
-        enablePlayerButtons(1);
+        // Disable all player 2 elements
         disablePlayerButtons(2);
+        
+        // Enable player 1 elements (updateAvailableBalls will handle specific restrictions)
+        enablePlayerButtons(1);
     } else {
         // Player 2 is at the table
         player1Table.style.visibility = "hidden";
@@ -214,13 +462,35 @@ function switchPlayer(newPlayer) {
         player2Table.style.visibility = "visible";
         player2Table.style.opacity = "1";
         
-        // Enable player 2 buttons, disable player 1 buttons
-        enablePlayerButtons(2);
+        // Disable all player 1 elements
         disablePlayerButtons(1);
+        
+        // Enable player 2 elements (updateAvailableBalls will handle specific restrictions)
+        enablePlayerButtons(2);
+    }
+    
+    // Determine what ball to shoot for based on game state
+    if (redClickCount < 15) {
+        // If there are reds left, always shoot for red first
+        shootingForRed = true;
+        console.log("Reds available - shooting for red");
+    } else if (remainingPoints <= 27) {
+        // In the final color sequence
+        shootingForRed = false;
+        console.log("Final color sequence - shooting for colors in order");
     }
     
     // Update available balls based on game state
     updateAvailableBalls();
+    
+    // Force a direct update to all tally elements for the inactive player
+    const inactivePlayer = currentPlayer === 1 ? 2 : 1;
+    const inactiveTallies = document.querySelectorAll(`[id^="tally"][id*="p${inactivePlayer}"]`);
+    inactiveTallies.forEach(tally => {
+        tally.style.pointerEvents = "none";
+        tally.style.opacity = "0.5";
+        console.log(`Forced disable of inactive tally: ${tally.id}`);
+    });
 }
 
 // Wait for DOM to be fully loaded before adding event listeners
@@ -828,37 +1098,56 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Add event listeners for miss buttons
     missP1.addEventListener("click", function() {
+        console.log("Player 1 miss button clicked");
+        
         // If player was shooting for a color (not in final sequence), reduce points
         if (!shootingForRed && redClickCount < 15) {
             // Reduce points by 7 (maximum possible color value)
             remainingPoints -= 7;
             pointsRemaining.textContent = remainingPoints;
+            console.log(`Reduced remaining points to ${remainingPoints} (missed color)`);
         }
         
         // Reset current break for player 1
         p1CurrentBreak = 0;
         lastBreakP1.textContent = "0";
+        console.log("Reset player 1 current break");
         
         // Force player 2 to shoot for red if there are reds left
         if (redClickCount < 15) {
             shootingForRed = true;
+            console.log("Player 2 will shoot for red (reds available)");
+        } else if (remainingPoints <= 27) {
+            // In the final color sequence
+            shootingForRed = false;
+            console.log("Player 2 will shoot for next color in sequence");
         }
+        
+        // Disable all player 1 elements
+        disablePlayerButtons(1);
         
         // Switch to player 2
         switchPlayer(2);
         
-        // Update available balls
-        updateAvailableBalls();
+        // Force a direct update to all tally elements for player 1
+        const player1Tallies = document.querySelectorAll('[id^="tally"][id*="p1"]');
+        player1Tallies.forEach(tally => {
+            tally.style.pointerEvents = "none";
+            tally.style.opacity = "0.5";
+            console.log(`Forced disable of player 1 tally: ${tally.id}`);
+        });
     });
     
     missP2.addEventListener("click", function() {
+        console.log("Player 2 miss button clicked");
+        
         // Only deduct points if player was shooting for a color (not in final sequence)
         if (!shootingForRed && redClickCount < 15) {
             // Reduce points by 7 (maximum possible color value)
             remainingPoints -= 7;
             pointsRemaining.textContent = remainingPoints;
+            console.log(`Reduced remaining points to ${remainingPoints} (missed color)`);
         }
-        // No deduction if shooting for a red
         
         // Reset current break for player 2
         p2CurrentBreak = 0;
@@ -866,17 +1155,31 @@ document.addEventListener("DOMContentLoaded", function() {
         if (lastBreakP2) {
             lastBreakP2.textContent = "0";
         }
+        console.log("Reset player 2 current break");
         
         // Force player 1 to shoot for red if there are reds left
         if (redClickCount < 15) {
             shootingForRed = true;
+            console.log("Player 1 will shoot for red (reds available)");
+        } else if (remainingPoints <= 27) {
+            // In the final color sequence
+            shootingForRed = false;
+            console.log("Player 1 will shoot for next color in sequence");
         }
+        
+        // Disable all player 2 elements
+        disablePlayerButtons(2);
         
         // Switch to player 1
         switchPlayer(1);
         
-        // Update available balls
-        updateAvailableBalls();
+        // Force a direct update to all tally elements for player 2
+        const player2Tallies = document.querySelectorAll('[id^="tally"][id*="p2"]');
+        player2Tallies.forEach(tally => {
+            tally.style.pointerEvents = "none";
+            tally.style.opacity = "0.5";
+            console.log(`Forced disable of player 2 tally: ${tally.id}`);
+        });
     });
 });
 
