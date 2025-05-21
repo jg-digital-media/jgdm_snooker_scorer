@@ -1203,7 +1203,23 @@ a#apply_tally---red--p1 {
 
 + And in the end, that's what worked. It gave me 2 helper functions `enablePlayerButtons()` and `disablePlayerButtons()` to control the buttons for each player which are triggered at the call of each instance of `switchPlayer()` or more specifically, when the miss buttons are triggered. So we can now switch between 2 players in turn based play when both of the players miss a pot attempt.
 
-+ `v1.0.7` - Game Development Status
++  `v1.0.7` - I added a couple of id attributes to the "breaks and snookers" element for each player to complete the visual turn based effect.
+
++ 
+
+```html
+
+<article class="breaks---and--snookers" id="player---breaks--p1">
+    
+    <div>Highest Break: <span class="highest---break" id="highest---break--p1">0</span></a></div>
+    <div>Last Break: <span class="last---break" id="last---break--p1">0</span></a></div>
+    <div class="snookers---required">Snookers Required: <span id="snookers---required--p1">0</span></div>
+    
+</article>
+
+```
+
++ `v1.0.8` - Game Development Status
 
    + Players commit no fouls
    + Player 1 Pots up to 15 Reds and 15 colours with misses now possible
