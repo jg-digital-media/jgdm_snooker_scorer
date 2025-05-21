@@ -1,6 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Last Updated: 20/05/2025 - 16:51`
++ `Last Updated: 21/05/2025 - 13:08`
 
 ## Sections
 
@@ -762,7 +762,7 @@ This application is built using the following technologies:
 ## Development
 [Back to Top](#sections)
 
-### Tasks - 87 completed items
+### Tasks - 92 completed items
 
 The development of this application is currently in progress.
 
@@ -909,6 +909,20 @@ The development of this application is currently in progress.
 
 + `COMPLETED: 20-05-2025` Implement the "miss" button for player 2.
 
++ `COMPLETED: 21-05-2025` Disable player 2 buttons when player 1 is at the table.
+
++ `COMPLETED: 21-05-2025` Disable player 1 buttons when player 2 is at the table.
+
++ `COMPLETED: 21-05-2025` Disable player 1 breaks and snookers element `.breaks---and--snookers` when player 2 is at the table.
+
++ `COMPLETED: 21-05-2025` Disable player 2 breaks and snookers element `.breaks---and--snookers` when player 1 is at the table.
+
++ `COMPLETED: 21-05-2025` Disable breaks and breaks and snookers element container when points remaining is at 0 (Player 1 and 2).
+
+
++ `TODO:` Disable all player buttons at frame end
+
+
 + `TODO:` "MISS!" button for player one should be fixed to disable `#tally---potted--red-p1` red 1 for player 1
 
 + `TODO:` Replicate functionality of player 1 in player 2.
@@ -919,11 +933,6 @@ The development of this application is currently in progress.
 
 + `TODO`: Last break for player 1 resets when player 1 misses a pot attempt.  Keep this number until the player makes successful pot after returning to the table.
 ayer 2. 
-
-
-+ `TODO:` Disable all player buttons at frame end
-+ `TODO:` Disable player 2 buttons when player 1 is at the table
-+ `TODO:` Disable player 1 buttons when player 2 is at the table
 
 + `TODO:` Stop counting highest and last break when `#points_remaining`is at 0 (Player 2).
 
@@ -1037,6 +1046,8 @@ resetButton.addEventListener("click", function(event) {
 + `2` - "Last Break" should not be reset to 0 until a player makes their first successful pot attempt after returning to the table. - `12-05-2025`
 
 + `3` - Ball potting tallies over player 2 ball icons by default. They must not be visible until the user of the application clicks the potted ball icon. `Resolved: 20-05-2025`
+
++ `4` - `#points_remaining` should not be less than 0. This bug occurs after the "MISS" button is clicked. This should not be possible when the table is cleared and the frame is over.
 
 ### Future Improvements
 
