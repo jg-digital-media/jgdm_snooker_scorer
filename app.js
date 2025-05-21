@@ -1,4 +1,4 @@
-console.log("app.js connected - 21-05-2023 - 16:33");
+console.log("app.js connected - 21-05-2023 - 17:02");
 
 // Set the points remaining to 147
 document.getElementById('points_remaining').textContent = '147';
@@ -25,12 +25,140 @@ let playerNumber, player1Table, player2Table, missP1, missP2, pointsRemaining;
 let redBallP1, yellowBallP1, greenBallP1, brownBallP1, blueBallP1, pinkBallP1, blackBallP1;
 let redTallyP1, yellowTallyP1, greenTallyP1, brownTallyP1, blueTallyP1, pinkTallyP1, blackTallyP1;
 let lastBreakP1, highestBreakP1, p1Score, applyRedTallyP1;
+let lastBreakP2, highestBreakP2, p2Score, applyRedTallyP2;
+
+// Function to disable all interactive elements when the frame is over
+function endFrame() {
+    console.log("Ending frame - disabling all interactive elements");
+    
+    // Disable all elements with pointer events
+    const allInteractiveElements = document.querySelectorAll("*");
+    allInteractiveElements.forEach(element => {
+        // Check if this is a potentially interactive element
+        const tagName = element.tagName.toLowerCase();
+        if (tagName === 'button' || tagName === 'a' || tagName === 'input' || 
+            tagName === 'select' || tagName === 'textarea' || 
+            element.id.includes('pot') || element.id.includes('tally') || 
+            element.id.includes('apply') || element.id.includes('miss')) {
+            
+            // Disable the element
+            element.style.pointerEvents = "none";
+            
+            // Reduce opacity for visual feedback, but only if it's a game control
+            if (element.id.includes('pot') || element.id.includes('tally') || 
+                element.id.includes('apply') || element.id.includes('miss')) {
+                element.style.opacity = "0.5";
+            }
+            
+            console.log(`Disabled element: ${element.id || element.tagName}`);
+        }
+    });
+    
+    // Specifically disable player break elements
+    const playerBreaksP1 = document.getElementById("player---breaks--p1");
+    const playerBreaksP2 = document.getElementById("player---breaks--p2");
+    
+    if (playerBreaksP1) {
+        playerBreaksP1.style.pointerEvents = "none";
+        playerBreaksP1.style.opacity = "0.5";
+        console.log("Disabled player 1 breaks element");
+    }
+    
+    if (playerBreaksP2) {
+        playerBreaksP2.style.pointerEvents = "none";
+        playerBreaksP2.style.opacity = "0.5";
+        console.log("Disabled player 2 breaks element");
+    }
+    
+    // Hide all apply buttons
+    const applyButtons = document.querySelectorAll('[id^="apply_tally"]');
+    applyButtons.forEach(button => {
+        button.style.visibility = "hidden";
+        button.style.opacity = "0";
+        console.log(`Hidden apply button: ${button.id}`);
+    });
+    
+    // Determine the winner
+    const winner = p1CurrentScore > p2CurrentScore ? 1 : (p2CurrentScore > p1CurrentScore ? 2 : "Tie");
+    console.log(`Winner: ${winner === "Tie" ? "Tie" : "Player " + winner}`);
+    
+    // Create a frame complete message with winner information
+    const frameOverMessage = document.createElement("div");
+    frameOverMessage.textContent = winner === "Tie" ? 
+        "Frame Complete - It's a Tie!" : 
+        `Frame Complete - Player ${winner} Wins!`;
+    
+    // Add score information
+    const scoreInfo = document.createElement("div");
+    scoreInfo.textContent = `Player 1: ${p1CurrentScore} | Player 2: ${p2CurrentScore}`;
+    scoreInfo.style.marginTop = "10px";
+    scoreInfo.style.fontSize = "18px";
+    frameOverMessage.appendChild(scoreInfo);
+    
+    // Add highest break information
+    const breakInfo = document.createElement("div");
+    breakInfo.textContent = `Highest Breaks - Player 1: ${p1HighestBreak} | Player 2: ${p2HighestBreak}`;
+    breakInfo.style.marginTop = "5px";
+    breakInfo.style.fontSize = "16px";
+    frameOverMessage.appendChild(breakInfo);
+    
+    // Add a new frame button
+    const newFrameButton = document.createElement("button");
+    newFrameButton.textContent = "Start New Frame";
+    newFrameButton.style.marginTop = "15px";
+    newFrameButton.style.padding = "10px 20px";
+    newFrameButton.style.fontSize = "16px";
+    newFrameButton.style.backgroundColor = "#4CAF50";
+    newFrameButton.style.color = "white";
+    newFrameButton.style.border = "none";
+    newFrameButton.style.borderRadius = "5px";
+    newFrameButton.style.cursor = "pointer";
+    newFrameButton.onclick = function() {
+        location.reload(); // Reload the page to start a new frame
+    };
+    frameOverMessage.appendChild(newFrameButton);
+    
+    // Style the message
+    frameOverMessage.style.position = "fixed";
+    frameOverMessage.style.top = "50%";
+    frameOverMessage.style.left = "50%";
+    frameOverMessage.style.transform = "translate(-50%, -50%)";
+    frameOverMessage.style.backgroundColor = "rgba(0, 0, 0, 0.9)";
+    frameOverMessage.style.color = "white";
+    frameOverMessage.style.padding = "30px";
+    frameOverMessage.style.borderRadius = "10px";
+    frameOverMessage.style.fontSize = "24px";
+    frameOverMessage.style.textAlign = "center";
+    frameOverMessage.style.zIndex = "1000";
+    frameOverMessage.style.boxShadow = "0 0 20px rgba(255, 255, 255, 0.3)";
+    
+    // Only add the message if it doesn't already exist
+    if (!document.getElementById("frame-over-message")) {
+        frameOverMessage.id = "frame-over-message";
+        document.body.appendChild(frameOverMessage);
+    }
+    
+    console.log("Frame complete - all elements disabled");
+}
 
 // Function to update which balls are enabled/disabled based on game state
 function updateAvailableBalls() {
     console.log("Updating available balls");
     console.log(`Current player: ${currentPlayer}, Shooting for red: ${shootingForRed}`);
     console.log(`Red count: ${redClickCount}, Remaining points: ${remainingPoints}`);
+    
+    // If there are no points remaining, end the frame
+    if (remainingPoints === 0) {
+        console.log("No points remaining - ending frame");
+        endFrame();
+        return;
+    } else {
+        // Remove the frame over message if it exists
+        const existingMessage = document.getElementById("frame-over-message");
+        if (existingMessage) {
+            existingMessage.remove();
+        }
+    }
     
     // Get all ball elements for both players
     const redBallP1 = document.getElementById("pot---red--one");
@@ -80,102 +208,6 @@ function updateAvailableBalls() {
     // Get the apply buttons
     const applyRedTallyP1 = document.getElementById("apply_tally---red--p1");
     const applyRedTallyP2 = document.getElementById("apply_tally---red--p2");
-    
-    // If there are no points remaining, disable all balls and buttons (frame is over)
-    if (remainingPoints === 0) {
-        console.log("Frame complete - disabling all balls, tallies, and buttons");
-        
-        // Disable all balls and tallies for player 1
-        if (redBallP1) {
-            redBallP1.style.pointerEvents = "none";
-            redBallP1.style.opacity = "0.5";
-        }
-        if (redTallyP1) {
-            redTallyP1.style.pointerEvents = "none";
-            redTallyP1.style.opacity = "0.5";
-        }
-        
-        colorBallsP1.forEach((ball, index) => {
-            if (ball) {
-                ball.style.pointerEvents = "none";
-                ball.style.opacity = "0.5";
-            }
-            if (colorTalliesP1[index]) {
-                colorTalliesP1[index].style.pointerEvents = "none";
-                colorTalliesP1[index].style.opacity = "0.5";
-            }
-        });
-        
-        // Disable all balls and tallies for player 2
-        if (redBallP2) {
-            redBallP2.style.pointerEvents = "none";
-            redBallP2.style.opacity = "0.5";
-        }
-        if (redTallyP2) {
-            redTallyP2.style.pointerEvents = "none";
-            redTallyP2.style.opacity = "0.5";
-        }
-        
-        colorBallsP2.forEach((ball, index) => {
-            if (ball) {
-                ball.style.pointerEvents = "none";
-                ball.style.opacity = "0.5";
-            }
-            if (colorTalliesP2[index]) {
-                colorTalliesP2[index].style.pointerEvents = "none";
-                colorTalliesP2[index].style.opacity = "0.5";
-            }
-        });
-        
-        // Hide apply buttons
-        if (applyRedTallyP1) {
-            applyRedTallyP1.style.visibility = "hidden";
-            applyRedTallyP1.style.opacity = "0";
-        }
-        if (applyRedTallyP2) {
-            applyRedTallyP2.style.visibility = "hidden";
-            applyRedTallyP2.style.opacity = "0";
-        }
-        
-        // Disable miss buttons
-        if (missP1) {
-            missP1.style.pointerEvents = "none";
-            missP1.style.opacity = "0.5";
-        }
-        if (missP2) {
-            missP2.style.pointerEvents = "none";
-            missP2.style.opacity = "0.5";
-        }
-        
-        // Display a message indicating the frame is over
-        const frameOverMessage = document.createElement("div");
-        frameOverMessage.textContent = "Frame Complete";
-        frameOverMessage.style.position = "fixed";
-        frameOverMessage.style.top = "50%";
-        frameOverMessage.style.left = "50%";
-        frameOverMessage.style.transform = "translate(-50%, -50%)";
-        frameOverMessage.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
-        frameOverMessage.style.color = "white";
-        frameOverMessage.style.padding = "20px";
-        frameOverMessage.style.borderRadius = "10px";
-        frameOverMessage.style.fontSize = "24px";
-        frameOverMessage.style.zIndex = "1000";
-        
-        // Only add the message if it doesn't already exist
-        if (!document.getElementById("frame-over-message")) {
-            frameOverMessage.id = "frame-over-message";
-            document.body.appendChild(frameOverMessage);
-        }
-        
-        console.log("Frame complete - table cleared!");
-        return;
-    } else {
-        // Remove the frame over message if it exists
-        const existingMessage = document.getElementById("frame-over-message");
-        if (existingMessage) {
-            existingMessage.remove();
-        }
-    }
     
     // Get the current player's balls and tallies
     const currentPlayerRedBall = currentPlayer === 1 ? redBallP1 : redBallP2;
