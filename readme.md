@@ -1,6 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Last Updated: 21/05/2025 - 13:08`
++ `Last Updated: 21/05/2025 - 17:09`
 
 ## Sections
 
@@ -762,7 +762,7 @@ This application is built using the following technologies:
 ## Development
 [Back to Top](#sections)
 
-### Tasks - 92 completed items
+### Tasks - 94 completed items
 
 The development of this application is currently in progress.
 
@@ -919,11 +919,11 @@ The development of this application is currently in progress.
 
 + `COMPLETED: 21-05-2025` Disable breaks and breaks and snookers element container when points remaining is at 0 (Player 1 and 2).
 
++ `COMPLETED: 21-05-2025` **FIX: Ball Icon Tallies buttons are clickable again even when greyed out when player 1 comes back to the table.  ```#pot---miss--two```
+
++ `COMPLETED: 21-05-2025:` "MISS!" button for player one should be fixed to disable `#tally---potted--red-p1` red 1 for player 1
 
 + `TODO:` Disable all player buttons at frame end
-
-
-+ `TODO:` "MISS!" button for player one should be fixed to disable `#tally---potted--red-p1` red 1 for player 1
 
 + `TODO:` Replicate functionality of player 1 in player 2.
 
@@ -939,6 +939,10 @@ ayer 2.
 + `TODO:` Stop counting highest and last break when `#points_remaining`is at 0 (Player 1).
 
 + `TODO:` Disable foul and miss buttons when points remaining is at 0 (Player 2)
+
+
++ `TODO:` "Frame Complete" Tooltip can probably be dismissed automatically after a given number of seconds - e.g. 5 seconds.
+
 
 + `TODO:` Track number of times Red ball has been potted `#pot---red--one` (no more than 15)
 + `TODO:` Track number of times Yellow ball has been potted `#pot---red--yellow` (no more than 16)
@@ -1047,7 +1051,9 @@ resetButton.addEventListener("click", function(event) {
 
 + `3` - Ball potting tallies over player 2 ball icons by default. They must not be visible until the user of the application clicks the potted ball icon. `Resolved: 20-05-2025`
 
-+ `4` - `#points_remaining` should not be less than 0. This bug occurs after the "MISS" button is clicked. This should not be possible when the table is cleared and the frame is over.
++ `4` - `#points_remaining` should not be less than 0. This bug occurs after the "MISS" button is clicked. This should not be possible when the table is cleared and the frame is over. `Resolved: 20-05-2025`
+
++ `5` - Every time you click the Player 1 "MISS" button, it becomes possible to click the greyed out colour buttons to tally points for that colour. `Resolved: 20-05-2025`
 
 ### Future Improvements
 
@@ -1219,7 +1225,27 @@ a#apply_tally---red--p1 {
 
 ```
 
-+ `v1.0.8` - Game Development Status
++ `v1.0.8` - Well, I had hoped to have made a bit more progress and moved on to making player 2 able to do the things player 1 can. But while I was working on that I noticed another bug.
+
++ After I clicked the "MISS" button for player 2, even though the player 1 buttons were greyed, I noticed that clicking the buttons incremented the ball potted count and accordingly assigned points to the player. A genuine bug.
+
++ From the AI `The solution involved creating parallel arrays of ball elements and tally elements, then ensuring that whenever a ball was disabled, its corresponding tally was also disabled (and vice versa for enabling). We also created a new helper function `enableOnlyBallAndTally()` to handle the special case of the final color sequence where only one color should be available at a time.`
+
++ I knew at some point there would be a radical refactoring of the code we wrote so far. But I didn't think it'd be this soon. We have new methods we hadn't previously used.  Is it a bad thing? Not necessarily but it does make me super aware of the kind of work that I'm doing; how big this application is and how hard it is to maintain even with the Aid of AI.  
+
++ Hopefully soon I can get on again and work on expanding the turn based play between the 2 players.
+
++ `v1.0.9` - So much has happened from one update to the next that I've decided to push this to its own update report. 
+
++ I did thimk it was imported to ensure that disabling all buttons when the table was cleared....
+
+but we also now have a new feature to the app that I wasn't expecting but felt it was necessary to keep in.  First,  Cursor AI added in a frame complete" tooltip that appears when poins remaining is at 0 (i.e. a player has cleared the table).
+
++ It then added more detail to this tooltip. That, again I didn't ask for. All I wanted was button and  disabling but clearly Cursor AI decided I wamted something else.  It now shows me which player won the frame, the final scores for both players, and the highest break for each player.
+
++ These are all fine. They're good things to have but for my part they are unplanned but too good to just discard.
+
++ `v1.0.10` - Game Development Status
 
    + Players commit no fouls
    + Player 1 Pots up to 15 Reds and 15 colours with misses now possible
@@ -1237,13 +1263,13 @@ a#apply_tally---red--p1 {
    + Player 2 can "play" a 147 maximum break if player 1 misses before potting another ball.
    + Players 1 and 2 start sharing the points available to be played for as they now compete for points. 
 
-+  This feels like a big part of the challenge and a lot could go wrong and indeed has gone wrong in meeting those goals. I'm going to try planning a new AI prompt to help me get this right.
++  This feels like a big part of the challenge and a lot could go wrong and indeed has gone wrong in meeting those goals. I'm going to try planning a new AI prompt to help me get this right, becase its clear this is an undertaking that requires a big refactor.
 
 ```
 
 We are going to try and replicate the what Player 1 currently does with Player 2.
 
-This means we'll need to make sure that player 2 is at the table after a miss or foul by player 1 and can shoot for a red ball (if there is one available). If there are no reds left, they shoot for the first colour ball available in the colour sequence (Yellow, Green, Brown, Blue, Pink, Black).
+This means we'll need to make sure that when player 2 comes to the table after a miss or foul by player 1, that player 2 shoots for a red ball (if there is one available). If there are no reds left, they shoot for the first colour ball available in the colour sequence (Yellow, Green, Brown, Blue, Pink, Black).
 
 ```
 
