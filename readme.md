@@ -1,6 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Last Updated: 21/05/2025 - 14:05`
++ `Last Updated: 22/05/2025 - 16:51`
 
 ## Sections
 
@@ -923,9 +923,21 @@ The development of this application is currently in progress.
 
 + `COMPLETED: 21-05-2025:` "MISS!" button for player one should be fixed to disable `#tally---potted--red-p1` red 1 for player 1
 
-+ `TODO:` Disable all player buttons at frame end
++ `COMPLETED: 22-05-2025` Disable all player buttons at frame end
 
 + `TODO:` Replicate functionality of player 1 in player 2.
+
+    + `TODO:` Tally 1 red button (`#pot---red--two`) on player 2 to indicate 1 red ball potted for player 2.
+    + `TODO:` Show "apply text" (`#apply_tally---red--p2`) content for player 2 to indicate more red balls could be potted in the same shot.
+    + `TODO:` Click black ball icon `#tally---potted--black-p1` (Player 1) to score 7 points
+    + `TODO:` Click pink ball icon `#tally---potted--pink-p1` (Player 1) to score 6 points
+    + `TODO:` Click blue ball icon `#tally---potted--blue-p1` (Player 1) to score 5 points
+    + `TODO:` Click brown ball icon `#tally---potted--brown-p1` (Player 1) to score 4 points
+    + `TODO:` Click green ball icon `#tally---potted--green-p1` (Player 1) to score 3 points
+    + `TODO:` Click yellow ball icon `#tally---potted--yellow-p1` (Player 1) to score 2 points
+    + `TODO:` Add points to highest break and last break for player 2 for each successful pot attempt.
+    + `TODO:` Apply successful red ball shot(s) and then shoot for a colour ball.
+    + `TODO:` Player 2 misses a pot attempt.
 
 + `TODO:` Next player reverts to shooting for a red ball after a foul. 
 + `TODO:` Revert to shooting for a red ball after a foul. 
@@ -1237,7 +1249,7 @@ a#apply_tally---red--p1 {
 
 + `v1.0.9` - So much has happened from one update to the next that I've decided to push this to its own update report. 
 
-+ I did thimk it was imported to ensure that disabling all buttons when the table was cleared....
++ I did think it was imported to ensure that disabling all buttons when the table was cleared....
 
 but we also now have a new feature to the app that I wasn't expecting but felt it was necessary to keep in.  First,  Cursor AI added in a frame complete" tooltip that appears when poins remaining is at 0 (i.e. a player has cleared the table).
 
@@ -1263,7 +1275,7 @@ but we also now have a new feature to the app that I wasn't expecting but felt i
    + Player 2 can "play" a 147 maximum break if player 1 misses before potting another ball.
    + Players 1 and 2 start sharing the points available to be played for as they now compete for points. 
 
-+  This feels like a big part of the challenge and a lot could go wrong and indeed has gone wrong in meeting those goals. I'm going to try planning a new AI prompt to help me get this right, becase its clear this is an undertaking that requires a big refactor.
++  I've been flitting around the edges of doing this for a while now feels like a big part of the project. A lot could go wrong and indeed has gone wrong in meeting those goals. My first approach was to try planning a new AI prompt because it seemed to me this was an undertaking that requires a big refactor.  I thought that trying this approach might help me in the way that ... did.
 
 ```
 
@@ -1285,4 +1297,8 @@ last---break--p2
 
 ```
 
-+ Do we leave it there? Or do we say something in the prompt about how the scorer app will track the points available to be scored for each player? and how they will compete for points?
++ And it was a case of "Do we leave it there? Or do we say something in the prompt about how the scorer app will track the points available to be scored for each player? and how they will compete for points?"
+
++ Then I started to wonder if I had been doing this all wrong the wrong way? Because what I was trying to do was essentially trying to do doing big massive prompt and going ahead with multiple requests to `claude-3.7.sonnet` to fix many bugs. 
+
++ But I find that this is an all consuming approach Maybe I just need to build 2nd player from the ground up; to be more methodical and breakdown the job into smaller tasks, like I was doing before. Let me try this for shooting for a red ball before I move on.
