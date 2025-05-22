@@ -1,6 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Last Updated: 21/05/2025 - 17:09`
++ `Last Updated: 21/05/2025 - 14:05`
 
 ## Sections
 
@@ -1267,9 +1267,21 @@ but we also now have a new feature to the app that I wasn't expecting but felt i
 
 ```
 
-We are going to try and replicate the what Player 1 currently does with Player 2.
+We are going to try and replicate the how Player 1 works right now with the second player. Right now the only interaction between Player 1 and Player 2 is when a miss occurs.
 
-This means we'll need to make sure that when player 2 comes to the table after a miss or foul by player 1, that player 2 shoots for a red ball (if there is one available). If there are no reds left, they shoot for the first colour ball available in the colour sequence (Yellow, Green, Brown, Blue, Pink, Black).
+This means we'll need to make sure that when player 2 comes to the table after a miss or foul by player 1, that player 2 shoots for a red ball (if there is one available). It will increment tallies of the number of times it is potted, like before. The tallies for player 1 and 2 should be independent of each other. There shouldn't be any need to calculate how any balls are available for each player. 
+
+If the points remaining are being appropriately deducted. But we do need to take into account that if there are no reds left, they shoot for the first colour ball available in the colour sequence (Yellow, Green, Brown, Blue, Pink, Black).
+
+Elements affected: 
+
+pot---red--two
+apply_tally---red--p2 increments by 1
+
+p2---score increases by given score
+
+highest---break--p2
+last---break--p2
 
 ```
 
