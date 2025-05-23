@@ -1,6 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Last Updated: 22/05/2025 - 16:51`
++ `Last Updated: 23/05/2025 - 12:31`
 
 ## Sections
 
@@ -762,7 +762,7 @@ This application is built using the following technologies:
 ## Development
 [Back to Top](#sections)
 
-### Tasks - 94 completed items
+### Tasks - 96 completed items
 
 The development of this application is currently in progress.
 
@@ -927,7 +927,7 @@ The development of this application is currently in progress.
 
 + `TODO:` Replicate functionality of player 1 in player 2.
 
-    + `TODO:` Tally 1 red button (`#pot---red--two`) on player 2 to indicate 1 red ball potted for player 2.
+    + `COMPLETED: 23-05-2025:` Tally 1 red button (`#pot---red--two`) on player 2 to indicate 1 red ball potted for player 2.
     + `TODO:` Show "apply text" (`#apply_tally---red--p2`) content for player 2 to indicate more red balls could be potted in the same shot.
     + `TODO:` Click black ball icon `#tally---potted--black-p1` (Player 1) to score 7 points
     + `TODO:` Click pink ball icon `#tally---potted--pink-p1` (Player 1) to score 6 points
@@ -1067,6 +1067,8 @@ resetButton.addEventListener("click", function(event) {
 
 + `5` - Every time you click the Player 1 "MISS" button, it becomes possible to click the greyed out colour buttons to tally points for that colour. `Resolved: 20-05-2025`
 
++ `6` - BUG: Player 1 clicks "MISS" without applying their Redball pot(s). 
+
 ### Future Improvements
 
 + Identify how many points ahead or behind a player is - changing depending on point score - to be compared with the points available.
@@ -1074,10 +1076,15 @@ resetButton.addEventListener("click", function(event) {
     + Points Remaining: 147/147 - 1
     + Points Behind: 147/45 - 2.5   
 
-### Comments
-[Back to Top](#sections)
+### Comments 
 
-+ `v1.0.0` - This is probably the most complex and involving application I've ever got myself into. After all the planning I've done and is still to be done I'm now left with trying to decide where and how to start. Because one thing I do will effect the next thing at various times in the weeks and months to come. Several things link together. As an example. The user clicks the Red call icon for player 1. This action effects many moving parts. 1. The player 1 score is increased by 1. 2. The points remaining is reduced by 1. 3. The last break is increased by 1. 4. The highest break is increased by 1. 5. A number 1 is added to the red ball representing the number of times that player 1 has potted a red ball.
+[Back to Sections](#sections)
+
+[v1.0.0](#v100) --- [v1.0.1](#v101) --- [v1.0.2](#v102) --- [v1.0.3](#v103) --- [v1.0.4](#v104) --- [v1.0.5](#v105) --- [v1.0.6](#v106) --- [v1.0.7](#v107) --- [v1.0.8](#v108) --- [v1.0.9](#v109) --- [v1.0.10](#v1010)
+ 
+#### v1.0.0
+
++ `v100` - This is probably the most complex and involving application I've ever got myself into. After all the planning I've done and is still to be done I'm now left with trying to decide where and how to start. Because one thing I do will effect the next thing at various times in the weeks and months to come. Several things link together. As an example. The user clicks the Red ball icon for player 1. This action effects many moving parts. 1. The player 1 score is increased by 1. 2. The points remaining is reduced by 1. 3. The last break is increased by 1. 4. The highest break is increased by 1. 5. A number 1 is added to the red ball representing the number of times that player 1 has potted a red ball.
 
 + And since we're representing a potted ball, player 1 remains at the table and in the game; they will now be shooting for a colour ball.  
 
@@ -1093,11 +1100,23 @@ resetButton.addEventListener("click", function(event) {
   + `#p1---score` - The Total Scored by Player 1 which is the total accumulation of breaks and scored and penalty points given
   + `#points_remaining` - The number of points remaining in the game
 
+[Back to Top](#comments)
+
+#### v1.0.1
+
 + `v1.0.1` - I've got as far as implementing the UX feature of indicating which balls player 1 has potted and how many times that ball as been potted. I've also updated the scores in each turn for the total player score; the last break made and the highest break. 
 
 + All of this, assumes that the player has not scored 2 reds in a row, has not missed a shot and goes all the way to a 147 break. We haven't yet thought about the turn based nature of this app. There's the whole business to come of handling what happens when the opponent player comes to the table.
 
+[Back to Top](#comments)
+
+#### v1.0.2
+
 + `v1.0.2` - I've added a link to the about page on the version number in the footer element and added some initial copy for about.php page.  Also I've created a "Re-rack" Table function to reset the game at any time without the need to use user-agent refresh buttons.
+
+[Back to Top](#comments)
+
+#### v1.0.3
 
 + `v1.0.3` - Well, it's been a bit of a day (`12-05-2025`) trying to start getting some turned based play working with this app. But... for now, I've made a little achievement by gettin turn play working by switching between the red and the yellow ball. The colour sequence does stop working after the green ball which is a bug that needs looking at. 
 
@@ -1112,6 +1131,10 @@ resetButton.addEventListener("click", function(event) {
    + Can operate a 147 maximum break
    + Cannot recreate a situation where a player score more than one red in the same shot
    + Cannot shoot for any more balls or foul buttons when the points remaining `#points_remaining` is at 0
+
+[Back to Top](#comments)
+
+#### v1.0.4
 
 + `v1.0.4` - So we've come to the point now where we've got the scoring system working to a certain degree. To the degree that a range of reds and colours can be potted, minus any eventuality where the second player gets to the table. Perversley we haven't yet taken into account the common scenario where the player doesn't pot anything on their break (A "miss"). So soon we'll have to open up the turn based place to bring player 2 into play. 
 
@@ -1142,6 +1165,10 @@ a#apply_tally---red--p1 {
 
 + I'd also like to attempt to differentiate between the number of times reds have been legally potted in a given shot as opposed to the number of reds that have *actually* been potted, which is an important distinction. For example a player might pot 2 reds in one shot, which is legal.  But that would then take the player to 15 reds in 14 legal pots.
 
+[Back to Top](#comments)
+
+#### v1.0.5
+
 + `v1.0.5` - In Snooker, You only "lock in" the actual loss once you finish reds and see how many colour slots we never got to use. But for the purposes of this app, we are calculating the points remaining after every colour proceeeding a red ball. What this means is that 2 reds in a single shot will be counted as 2 points for a red and deducts only 2 from the remaining points. 
 
 + This part has taken a lot of work. But I think I've worked out a solution that works well for handling multi-red shots. That works because scores of 2 or more of a red ball when shooting for red is a legal shot.  
@@ -1149,6 +1176,10 @@ a#apply_tally---red--p1 {
 + I had thought of trying to force this change after the last red and colour combination but I couldn't generate a solution without causing too many other bugs and issues in the script.
 
 + Finally for this part, I've modified the "apply" button to only show when the player is shooting for a red ball. It's a not needed when shooting for a colour and otherwise becomes a distraction.
+
+[Back to Top](#comments)
+
+#### v1.0.6
 
 + `v1.0.6` - Working on the "MISS" button and implementing the beginnings of turn based play between the 2 players.
 
@@ -1221,6 +1252,10 @@ a#apply_tally---red--p1 {
 
 + And in the end, that's what worked. It gave me 2 helper functions `enablePlayerButtons()` and `disablePlayerButtons()` to control the buttons for each player which are triggered at the call of each instance of `switchPlayer()` or more specifically, when the miss buttons are triggered. So we can now switch between 2 players in turn based play when both of the players miss a pot attempt.
 
+[Back to Top](#comments)
+
+#### v1.0.7
+
 +  `v1.0.7` - I added a couple of id attributes to the "breaks and snookers" element for each player to complete the visual turn based effect.
 
 + 
@@ -1237,6 +1272,8 @@ a#apply_tally---red--p1 {
 
 ```
 
+#### v1.0.8
+
 + `v1.0.8` - Well, I had hoped to have made a bit more progress and moved on to making player 2 able to do the things player 1 can. But while I was working on that I noticed another bug.
 
 + After I clicked the "MISS" button for player 2, even though the player 1 buttons were greyed, I noticed that clicking the buttons incremented the ball potted count and accordingly assigned points to the player. A genuine bug.
@@ -1247,6 +1284,10 @@ a#apply_tally---red--p1 {
 
 + Hopefully soon I can get on again and work on expanding the turn based play between the 2 players.
 
+[Back to Top](#comments)
+
+
+#### v1.0.9 
 + `v1.0.9` - So much has happened from one update to the next that I've decided to push this to its own update report. 
 
 + I did think it was imported to ensure that disabling all buttons when the table was cleared....
@@ -1257,25 +1298,32 @@ but we also now have a new feature to the app that I wasn't expecting but felt i
 
 + These are all fine. They're good things to have but for my part they are unplanned but too good to just discard.
 
-+ `v1.0.10` - Game Development Status
+[Back to Top](#comments)
+
+#### v1.0.10
+
+
++  Game Development Status
 
    + Players commit no fouls
+   + Players can miss pots
    + Player 1 Pots up to 15 Reds and 15 colours with misses now possible
-   + Is able to click or press for up to 15 red balls and as many missed shots for a colour before getting to the colour sequence
-   + Can go through the colour sequence at 27 points remaining `#points_remaining`.
+   + Player 1 is able to click or press for up to 15 red balls and as many missed shots for a colour before getting to the colour sequence
+   + Player 1 can go through the colour sequence at 27 points remaining `#points_remaining`.
    + Player 1 can "play" a 147 maximum break.
-   + Player 1 cannot shoot for any more balls or foul buttons when the points remaining `#points_remaining` is at 0 #
+   + Player 1 cannot shoot for any more balls or foul buttons when the points remaining `#points_remaining` is at 0
 
-+ We now have to get player 2 into the game and functioning in the same way that player 1 now does. So we have to figure out how to replicate the functionality of player 1 in player 2.
++ We now have to bring Player 2 into the game and functioning in the same way that player 1 now does. So we have to figure out how to replicate the functionality of player 1 in player 2.
 
 + This means
-   + Player 2 is at the table after a miss or foul by player 1
-   + Player 2 shoots for a red ball first if there is a red ball left on the table
-   + Player 2 shoots for a red and then a colour ball until they miss
+   + Player 2 coming to the table after a miss or foul by player 1
+   + Player 2 will shoot for a red ball first if there is a red ball left on the table
+   + Player 2 will shoot for a red and then a colour ball until they miss; bringing player 1 into the game
    + Player 2 can "play" a 147 maximum break if player 1 misses before potting another ball.
+   + Player 2 scoring points will add to the total for the last break and highest break for player 2.
    + Players 1 and 2 start sharing the points available to be played for as they now compete for points. 
 
-+  I've been flitting around the edges of doing this for a while now feels like a big part of the project. A lot could go wrong and indeed has gone wrong in meeting those goals. My first approach was to try planning a new AI prompt because it seemed to me this was an undertaking that requires a big refactor.  I thought that trying this approach might help me in the way that ... did.
++  I've been flitting around the edges of doing this for a while now feels like a big part of the project where a lot could go wrong and indeed has gone wrong in meeting those goals. My first approach was to try planning a new AI prompt because it seemed to me this was an undertaking that requires a big refactor. I thought that trying this approach might help me in the way that element interactivity did.
 
 ```
 
@@ -1299,6 +1347,10 @@ last---break--p2
 
 + And it was a case of "Do we leave it there? Or do we say something in the prompt about how the scorer app will track the points available to be scored for each player? and how they will compete for points?"
 
-+ Then I started to wonder if I had been doing this all wrong the wrong way? Because what I was trying to do was essentially trying to do doing big massive prompt and going ahead with multiple requests to `claude-3.7.sonnet` to fix many bugs. 
++ Then I started to wonder if I had been doing this all wrong the wrong way? Because what I was trying to do was essentially trying to do doing big massive prompt to CursorAI `claude-3.7.sonnet` that tried to cover many bases and fix many bugs. 
 
-+ But I find that this is an all consuming approach Maybe I just need to build 2nd player from the ground up; to be more methodical and breakdown the job into smaller tasks, like I was doing before. Let me try this for shooting for a red ball before I move on.
++ I find that this is an all consuming approach. Maybe I just need to build 2nd player from the ground up; to be more methodical and breakdown the job into smaller tasks, like I was doing before. Let me try this for shooting for a red ball before I move on.
+
++ At the end of this iteration, I've got player 2 shooting for a red ball which increments the tally for player 2 red ball by 1 and makes the apply button for player 2 red ball visible.
+
+[Back to Top](#comments)
