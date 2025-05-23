@@ -1,4 +1,4 @@
-console.log("app.js connected - 23-05-2025 - 11:19");
+console.log("app.js connected - 23-05-2025 - 12:32");
 
 // Set the points remaining to 147
 document.getElementById('points_remaining').textContent = '147';
@@ -1213,6 +1213,63 @@ document.addEventListener("DOMContentLoaded", function() {
             console.log(`Forced disable of player 2 tally: ${tally.id}`);
         });
     });
+
+    // Direct event listener just for player 2's red ball
+    const setupPlayer2RedBall = function() {
+        console.log("Setting up player 2 red ball");
+        
+        // Get the red ball element
+        const redBall = document.getElementById("pot---red--two");
+        
+        if (redBall) {
+            console.log("Found player 2 red ball element");
+            
+            // Add a simple click handler
+            redBall.addEventListener("click", function() {
+                console.log("Player 2 red ball clicked");
+                
+                // Get the tally element
+                const tally = document.getElementById("tally---potted--red-p2");
+                
+                if (tally) {
+                    // Make it visible
+                    tally.style.visibility = "visible";
+                    tally.style.opacity = "1";
+                    
+                    // Get current value or default to 0
+                    let currentVal = parseInt(tally.textContent);
+                    if (isNaN(currentVal)) {
+                        currentVal = 0;
+                    }
+                    
+                    // Increment it
+                    currentVal++;
+                    
+                    // Update the display
+                    tally.textContent = currentVal;
+                    console.log(`Incremented player 2 red tally to ${currentVal}`);
+                    
+                    // Show the apply button
+                    const applyButton = document.getElementById("apply_tally---red--p2");
+                    if (applyButton) {
+                        applyButton.style.visibility = "visible";
+                        applyButton.style.opacity = "1";
+                        applyButton.style.pointerEvents = "auto";
+                        console.log("Made apply button visible");
+                    }
+                } else {
+                    console.log("Could not find player 2 red tally element");
+                }
+            });
+            
+            console.log("Added click handler to player 2 red ball");
+        } else {
+            console.log("Could not find player 2 red ball element");
+        }
+    };
+
+    // Run this setup after a short delay to ensure DOM is fully loaded
+    setTimeout(setupPlayer2RedBall, 1000);
 });
 
 /* document.addEventListener("DOMContentLoaded", function() {
