@@ -1,7 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Last Updated: 23/05/2025 - 12:31`
-
++ `Last Updated: 29/05/2025 - 17:03`
 ## Sections
 
 [Intro](#intro
@@ -762,7 +761,7 @@ This application is built using the following technologies:
 ## Development
 [Back to Top](#sections)
 
-### Tasks - 96 completed items
+### Tasks - 97 completed items
 
 The development of this application is currently in progress.
 
@@ -928,7 +927,8 @@ The development of this application is currently in progress.
 + `TODO:` Replicate functionality of player 1 in player 2.
 
     + `COMPLETED: 23-05-2025:` Tally 1 red button (`#pot---red--two`) on player 2 to indicate 1 red ball potted for player 2.
-    + `TODO:` Show "apply text" (`#apply_tally---red--p2`) content for player 2 to indicate more red balls could be potted in the same shot.
+    + `COMPLETED: 29-05-2025:` Show "apply" link (`#apply_tally---red--p2`) for player 2 to indicate more red balls could be potted in the same shot.
+    + `TODO:` clicking `#apply_tally---red--p2` increments the tally for player 2 red ball by 1; adds 1 point to `last---break--p2` and `highest---break--p2`. Reduces `#points_remaining` by 1 point. Adds 1 to `red---tally--p2` and the number red balls in the frame that have been potted.
     + `TODO:` Click black ball icon `#tally---potted--black-p1` (Player 1) to score 7 points
     + `TODO:` Click pink ball icon `#tally---potted--pink-p1` (Player 1) to score 6 points
     + `TODO:` Click blue ball icon `#tally---potted--blue-p1` (Player 1) to score 5 points
@@ -1286,8 +1286,8 @@ a#apply_tally---red--p1 {
 
 [Back to Top](#comments)
 
-
 #### v1.0.9 
+
 + `v1.0.9` - So much has happened from one update to the next that I've decided to push this to its own update report. 
 
 + I did think it was imported to ensure that disabling all buttons when the table was cleared....
@@ -1301,7 +1301,6 @@ but we also now have a new feature to the app that I wasn't expecting but felt i
 [Back to Top](#comments)
 
 #### v1.0.10
-
 
 +  Game Development Status
 
@@ -1354,3 +1353,7 @@ last---break--p2
 + At the end of this iteration, I've got player 2 shooting for a red ball which increments the tally for player 2 red ball by 1 and makes the apply button for player 2 red ball visible.
 
 [Back to Top](#comments)
+
+#### v1.0.11
+
++ There's no way around it. Introducing the second player into the game introduces so many other pressure points. And every attempt I've made to do it so far as ... not so much been a failure... but has introduced numerous bugs.  So now it's a case of committing to an action and working through those bugs. And I've since accepted that the code is more bloated than I would have liked. The code for player 1, working differently than player 2 because now there *are* 2 players there are more variables (or moving parts) to keep track of.
