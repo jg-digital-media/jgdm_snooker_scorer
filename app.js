@@ -1,4 +1,4 @@
-console.log("app.js connected - 23-05-2025 - 12:32");
+console.log("app.js connected - 30-05-2025 - 11:18");
 
 // Set the points remaining to 147
 document.getElementById('points_remaining').textContent = '147';
@@ -1270,6 +1270,102 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Run this setup after a short delay to ensure DOM is fully loaded
     setTimeout(setupPlayer2RedBall, 1000);
+
+    // Function to handle the apply button click for player 2
+    function handlePlayer2ApplyRedTally() {
+        console.log("Player 2 apply red tally function called");
+        
+        // Get the apply button
+        const applyButton = document.getElementById("apply_tally---red--p2");
+        
+        if (applyButton) {
+            // Remove any existing event listeners
+            applyButton.replaceWith(applyButton.cloneNode(true));
+            
+            // Get the new element after replacing
+            const newApplyButton = document.getElementById("apply_tally---red--p2");
+            
+            // Add click event
+            newApplyButton.addEventListener("click", function(event) {
+                event.preventDefault(); // Prevent default link behavior
+                console.log("Player 2 apply button clicked");
+                
+                // 1. Update player 2's score
+                const scoreElement = document.getElementById("p2---score");
+                if (scoreElement) {
+                    let score = parseInt(scoreElement.textContent);
+                    if (isNaN(score)) score = 0;
+                    score += 1;
+                    scoreElement.textContent = score;
+                    p2CurrentScore = score;
+                    console.log(`Updated player 2 score to ${score}`);
+                }
+                
+                // 2. Update player 2's break
+                const breakElement = document.getElementById("last---break--p2");
+                if (breakElement) {
+                    let currentBreak = parseInt(breakElement.textContent);
+                    if (isNaN(currentBreak)) currentBreak = 0;
+                    currentBreak += 1;
+                    breakElement.textContent = currentBreak;
+                    p2CurrentBreak = currentBreak;
+                    console.log(`Updated player 2 break to ${currentBreak}`);
+                }
+                
+                // 3. Update highest break if needed
+                const highestBreakElement = document.getElementById("highest---break--p2");
+                if (highestBreakElement) {
+                    if (p2CurrentBreak > p2HighestBreak) {
+                        p2HighestBreak = p2CurrentBreak;
+                        highestBreakElement.textContent = p2HighestBreak;
+                        console.log(`Updated player 2 highest break to ${p2HighestBreak}`);
+                    }
+                }
+                
+                // 4. Update points remaining
+                const pointsRemainingElement = document.getElementById("points_remaining");
+                if (pointsRemainingElement) {
+                    remainingPoints -= 1;
+                    pointsRemainingElement.textContent = remainingPoints;
+                    console.log(`Updated points remaining to ${remainingPoints}`);
+                }
+                
+                // 5. Update red tally for player 2
+                const redTallyP2 = document.getElementById("red---tally--p2");
+                if (redTallyP2) {
+                    let currentRedTally = parseInt(redTallyP2.textContent);
+                    if (isNaN(currentRedTally)) currentRedTally = 0;
+                    currentRedTally += 1;
+                    redTallyP2.textContent = currentRedTally;
+                    console.log(`Updated player 2 red tally to ${currentRedTally}`);
+                }
+                
+                // 6. Update global red click count (total reds potted in frame)
+                redClickCount += 1;
+                console.log(`Updated total red click count to ${redClickCount}`);
+                
+                // 7. Hide the apply button
+                newApplyButton.style.visibility = "hidden";
+                newApplyButton.style.opacity = "0";
+                
+                // 8. Update game state
+                shootingForRed = false;
+                lastBallWasRed = true;
+                
+                // 9. Make color balls available
+                makeColorBallsAvailableForPlayer2();
+                
+                console.log("Player 2 now shooting for color");
+            });
+            
+            console.log("Added click handler to player 2 apply button");
+        } else {
+            console.log("Could not find player 2 apply button");
+        }
+    }
+
+    // Call the function immediately
+    handlePlayer2ApplyRedTally();
 });
 
 /* document.addEventListener("DOMContentLoaded", function() {
