@@ -1,6 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Last Updated: 30/05/2025 - 13:44`
++ `Last Updated: 30/05/2025 - 15:05`
 ## Sections
 
 [Intro](#intro
@@ -929,6 +929,13 @@ The development of this application is currently in progress.
     + `COMPLETED: 23-05-2025:` Tally 1 red button (`#pot---red--two`) on player 2 to indicate 1 red ball potted for player 2.
     + `COMPLETED: 29-05-2025:` Show "apply" link (`#apply_tally---red--p2`) for player 2 to indicate more red balls could be potted in the same shot.
     + `COMPLETED: 30-05-2025:` clicking `#apply_tally---red--p2` increments the tally for player 2 red ball by 1; adds 1 point to `last---break--p2` and `highest---break--p2`. Reduces `#points_remaining` by 1 point. Adds 1 to `red---tally--p2` 
+
+    + `TODO:` Shoot attempt - Colour Ball Yellow - player 2
+        + `TODO:` Reduces `#points_remaining` by 7
+        + `TODO:` Adds 1 to yellow ball `#tally---potted--black-p2`
+        + `TODO:` Increment last break tally by 2 `#last---break--p2`
+        + `TODO:` Adds 7 to highest break `#highest---break--p2`    
+        + `TODO:` Increments text content 1 to yellow ball `#tally---potted--yellow-p2`
  
     + `TODO:` Take into account the number red balls in the frame that have been potted - by both players. They need to be incremented independently of each other, but the tallies never be allowed to go above 15 clicks between them. 
 
@@ -942,6 +949,8 @@ The development of this application is currently in progress.
     + `TODO:` Add points to highest break and last break for player 2 for each successful pot attempt.
     + `TODO:` Apply successful red ball shot(s) and then shoot for a colour ball.
     + `TODO:` Player 2 misses a pot attempt.
+
+
 
 + `TODO:` Next player reverts to shooting for a red ball after a foul. 
 + `TODO:` Revert to shooting for a red ball after a foul. 
@@ -1072,6 +1081,18 @@ resetButton.addEventListener("click", function(event) {
 + `5` - Every time you click the Player 1 "MISS" button, it becomes possible to click the greyed out colour buttons to tally points for that colour. `Resolved: 20-05-2025`
 
 + `6` - BUG: Player 1 clicks "MISS" without applying their Redball pot(s). 
+
++ `7` - BUG: Red ball tallies in player 1 are no longer incremented correctly after player 1 misses a pot attempt.
+
+  e.g. 
+    + Red Ball Player 1:  1
+    + MISS 
+    + Red Ball Player 2: 1
+    + MISS
+    + Red Ball Player 1: 3   (should be 2)
+    + MISS 
+    + Red Ball Player
+
 
 ### Future Improvements
 
