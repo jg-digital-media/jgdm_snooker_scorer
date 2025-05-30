@@ -211,13 +211,13 @@
 
                 </article>
 
-                <article class="player---two--pot player---pot--miss player---two--pot-miss " id="pot---miss--two">  
+                <article class="player---two--pot player---pot--miss player---two--pot-miss" id="pot---miss--two">  
 
                     <p class="pot---tally"  id="tally---potted--miss-p2">MISS</p>
                     
                 </article>            
 
-                <article class="player---two--pot player---pot--miss player---two--pot-foul " id="pot---foul--two">  
+                <article class="player---two--pot player---pot--miss player---two--pot-foul" id="pot---foul--two">  
 
                     <p class="pot---tally"  id="tally---potted--foul-p2">FOUL</p>
                     
@@ -243,7 +243,7 @@
                         Ahead: <span id="player---two--ahead">0</span>
                     </span>
 
-                    <span class="points---remaining">
+                    <span class="points---remaining" id="player---two--remaining">
                         Remaining: <span id="player---two--remaining">0</span>
                     </span>
 
