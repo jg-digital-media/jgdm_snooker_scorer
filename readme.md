@@ -1,6 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Last Updated: 29/05/2025 - 17:03`
++ `Last Updated: 30/05/2025 - 13:44`
 ## Sections
 
 [Intro](#intro
@@ -761,7 +761,7 @@ This application is built using the following technologies:
 ## Development
 [Back to Top](#sections)
 
-### Tasks - 97 completed items
+### Tasks - 98 completed items
 
 The development of this application is currently in progress.
 
@@ -928,7 +928,11 @@ The development of this application is currently in progress.
 
     + `COMPLETED: 23-05-2025:` Tally 1 red button (`#pot---red--two`) on player 2 to indicate 1 red ball potted for player 2.
     + `COMPLETED: 29-05-2025:` Show "apply" link (`#apply_tally---red--p2`) for player 2 to indicate more red balls could be potted in the same shot.
-    + `TODO:` clicking `#apply_tally---red--p2` increments the tally for player 2 red ball by 1; adds 1 point to `last---break--p2` and `highest---break--p2`. Reduces `#points_remaining` by 1 point. Adds 1 to `red---tally--p2` and the number red balls in the frame that have been potted.
+    + `COMPLETED: 30-05-2025:` clicking `#apply_tally---red--p2` increments the tally for player 2 red ball by 1; adds 1 point to `last---break--p2` and `highest---break--p2`. Reduces `#points_remaining` by 1 point. Adds 1 to `red---tally--p2` 
+ 
+    + `TODO:` Take into account the number red balls in the frame that have been potted - by both players. They need to be incremented independently of each other, but the tallies never be allowed to go above 15 clicks between them. 
+
+
     + `TODO:` Click black ball icon `#tally---potted--black-p1` (Player 1) to score 7 points
     + `TODO:` Click pink ball icon `#tally---potted--pink-p1` (Player 1) to score 6 points
     + `TODO:` Click blue ball icon `#tally---potted--blue-p1` (Player 1) to score 5 points
@@ -964,7 +968,7 @@ ayer 2.
 + `TODO:` Track number of times Pink ball has been potted `#pot---red--pink` (no more than 16)
 + `TODO:` Track number of times Black ball has been potted `#pot---red--black` (no more than 16)
     
-+ it's possible, however unlikely it might be that a player can pot a colour ball 16 times, including the colour sequence. A 147 Break (15 reds, 15 of a single colour and the colour sequnce e.g. 15 Reds, 15 Yellows, Yellow, Green, Brown, Blue, Pink, Black) - H
++ it's possible, however unlikely it might be that a player can pot a colour ball 16 times, including the colour sequence. A 147 Break (15 reds, 15 of a single colour and the colour sequnce e.g. 15 Reds, 15 Yellows, Yellow, Green, Brown, Blue, Pink, Black)
 
 
 + `TODO:` Disable foul and miss buttons when points remaining is at 0 (Player 2)
