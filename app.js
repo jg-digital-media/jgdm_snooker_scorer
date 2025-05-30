@@ -1,4 +1,4 @@
-console.log("app.js connected - 30-05-2025 - 11:18");
+console.log("app.js connected - 30-05-2025 - 13:23");
 
 // Set the points remaining to 147
 document.getElementById('points_remaining').textContent = '147';
@@ -1400,3 +1400,50 @@ document.addEventListener("DOMContentLoaded", function() {
     playerTwoInput.addEventListener("input", updatePointsRemaining);
 });
  */
+
+// Function to make color balls available for player 2
+function makeColorBallsAvailableForPlayer2() {
+    console.log("Making color balls available for player 2");
+    
+    const colorBalls = ["yellow", "green", "brown", "blue", "pink", "black"];
+    
+    colorBalls.forEach(color => {
+        const colorBall = document.getElementById(`pot---${color}--two`);
+        if (colorBall) {
+            colorBall.style.visibility = "visible";
+            colorBall.style.opacity = "1";
+            colorBall.style.pointerEvents = "auto";
+            console.log(`Made ${color} ball available for player 2`);
+        }
+    });
+}
+
+// Helper function to disable red balls when 15 are potted
+function disableRedBalls() {
+    console.log("Disabling all red balls - 15 reds potted");
+    
+    // Disable red ball for player 1
+    const redBallP1 = document.getElementById("pot---red--one");
+    if (redBallP1) {
+        redBallP1.style.pointerEvents = "none";
+        redBallP1.style.opacity = "0.5";
+    }
+    
+    // Disable red ball for player 2
+    const redBallP2 = document.getElementById("pot---red--two");
+    if (redBallP2) {
+        redBallP2.style.pointerEvents = "none";
+        redBallP2.style.opacity = "0.5";
+    }
+    
+    // Hide apply buttons
+    const applyButtonP1 = document.getElementById("apply_tally---red--p1");
+    if (applyButtonP1) {
+        applyButtonP1.style.visibility = "hidden";
+    }
+    
+    const applyButtonP2 = document.getElementById("apply_tally---red--p2");
+    if (applyButtonP2) {
+        applyButtonP2.style.visibility = "hidden";
+    }
+}
