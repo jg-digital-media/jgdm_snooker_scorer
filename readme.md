@@ -1,6 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Last Updated: 30/05/2025 - 15:05`
++ `Last Updated: 02/06/2025 - 16:48`
 ## Sections
 
 [Intro](#intro
