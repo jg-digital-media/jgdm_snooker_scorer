@@ -761,7 +761,7 @@ This application is built using the following technologies:
 ## Development
 [Back to Top](#sections)
 
-### Tasks - 98 completed items
+### Tasks - 107 completed items
 
 The development of this application is currently in progress.
 
@@ -926,9 +926,20 @@ The development of this application is currently in progress.
 
 + `TODO:` Replicate functionality of player 1 in player 2.
 
-    + `COMPLETED: 23-05-2025:` Tally 1 red button (`#pot---red--two`) on player 2 to indicate 1 red ball potted for player 2.
-    + `COMPLETED: 29-05-2025:` Show "apply" link (`#apply_tally---red--p2`) for player 2 to indicate more red balls could be potted in the same shot.
-    + `COMPLETED: 30-05-2025:` clicking `#apply_tally---red--p2` increments the tally for player 2 red ball by 1; adds 1 point to `last---break--p2` and `highest---break--p2`. Reduces `#points_remaining` by 1 point. Adds 1 to `red---tally--p2` 
+    + `COMPLETED: 23-05-2025` Tally 1 red button (`#pot---red--two`) on player 2 to indicate 1 red ball potted for player 2.
+    + `COMPLETED: 29-05-2025` Show "apply" link (`#apply_tally---red--p2`) for player 2 to indicate more red balls could be potted in the same shot.
+    + `COMPLETED: 30-05-2025` clicking `#apply_tally---red--p2` increments the tally for player 2 red ball by 1; adds 1 point to `last---break--p2` and `highest---break--p2`. Reduces `#points_remaining` by 1 point. Adds 1 to `red---tally--p2` 
+
+    + `COMPLETED: 02-06-2025` Click black ball icon `#pot---red--two` (Player 2) to score 7 points
+    + `COMPLETED: 02-06-2025` Click pink ball icon `#pot---pink--two` (Player 2) to score 6 points
+    + `COMPLETED: 02-06-2025` Click blue ball icon `#pot---blue--two` (Player 2) to score 5 points
+    + `COMPLETED: 02-06-2025` Click brown ball icon `#pot---brown-two` (Player 2) to score 4 points
+    + `COMPLETED: 02-06-2025` Click green ball icon `#pot---green--two` (Player 2) to score 3 points
+    + `COMPLETED: 02-06-2025` Click yellow ball icon `#pot---yellow--two` (Player 2) to score 2 points
+    + `COMPLETED: 02-06-2025` Add points to highest break and last break for player 2 for each successful pot attempt.
+    + `COMPLETED: 02-06-2025` Apply successful red ball shot(s) and then shoot for a colour ball.
+    + `COMPLETED: 02-06-2025` Player 2 misses a pot attempt.
+
 
     + `TODO:` Shoot attempt - Colour Ball Yellow - player 2
         + `TODO:` Reduces `#points_remaining` by 7
@@ -937,18 +948,15 @@ The development of this application is currently in progress.
         + `TODO:` Adds 7 to highest break `#highest---break--p2`    
         + `TODO:` Increments text content 1 to yellow ball `#tally---potted--yellow-p2`
  
+    + `TODO:` Shoot attempt - Colour Ball Green - player 2
+    + `TODO:` Shoot attempt - Colour Ball Brown - player 2
+    + `TODO:` Shoot attempt - Colour Ball Blue - player 2
+    + `TODO:` Shoot attempt - Colour Ball Pink - player 2
+    + `TODO:` Shoot attempt - Colour Ball Black - player 2
+
     + `TODO:` Take into account the number red balls in the frame that have been potted - by both players. They need to be incremented independently of each other, but the tallies never be allowed to go above 15 clicks between them. 
 
-
-    + `TODO:` Click black ball icon `#tally---potted--black-p1` (Player 1) to score 7 points
-    + `TODO:` Click pink ball icon `#tally---potted--pink-p1` (Player 1) to score 6 points
-    + `TODO:` Click blue ball icon `#tally---potted--blue-p1` (Player 1) to score 5 points
-    + `TODO:` Click brown ball icon `#tally---potted--brown-p1` (Player 1) to score 4 points
-    + `TODO:` Click green ball icon `#tally---potted--green-p1` (Player 1) to score 3 points
-    + `TODO:` Click yellow ball icon `#tally---potted--yellow-p1` (Player 1) to score 2 points
-    + `TODO:` Add points to highest break and last break for player 2 for each successful pot attempt.
-    + `TODO:` Apply successful red ball shot(s) and then shoot for a colour ball.
-    + `TODO:` Player 2 misses a pot attempt.
+    + `TODO:` BUG: When missing a colour on the colour sequence, the next player must shoot for that colour. 
 
 
 
@@ -1002,6 +1010,8 @@ ayer 2.
 + `TODO:` Shoot for colour - FOUL + MISS button
 
 + `TODO:` Consider reworking about.php and its content as a modal area for index.php
+
++ `TODO:` Both players want to end the frame.  Develop a button that ends the frame and calculates the score as it is at that time. 
 
 ### Identified Bugs
 [Back to Top](#sections)
@@ -1093,6 +1103,7 @@ resetButton.addEventListener("click", function(event) {
     + MISS 
     + Red Ball Player
 
++ `8` - BUG: When missing a colour on the colour sequence, the next player shoots for the next colour rather than the colour the other player missed.
 
 ### Future Improvements
 
@@ -1382,3 +1393,9 @@ last---break--p2
 #### v1.0.11
 
 + There's no way around it. Introducing the second player into the game introduces so many other pressure points. And every attempt I've made to do it so far as ... not so much been a failure... but has introduced numerous bugs.  So now it's a case of committing to an action and working through those bugs. And I've since accepted that the code is more bloated than I would have liked. The code for player 1, working differently than player 2 because now there *are* 2 players there are more variables (or moving parts) to keep track of.
+
++ So there's trade-offs.  I've traded off my desire to sort out the tally of the potted balls across both players and let it go for now.  Instead I've at this point implemented the turn play of red and colour balls for player 2.  So now player 2 correctly applies the number of points for each red and colour ball potted. I've generated a solution that correctly takes off the required remaining points for a colour, unless the player has reached the colour sequence. I've generated a solution that works but it's not pretty.
+
++ On this day (02-06-2025) I ended up making a tremendous leap forward.  I can now replicate as many missed and successful pot attempts as I like. And the colour sequence works as expected.  Almost as expected. If one player misses a pot attempt on the last brown the next player will shoot for the last blue ball. This is a bug because the programming seems to be assuming that the ball was in fact potted and moves on.  
+
++ However, for now I'm taking this as a win because it does seem that red ball are being correctly counted and there does seem to be the intelligence to know when to start the colour sequence based on the remaining points available.
