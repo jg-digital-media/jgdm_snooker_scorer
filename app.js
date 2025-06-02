@@ -1,4 +1,4 @@
-console.log("app.js connected - 02-06-2025 - 15:45");
+console.log("app.js connected - 02-06-2025 - 16:22");
 
 // Set the points remaining to 147
 document.getElementById('points_remaining').textContent = '147';
@@ -1366,6 +1366,600 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Call the function immediately
     handlePlayer2ApplyRedTally();
+
+    // Define yellowBallP2 before using it
+    const yellowBallP2 = document.getElementById("pot---yellow--two");
+    const greenBallP2 = document.getElementById("pot---green--two");
+    const brownBallP2 = document.getElementById("pot---brown--two");
+    const blueBallP2 = document.getElementById("pot---blue--two");
+    const pinkBallP2 = document.getElementById("pot---pink--two");
+    const blackBallP2 = document.getElementById("pot---black--two");
+
+    // Define p2Score to avoid the TypeError
+    const p2Score = document.getElementById("p2---score");
+
+    // Only add the event listener if the element exists
+    if (yellowBallP2) {
+        yellowBallP2.addEventListener("click", function() {
+            // Add 2 to player 2's score
+            p2CurrentScore += 2;
+            
+            // Make sure p2Score exists before setting its textContent
+            if (p2Score) {
+                p2Score.textContent = p2CurrentScore;
+            } else {
+                console.error("Player 2 score element not found");
+            }
+            
+            // Add 2 to current break
+            p2CurrentBreak += 2;
+            const lastBreakP2 = document.getElementById("last---break--p2");
+            if (lastBreakP2) {
+                lastBreakP2.textContent = p2CurrentBreak;
+            } else {
+                console.error("Player 2 last break element not found");
+            }
+            
+            // Update highest break if needed
+            if (p2CurrentBreak > p2HighestBreak) {
+                p2HighestBreak = p2CurrentBreak;
+                const highestBreakP2 = document.getElementById("highest---break--p2");
+                if (highestBreakP2) {
+                    highestBreakP2.textContent = p2HighestBreak;
+                }
+            }
+            
+            // Set lastBallWasRed to false
+            lastBallWasRed = false;
+            
+            // Check if we're in the final color sequence
+            if (redClickCount >= 15 && remainingPoints <= 27) {
+                // We're in the final sequence
+                // Deduct the actual value
+                remainingPoints -= 2;
+                pointsRemaining.textContent = remainingPoints;
+                
+                // Stay in color sequence mode
+                shootingForRed = false;
+            } else if (redClickCount >= 15) {
+                // This is the last color after the last red
+                // Set to exactly 27 points for the final sequence
+                remainingPoints = 27;
+                pointsRemaining.textContent = remainingPoints;
+                
+                // Now we're in the final sequence
+                shootingForRed = false;
+            } else {
+                // Normal play - now shooting for red
+                shootingForRed = true;
+                
+                // Update points remaining
+                updatePointsRemaining();
+            }
+            
+            // Make the yellow ball tally visible
+            const yellowTallyP2 = document.getElementById("yellow---tally--p2");
+            if (yellowTallyP2) {
+                yellowTallyP2.style.visibility = "visible";
+                yellowTallyP2.style.opacity = "1";
+                
+                // Increment the yellow ball tally
+                let currentTally = parseInt(yellowTallyP2.textContent) || 0;
+                currentTally++;
+                yellowTallyP2.textContent = currentTally;
+            }
+            
+            // Re-enable red ball for player 2 if not in final sequence
+            if (shootingForRed && redClickCount < 15) {
+                const redBallP2 = document.getElementById("pot---red--two");
+                if (redBallP2) {
+                    redBallP2.style.pointerEvents = "auto";
+                    redBallP2.style.opacity = "1";
+                }
+                
+                // Disable color balls for player 2
+                const colorBalls = ["yellow", "green", "brown", "blue", "pink", "black"];
+                colorBalls.forEach(color => {
+                    const colorBall = document.getElementById(`pot---${color}--two`);
+                    if (colorBall && color !== "yellow") { // Skip the yellow ball we just clicked
+                        colorBall.style.pointerEvents = "none";
+                        colorBall.style.opacity = "0.5";
+                    }
+                });
+            }
+            
+            // Update available balls
+            updateAvailableBalls();
+        });
+    }
+
+    // green  TODO
+    if (greenBallP2) {
+        greenBallP2.addEventListener("click", function() {
+            // Add 2 to player 2's score
+            p2CurrentScore += 3;
+            
+            // Make sure p2Score exists before setting its textContent
+            if (p2Score) {
+                p2Score.textContent = p2CurrentScore;
+            } else {
+                console.error("Player 2 score element not found");
+            }
+            
+            // Add 3 to current break
+            p2CurrentBreak += 3;
+            const lastBreakP2 = document.getElementById("last---break--p2");
+            if (lastBreakP2) {
+                lastBreakP2.textContent = p2CurrentBreak;
+            } else {
+                console.error("Player 2 last break element not found");
+            }
+            
+            // Update highest break if needed
+            if (p2CurrentBreak > p2HighestBreak) {
+                p2HighestBreak = p2CurrentBreak;
+                const highestBreakP2 = document.getElementById("highest---break--p2");
+                if (highestBreakP2) {
+                    highestBreakP2.textContent = p2HighestBreak;
+                }
+            }
+            
+            // Set lastBallWasRed to false
+            lastBallWasRed = false;
+            
+            // Check if we're in the final color sequence
+            if (redClickCount >= 15 && remainingPoints <= 27) {
+                // We're in the final sequence
+                // Deduct the actual value
+                remainingPoints -= 3;
+                pointsRemaining.textContent = remainingPoints;
+                
+                // Stay in color sequence mode
+                shootingForRed = false;
+            } else if (redClickCount >= 15) {
+
+                // This is the last color after the last red
+                // Set to exactly 27 points for the final sequence
+                remainingPoints = 27;
+                pointsRemaining.textContent = remainingPoints;
+                
+                // Now we're in the final sequence
+                shootingForRed = false;
+            } else {
+                // Normal play - now shooting for red
+                shootingForRed = true;
+                
+                // Update points remaining
+                updatePointsRemaining();
+            }
+            
+            // Make the green ball tally visible
+            const greenTallyP2 = document.getElementById("green---tally--p2");
+            if (greenTallyP2) {
+                greenTallyP2.style.visibility = "visible";
+                greenTallyP2.style.opacity = "1";
+                
+                // Increment the yellow ball tally
+                let currentTally = parseInt(greenTallyP2.textContent) || 0;
+                currentTally++;
+                greenTallyP2.textContent = currentTally;
+            }
+            
+            // Re-enable red ball for player 2 if not in final sequence
+            if (shootingForRed && redClickCount < 15) {
+                const redBallP2 = document.getElementById("pot---red--two");
+                if (redBallP2) {
+                    redBallP2.style.pointerEvents = "auto";
+                    redBallP2.style.opacity = "1";
+                }
+                
+                // Disable color balls for player 2
+                const colorBalls = ["yellow", "green", "brown", "blue", "pink", "black"];
+                colorBalls.forEach(color => {
+                    const colorBall = document.getElementById(`pot---${color}--two`);
+                    if (colorBall && color !== "yellow") { // Skip the yellow ball we just clicked
+                        colorBall.style.pointerEvents = "none";
+                        colorBall.style.opacity = "0.5";
+                    }
+                });
+            }
+            
+            // Update available balls
+            updateAvailableBalls();
+        });
+    } else {
+        console.error("Yellow ball element for player 2 (pot---yellow--two) not found in the DOM");
+    }
+
+    // brown  TODO
+    if (brownBallP2) {
+        brownBallP2.addEventListener("click", function() {
+            // Add 2 to player 2's score
+            p2CurrentScore += 4;
+            
+            // Make sure p2Score exists before setting its textContent
+            if (p2Score) {
+                p2Score.textContent = p2CurrentScore;
+            } else {
+                console.error("Player 2 score element not found");
+            }
+            
+            // Add 2 to current break
+            p2CurrentBreak += 4;
+            const lastBreakP2 = document.getElementById("last---break--p2");
+            if (lastBreakP2) {
+                lastBreakP2.textContent = p2CurrentBreak;
+            } else {
+                console.error("Player 2 last break element not found");
+            }
+            
+            // Update highest break if needed
+            if (p2CurrentBreak > p2HighestBreak) {
+                p2HighestBreak = p2CurrentBreak;
+                const highestBreakP2 = document.getElementById("highest---break--p2");
+                if (highestBreakP2) {
+                    highestBreakP2.textContent = p2HighestBreak;
+                }
+            }
+            
+            // Set lastBallWasRed to false
+            lastBallWasRed = false;
+            
+            // Check if we're in the final color sequence
+            if (redClickCount >= 15 && remainingPoints <= 27) {
+                // We're in the final sequence
+                // Deduct the actual value
+                remainingPoints -= 4;
+                pointsRemaining.textContent = remainingPoints;
+                
+                // Stay in color sequence mode
+                shootingForRed = false;
+            } else if (redClickCount >= 15) {
+                // This is the last color after the last red
+                // Set to exactly 27 points for the final sequence
+                remainingPoints = 27;
+                pointsRemaining.textContent = remainingPoints;
+                
+                // Now we're in the final sequence
+                shootingForRed = false;
+            } else {
+                // Normal play - now shooting for red
+                shootingForRed = true;
+                
+                // Update points remaining
+                updatePointsRemaining();
+            }
+            
+            // Make the yellow ball tally visible
+            const yellowTallyP2 = document.getElementById("yellow---tally--p2");
+            if (yellowTallyP2) {
+                yellowTallyP2.style.visibility = "visible";
+                yellowTallyP2.style.opacity = "1";
+                
+                // Increment the yellow ball tally
+                let currentTally = parseInt(yellowTallyP2.textContent) || 0;
+                currentTally++;
+                yellowTallyP2.textContent = currentTally;
+            }
+            
+            // Re-enable red ball for player 2 if not in final sequence
+            if (shootingForRed && redClickCount < 15) {
+                const redBallP2 = document.getElementById("pot---red--two");
+                if (redBallP2) {
+                    redBallP2.style.pointerEvents = "auto";
+                    redBallP2.style.opacity = "1";
+                }
+                
+                // Disable color balls for player 2
+                const colorBalls = ["yellow", "green", "brown", "blue", "pink", "black"];
+                colorBalls.forEach(color => {
+                    const colorBall = document.getElementById(`pot---${color}--two`);
+                    if (colorBall && color !== "yellow") { // Skip the yellow ball we just clicked
+                        colorBall.style.pointerEvents = "none";
+                        colorBall.style.opacity = "0.5";
+                    }
+                });
+            }
+            
+            // Update available balls
+            updateAvailableBalls();
+        });
+    } else {
+        console.error("Yellow ball element for player 2 (pot---yellow--two) not found in the DOM");
+    }
+
+    // blue   TODO
+     if (blueBallP2) {
+        blueBallP2.addEventListener("click", function() {
+            // Add 2 to player 2's score
+            p2CurrentScore += 5;
+            
+            // Make sure p2Score exists before setting its textContent
+            if (p2Score) {
+                p2Score.textContent = p2CurrentScore;
+            } else {
+                console.error("Player 2 score element not found");
+            }
+            
+            // Add 2 to current break
+            p2CurrentBreak += 5;
+            const lastBreakP2 = document.getElementById("last---break--p2");
+            if (lastBreakP2) {
+                lastBreakP2.textContent = p2CurrentBreak;
+            } else {
+                console.error("Player 2 last break element not found");
+            }
+            
+            // Update highest break if needed
+            if (p2CurrentBreak > p2HighestBreak) {
+                p2HighestBreak = p2CurrentBreak;
+                const highestBreakP2 = document.getElementById("highest---break--p2");
+                if (highestBreakP2) {
+                    highestBreakP2.textContent = p2HighestBreak;
+                }
+            }
+            
+            // Set lastBallWasRed to false
+            lastBallWasRed = false;
+            
+            // Check if we're in the final color sequence
+            if (redClickCount >= 15 && remainingPoints <= 27) {
+                // We're in the final sequence
+                // Deduct the actual value
+                remainingPoints -= 5;
+                pointsRemaining.textContent = remainingPoints;
+                
+                // Stay in color sequence mode
+                shootingForRed = false;
+            } else if (redClickCount >= 15) {
+                // This is the last color after the last red
+                // Set to exactly 27 points for the final sequence
+                remainingPoints = 27;
+                pointsRemaining.textContent = remainingPoints;
+                
+                // Now we're in the final sequence
+                shootingForRed = false;
+            } else {
+                // Normal play - now shooting for red
+                shootingForRed = true;
+                
+                // Update points remaining
+                updatePointsRemaining();
+            }
+            
+            // Make the yellow ball tally visible
+            const blueTallyP2 = document.getElementById("blue---tally--p2");
+            if (blueTallyP2) {
+                blueTallyP2.style.visibility = "visible";
+                blueTallyP2.style.opacity = "1";
+                
+                // Increment the yellow ball tally
+                let currentTally = parseInt(blueTallyP2.textContent) || 0;
+                currentTally++;
+                blueTallyP2.textContent = currentTally;
+            }
+            
+            // Re-enable red ball for player 2 if not in final sequence
+            if (shootingForRed && redClickCount < 15) {
+                const redBallP2 = document.getElementById("pot---red--two");
+                if (redBallP2) {
+                    redBallP2.style.pointerEvents = "auto";
+                    redBallP2.style.opacity = "1";
+                }
+                
+                // Disable color balls for player 2
+                const colorBalls = ["yellow", "green", "brown", "blue", "pink", "black"];
+                colorBalls.forEach(color => {
+                    const colorBall = document.getElementById(`pot---${color}--two`);
+                    if (colorBall && color !== "yellow") { // Skip the yellow ball we just clicked
+                        colorBall.style.pointerEvents = "none";
+                        colorBall.style.opacity = "0.5";
+                    }
+                });
+            }
+            
+            // Update available balls
+            updateAvailableBalls();
+        });
+    } else {
+        console.error("Yellow ball element for player 2 (pot---yellow--two) not found in the DOM");
+    }
+
+    // pink  TODO
+     if (pinkBallP2) {
+        pinkBallP2.addEventListener("click", function() {
+
+            // Add 2 to player 2's score
+            p2CurrentScore += 6;
+            
+            // Make sure p2Score exists before setting its textContent
+            if (p2Score) {
+                p2Score.textContent = p2CurrentScore;
+            } else {
+                console.error("Player 2 score element not found");
+            }
+            
+            // Add 2 to current break
+            p2CurrentBreak += 6;
+            const lastBreakP2 = document.getElementById("last---break--p2");
+            if (lastBreakP2) {
+                lastBreakP2.textContent = p2CurrentBreak;
+            } else {
+                console.error("Player 2 last break element not found");
+            }
+            
+            // Update highest break if needed
+            if (p2CurrentBreak > p2HighestBreak) {
+                p2HighestBreak = p2CurrentBreak;
+                const highestBreakP2 = document.getElementById("highest---break--p2");
+                if (highestBreakP2) {
+                    highestBreakP2.textContent = p2HighestBreak;
+                }
+            }
+            
+            // Set lastBallWasRed to false
+            lastBallWasRed = false;
+            
+            // Check if we're in the final color sequence
+            if (redClickCount >= 15 && remainingPoints <= 27) {
+
+                // We're in the final sequence
+                // Deduct the actual value
+                remainingPoints -= 6;
+                pointsRemaining.textContent = remainingPoints;
+                
+                // Stay in color sequence mode
+                shootingForRed = false;
+            } else if (redClickCount >= 15) {
+                // This is the last color after the last red
+                // Set to exactly 27 points for the final sequence
+                remainingPoints = 27;
+                pointsRemaining.textContent = remainingPoints;
+                
+                // Now we're in the final sequence
+                shootingForRed = false;
+            } else {
+                // Normal play - now shooting for red
+                shootingForRed = true;
+                
+                // Update points remaining
+                updatePointsRemaining();
+            }
+            
+            // Make the pink ball tally visible
+            const pinkTallyP2 = document.getElementById("pink---tally--p2");
+            if (pinkTallyP2) {
+                pinkTallyP2.style.visibility = "visible";
+                pinkTallyP2.style.opacity = "1";
+                
+                // Increment the yellow ball tally
+                let currentTally = parseInt(pinkTallyP2.textContent) || 0;
+                currentTally++;
+                pinkTallyP2.textContent = currentTally;
+            }
+            
+            // Re-enable red ball for player 2 if not in final sequence
+            if (shootingForRed && redClickCount < 15) {
+                const redBallP2 = document.getElementById("pot---red--two");
+                if (redBallP2) {
+                    redBallP2.style.pointerEvents = "auto";
+                    redBallP2.style.opacity = "1";
+                }
+                
+                // Disable color balls for player 2
+                const colorBalls = ["yellow", "green", "brown", "blue", "pink", "black"];
+                colorBalls.forEach(color => {
+                    const colorBall = document.getElementById(`pot---${color}--two`);
+                    if (colorBall && color !== "yellow") { // Skip the yellow ball we just clicked
+                        colorBall.style.pointerEvents = "none";
+                        colorBall.style.opacity = "0.5";
+                    }
+                });
+            }
+            
+            // Update available balls
+            updateAvailableBalls();
+        });
+    } else {
+        console.error("Yellow ball element for player 2 (pot---yellow--two) not found in the DOM");
+    }
+
+    // black  TODO
+     if (blackBallP2) {
+        blackBallP2.addEventListener("click", function() {
+            // Add 2 to player 2's score
+            p2CurrentScore += 7;
+            
+            // Make sure p2Score exists before setting its textContent
+            if (p2Score) {
+                p2Score.textContent = p2CurrentScore;
+            } else {
+                console.error("Player 2 score element not found");
+            }
+            
+            // Add 2 to current break
+            p2CurrentBreak += 7;
+            const lastBreakP2 = document.getElementById("last---break--p2");
+            if (lastBreakP2) {
+                lastBreakP2.textContent = p2CurrentBreak;
+            } else {
+                console.error("Player 2 last break element not found");
+            }
+            
+            // Update highest break if needed
+            if (p2CurrentBreak > p2HighestBreak) {
+                p2HighestBreak = p2CurrentBreak;
+                const highestBreakP2 = document.getElementById("highest---break--p2");
+                if (highestBreakP2) {
+                    highestBreakP2.textContent = p2HighestBreak;
+                }
+            }
+            
+            // Set lastBallWasRed to false
+            lastBallWasRed = false;
+            
+            // Check if we're in the final color sequence
+            if (redClickCount >= 15 && remainingPoints <= 27) {
+                // We're in the final sequence
+                // Deduct the actual value
+                remainingPoints -= 7;
+                pointsRemaining.textContent = remainingPoints;
+                
+                // Stay in color sequence mode
+                shootingForRed = false;
+            } else if (redClickCount >= 15) {
+                // This is the last color after the last red
+                // Set to exactly 27 points for the final sequence
+                remainingPoints = 27;
+                pointsRemaining.textContent = remainingPoints;
+                
+                // Now we're in the final sequence
+                shootingForRed = false;
+            } else {
+                // Normal play - now shooting for red
+                shootingForRed = true;
+                
+                // Update points remaining
+                updatePointsRemaining();
+            }
+            
+            // Make the yellow ball tally visible
+            const blackTallyP2 = document.getElementById("black---tally--p2");
+            if (blackTallyP2) {
+                blackTallyP2.style.visibility = "visible";
+                blackTallyP2.style.opacity = "1";
+                
+                // Increment the yellow ball tally
+                let currentTally = parseInt(blackTallyP2.textContent) || 0;
+                currentTally++;
+                blackTallyP2.textContent = currentTally;
+            }
+            
+            // Re-enable red ball for player 2 if not in final sequence
+            if (shootingForRed && redClickCount < 15) {
+                const redBallP2 = document.getElementById("pot---red--two");
+                if (redBallP2) {
+                    redBallP2.style.pointerEvents = "auto";
+                    redBallP2.style.opacity = "1";
+                }
+                
+                // Disable color balls for player 2
+                const colorBalls = ["yellow", "green", "brown", "blue", "pink", "black"];
+                colorBalls.forEach(color => {
+                    const colorBall = document.getElementById(`pot---${color}--two`);
+                    if (colorBall && color !== "yellow") { // Skip the yellow ball we just clicked
+                        colorBall.style.pointerEvents = "none";
+                        colorBall.style.opacity = "0.5";
+                    }
+                });
+            }
+            
+            // Update available balls
+            updateAvailableBalls();
+        });
+    } else {
+        console.error("Black ball element for player 2 (pot---black--two) not found in the DOM");
+    }
 });
 
 /* document.addEventListener("DOMContentLoaded", function() {
