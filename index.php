@@ -178,7 +178,7 @@
             
                 <article class="player---pot--score player---two--pot player---pot--brown" id="pot---brown--two">  
 
-                    <p class="pot---tally" id="tally---potted--brown-p1">&nbsp;</p>
+                    <p class="pot---tally" id="tally---potted--brown-p2">&nbsp;</p>
                     
                 </article>
             
