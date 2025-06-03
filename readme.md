@@ -1,6 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Last Updated: 03/06/2025 - 16:44`
++ `Last Updated: 03/06/2025 - 17:08`
 ## Sections
 
 [Intro](#intro
@@ -761,7 +761,7 @@ This application is built using the following technologies:
 ## Development
 [Back to Top](#sections)
 
-### Tasks - 143 completed items
+### Tasks - 145 completed items
 
 The development of this application is currently in progress.
 
@@ -924,85 +924,96 @@ The development of this application is currently in progress.
 
 + `COMPLETED: 22-05-2025` Disable all player buttons at frame end
 
++ `COMPLETED: 23-05-2025` Tally 1 red button (`#pot---red--two`) on player 2 to indicate 1 red ball potted for player 2.
+
++ `COMPLETED: 29-05-2025` Show "apply" link (`#apply_tally---red--p2`) for player 2 to indicate more red balls could be potted in the same shot.
++ `COMPLETED: 30-05-2025` clicking `#apply_tally---red--p2` increments the tally for player 2 red ball by 1; adds 1 point to `last---break--p2` and `highest---break--p2`. Reduces `#points_remaining` by 1 point. Adds 1 to `red---tally--p2` 
+
++ `COMPLETED: 02-06-2025` Click black ball icon `#pot---red--two` (Player 2) to score 7 points
++ `COMPLETED: 02-06-2025` Click pink ball icon `#pot---pink--two` (Player 2) to score 6 points
++ `COMPLETED: 02-06-2025` Click blue ball icon `#pot---blue--two` (Player 2) to score 5 points
++ `COMPLETED: 02-06-2025` Click brown ball icon `#pot---brown-two` (Player 2) to score 4 points
++ `COMPLETED: 02-06-2025` Click green ball icon `#pot---green--two` (Player 2) to score 3 points
++ `COMPLETED: 02-06-2025` Click yellow ball icon `#pot---yellow--two` (Player 2) to score 2 points
++ `COMPLETED: 02-06-2025` Add points to highest break and last break for player 2 for each successful pot attempt.
++ `COMPLETED: 02-06-2025` Apply successful red ball shot(s) and then shoot for a colour ball.
++ `COMPLETED: 02-06-2025` Player 2 misses a pot attempt.
+
+
++ `COMPLETED: 03-06-2025` Shoot attempt - Colour Ball (Yellow) - Player 2
+    + `COMPLETED: 03-06-2025` Reduces `#points_remaining` by 2
+    + `COMPLETED: 03-06-2025` Adds 1 to yellow ball potted tally `#tally---potted--yellow-p2`
+    + `COMPLETED: 03-06-2025` Adds 2 to the last break total `#last---break--p2`
+    + `COMPLETED: 03-06-2025` Adds 2 to highest break total if needed `#highest---break--p2`    
+    + `COMPLETED: 03-06-2025` Increments text content 1 to yellow ball `#tally---potted--yellow-p2`
+
++ `COMPLETED: 03-06-2025` Shoot attempt - Colour Ball (Green) - Player 2
+    + `COMPLETED: 03-06-2025` Reduces `#points_remaining` by 3
+    + `COMPLETED: 03-06-2025` Adds 1 to green ball potted tally `#tally---potted--green-p2`
+    + `COMPLETED: 03-06-2025` Adds 2 to the last break total `#last---break--p2`
+    + `COMPLETED: 03-06-2025` Adds 3 to highest break total if needed `#highest---break--p2`    
+    + `COMPLETED: 03-06-2025` Increments text content 1 to green ball `#tally---potted--green-p2`
+
++ `COMPLETED: 03-06-2025` Shoot attempt - Colour Ball (Brown) - Player 2
+    + `COMPLETED: 03-06-2025` Reduces `#points_remaining` by 4
+    + `COMPLETED: 03-06-2025` Adds 1 to brown ball potted tally `#tally---potted--brown-p2`
+    + `COMPLETED: 03-06-2025` Increment last break tally by 4 `#last---break--p2`
+    + `COMPLETED: 03-06-2025` Adds 7 to highest break total if needed `#highest---break--p2`    
+    + `COMPLETED: 03-06-2025` Increments text content 1 to brown ball `#tally---potted--brown-p2`
+
++ `COMPLETED: 03-06-2025` Shoot attempt - Colour Ball (Blue) - Player 2
+    + `COMPLETED: 03-06-2025` Reduces `#points_remaining` by 5
+    + `COMPLETED: 03-06-2025` Adds 1 to blue ball potted tally `#tally---potted--blue-p2`
+    + `COMPLETED: 03-06-2025` Increment last break tally by 5 `#last---break--p2`
+    + `COMPLETED: 03-06-2025` Adds 7 to highest break total if needed `#highest---break--p2`    
+    + `COMPLETED: 03-06-2025` Increments text content 1 to pink ball `#tally---potted--blue-p2`
+
++ `COMPLETED: 03-06-2025` Shoot attempt - Colour Ball (Pink) - Player 2
+    + `COMPLETED: 03-06-2025` Reduces `#points_remaining` by 6
+    + `COMPLETED: 03-06-2025` Adds 1 to pink ball potted tally `#tally---potted--pink-p2`
+    + `COMPLETED: 03-06-2025` Increment last break tally by 6 `#last---break--p2`
+    + `COMPLETED: 03-06-2025` Adds 7 to highest break total if needed `#highest---break--p2`    
+    + `COMPLETED: 03-06-2025` Increments text content 1 to pink ball `#tally---potted--pink-p2`
+
++ `COMPLETED: 03-06-2025` Shoot attempt - Colour Ball (Black) - Player 2
+    + `COMPLETED: 03-06-2025` Reduces `#points_remaining` by 7
+    + `COMPLETED: 03-06-2025` Adds 1 to yellow ball potted tally `#tally---potted--black-p2`
+    + `COMPLETED: 03-06-2025` Increment last break tally by 7 `#last---break--p2`
+    + `COMPLETED: 03-06-2025` Adds 7 to highest break `#highest---break--p2`    
+    + `COMPLETED: 03-06-2025` Increments text content 1 to black ball `#tally---potted--black-p2`
+
++ `COMPLETED: 03-06-2025` BUG: ball tally for brown ball player 2 needs to be fixed as a duplicate of the brown ball tally attribute for player 2.
+
++ `COMPLETED: 03-06-2025` Disable foul and miss buttons when points remaining is at 0 (Player 2)
+
++ `TODO:` BUG: "Last Break" should not be reset to 0 until a player makes their first successful pot attempt after returning to the table
+
++ `TODO:` BUG: Player 1 clicks "MISS" without applying their Redball pot(s).  
+
 + `TODO:` Replicate functionality of player 1 in player 2.
 
-    + `COMPLETED: 23-05-2025` Tally 1 red button (`#pot---red--two`) on player 2 to indicate 1 red ball potted for player 2.
-    + `COMPLETED: 29-05-2025` Show "apply" link (`#apply_tally---red--p2`) for player 2 to indicate more red balls could be potted in the same shot.
-    + `COMPLETED: 30-05-2025` clicking `#apply_tally---red--p2` increments the tally for player 2 red ball by 1; adds 1 point to `last---break--p2` and `highest---break--p2`. Reduces `#points_remaining` by 1 point. Adds 1 to `red---tally--p2` 
++ `TODO:` Take into account the number red balls in the frame that have been potted - by both players. They need to be incremented independently of each other, but the tallies never be allowed to go above 15 clicks between them. 
 
-    + `COMPLETED: 02-06-2025` Click black ball icon `#pot---red--two` (Player 2) to score 7 points
-    + `COMPLETED: 02-06-2025` Click pink ball icon `#pot---pink--two` (Player 2) to score 6 points
-    + `COMPLETED: 02-06-2025` Click blue ball icon `#pot---blue--two` (Player 2) to score 5 points
-    + `COMPLETED: 02-06-2025` Click brown ball icon `#pot---brown-two` (Player 2) to score 4 points
-    + `COMPLETED: 02-06-2025` Click green ball icon `#pot---green--two` (Player 2) to score 3 points
-    + `COMPLETED: 02-06-2025` Click yellow ball icon `#pot---yellow--two` (Player 2) to score 2 points
-    + `COMPLETED: 02-06-2025` Add points to highest break and last break for player 2 for each successful pot attempt.
-    + `COMPLETED: 02-06-2025` Apply successful red ball shot(s) and then shoot for a colour ball.
-    + `COMPLETED: 02-06-2025` Player 2 misses a pot attempt.
-
-
-    + `COMPLETED: 03-06-2025` Shoot attempt - Colour Ball (Yellow) - Player 2
-        + `COMPLETED: 03-06-2025` Reduces `#points_remaining` by 2
-        + `COMPLETED: 03-06-2025` Adds 1 to yellow ball potted tally `#tally---potted--yellow-p2`
-        + `COMPLETED: 03-06-2025` Adds 2 to the last break total `#last---break--p2`
-        + `COMPLETED: 03-06-2025` Adds 2 to highest break total if needed `#highest---break--p2`    
-        + `COMPLETED: 03-06-2025` Increments text content 1 to yellow ball `#tally---potted--yellow-p2`
- 
-    + `COMPLETED: 03-06-2025` Shoot attempt - Colour Ball (Green) - Player 2
-        + `COMPLETED: 03-06-2025` Reduces `#points_remaining` by 3
-        + `COMPLETED: 03-06-2025` Adds 1 to green ball potted tally `#tally---potted--green-p2`
-        + `COMPLETED: 03-06-2025` Adds 2 to the last break total `#last---break--p2`
-        + `COMPLETED: 03-06-2025` Adds 3 to highest break total if needed `#highest---break--p2`    
-        + `COMPLETED: 03-06-2025` Increments text content 1 to green ball `#tally---potted--green-p2`
-
-    + `COMPLETED: 03-06-2025` Shoot attempt - Colour Ball (Brown) - Player 2
-        + `COMPLETED: 03-06-2025` Reduces `#points_remaining` by 4
-        + `COMPLETED: 03-06-2025` Adds 1 to brown ball potted tally `#tally---potted--brown-p2`
-        + `COMPLETED: 03-06-2025` Increment last break tally by 4 `#last---break--p2`
-        + `COMPLETED: 03-06-2025` Adds 7 to highest break total if needed `#highest---break--p2`    
-        + `COMPLETED: 03-06-2025` Increments text content 1 to brown ball `#tally---potted--brown-p2`
-
-    + `COMPLETED: 03-06-2025` Shoot attempt - Colour Ball (Blue) - Player 2
-        + `COMPLETED: 03-06-2025` Reduces `#points_remaining` by 5
-        + `COMPLETED: 03-06-2025` Adds 1 to blue ball potted tally `#tally---potted--blue-p2`
-        + `COMPLETED: 03-06-2025` Increment last break tally by 5 `#last---break--p2`
-        + `COMPLETED: 03-06-2025` Adds 7 to highest break total if needed `#highest---break--p2`    
-        + `COMPLETED: 03-06-2025` Increments text content 1 to pink ball `#tally---potted--blue-p2`
-
-    + `COMPLETED: 03-06-2025` Shoot attempt - Colour Ball (Pink) - Player 2
-        + `COMPLETED: 03-06-2025` Reduces `#points_remaining` by 6
-        + `COMPLETED: 03-06-2025` Adds 1 to pink ball potted tally `#tally---potted--pink-p2`
-        + `COMPLETED: 03-06-2025` Increment last break tally by 6 `#last---break--p2`
-        + `COMPLETED: 03-06-2025` Adds 7 to highest break total if needed `#highest---break--p2`    
-        + `COMPLETED: 03-06-2025` Increments text content 1 to pink ball `#tally---potted--pink-p2`
-
-    + `COMPLETED: 03-06-2025` Shoot attempt - Colour Ball (Black) - Player 2
-        + `COMPLETED: 03-06-2025` Reduces `#points_remaining` by 7
-        + `COMPLETED: 03-06-2025` Adds 1 to yellow ball potted tally `#tally---potted--black-p2`
-        + `COMPLETED: 03-06-2025` Increment last break tally by 7 `#last---break--p2`
-        + `COMPLETED: 03-06-2025` Adds 7 to highest break `#highest---break--p2`    
-        + `COMPLETED: 03-06-2025` Increments text content 1 to black ball `#tally---potted--black-p2`
-
-    + `TODO:` Take into account the number red balls in the frame that have been potted - by both players. They need to be incremented independently of each other, but the tallies never be allowed to go above 15 clicks between them. 
-
-    + `TODO:` BUG: When missing a colour on the colour sequence, the next player must shoot for that colour. 
-
++ `TODO:` BUG: When missing a colour on the colour sequence, the next player must shoot for that colour. (Player 2)  e.g. if Player 1 misses a pot attempt on Green, player 2 must shoot for Green.
 
 + `TODO:` BUG: Player 2 red ball does not factor in 2 red balls potted in the same shot.
+
++ `TODO:` BUG: Red ball tallies in player 1 are no longer incremented correctly after player 1 misses a pot attempt.
 
 + `TODO:` Next player reverts to shooting for a red ball after a foul. 
 + `TODO:` Revert to shooting for a red ball after a foul. 
 + `TODO:` Shouldn't take the missed points into account until I simulate shooting for a colour after the 2 reds at once.
 
-+ `TODO`: Last break for player 1 resets when player 1 misses a pot attempt.  Keep this number until the player makes successful pot after returning to the table.
++ `TODO:` Last break for player 1 resets when player 1 misses a pot attempt.  Keep this number until the player makes successful pot after returning to the table.
 ayer 2. 
 
 + `TODO:` Stop counting highest and last break when `#points_remaining`is at 0 (Player 2).
 
 + `TODO:` Stop counting highest and last break when `#points_remaining`is at 0 (Player 1).
 
-+ `TODO:` Disable foul and miss buttons when points remaining is at 0 (Player 2)
++ `TODO:` BUG: Player 2 does not follow the colour sequence when Player 1 misses a pot attempt within 27 points remaining.
 
++ `TODO:` BUG: Player 2 colour balls should be disabled when the table is cleared (frame ends - `#points_remaining` = 0 and player 2 has won the game).
 
 + `TODO:` "Frame Complete" Tooltip can probably be dismissed automatically after a given number of seconds - e.g. 5 seconds.
 
@@ -1016,9 +1027,6 @@ ayer 2.
 + `TODO:` Track number of times Black ball has been potted `#pot---red--black` (no more than 16)
     
 + it's possible, however unlikely it might be that a player can pot a colour ball 16 times, including the colour sequence. A 147 Break (15 reds, 15 of a single colour and the colour sequnce e.g. 15 Reds, 15 Yellows, Yellow, Green, Brown, Blue, Pink, Black)
-
-
-+ `TODO:` Disable foul and miss buttons when points remaining is at 0 (Player 2)
 
 + `TODO:` Change the styling of the snooker ball icons so they stand out more - more visual clarity required against the main background and also as disabled elements. 
 
@@ -1112,7 +1120,7 @@ resetButton.addEventListener("click", function(event) {
 
 ```
 
-+ `2` - "Last Break" should not be reset to 0 until a player makes their first successful pot attempt after returning to the table. - `12-05-2025`
++ `2` - "Last Break" should not be reset to 0 until a player makes their first successful pot attempt after returning to the table.
 
 + `3` - Ball potting tallies over player 2 ball icons by default. They must not be visible until the user of the application clicks the potted ball icon. `Resolved: 20-05-2025`
 
@@ -1120,9 +1128,9 @@ resetButton.addEventListener("click", function(event) {
 
 + `5` - Every time you click the Player 1 "MISS" button, it becomes possible to click the greyed out colour buttons to tally points for that colour. `Resolved: 20-05-2025`
 
-+ `6` - BUG: Player 1 clicks "MISS" without applying their Redball pot(s). 
++ `6` - Player 1 clicks "MISS" without applying their Redball pot(s). 
 
-+ `7` - BUG: Red ball tallies in player 1 are no longer incremented correctly after player 1 misses a pot attempt.
++ `7` - Red ball tallies in player 1 are no longer incremented correctly after player 1 misses a pot attempt.
 
   e.g. 
     + Red Ball Player 1:  1
@@ -1133,11 +1141,11 @@ resetButton.addEventListener("click", function(event) {
     + MISS 
     + Red Ball Player
 
-+ `8` - BUG: When missing a colour on the colour sequence, the next player shoots for the next colour rather than the colour the other player missed.
++ `8` - When missing a colour on the colour sequence, the next player must shoot for that colour. (Player 2)  e.g. if Player 1 misses a pot attempt on Green, player 2 must shoot for Green.
 
-+ `9` - Player 2 does not follow the colour sequence when Player 1 misses a pot attempt withn 27 points remaining.
++ `9` - Player 2 does not follow the colour sequence when Player 1 misses a pot attempt within 27 points remaining.
 
-+ `9` - BUG: ball tally for brown ball player 2 needs to be fixed as a duplicate of the brown ball tally attribute for player 2. `Resolved: 20-05-2025`
++ `10` - ball tally for brown ball player 2 needs to be fixed as a duplicate of the brown ball tally attribute for player 2. `Resolved: 03-06-2025`
 
 ### Future Improvements
 
