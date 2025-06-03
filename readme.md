@@ -1,6 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Last Updated: 02/06/2025 - 16:48`
++ `Last Updated: 03/06/2025 - 09:54`
 ## Sections
 
 [Intro](#intro
@@ -1392,10 +1392,12 @@ last---break--p2
 
 #### v1.0.11
 
-+ There's no way around it. Introducing the second player into the game introduces so many other pressure points. And every attempt I've made to do it so far as ... not so much been a failure... but has introduced numerous bugs.  So now it's a case of committing to an action and working through those bugs. And I've since accepted that the code is more bloated than I would have liked. The code for player 1, working differently than player 2 because now there *are* 2 players there are more variables (or moving parts) to keep track of.
++ There's no way around it. Introducing the second player into the game introduces so many other pressure points. And every attempt I've made to do it so far has ... not so much been a failure... but has introduced numerous bugs.  So now it's a case of committing to an action and working through those bugs. And I've since accepted that the code is more bloated than I would have liked. The code for player 1, working differently than player 2 because now there *are* 2 players there are more variables (or moving parts) to keep track of.
 
 + So there's trade-offs.  I've traded off my desire to sort out the tally of the potted balls across both players and let it go for now.  Instead I've at this point implemented the turn play of red and colour balls for player 2.  So now player 2 correctly applies the number of points for each red and colour ball potted. I've generated a solution that correctly takes off the required remaining points for a colour, unless the player has reached the colour sequence. I've generated a solution that works but it's not pretty.
 
-+ On this day (02-06-2025) I ended up making a tremendous leap forward.  I can now replicate as many missed and successful pot attempts as I like. And the colour sequence works as expected.  Almost as expected. If one player misses a pot attempt on the last brown the next player will shoot for the last blue ball. This is a bug because the programming seems to be assuming that the ball was in fact potted and moves on.  
++ I've also traded off on code that functions before ensuring that code is neat; tidy and readable. I'll work on that sorting that out in the future.
 
-+ However, for now I'm taking this as a win because it does seem that red ball are being correctly counted and there does seem to be the intelligence to know when to start the colour sequence based on the remaining points available.
++ On this day (02-06-2025) I ended up making a tremendous leap forward. I can now replicate as many missed and successful pot attempts as I like. And the colour sequence works as expected.  Almost as expected. If one player misses a pot attempt on the last brown the next player will shoot for the last blue ball. This is a bug because the programming seems to be assuming that the ball was in fact potted and moves on.  
+
++ However, for now I'm taking this as a win because it does seem that the turn based play is working for the most part. I've been testing this extensively, and there does seem to be the intelligence to know when to start the colour sequence based on the remaining points available.
