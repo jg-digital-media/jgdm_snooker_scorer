@@ -1,6 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Last Updated: 03/06/2025 - 09:54`
++ `Last Updated: 03/06/2025 - 16:44`
 ## Sections
 
 [Intro](#intro
@@ -761,7 +761,7 @@ This application is built using the following technologies:
 ## Development
 [Back to Top](#sections)
 
-### Tasks - 107 completed items
+### Tasks - 143 completed items
 
 The development of this application is currently in progress.
 
@@ -776,68 +776,68 @@ The development of this application is currently in progress.
 
 + `COMPLETED: 09-05-2025` BUG: Points remaining element should not be less than 0
 
-+ `COMPLETED: 09-05-2025:` Click black ball icon `#tally---potted--black-p1` (Player 1) to score 7 points
-+ `COMPLETED: 09-05-2025:` Click pink ball icon `#tally---potted--pink-p1` (Player 1) to score 6 points
-+ `COMPLETED: 09-05-2025:` Click blue ball icon `#tally---potted--blue-p1` (Player 1) to score 5 points
-+ `COMPLETED: 09-05-2025:` Click brown ball icon `#tally---potted--brown-p1` (Player 1) to score 4 points
-+ `COMPLETED: 09-05-2025:` Click green ball icon `#tally---potted--green-p1` (Player 1) to score 3 points
-+ `COMPLETED: 09-05-2025:` Click yellow ball icon `#tally---potted--yellow-p1` (Player 1) to score 2 points
++ `COMPLETED: 09-05-2025` Click black ball icon `#tally---potted--black-p1` (Player 1) to score 7 points
++ `COMPLETED: 09-05-2025` Click pink ball icon `#tally---potted--pink-p1` (Player 1) to score 6 points
++ `COMPLETED: 09-05-2025` Click blue ball icon `#tally---potted--blue-p1` (Player 1) to score 5 points
++ `COMPLETED: 09-05-2025` Click brown ball icon `#tally---potted--brown-p1` (Player 1) to score 4 points
++ `COMPLETED: 09-05-2025` Click green ball icon `#tally---potted--green-p1` (Player 1) to score 3 points
++ `COMPLETED: 09-05-2025` Click yellow ball icon `#tally---potted--yellow-p1` (Player 1) to score 2 points
 
 + `COMPLETED: 13-05-2023` Click red ball icon `tally---potted--red-p1` (Player 1) to score 1 point player 1
-    + `COMPLETED: 08-05-2025:` Reduces `#points_remaining` by 1 to 146
-    + `COMPLETED: 08-05-2025:` Adds 1 to red ball `#tally---potted--red-p1`
-    + `COMPLETED: 08-05-2025:` Adds 1 to last break `#last---break--p1`
-    + `COMPLETED: 08-05-2025:` Adds 1 to highest break `#highest---break--p1`
-    + `COMPLETED: 09-05-2025:` increments text content 1 to red ball `#tally---potted--red-p1`
+    + `COMPLETED: 08-05-2025` Reduces `#points_remaining` by 1 to 146
+    + `COMPLETED: 08-05-2025` Adds 1 to red ball `#tally---potted--red-p1`
+    + `COMPLETED: 08-05-2025` Adds 1 to last break `#last---break--p1`
+    + `COMPLETED: 08-05-2025` Adds 1 to highest break `#highest---break--p1`
+    + `COMPLETED: 09-05-2025` increments text content 1 to red ball `#tally---potted--red-p1`
 
 + `COMPLETED: 13-05-2025` Shoot attempt - colour ball Black - player 1
 
-    + `COMPLETED: 09-05-2025:` Reduces `#points_remaining` by 7 to 139
-    + `COMPLETED: 09-05-2025:` Adds 1 to black ball `#tally---potted--black-p1`
-    + `COMPLETED: 09-05-2025:` Increment last break tally by 7 `#last---break--p1`
-    + `COMPLETED: 09-05-2025:` Adds 7 to highest break `#highest---break--p1`    
-    + `COMPLETED: 09-05-2025:` increments text content 1 to black ball `#tally---potted--black-p1`
+    + `COMPLETED: 09-05-2025` Reduces `#points_remaining` by 7 to 139
+    + `COMPLETED: 09-05-2025` Adds 1 to black ball `#tally---potted--black-p1`
+    + `COMPLETED: 09-05-2025` Increment last break tally by 7 `#last---break--p1`
+    + `COMPLETED: 09-05-2025` Adds 7 to highest break `#highest---break--p1`    
+    + `COMPLETED: 09-05-2025` increments text content 1 to black ball `#tally---potted--black-p1`
 
 + `COMPLETED: 13-05-2025` Shoot attempt - colour ball Pink - player 1
 
-    + `COMPLETED: 09-05-2025:` Reduces `#points_remaining` by 7 to 139    
-    + `COMPLETED: 09-05-2025:` Adds 1 to pink ball `#tally---potted--pink-p1`
-    + `COMPLETED: 09-05-2025:` Increment last break tally by 7 `#last---break--p1`
-    + `COMPLETED: 09-05-2025:` Adds 6 to highest break `#highest---break--p1`    
-    + `COMPLETED: 09-05-2025:` increments text content 1 to pink ball `#tally---potted--pink-p1`
+    + `COMPLETED: 09-05-2025` Reduces `#points_remaining` by 7 to 139    
+    + `COMPLETED: 09-05-2025` Adds 1 to pink ball `#tally---potted--pink-p1`
+    + `COMPLETED: 09-05-2025` Increment last break tally by 7 `#last---break--p1`
+    + `COMPLETED: 09-05-2025` Adds 6 to highest break `#highest---break--p1`    
+    + `COMPLETED: 09-05-2025` increments text content 1 to pink ball `#tally---potted--pink-p1`
 
 + `COMPLETED: 13-05-2025` Shoot attempt - colour ball Blue - player 1
 
-    + `COMPLETED: 09-05-2025:` Reduces `#points_remaining` by 7 to 139    
-    + `COMPLETED: 09-05-2025:` Adds 1 to blue ball `#tally---potted--blue-p1`
-    + `COMPLETED: 09-05-2025:` Increment last break tally by 5 `#last---break--p1`
-    + `COMPLETED: 09-05-2025:` Adds 5 to highest break `#highest---break--p1`
-    + `COMPLETED: 09-05-2025:` increments text content 1 to blue ball `#tally---potted--blue-p1`
+    + `COMPLETED: 09-05-2025` Reduces `#points_remaining` by 7 to 139    
+    + `COMPLETED: 09-05-2025` Adds 1 to blue ball `#tally---potted--blue-p1`
+    + `COMPLETED: 09-05-2025` Increment last break tally by 5 `#last---break--p1`
+    + `COMPLETED: 09-05-2025` Adds 5 to highest break `#highest---break--p1`
+    + `COMPLETED: 09-05-2025` increments text content 1 to blue ball `#tally---potted--blue-p1`
 
 + `COMPLETED: 13-05-2025` Shoot attempt - colour ball Brown - player 1
 
-    + `COMPLETED: 09-05-2025:` Reduces `#points_remaining` by 7 to 139    
-    + `COMPLETED: 09-05-2025:` Adds 1 to brown ball `#tally---potted--black-p1`
-    + `COMPLETED: 09-05-2025:` Increment last break tally by 4 `#last---break--p1`
-    + `COMPLETED: 09-05-2025:` Adds 4 to highest break `#highest---break--p1`
-    + `COMPLETED: 09-05-2025:` increments text content 1 to brown ball `#tally---potted--brown-p1`
+    + `COMPLETED: 09-05-2025` Reduces `#points_remaining` by 7 to 139    
+    + `COMPLETED: 09-05-2025` Adds 1 to brown ball `#tally---potted--black-p1`
+    + `COMPLETED: 09-05-2025` Increment last break tally by 4 `#last---break--p1`
+    + `COMPLETED: 09-05-2025` Adds 4 to highest break `#highest---break--p1`
+    + `COMPLETED: 09-05-2025` increments text content 1 to brown ball `#tally---potted--brown-p1`
 
 + `COMPLETED: 13-05-2025` Shoot attempt - colour ball Green - player 1
 
-    + `COMPLETED: 09-05-2025:` Reduces `#points_remaining` by 7 to 139    
-    + `COMPLETED: 09-05-2025:` Adds 1 to green ball `#tally---potted--black-p1`
-    + `COMPLETED: 09-05-2025:` Increment last break tally by 3 `#last---break--p1`
-    + `COMPLETED: 09-05-2025:` Adds 3 to highest break `#highest---break--p1`    
-    + `COMPLETED: 09-05-2025:` increments text content 1 to green ball `#tally---potted--green-p1`
+    + `COMPLETED: 09-05-2025` Reduces `#points_remaining` by 7 to 139    
+    + `COMPLETED: 09-05-2025` Adds 1 to green ball `#tally---potted--black-p1`
+    + `COMPLETED: 09-05-2025` Increment last break tally by 3 `#last---break--p1`
+    + `COMPLETED: 09-05-2025` Adds 3 to highest break `#highest---break--p1`    
+    + `COMPLETED: 09-05-2025` increments text content 1 to green ball `#tally---potted--green-p1`
 
 + `COMPLETED: 13-05-2025` Shoot attempt - colour ball Yellow - player 1
-    + `COMPLETED: 09-05-2025:` Reduces `#points_remaining` by 7 to 139
-    + `COMPLETED: 09-05-2025:` Adds 1 to yellow ball `#tally---potted--black-p1`
-    + `COMPLETED: 09-05-2025:` Increment last break tally by 2 `#last---break--p1`
-    + `COMPLETED: 09-05-2025:` Adds 2 to highest break `#highest---break--p1`    
-    + `COMPLETED: 09-05-2025:` increments text content 1 to yellow ball `#tally---potted--yellow-p1`    
+    + `COMPLETED: 09-05-2025` Reduces `#points_remaining` by 7 to 139
+    + `COMPLETED: 09-05-2025` Adds 1 to yellow ball `#tally---potted--black-p1`
+    + `COMPLETED: 09-05-2025` Increment last break tally by 2 `#last---break--p1`
+    + `COMPLETED: 09-05-2025` Adds 2 to highest break `#highest---break--p1`    
+    + `COMPLETED: 09-05-2025` increments text content 1 to yellow ball `#tally---potted--yellow-p1`    
 
-+ `COMPLETED: 12-05-2025:` Link to about page on version number in footer element
++ `COMPLETED: 12-05-2025` Link to about page on version number in footer element
 
 + `COMPLETED: 12-05-2025` Implement Re-rack Button - "Reset" button - change to "Re-rack button (`#reset---app`)
 
@@ -920,7 +920,7 @@ The development of this application is currently in progress.
 
 + `COMPLETED: 21-05-2025` **FIX: Ball Icon Tallies buttons are clickable again even when greyed out when player 1 comes back to the table.  ```#pot---miss--two```
 
-+ `COMPLETED: 21-05-2025:` "MISS!" button for player one should be fixed to disable `#tally---potted--red-p1` red 1 for player 1
++ `COMPLETED: 21-05-2025` "MISS!" button for player one should be fixed to disable `#tally---potted--red-p1` red 1 for player 1
 
 + `COMPLETED: 22-05-2025` Disable all player buttons at frame end
 
@@ -941,24 +941,54 @@ The development of this application is currently in progress.
     + `COMPLETED: 02-06-2025` Player 2 misses a pot attempt.
 
 
-    + `TODO:` Shoot attempt - Colour Ball Yellow - player 2
-        + `TODO:` Reduces `#points_remaining` by 7
-        + `TODO:` Adds 1 to yellow ball `#tally---potted--black-p2`
-        + `TODO:` Increment last break tally by 2 `#last---break--p2`
-        + `TODO:` Adds 7 to highest break `#highest---break--p2`    
-        + `TODO:` Increments text content 1 to yellow ball `#tally---potted--yellow-p2`
+    + `COMPLETED: 03-06-2025` Shoot attempt - Colour Ball (Yellow) - Player 2
+        + `COMPLETED: 03-06-2025` Reduces `#points_remaining` by 2
+        + `COMPLETED: 03-06-2025` Adds 1 to yellow ball potted tally `#tally---potted--yellow-p2`
+        + `COMPLETED: 03-06-2025` Adds 2 to the last break total `#last---break--p2`
+        + `COMPLETED: 03-06-2025` Adds 2 to highest break total if needed `#highest---break--p2`    
+        + `COMPLETED: 03-06-2025` Increments text content 1 to yellow ball `#tally---potted--yellow-p2`
  
-    + `TODO:` Shoot attempt - Colour Ball Green - player 2
-    + `TODO:` Shoot attempt - Colour Ball Brown - player 2
-    + `TODO:` Shoot attempt - Colour Ball Blue - player 2
-    + `TODO:` Shoot attempt - Colour Ball Pink - player 2
-    + `TODO:` Shoot attempt - Colour Ball Black - player 2
+    + `COMPLETED: 03-06-2025` Shoot attempt - Colour Ball (Green) - Player 2
+        + `COMPLETED: 03-06-2025` Reduces `#points_remaining` by 3
+        + `COMPLETED: 03-06-2025` Adds 1 to green ball potted tally `#tally---potted--green-p2`
+        + `COMPLETED: 03-06-2025` Adds 2 to the last break total `#last---break--p2`
+        + `COMPLETED: 03-06-2025` Adds 3 to highest break total if needed `#highest---break--p2`    
+        + `COMPLETED: 03-06-2025` Increments text content 1 to green ball `#tally---potted--green-p2`
+
+    + `COMPLETED: 03-06-2025` Shoot attempt - Colour Ball (Brown) - Player 2
+        + `COMPLETED: 03-06-2025` Reduces `#points_remaining` by 4
+        + `COMPLETED: 03-06-2025` Adds 1 to brown ball potted tally `#tally---potted--brown-p2`
+        + `COMPLETED: 03-06-2025` Increment last break tally by 4 `#last---break--p2`
+        + `COMPLETED: 03-06-2025` Adds 7 to highest break total if needed `#highest---break--p2`    
+        + `COMPLETED: 03-06-2025` Increments text content 1 to brown ball `#tally---potted--brown-p2`
+
+    + `COMPLETED: 03-06-2025` Shoot attempt - Colour Ball (Blue) - Player 2
+        + `COMPLETED: 03-06-2025` Reduces `#points_remaining` by 5
+        + `COMPLETED: 03-06-2025` Adds 1 to blue ball potted tally `#tally---potted--blue-p2`
+        + `COMPLETED: 03-06-2025` Increment last break tally by 5 `#last---break--p2`
+        + `COMPLETED: 03-06-2025` Adds 7 to highest break total if needed `#highest---break--p2`    
+        + `COMPLETED: 03-06-2025` Increments text content 1 to pink ball `#tally---potted--blue-p2`
+
+    + `COMPLETED: 03-06-2025` Shoot attempt - Colour Ball (Pink) - Player 2
+        + `COMPLETED: 03-06-2025` Reduces `#points_remaining` by 6
+        + `COMPLETED: 03-06-2025` Adds 1 to pink ball potted tally `#tally---potted--pink-p2`
+        + `COMPLETED: 03-06-2025` Increment last break tally by 6 `#last---break--p2`
+        + `COMPLETED: 03-06-2025` Adds 7 to highest break total if needed `#highest---break--p2`    
+        + `COMPLETED: 03-06-2025` Increments text content 1 to pink ball `#tally---potted--pink-p2`
+
+    + `COMPLETED: 03-06-2025` Shoot attempt - Colour Ball (Black) - Player 2
+        + `COMPLETED: 03-06-2025` Reduces `#points_remaining` by 7
+        + `COMPLETED: 03-06-2025` Adds 1 to yellow ball potted tally `#tally---potted--black-p2`
+        + `COMPLETED: 03-06-2025` Increment last break tally by 7 `#last---break--p2`
+        + `COMPLETED: 03-06-2025` Adds 7 to highest break `#highest---break--p2`    
+        + `COMPLETED: 03-06-2025` Increments text content 1 to black ball `#tally---potted--black-p2`
 
     + `TODO:` Take into account the number red balls in the frame that have been potted - by both players. They need to be incremented independently of each other, but the tallies never be allowed to go above 15 clicks between them. 
 
     + `TODO:` BUG: When missing a colour on the colour sequence, the next player must shoot for that colour. 
 
 
++ `TODO:` BUG: Player 2 red ball does not factor in 2 red balls potted in the same shot.
 
 + `TODO:` Next player reverts to shooting for a red ball after a foul. 
 + `TODO:` Revert to shooting for a red ball after a foul. 
@@ -1104,6 +1134,10 @@ resetButton.addEventListener("click", function(event) {
     + Red Ball Player
 
 + `8` - BUG: When missing a colour on the colour sequence, the next player shoots for the next colour rather than the colour the other player missed.
+
++ `9` - Player 2 does not follow the colour sequence when Player 1 misses a pot attempt withn 27 points remaining.
+
++ `9` - BUG: ball tally for brown ball player 2 needs to be fixed as a duplicate of the brown ball tally attribute for player 2. `Resolved: 20-05-2025`
 
 ### Future Improvements
 
@@ -1401,3 +1435,19 @@ last---break--p2
 + On this day (02-06-2025) I ended up making a tremendous leap forward. I can now replicate as many missed and successful pot attempts as I like. And the colour sequence works as expected.  Almost as expected. If one player misses a pot attempt on the last brown the next player will shoot for the last blue ball. This is a bug because the programming seems to be assuming that the ball was in fact potted and moves on.  
 
 + However, for now I'm taking this as a win because it does seem that the turn based play is working for the most part. I've been testing this extensively, and there does seem to be the intelligence to know when to start the colour sequence based on the remaining points available.
+
+#### v1.0.12
+
++ After this point, it looks like we've finished building turned based play in so far as switching between colour and red for both players and changing between both players after a missed shot.
+
++ This took a lot of bloated code. I am fully aware of the code bloat and that'll need to work on a lot of refactoring. At my last count I can see that there are over 2400 lines of code in `app.js`. This is only going build up even more before I'm finished adding the application features.
+
++ But in terms of the functionalty of the application it's another big step.
+
+    + The MISS Buttons switch you between Player 1 and Player 2
+    + The red and colour calls correctly applies the scores; ball potted tallies; breaks and points remaining values for player 1.
+    + The red and colour calls correctly applies the scores; ball potted tallies; breaks and points remaining values for player 2.
+    + 
+
++ There a new glitch now with regards to player 2 finishing the game. It's hard to replicate this on its own because there could be multiple routes to player 2 overshotting the points remaining beyond 0 points. And if it goes to -1 the frame will not end (as far as the application is concerned).
+
