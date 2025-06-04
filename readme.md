@@ -1,6 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Last Updated: 03/06/2025 - 17:08`
++ `Last Updated: 04/06/2025 - 09:31`
 ## Sections
 
 [Intro](#intro
@@ -1026,7 +1026,7 @@ ayer 2.
 + `TODO:` Track number of times Pink ball has been potted `#pot---red--pink` (no more than 16)
 + `TODO:` Track number of times Black ball has been potted `#pot---red--black` (no more than 16)
     
-+ it's possible, however unlikely it might be that a player can pot a colour ball 16 times, including the colour sequence. A 147 Break (15 reds, 15 of a single colour and the colour sequnce e.g. 15 Reds, 15 Yellows, Yellow, Green, Brown, Blue, Pink, Black)
++ it's possible, however unlikely it might be that a player can pot a colour ball 16 times, including the colour sequence. A 147 Break (15 reds, 15 of a single colour and the colour sequence e.g. 15 Reds, 15 Yellows, Yellow, Green, Brown, Blue, Pink, Black)
 
 + `TODO:` Change the styling of the snooker ball icons so they stand out more - more visual clarity required against the main background and also as disabled elements. 
 
@@ -1446,16 +1446,16 @@ last---break--p2
 
 #### v1.0.12
 
-+ After this point, it looks like we've finished building turned based play in so far as switching between colour and red for both players and changing between both players after a missed shot.
++ After this point, it looks like we've finished building turned based play in so far as switching between colour and red for both players and changing between both players after a missed shot. There is still a bit of stylistic polish to sort out but functionally it's done.
 
-+ This took a lot of bloated code. I am fully aware of the code bloat and that'll need to work on a lot of refactoring. At my last count I can see that there are over 2400 lines of code in `app.js`. This is only going build up even more before I'm finished adding the application features.
++ This took a lot of bloated code. I am fully aware of the code bloat and that'll need to work on a lot of refactoring later on. At my last count I can see that there are over *2400* lines of code in `app.js`. This is only going build up even more before I'm finished adding the application features.
 
 + But in terms of the functionalty of the application it's another big step.
 
     + The MISS Buttons switch you between Player 1 and Player 2
-    + The red and colour calls correctly applies the scores; ball potted tallies; breaks and points remaining values for player 1.
-    + The red and colour calls correctly applies the scores; ball potted tallies; breaks and points remaining values for player 2.
-    + 
+    + The red and colour balls correctly apply the player scores; ball potted tallies; breaks and points remaining values for player 1.
+    + The red and colour balls correctly apply the player scores; ball potted tallies; breaks and points remaining values for player 2.
+    + MISSing shots on a colour reduces the point remaining by 7 for each shot - unless the player has reached the colour sequence.
 
-+ There a new glitch now with regards to player 2 finishing the game. It's hard to replicate this on its own because there could be multiple routes to player 2 overshotting the points remaining beyond 0 points. And if it goes to -1 the frame will not end (as far as the application is concerned).
++ There a new glitch now with regards to player 2 finishing the game. It's hard to replicate this on its own because there could be multiple routes to player 2 overshotting the points remaining beyond 0 points. And if it goes to -1 the frame will not end (as far as the application is concerned). Now at this point I have verified that points are calculated correctly both players. So it comes down to the fact that player 2 does not take into account multiple red pots in the same shot as player 1 does.
 
