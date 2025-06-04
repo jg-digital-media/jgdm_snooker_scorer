@@ -1,4 +1,4 @@
-console.log("app.js connected - 03-06-2025 - 16:45");
+console.log("app.js connected - 04-06-2025 - 09:30");
 
 // Set the points remaining to 147
 document.getElementById('points_remaining').textContent = '147';
@@ -2293,6 +2293,7 @@ function updatePlayer2BallStyling() {
             if (redTallyP2) {
                 redTallyP2.style.pointerEvents = "auto";
                 redTallyP2.style.opacity = "1";
+                redTallyP2.style.cursor = "pointer";
             }
             
             // Style color balls and tallies (disabled)
@@ -2306,6 +2307,7 @@ function updatePlayer2BallStyling() {
                 if (colorTallies[index]) {
                     colorTallies[index].style.pointerEvents = "none";
                     colorTallies[index].style.opacity = "0.5";
+                    colorTallies[index].style.cursor = "pointer";
                 }
             });
         } else {
@@ -2323,6 +2325,7 @@ function updatePlayer2BallStyling() {
             if (redTallyP2) {
                 redTallyP2.style.pointerEvents = "none";
                 redTallyP2.style.opacity = "0.5";
+                redTallyP2.style.cursor = "pointer";
             }
             
             // Style color balls and tallies (enabled)
@@ -2336,6 +2339,7 @@ function updatePlayer2BallStyling() {
                 if (colorTallies[index]) {
                     colorTallies[index].style.pointerEvents = "auto";
                     colorTallies[index].style.opacity = "1";
+                    colorTallies[index].style.cursor = "pointer";
                 }
             });
         }
@@ -2352,6 +2356,7 @@ function updatePlayer2BallStyling() {
         if (redTallyP2) {
             redTallyP2.style.pointerEvents = "none";
             redTallyP2.style.opacity = "0.5";
+            redTallyP2.style.cursor = "default";
         }
         
         colorBalls.forEach((ball, index) => {
@@ -2364,6 +2369,7 @@ function updatePlayer2BallStyling() {
             if (colorTallies[index]) {
                 colorTallies[index].style.pointerEvents = "none";
                 colorTallies[index].style.opacity = "0.5";
+                colorTallies[index].style.cursor = "default";
             }
         });
     }
