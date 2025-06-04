@@ -1,4 +1,4 @@
-console.log("app.js connected - 04-06-2025 - 09:30");
+console.log("app.js connected - 04-06-2025 - 15:54");
 
 // Set the points remaining to 147
 document.getElementById('points_remaining').textContent = '147';
@@ -1331,11 +1331,11 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
                 
                 // 5. Update red tally for player 2
-                const redTallyP2 = document.getElementById("red---tally--p2");
+                const redTallyP2 = document.getElementById("tally---potted--red-p2");
                 if (redTallyP2) {
                     let currentRedTally = parseInt(redTallyP2.textContent);
                     if (isNaN(currentRedTally)) currentRedTally = 0;
-                    currentRedTally += 1;
+                    //currentRedTally += 1;
                     redTallyP2.textContent = currentRedTally;
                     console.log(`Updated player 2 red tally to ${currentRedTally}`);
                 }
@@ -1352,8 +1352,27 @@ document.addEventListener("DOMContentLoaded", function() {
                 shootingForRed = false;
                 lastBallWasRed = true;
                 
-                // 9. Make color balls available
+                // 9. Disable red ball and tally for player 2
+                const redBallP2 = document.getElementById("pot---red--two");
+                if (redBallP2) {
+                    redBallP2.style.pointerEvents = "none";
+                    redBallP2.style.opacity = "0.5";
+                    redBallP2.style.cursor = "default";
+                    console.log("Disabled player 2 red ball");
+                }
+                
+                if (redTallyP2) {
+                    redTallyP2.style.pointerEvents = "none";
+                    redTallyP2.style.opacity = "0.5";
+                    redTallyP2.style.cursor = "default";
+                    console.log("Disabled player 2 red tally");
+                }
+                
+                // 10. Make color balls available
                 makeColorBallsAvailableForPlayer2();
+                
+                // 11. Update available balls
+                updateAvailableBalls();
                 
                 console.log("Player 2 now shooting for color");
             });
@@ -2287,6 +2306,7 @@ function updatePlayer2BallStyling() {
                 redBallP2.style.pointerEvents = "auto";
                 redBallP2.style.opacity = "1";
                 redBallP2.style.cursor = "pointer";
+                redBallP2.style.visibility = "visible";
             }
             
             // Style red tally
@@ -2294,6 +2314,7 @@ function updatePlayer2BallStyling() {
                 redTallyP2.style.pointerEvents = "auto";
                 redTallyP2.style.opacity = "1";
                 redTallyP2.style.cursor = "pointer";
+                redTallyP2.style.visibility = "visible";
             }
             
             // Style color balls and tallies (disabled)
@@ -2301,7 +2322,7 @@ function updatePlayer2BallStyling() {
                 if (ball) {
                     ball.style.pointerEvents = "none";
                     ball.style.opacity = "0.5";
-                    ball.style.cursor = "default";
+                    ball.style.cursor = "pointer";
                 }
                 
                 if (colorTallies[index]) {
@@ -2325,7 +2346,7 @@ function updatePlayer2BallStyling() {
             if (redTallyP2) {
                 redTallyP2.style.pointerEvents = "none";
                 redTallyP2.style.opacity = "0.5";
-                redTallyP2.style.cursor = "pointer";
+                redTallyP2.style.cursor = "default";
             }
             
             // Style color balls and tallies (enabled)
@@ -2385,7 +2406,7 @@ document.addEventListener("DOMContentLoaded", function() {
     if (typeof origSwitchPlayer === 'function') {
         window.switchPlayer = function(player) {
             origSwitchPlayer(player);
-            setTimeout(updatePlayer2BallStyling, 100);
+            updatePlayer2BallStyling();
         };
     }
     
@@ -2393,7 +2414,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const missButtonP2 = document.getElementById("pot---miss--two");
     if (missButtonP2) {
         missButtonP2.addEventListener("click", function() {
-            setTimeout(updatePlayer2BallStyling, 100);
+            updatePlayer2BallStyling();
         });
     }
     
@@ -2411,10 +2432,19 @@ document.addEventListener("DOMContentLoaded", function() {
     p2Balls.forEach(ball => {
         if (ball) {
             ball.addEventListener("click", function() {
-                setTimeout(updatePlayer2BallStyling, 100);
+                updatePlayer2BallStyling();
             });
         }
     });
+    
+    // Hook into updateAvailableBalls
+    const origUpdateAvailableBalls = window.updateAvailableBalls;
+    if (typeof origUpdateAvailableBalls === 'function') {
+        window.updateAvailableBalls = function() {
+            origUpdateAvailableBalls();
+            updatePlayer2BallStyling();
+        };
+    }
 });
 
 // One-time call
