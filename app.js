@@ -1,4 +1,4 @@
-console.log("app.js connected - 04-06-2025 - 15:54");
+console.log("app.js connected - 04-06-2025 - 16:27");
 
 // Set the points remaining to 147
 document.getElementById('points_remaining').textContent = '147';
@@ -2117,6 +2117,7 @@ function disableRedBalls() {
     if (redBallP1) {
         redBallP1.style.pointerEvents = "none";
         redBallP1.style.opacity = "0.5";
+        redBallP1.style.cursor = "pointer";
     }
     
     // Disable red ball for player 2
@@ -2124,6 +2125,7 @@ function disableRedBalls() {
     if (redBallP2) {
         redBallP2.style.pointerEvents = "none";
         redBallP2.style.opacity = "0.5";
+        redBallP2.style.cursor = "pointer";
     }
     
     // Hide apply buttons
