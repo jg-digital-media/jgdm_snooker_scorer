@@ -1,6 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Last Updated: 04/06/2025 - 09:31`
++ `Last Updated: 04/06/2025 - 16:51`
 ## Sections
 
 [Intro](#intro
@@ -986,6 +986,14 @@ The development of this application is currently in progress.
 
 + `COMPLETED: 03-06-2025` Disable foul and miss buttons when points remaining is at 0 (Player 2)
 
++ `TODO:` Apply points remaining fix for multiple red pots in the same shot for player 2 
+
++ `TODO:` Restore playing through the final colour sequence for player 2.
+
++ `TODO:` Ensure that at no point do the number of red balls potted by both players exceeds 15.
+
++ `TODO:` Refactor code generated so far to reduce total lines in the script, make it more readable and easier to maintain.
+
 + `TODO:` BUG: "Last Break" should not be reset to 0 until a player makes their first successful pot attempt after returning to the table
 
 + `TODO:` BUG: Player 1 clicks "MISS" without applying their Redball pot(s).  
@@ -1158,7 +1166,7 @@ resetButton.addEventListener("click", function(event) {
 
 [Back to Sections](#sections)
 
-[v1.0.0](#v100) --- [v1.0.1](#v101) --- [v1.0.2](#v102) --- [v1.0.3](#v103) --- [v1.0.4](#v104) --- [v1.0.5](#v105) --- [v1.0.6](#v106) --- [v1.0.7](#v107) --- [v1.0.8](#v108) --- [v1.0.9](#v109) --- [v1.0.10](#v1010)
+[v1.0.0](#v100) --- [v1.0.1](#v101) --- [v1.0.2](#v102) --- [v1.0.3](#v103) --- [v1.0.4](#v104) --- [v1.0.5](#v105) --- [v1.0.6](#v106) --- [v1.0.7](#v107) --- [v1.0.8](#v108) --- [v1.0.9](#v109) --- [v1.0.10](#v1010) --- [v1.0.11](#v1011) --- [v1.0.12](#v1012) --- [v1.0.13](#v1013)
  
 #### v1.0.0
 
@@ -1444,6 +1452,8 @@ last---break--p2
 
 + However, for now I'm taking this as a win because it does seem that the turn based play is working for the most part. I've been testing this extensively, and there does seem to be the intelligence to know when to start the colour sequence based on the remaining points available.
 
+[Back to Top](#comments)
+
 #### v1.0.12
 
 + After this point, it looks like we've finished building turned based play in so far as switching between colour and red for both players and changing between both players after a missed shot. There is still a bit of stylistic polish to sort out but functionally it's done.
@@ -1459,3 +1469,16 @@ last---break--p2
 
 + There a new glitch now with regards to player 2 finishing the game. It's hard to replicate this on its own because there could be multiple routes to player 2 overshotting the points remaining beyond 0 points. And if it goes to -1 the frame will not end (as far as the application is concerned). Now at this point I have verified that points are calculated correctly both players. So it comes down to the fact that player 2 does not take into account multiple red pots in the same shot as player 1 does.
 
+[Back to Top](#comments)
+
+#### v1.0.13
+
++ `The turn based play is definitely coming into place now.  On this day, 04-06-2025, I've implemented the disabling of red and colour balls at the appropriate times (Player 2).
+
++ I also refreshed the main stylesheet so the cursor pointer always appears on the ball icons aned frame buttons (MISS, FOUL) when they are enabled.
+
++ There was an issue with opacity of the ball tallies not working properly when colour balls were enabled that does now seem to have resolved itself.
+
++ What needs to happen now is to sort out multiple red pots in the same shot for player 2 (points remaining affected) and ensure that at no point do the number of red balls potted by both players exceeds 15. And the last thing to sort out is the final colour sequence for player 2.
+
+[Back to Top](#comments)
