@@ -1,7 +1,7 @@
 /******************************
 
 Snooker Scorer App: 
-Last Update: 15/05/2025 - 13:55
+Last Update: 04/06/2025 - 16:09
 ******************************/
 * {
   padding: 0;
@@ -195,6 +195,7 @@ body main.interface-container .player---section .player---potting .player---pot-
   margin: 10px;
   display: inline-block;
   transition: box-shadow 0.3s ease-in-out;
+  cursor: pointer;
 }
 body main.interface-container .player---section .player---potting .player---pot--score:hover {
   box-shadow: wheat 0 0 2px 2px;
@@ -374,6 +375,7 @@ body main.interface-container .player---potting .player---pot--miss {
   padding: 0 6px;
   /* width: 59px; */
   height: 28px;
+  cursor: pointer;
   transition: box-shadow 0.3s ease-in-out, background 0.3s ease-in-out;
 }
 body main.interface-container .player---potting .player---pot--miss:hover {
@@ -398,10 +400,9 @@ body main.interface-container .player---potting .player---pot--miss:hover {
 body main.interface-container .player---potting .player---pot--miss .pot---tally {
   /* color: white; */
   text-align: center;
-  /* font-size: 13px; */
+  font-size: 13px;
   position: relative;
   top: 7px;
-  cursor: pointer;
 }
 body main.interface-container .player---potting .player---pot--miss #tally---potted--black-p1,
 body main.interface-container .player---potting .player---pot--miss #tally---potted--pink-p1,
@@ -442,13 +443,6 @@ body main.interface-container .player---potting .player---pot--score .pot---tall
   font-size: 13px;
   position: relative;
   top: 7px;
-  cursor: pointer;
-}
-@media (max-width: 560px) {
-  body main.interface-container .player---potting .player---pot--score .pot---tally {
-    font-size: 8px;
-    font-weight: bold;
-  }
 }
 body main.interface-container .player---potting .player---pot--score #tally---potted--black-p1,
 body main.interface-container .player---potting .player---pot--score #tally---potted--pink-p1,
