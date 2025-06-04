@@ -237,6 +237,7 @@ body {
                     margin: 10px;
                     display: inline-block;
                     transition: box-shadow 0.3s ease-in-out;
+                    cursor: pointer;
 
                     &:hover {
 
@@ -496,6 +497,7 @@ body {
                 padding: 0 6px;
                 /* width: 59px; */
                 height: 28px;
+                cursor: pointer;
 
                 transition: box-shadow 0.3s ease-in-out, background 0.3s ease-in-out;
 
@@ -523,13 +525,11 @@ body {
                 }
 
                 .pot---tally {
-
                     /* color: white; */
                     text-align: center;
-                    /* font-size: 13px; */
+                    font-size: 13px;
                     position: relative;
                     top: 7px;
-                    cursor: pointer;
                 }
 
                 #tally---potted--black-p1,
@@ -574,20 +574,11 @@ body {
                 }
 
                 .pot---tally {
-
                     /* color: white; */
                     text-align: center;
                     font-size: 13px;
                     position: relative;
                     top: 7px;
-                    cursor: pointer;
-
-                    @media (max-width: $breakpoint---md) {
-
-                        font-size: 8px;
-                        font-weight: bold;
-                    }
-
                 }
 
                 #tally---potted--black-p1,
