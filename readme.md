@@ -1,6 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Last Updated: 04/06/2025 - 16:51`
++ `Last Updated: 09/06/2025 - 11:44`
 ## Sections
 
 [Intro](#intro
@@ -761,7 +761,7 @@ This application is built using the following technologies:
 ## Development
 [Back to Top](#sections)
 
-### Tasks - 145 completed items
+### Tasks - 147 completed items
 
 The development of this application is currently in progress.
 
@@ -986,7 +986,9 @@ The development of this application is currently in progress.
 
 + `COMPLETED: 03-06-2025` Disable foul and miss buttons when points remaining is at 0 (Player 2)
 
-+ `TODO:` Apply points remaining fix for multiple red pots in the same shot for player 2 
++ `COMPLETED: 09-06-2025` BUG: The link `#apply_tally---red--p2` does not apply the correct number of points for multiple reds potted in the same shot. e.g. applying 2 red ball points gives us only 1 point
+
++ `COMPLETED: 09-06-2025` Apply points remaining fix for multiple red pots in the same shot for player 2 
 
 + `TODO:` Restore playing through the final colour sequence for player 2.
 
@@ -1062,59 +1064,57 @@ ayer 2.
 ### Identified Bugs
 [Back to Top](#sections)
 
-
-+ `1` - the `rerackTable()` method, as written currently pushes player one score buttons down a row until all colours are pressed. Have replaced with a `location.reload` method on the "Re-reack" button for now.  - `12-05-2025`
++ `1` - the `rerackTable()` method, as written currently pushes player one score buttons down a row until all colours are pressed. Have replaced with a `location.reload` method on the "Re-reack" button for now.  - `Resolved: 12-05-2025`
 
 ```javascript
 
-
-// Function to re-rack the table (reset the game)
-function reRackTable() {
-    // Reset scores and breaks
-    p1CurrentScore = 0;
-    p1CurrentBreak = 0;
-    p1Score.textContent = "0";
-    lastBreakP1.textContent = "0";
-    
-    // Reset game state variables
-    lastBallWasRed = false;
-    consecutiveRedCount = 0;
-    
-    // Reset points remaining to 147
-    remainingPoints = 147;
-    pointsRemaining.textContent = "147";
-    
-    // Reset all ball tallies
-    redTallyP1.textContent = "";
-    yellowTallyP1.textContent = "";
-    greenTallyP1.textContent = "";
-    brownTallyP1.textContent = "";
-    blueTallyP1.textContent = "";
-    pinkTallyP1.textContent = "";
-    blackTallyP1.textContent = "";
-    
-    // Hide all ball tallies
-    redTallyP1.style.visibility = "hidden";
-    yellowTallyP1.style.visibility = "hidden";
-    greenTallyP1.style.visibility = "hidden";
-    brownTallyP1.style.visibility = "hidden";
-    blueTallyP1.style.visibility = "hidden";
-    pinkTallyP1.style.visibility = "hidden";
-    blackTallyP1.style.visibility = "hidden";
-    
-    // Reset player 2's score if needed
-    const p2Score = document.getElementById("p2---score");
-    if (p2Score) {
-        p2Score.textContent = "0";
+    // Function to re-rack the table (reset the game)
+    function reRackTable() {
+        // Reset scores and breaks
+        p1CurrentScore = 0;
+        p1CurrentBreak = 0;
+        p1Score.textContent = "0";
+        lastBreakP1.textContent = "0";
+        
+        // Reset game state variables
+        lastBallWasRed = false;
+        consecutiveRedCount = 0;
+        
+        // Reset points remaining to 147
+        remainingPoints = 147;
+        pointsRemaining.textContent = "147";
+        
+        // Reset all ball tallies
+        redTallyP1.textContent = "";
+        yellowTallyP1.textContent = "";
+        greenTallyP1.textContent = "";
+        brownTallyP1.textContent = "";
+        blueTallyP1.textContent = "";
+        pinkTallyP1.textContent = "";
+        blackTallyP1.textContent = "";
+        
+        // Hide all ball tallies
+        redTallyP1.style.visibility = "hidden";
+        yellowTallyP1.style.visibility = "hidden";
+        greenTallyP1.style.visibility = "hidden";
+        brownTallyP1.style.visibility = "hidden";
+        blueTallyP1.style.visibility = "hidden";
+        pinkTallyP1.style.visibility = "hidden";
+        blackTallyP1.style.visibility = "hidden";
+        
+        // Reset player 2's score if needed
+        const p2Score = document.getElementById("p2---score");
+        if (p2Score) {
+            p2Score.textContent = "0";
+        }
+        
+        // Reset player at table indicator
+        document.getElementById("player_number").textContent = "1";
+        
+        console.log("Game reset - table re-racked");
     }
-    
-    // Reset player at table indicator
-    document.getElementById("player_number").textContent = "1";
-    
-    console.log("Game reset - table re-racked");
-}
 
-resetButton.addEventListener("click", function(event) {
+    resetButton.addEventListener("click", function(event) {
 
         event.preventDefault(); // Prevent default link behavior
         // reRackTable();        
@@ -1128,17 +1128,21 @@ resetButton.addEventListener("click", function(event) {
 
 ```
 
-+ `2` - "Last Break" should not be reset to 0 until a player makes their first successful pot attempt after returning to the table.
++ `2` - Ball potting tallies over player 2 ball icons by default. They must not be visible until the user of the application clicks the potted ball icon. `Resolved: 20-05-2025`
 
-+ `3` - Ball potting tallies over player 2 ball icons by default. They must not be visible until the user of the application clicks the potted ball icon. `Resolved: 20-05-2025`
++ `3` - `#points_remaining` should not be less than 0. This bug occurs after the "MISS" button is clicked. This should not be possible when the table is cleared and the frame is over. `Resolved: 20-05-2025`
 
-+ `4` - `#points_remaining` should not be less than 0. This bug occurs after the "MISS" button is clicked. This should not be possible when the table is cleared and the frame is over. `Resolved: 20-05-2025`
++ `4` - Every time you click the Player 1 "MISS" button, it becomes possible to click the greyed out colour buttons to tally points for that colour. `Resolved: 20-05-2025`
 
-+ `5` - Every time you click the Player 1 "MISS" button, it becomes possible to click the greyed out colour buttons to tally points for that colour. `Resolved: 20-05-2025`
++ `5` - ball tally for brown ball player 2 needs to be fixed as a duplicate of the brown ball tally attribute for player 2. `Resolved: 03-06-2025`
 
-+ `6` - Player 1 clicks "MISS" without applying their Redball pot(s). 
++ `6` - The link `#apply_tally---red--p2`2 does not apply the correct number of points for multiple reds potted in the same shot.  e.g. applying 2 red ball points gives us only 1 point `Resolved: 03-06-2025`
 
-+ `7` - Red ball tallies in player 1 are no longer incremented correctly after player 1 misses a pot attempt.
++ `7` - "Last Break" should not be reset to 0 until a player makes their first successful pot attempt after returning to the table.
+
++ `8` - Player 1 clicks "MISS" without applying their Redball pot(s). 
+
++ `9` - Red ball tallies in player 1 are no longer incremented correctly after player 1 misses a pot attempt.
 
   e.g. 
     + Red Ball Player 1:  1
@@ -1149,11 +1153,10 @@ resetButton.addEventListener("click", function(event) {
     + MISS 
     + Red Ball Player
 
-+ `8` - When missing a colour on the colour sequence, the next player must shoot for that colour. (Player 2)  e.g. if Player 1 misses a pot attempt on Green, player 2 must shoot for Green.
++ `10` - When missing a colour on the colour sequence, the next player must shoot for that colour. (Player 2)  e.g. if Player 1 misses a pot attempt on Green, player 2 must shoot for Green.
 
-+ `9` - Player 2 does not follow the colour sequence when Player 1 misses a pot attempt within 27 points remaining.
++ `11` - Player 2 does not follow the colour sequence when Player 1 misses a pot attempt within 27 points remaining.
 
-+ `10` - ball tally for brown ball player 2 needs to be fixed as a duplicate of the brown ball tally attribute for player 2. `Resolved: 03-06-2025`
 
 ### Future Improvements
 
