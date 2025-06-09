@@ -1,6 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Last Updated: 09/06/2025 - 16:12`
++ `Last Updated: 09/06/2025 - 16:27`
 ## Sections
 
 [Intro](#intro
@@ -990,6 +990,10 @@ The development of this application is currently in progress.
 
 + `COMPLETED: 09-06-2025` Apply points remaining fix for multiple red pots in the same shot for player 2 
 
++ `TODO:` To get to the final colour sequence, players 1 or 2, or both between them must have potted 15 red balls. In theory, either player could possibly pot these ted balls but not pot the following colour before they reach the colour sequence.
+
++ `TODO:` BUG: Players apply 2 succcessful red ball scores and then miss on next colour.  A reduction of 16 points should be applied to `#points_remaining` 
+
 + `TODO:` BUG: Red Ball tallies for players 1 and 2 should be incremented independently of each other like the colour balls.
 
 + `TODO:` Restore playing through the final colour sequence for player 2.
@@ -1492,6 +1496,10 @@ last---break--p2
 #### v1.0.14
 
 + Progress with the user case of multiple red pots in the same shot for player 2 (points remaining affected). A further bug remains where when players miss the 2 player red balls are linked to each other and do not tally independently.
+
++ There are a couple of points I haven't yet taken in to account. The first To get to the final colour sequence, players 1 or 2, or both between them must have potted 15 red balls. In theory, either player could possibly pot these red balls but not pot the following colour before they reach the colour sequence.
+
++ The second is that the points remaining is not being deducted correctly misses a colour ball after potted 2 or more reds in the previous shot for a red.
 
 
 [Back to Top](#comments)
