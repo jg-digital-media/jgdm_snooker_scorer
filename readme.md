@@ -1,6 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Last Updated: 09/06/2025 - 11:44`
++ `Last Updated: 09/06/2025 - 16:12`
 ## Sections
 
 [Intro](#intro
@@ -990,6 +990,8 @@ The development of this application is currently in progress.
 
 + `COMPLETED: 09-06-2025` Apply points remaining fix for multiple red pots in the same shot for player 2 
 
++ `TODO:` BUG: Red Ball tallies for players 1 and 2 should be incremented independently of each other like the colour balls.
+
 + `TODO:` Restore playing through the final colour sequence for player 2.
 
 + `TODO:` Ensure that at no point do the number of red balls potted by both players exceeds 15.
@@ -1136,13 +1138,11 @@ ayer 2.
 
 + `5` - ball tally for brown ball player 2 needs to be fixed as a duplicate of the brown ball tally attribute for player 2. `Resolved: 03-06-2025`
 
-+ `6` - The link `#apply_tally---red--p2`2 does not apply the correct number of points for multiple reds potted in the same shot.  e.g. applying 2 red ball points gives us only 1 point `Resolved: 03-06-2025`
++ `6` - The link `#apply_tally---red--p2` 2 does not apply the correct number of points for multiple reds potted in the same shot.  e.g. applying 2 red ball points gives us only 1 point `Resolved: 09-06-2025`
 
-+ `7` - "Last Break" should not be reset to 0 until a player makes their first successful pot attempt after returning to the table.
++ `7` - BUG: Red Ball tallies for players 1 and 2 should be incremented independently of each other like the colour balls.
 
-+ `8` - Player 1 clicks "MISS" without applying their Redball pot(s). 
-
-+ `9` - Red ball tallies in player 1 are no longer incremented correctly after player 1 misses a pot attempt.
++ `8` - Red ball tallies in player 1 are no longer incremented correctly after player 1 misses a pot attempt.
 
   e.g. 
     + Red Ball Player 1:  1
@@ -1153,9 +1153,14 @@ ayer 2.
     + MISS 
     + Red Ball Player
 
-+ `10` - When missing a colour on the colour sequence, the next player must shoot for that colour. (Player 2)  e.g. if Player 1 misses a pot attempt on Green, player 2 must shoot for Green.
 
-+ `11` - Player 2 does not follow the colour sequence when Player 1 misses a pot attempt within 27 points remaining.
++ `9` - "Last Break" should not be reset to 0 until a player makes their first successful pot attempt after returning to the table.
+
++ `10` - Player 1 clicks "MISS" without applying their Redball pot(s). 
+
++ `11` - When missing a colour on the colour sequence, the next player must shoot for that colour. (Player 2)  e.g. if Player 1 misses a pot attempt on Green, player 2 must shoot for Green.
+
++ `12` - Player 2 does not follow the colour sequence when Player 1 misses a pot attempt within 27 points remaining.
 
 
 ### Future Improvements
@@ -1483,5 +1488,10 @@ last---break--p2
 + There was an issue with opacity of the ball tallies not working properly when colour balls were enabled that does now seem to have resolved itself.
 
 + What needs to happen now is to sort out multiple red pots in the same shot for player 2 (points remaining affected) and ensure that at no point do the number of red balls potted by both players exceeds 15. And the last thing to sort out is the final colour sequence for player 2.
+
+#### v1.0.14
+
++ Progress with the user case of multiple red pots in the same shot for player 2 (points remaining affected). A further bug remains where when players miss the 2 player red balls are linked to each other and do not tally independently.
+
 
 [Back to Top](#comments)
