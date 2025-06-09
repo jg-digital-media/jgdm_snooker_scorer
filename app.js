@@ -1,4 +1,4 @@
-console.log("app.js connected - 09-06-2025 - 11:08");
+console.log("app.js connected - 09-06-2025 - 14:45");
 
 // Set the points remaining to 147
 document.getElementById('points_remaining').textContent = '147';
@@ -1267,9 +1267,9 @@ document.addEventListener("DOMContentLoaded", function() {
                     tally.style.visibility = "visible";
                     tally.style.opacity = "1";
                     
-                    // Update the display with the temporary tally
-                    tally.textContent = tempRedTallyP2;
-                    console.log(`Incremented player 2 red tally to ${tempRedTallyP2}`);
+                    // Update the display with the total number of reds potted
+                    tally.textContent = redClickCount + tempRedTallyP2;
+                    console.log(`Updated player 2 red tally to ${redClickCount + tempRedTallyP2}`);
                     
                     // Show the apply button
                     const applyButton = document.getElementById("apply_tally---red--p2");
@@ -1392,8 +1392,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     redTallyP2.style.pointerEvents = "none";
                     redTallyP2.style.opacity = "0.5";
                     redTallyP2.style.cursor = "default";
-                    // Update the display to show the cumulative total
-                    redTallyP2.textContent = p2RedTallyTotal;
+                    // Keep the tally display as is, don't clear it
                     console.log("Disabled player 2 red tally");
                 }
                 
