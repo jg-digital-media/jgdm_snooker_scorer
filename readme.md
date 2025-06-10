@@ -1,6 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Last Updated: 09/06/2025 - 16:27`
++ `Last Updated: 10/06/2025 - 11:07`
 ## Sections
 
 [Intro](#intro
@@ -990,9 +990,9 @@ The development of this application is currently in progress.
 
 + `COMPLETED: 09-06-2025` Apply points remaining fix for multiple red pots in the same shot for player 2 
 
-+ `TODO:` To get to the final colour sequence, players 1 or 2, or both between them must have potted 15 red balls. In theory, either player could possibly pot these ted balls but not pot the following colour before they reach the colour sequence.
++ `TODO:` To get to the final colour sequence, players 1 or 2, or both between them must have potted 15 red balls. In theory, either player could possibly pot these red balls but not pot the following colour before they reach the colour sequence.
 
-+ `TODO:` BUG: Players apply 2 succcessful red ball scores and then miss on next colour.  A reduction of 16 points should be applied to `#points_remaining` 
++ `TODO:` BUG: Players apply 2 successful red ball scores and then miss on following colour. A reduction of 16 points should be applied to `#points_remaining` (The colour not shot for followed by the missed colour)
 
 + `TODO:` BUG: Red Ball tallies for players 1 and 2 should be incremented independently of each other like the colour balls.
 
@@ -1165,6 +1165,8 @@ ayer 2.
 + `11` - When missing a colour on the colour sequence, the next player must shoot for that colour. (Player 2)  e.g. if Player 1 misses a pot attempt on Green, player 2 must shoot for Green.
 
 + `12` - Player 2 does not follow the colour sequence when Player 1 misses a pot attempt within 27 points remaining.
+
++ `13` - Players apply 2 successful red ball scores and then miss on following colour. A reduction of 16 points should be applied to `#points_remaining` (The colour not shot for followed by the missed colour)
 
 
 ### Future Improvements
