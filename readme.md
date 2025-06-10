@@ -1,6 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Last Updated: 10/06/2025 - 11:07`
++ `Last Updated: 10/06/2025 - 16:25`
 ## Sections
 
 [Intro](#intro
@@ -761,7 +761,7 @@ This application is built using the following technologies:
 ## Development
 [Back to Top](#sections)
 
-### Tasks - 147 completed items
+### Tasks - 148 completed items
 
 The development of this application is currently in progress.
 
@@ -990,13 +990,21 @@ The development of this application is currently in progress.
 
 + `COMPLETED: 09-06-2025` Apply points remaining fix for multiple red pots in the same shot for player 2 
 
-+ `TODO:` To get to the final colour sequence, players 1 or 2, or both between them must have potted 15 red balls. In theory, either player could possibly pot these red balls but not pot the following colour before they reach the colour sequence.
-
-+ `TODO:` BUG: Players apply 2 successful red ball scores and then miss on following colour. A reduction of 16 points should be applied to `#points_remaining` (The colour not shot for followed by the missed colour)
-
-+ `TODO:` BUG: Red Ball tallies for players 1 and 2 should be incremented independently of each other like the colour balls.
++ `COMPLETED: 10-06-2025` BUG: Players apply 2 successful red ball scores and then miss on following colour. A reduction of 16 points should be applied to 
+`#points_remaining` (The colour not shot for followed by the missed colour)
 
 + `TODO:` Restore playing through the final colour sequence for player 2.
+
++ `TODO:` Missing the last colour after the last red should take the points remaining straight to 27 points and therefore into the final colour sequence.
+
++ `TODO:` To get to the final colour sequence, players 1 or 2, or both between them must have potted 15 red balls. In theory, either player could possibly pot these red balls but not pot the following colour before they reach the colour sequence.
+
+
++ `TODO:` If a player misses a colour after the 15th red the next player starts shotting for the yellow ball as part of the colour sequence. (27 points remaining)
+
++ `TODO:` If a player misses a colour after the 15th red the next player starts shotting for the yellow ball as part of the colour sequence. (27 points remaining)
+
++ `TODO:` BUG: Red Ball tallies for players 1 and 2 should be incremented independently of each other like the colour balls.
 
 + `TODO:` Ensure that at no point do the number of red balls potted by both players exceeds 15.
 
@@ -1066,6 +1074,8 @@ ayer 2.
 + `TODO:` Consider reworking about.php and its content as a modal area for index.php
 
 + `TODO:` Both players want to end the frame.  Develop a button that ends the frame and calculates the score as it is at that time. 
+
++ `TODO: Add a note about vibe coding. Why I'm doing it this way.
 
 ### Identified Bugs
 [Back to Top](#sections)
@@ -1180,7 +1190,7 @@ ayer 2.
 
 [Back to Sections](#sections)
 
-[v1.0.0](#v100) --- [v1.0.1](#v101) --- [v1.0.2](#v102) --- [v1.0.3](#v103) --- [v1.0.4](#v104) --- [v1.0.5](#v105) --- [v1.0.6](#v106) --- [v1.0.7](#v107) --- [v1.0.8](#v108) --- [v1.0.9](#v109) --- [v1.0.10](#v1010) --- [v1.0.11](#v1011) --- [v1.0.12](#v1012) --- [v1.0.13](#v1013)
+[v1.0.0](#v100) --- [v1.0.1](#v101) --- [v1.0.2](#v102) --- [v1.0.3](#v103) --- [v1.0.4](#v104) --- [v1.0.5](#v105) --- [v1.0.6](#v106) --- [v1.0.7](#v107) --- [v1.0.8](#v108) --- [v1.0.9](#v109) --- [v1.0.10](#v1010) --- [v1.0.11](#v1011) --- [v1.0.12](#v1012) --- [v1.0.13](#v1013) --- [v1.0.14](#v1014)
  
 #### v1.0.0
 
@@ -1503,5 +1513,14 @@ last---break--p2
 
 + The second is that the points remaining is not being deducted correctly misses a colour ball after potted 2 or more reds in the previous shot for a red.
 
+[Back to Top](#comments)
+
+#### v1.0.15
+
++ Multiple red pots in the same shot are now taken into account MISSed shots `2 red` --> `MISS`. This means at no point can users accumulate more than 15 red balls potted between the 2 of them.
+
++ It took a lot of testing and prompting of the AI to get this working.
+
++ I had wanted to sort out the colour sequence for player 2 but this is proving difficult for the AI to understand.  It's like Harry Potter trying find different ways of saying "let me into the Room of Requirement". Extensive testing has also uncovered a couple of new issues to sort out - including the need to take the player straight into the final colour sequence when when missing the colour after the last red.
 
 [Back to Top](#comments)
