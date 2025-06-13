@@ -1,4 +1,4 @@
-console.log("app.js connected - 13-06-2025 - 09:15");
+console.log("app.js connected - 13-06-2025 - 16:28");
 
 // Set the points remaining to 147
 document.getElementById('points_remaining').textContent = '147';
@@ -1452,7 +1452,7 @@ document.addEventListener("DOMContentLoaded", function() {
             // Add 2 to player 2's score
             p2CurrentScore += 2;
             
-            // Make sure p2 Score exists before setting its textContent
+            // Make sure p2Score exists before setting its textContent
             if (p2Score) {
                 p2Score.textContent = p2CurrentScore;
             } else {
@@ -1541,32 +1541,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 console.error("Yellow tally element for player 2 not found");
             }
             
-            // Re-enable red ball for player 2 if not in final sequence
-            if (shootingForRed && redClickCount < 15) {
-                const redBallP2 = document.getElementById("pot---red--two");
-                if (redBallP2) {
-                    redBallP2.style.pointerEvents = "auto";
-                    redBallP2.style.opacity = "1";
-                }
-                
-                // Disable color balls for player 2
-                const colorBalls = ["yellow", "green", "brown", "blue", "pink", "black"];
-                colorBalls.forEach(color => {
-                    const colorBall = document.getElementById(`pot---${color}--two`);
-                    if (colorBall && color !== "yellow") { // Skip the yellow ball we just clicked
-                        colorBall.style.pointerEvents = "none";
-                        colorBall.style.opacity = "0.5";
-                    }
-                });
-            }
-            
-            // Update available balls if the function exists
-            if (typeof updateAvailableBalls === 'function') {
-                updateAvailableBalls();
-                updatePlayer2BallAvailability();
-            } else {
-                console.warn("updateAvailableBalls function not found");
-            }
+            // Update available balls
+            updateAvailableBalls();
         });
     } else {
         console.error("Yellow ball element for player 2 (pot---yellow--two) not found in the DOM");
@@ -1576,7 +1552,7 @@ document.addEventListener("DOMContentLoaded", function() {
     if (greenBallP2) {
         
         greenBallP2.addEventListener("click", function() {
-            // Add 2 to player 2's score
+            // Add 3 to player 2's score
             p2CurrentScore += 3;
             
             // Make sure p2Score exists before setting its textContent
@@ -1652,28 +1628,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 console.error("Green tally element for player 2 not found");
             }
             
-            // Re-enable red ball for player 2 if not in final sequence
-            if (shootingForRed && redClickCount < 15) {
-                const redBallP2 = document.getElementById("pot---red--two");
-                if (redBallP2) {
-                    redBallP2.style.pointerEvents = "auto";
-                    redBallP2.style.opacity = "1";
-                }
-                
-                // Disable color balls for player 2
-                const colorBalls = ["yellow", "green", "brown", "blue", "pink", "black"];
-                colorBalls.forEach(color => {
-                    const colorBall = document.getElementById(`pot---${color}--two`);
-                    if (colorBall && color !== "green") { // Skip the green ball we just clicked
-                        colorBall.style.pointerEvents = "none";
-                        colorBall.style.opacity = "0.5";
-                    }
-                });
-            }
-            
             // Update available balls
             updateAvailableBalls();
-            updatePlayer2BallAvailability();
         });
     } else {
         console.error("Green ball element for player 2 (pot---green--two) not found in the DOM");
@@ -1682,7 +1638,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // brown  TODO
     if (brownBallP2) {
         brownBallP2.addEventListener("click", function() {
-            // Add 2 to player 2's score
+            // Add 4 to player 2's score
             p2CurrentScore += 4;
             
             // Make sure p2Score exists before setting its textContent
@@ -1692,7 +1648,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 console.error("Player 2 score element not found");
             }
             
-            // Add 2 to current break
+            // Add 4 to current break
             p2CurrentBreak += 4;
             const lastBreakP2 = document.getElementById("last---break--p2");
             if (lastBreakP2) {
@@ -1759,31 +1715,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 console.error("Brown tally element for player 2 not found");
             }
             
-            // Re-enable red ball for player 2 if not in final sequence
-            if (shootingForRed && redClickCount < 15) {
-                const redBallP2 = document.getElementById("pot---red--two");
-                if (redBallP2) {
-                    redBallP2.style.pointerEvents = "auto";
-                    redBallP2.style.opacity = "1";
-                }
-                
-                // Disable color balls for player 2
-                const colorBalls = ["yellow", "green", "brown", "blue", "pink", "black"];
-                colorBalls.forEach(color => {
-                    const colorBall = document.getElementById(`pot---${color}--two`);
-                    if (colorBall && color !== "brown") { // Skip the brown ball we just clicked
-                        colorBall.style.pointerEvents = "none";
-                        colorBall.style.opacity = "0.5";
-                    }
-                });
-            }
-            
-            // Update available balls if the function exists
-            if (typeof updateAvailableBalls === 'function') {
-                updateAvailableBalls();
-            } else {
-                console.warn("updateAvailableBalls function not found");
-            }
+            // Update available balls
+            updateAvailableBalls();
         });
     } else {
         console.error("Brown ball element for player 2 not found in the DOM");
@@ -1792,7 +1725,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // blue   TODO
      if (blueBallP2) {
         blueBallP2.addEventListener("click", function() {
-            // Add 2 to player 2's score
+            // Add 5 to player 2's score
             p2CurrentScore += 5;
             
             // Make sure p2Score exists before setting its textContent
@@ -1802,7 +1735,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 console.error("Player 2 score element not found");
             }
             
-            // Add 2 to current break
+            // Add 5 to current break
             p2CurrentBreak += 5;
             const lastBreakP2 = document.getElementById("last---break--p2");
             if (lastBreakP2) {
@@ -1867,28 +1800,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 console.error("Blue tally element for player 2 not found");
             }
             
-            // Re-enable red ball for player 2 if not in final sequence
-            if (shootingForRed && redClickCount < 15) {
-                const redBallP2 = document.getElementById("pot---red--two");
-                if (redBallP2) {
-                    redBallP2.style.pointerEvents = "auto";
-                    redBallP2.style.opacity = "1";
-                }
-                
-                // Disable color balls for player 2
-                const colorBalls = ["yellow", "green", "brown", "blue", "pink", "black"];
-                colorBalls.forEach(color => {
-                    const colorBall = document.getElementById(`pot---${color}--two`);
-                    if (colorBall && color !== "blue") { // Skip the blue ball we just clicked
-                        colorBall.style.pointerEvents = "none";
-                        colorBall.style.opacity = "0.5";
-                    }
-                });
-            }
-            
             // Update available balls
             updateAvailableBalls();
-            updatePlayer2BallAvailability();
         });
     } else {
         console.error("Blue ball element for player 2 not found in the DOM");
@@ -1898,7 +1811,7 @@ document.addEventListener("DOMContentLoaded", function() {
      if (pinkBallP2) {
         pinkBallP2.addEventListener("click", function() {
 
-            // Add 2 to player 2's score
+            // Add 6 to player 2's score
             p2CurrentScore += 6;
             
             // Make sure p2Score exists before setting its textContent
@@ -1908,7 +1821,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 console.error("Player 2 score element not found");
             }
             
-            // Add 2 to current break
+            // Add 6 to current break
             p2CurrentBreak += 6;
             const lastBreakP2 = document.getElementById("last---break--p2");
             if (lastBreakP2) {
@@ -1974,28 +1887,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 console.error("Pink tally element for player 2 not found");
             }
             
-            // Re-enable red ball for player 2 if not in final sequence
-            if (shootingForRed && redClickCount < 15) {
-                const redBallP2 = document.getElementById("pot---red--two");
-                if (redBallP2) {
-                    redBallP2.style.pointerEvents = "auto";
-                    redBallP2.style.opacity = "1";
-                }
-                
-                // Disable color balls for player 2
-                const colorBalls = ["yellow", "green", "brown", "blue", "pink", "black"];
-                colorBalls.forEach(color => {
-                    const colorBall = document.getElementById(`pot---${color}--two`);
-                    if (colorBall && color !== "pink") { // Skip the pink ball we just clicked
-                        colorBall.style.pointerEvents = "none";
-                        colorBall.style.opacity = "0.5";
-                    }
-                });
-            }
-            
             // Update available balls
             updateAvailableBalls();
-            updatePlayer2BallAvailability();
         });
     } else {
         console.error("Pink ball element for player 2 not found in the DOM");
@@ -2004,7 +1897,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // black  TODO
      if (blackBallP2) {
         blackBallP2.addEventListener("click", function() {
-            // Add 2 to player 2's score
+            // Add 7 to player 2's score
             p2CurrentScore += 7;
             
             // Make sure p2Score exists before setting its textContent
@@ -2014,7 +1907,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 console.error("Player 2 score element not found");
             }
             
-            // Add 2 to current break
+            // Add 7 to current break
             p2CurrentBreak += 7;
             const lastBreakP2 = document.getElementById("last---break--p2");
             if (lastBreakP2) {
@@ -2079,28 +1972,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 console.error("Black tally element for player 2 not found");
             }
             
-            // Re-enable red ball for player 2 if not in final sequence
-            if (shootingForRed && redClickCount < 15) {
-                const redBallP2 = document.getElementById("pot---red--two");
-                if (redBallP2) {
-                    redBallP2.style.pointerEvents = "auto";
-                    redBallP2.style.opacity = "1";
-                }
-                
-                // Disable color balls for player 2
-                const colorBalls = ["yellow", "green", "brown", "blue", "pink", "black"];
-                colorBalls.forEach(color => {
-                    const colorBall = document.getElementById(`pot---${color}--two`);
-                    if (colorBall && color !== "black") { // Skip the black ball we just clicked
-                        colorBall.style.pointerEvents = "none";
-                        colorBall.style.opacity = "0.5";
-                    }
-                });
-            }
-            
             // Update available balls
             updateAvailableBalls();
-            updatePlayer2BallAvailability();
         });
     } else {
         console.error("Black ball element for player 2 not found in the DOM");
@@ -2189,314 +2062,8 @@ function disableRedBalls() {
     }
 }
 
-// Function to update player 2 ball availability based on game state
-function updatePlayer2BallAvailability() {
-    console.log("Updating ball availability for player 2");
-    
-    // Only proceed if it's player 2's turn
-    if (currentPlayer !== 2) {
-        console.log("Not player 2's turn, skipping ball availability update");
-        return;
-    }
-    
-    // Get all ball elements for player 2
-    const redBallP2 = document.getElementById("pot---red--two");
-    const yellowBallP2 = document.getElementById("pot---yellow--two");
-    const greenBallP2 = document.getElementById("pot---green--two");
-    const brownBallP2 = document.getElementById("pot---brown--two");
-    const blueBallP2 = document.getElementById("pot---blue--two");
-    const pinkBallP2 = document.getElementById("pot---pink--two");
-    const blackBallP2 = document.getElementById("pot---black--two");
-    
-    // Array of all color balls
-    const colorBalls = [yellowBallP2, greenBallP2, brownBallP2, blueBallP2, pinkBallP2, blackBallP2];
-    const colorNames = ["yellow", "green", "brown", "blue", "pink", "black"];
-    
-    if (shootingForRed && redClickCount < 15) {
-        // Shooting for red - enable red ball, disable color balls
-        console.log("Player 2 is shooting for red");
-        
-        // Enable red ball
-        if (redBallP2) {
-            redBallP2.style.pointerEvents = "auto";
-            redBallP2.style.opacity = "1";
-            redBallP2.style.cursor = "pointer";
-            console.log("Enabled red ball for player 2");
-        }
-        
-        // Disable all color balls
-        colorBalls.forEach((ball, index) => {
-            if (ball) {
-                ball.style.pointerEvents = "none";
-                ball.style.opacity = "0.5";
-                ball.style.cursor = "default";
-                console.log(`Disabled ${colorNames[index]} ball for player 2`);
-            }
-        });
-    } else {
-        // Shooting for color - disable red ball, enable color balls
-        console.log("Player 2 is shooting for color");
-        
-        // Disable red ball
-        if (redBallP2) {
-            redBallP2.style.pointerEvents = "none";
-            redBallP2.style.opacity = "0.5";
-            redBallP2.style.cursor = "default";
-            console.log("Disabled red ball for player 2");
-        }
-        
-        // Enable all color balls
-        colorBalls.forEach((ball, index) => {
-            if (ball) {
-                ball.style.pointerEvents = "auto";
-                ball.style.opacity = "1";
-                ball.style.cursor = "pointer";
-                console.log(`Enabled ${colorNames[index]} ball for player 2`);
-            }
-        });
-    }
-    
-    // If all reds are potted, ensure red ball is disabled regardless
-    if (redClickCount >= 15) {
-        if (redBallP2) {
-            redBallP2.style.pointerEvents = "none";
-            redBallP2.style.opacity = "0.5";
-            redBallP2.style.cursor = "default";
-            console.log("Disabled red ball for player 2 (all reds potted)");
-        }
-    }
-}
+// This function is no longer needed as updateAvailableBalls() handles both players
 
-// Update player 2 ball event listeners to call updatePlayer2BallAvailability
-// For example, add this at the end of the red ball apply button click handler:
-// updatePlayer2BallAvailability();
 
-// Add the updatePlayer2BallAvailability call to all relevant event handlers
-document.addEventListener("DOMContentLoaded", function() {
 
-    // Initial ball availability setup
-    updatePlayer2BallAvailability();
-    
-    // Add to player switch function if it exists
-    const origSwitchPlayer = window.switchPlayer;
-    if (typeof origSwitchPlayer === 'function') {
-        window.switchPlayer = function(player) {
-            // Call original function
-            origSwitchPlayer(player);
-            
-            // Update ball availability
-            updatePlayer2BallAvailability();
-        };
-        console.log("Patched switchPlayer function to update ball availability");
-    }
-    
-    // Hook into existing updateAvailableBalls function if it exists
-    const origUpdateAvailableBalls = window.updateAvailableBalls;
-    if (typeof origUpdateAvailableBalls === 'function') {
-        window.updateAvailableBalls = function() {
-            // Call original function
-            origUpdateAvailableBalls();
-            
-            // Update player 2 ball availability
-            updatePlayer2BallAvailability();
-        };
-        console.log("Patched updateAvailableBalls function to update player 2 ball availability");
-    } else {
-        // If updateAvailableBalls doesn't exist, create it
-        window.updateAvailableBalls = updatePlayer2BallAvailability;
-        console.log("Created updateAvailableBalls function");
-    }
-});
-
-// Call updatePlayer2BallAvailability immediately
-updatePlayer2BallAvailability();
-
-// Function to properly update the styling for player 2's balls - with no interval
-function updatePlayer2BallStyling() {
-    console.log("Updating ball styling for player 2");
-    
-    // Static counter to prevent excessive logging
-    updatePlayer2BallStyling.callCount = (updatePlayer2BallStyling.callCount || 0) + 1;
-    if (updatePlayer2BallStyling.callCount % 10 === 0) {
-        console.log(`Ball styling function called ${updatePlayer2BallStyling.callCount} times`);
-    }
-    
-    // Get all ball elements for player 2
-    const redBallP2 = document.getElementById("pot---red--two");
-    const yellowBallP2 = document.getElementById("pot---yellow--two");
-    const greenBallP2 = document.getElementById("pot---green--two");
-    const brownBallP2 = document.getElementById("pot---brown--two");
-    const blueBallP2 = document.getElementById("pot---blue--two");
-    const pinkBallP2 = document.getElementById("pot---pink--two");
-    const blackBallP2 = document.getElementById("pot---black--two");
-    
-    // Get all tally elements for player 2
-    const redTallyP2 = document.getElementById("tally---potted--red-p2");
-    const yellowTallyP2 = document.getElementById("tally---potted--yellow-p2");
-    const greenTallyP2 = document.getElementById("tally---potted--green-p2");
-    const brownTallyP2 = document.getElementById("tally---potted--brown-p2");
-    const blueTallyP2 = document.getElementById("tally---potted--blue-p2");
-    const pinkTallyP2 = document.getElementById("tally---potted--pink-p2");
-    const blackTallyP2 = document.getElementById("tally---potted--black-p2");
-    
-    // Arrays for easier handling
-    const colorBalls = [yellowBallP2, greenBallP2, brownBallP2, blueBallP2, pinkBallP2, blackBallP2];
-    const colorTallies = [yellowTallyP2, greenTallyP2, brownTallyP2, blueTallyP2, pinkTallyP2, blackTallyP2];
-    const colorNames = ["yellow", "green", "brown", "blue", "pink", "black"];
-    
-    // Only proceed with styling changes if it's player 2's turn
-    if (currentPlayer === 2) {
-        console.log("Styling balls for player 2's turn");
-        
-        if (shootingForRed && redClickCount < 15) {
-            // Shooting for red: enable red, disable colors
-            console.log("Player 2 shooting for red");
-            
-            // Style red ball
-            if (redBallP2) {
-                redBallP2.style.pointerEvents = "auto";
-                redBallP2.style.opacity = "1";
-                redBallP2.style.cursor = "pointer";
-                redBallP2.style.visibility = "visible";
-            }
-            
-            // Style red tally
-            if (redTallyP2) {
-                redTallyP2.style.pointerEvents = "auto";
-                redTallyP2.style.opacity = "1";
-                redTallyP2.style.cursor = "pointer";
-                redTallyP2.style.visibility = "visible";
-            }
-            
-            // Style color balls and tallies (disabled)
-            colorBalls.forEach((ball, index) => {
-                if (ball) {
-                    ball.style.pointerEvents = "none";
-                    ball.style.opacity = "0.5";
-                    ball.style.cursor = "pointer";
-                }
-                
-                if (colorTallies[index]) {
-                    colorTallies[index].style.pointerEvents = "none";
-                    colorTallies[index].style.opacity = "0.5";
-                    colorTallies[index].style.cursor = "pointer";
-                }
-            });
-        } else {
-            // Shooting for color: disable red, enable colors
-            console.log("Player 2 shooting for color");
-            
-            // Style red ball (disabled)
-            if (redBallP2) {
-                redBallP2.style.pointerEvents = "none";
-                redBallP2.style.opacity = "0.5";
-                redBallP2.style.cursor = "default";
-            }
-            
-            // Style red tally (disabled)
-            if (redTallyP2) {
-                redTallyP2.style.pointerEvents = "none";
-                redTallyP2.style.opacity = "0.5";
-                redTallyP2.style.cursor = "default";
-            }
-            
-            // Style color balls and tallies (enabled)
-            colorBalls.forEach((ball, index) => {
-                if (ball) {
-                    ball.style.pointerEvents = "auto";
-                    ball.style.opacity = "1";
-                    ball.style.cursor = "pointer";
-                }
-                
-                if (colorTallies[index]) {
-                    colorTallies[index].style.pointerEvents = "auto";
-                    colorTallies[index].style.opacity = "1";
-                    colorTallies[index].style.cursor = "pointer";
-                }
-            });
-        }
-    } else {
-        console.log("Not player 2's turn, disabling all player 2 balls");
-        
-        // Disable all player 2 balls and tallies when it's not their turn
-        if (redBallP2) {
-            redBallP2.style.pointerEvents = "none";
-            redBallP2.style.opacity = "0.5";
-            redBallP2.style.cursor = "default";
-        }
-        
-        if (redTallyP2) {
-            redTallyP2.style.pointerEvents = "none";
-            redTallyP2.style.opacity = "0.5";
-            redTallyP2.style.cursor = "default";
-        }
-        
-        colorBalls.forEach((ball, index) => {
-            if (ball) {
-                ball.style.pointerEvents = "none";
-                ball.style.opacity = "0.5";
-                ball.style.cursor = "default";
-            }
-            
-            if (colorTallies[index]) {
-                colorTallies[index].style.pointerEvents = "none";
-                colorTallies[index].style.opacity = "0.5";
-                colorTallies[index].style.cursor = "default";
-            }
-        });
-    }
-}
-
-// Call this function only at specific events, not on an interval
-document.addEventListener("DOMContentLoaded", function() {
-    // Initial call once on page load
-    updatePlayer2BallStyling();
-    
-    // Hook into switchPlayer if it exists
-    const origSwitchPlayer = window.switchPlayer;
-    if (typeof origSwitchPlayer === 'function') {
-        window.switchPlayer = function(player) {
-            origSwitchPlayer(player);
-            updatePlayer2BallStyling();
-        };
-    }
-    
-    // Hook into miss button
-    const missButtonP2 = document.getElementById("pot---miss--two");
-    if (missButtonP2) {
-        missButtonP2.addEventListener("click", function() {
-            updatePlayer2BallStyling();
-        });
-    }
-    
-    // Add event listeners to all player 2 balls to update styling after click
-    const p2Balls = [
-        document.getElementById("pot---red--two"),
-        document.getElementById("pot---yellow--two"),
-        document.getElementById("pot---green--two"),
-        document.getElementById("pot---brown--two"),
-        document.getElementById("pot---blue--two"),
-        document.getElementById("pot---pink--two"),
-        document.getElementById("pot---black--two")
-    ];
-    
-    p2Balls.forEach(ball => {
-        if (ball) {
-            ball.addEventListener("click", function() {
-                updatePlayer2BallStyling();
-            });
-        }
-    });
-    
-    // Hook into updateAvailableBalls
-    const origUpdateAvailableBalls = window.updateAvailableBalls;
-    if (typeof origUpdateAvailableBalls === 'function') {
-        window.updateAvailableBalls = function() {
-            origUpdateAvailableBalls();
-            updatePlayer2BallStyling();
-        };
-    }
-});
-
-// One-time call
-updatePlayer2BallStyling();
+// The updateAvailableBalls() function now handles both players correctly
