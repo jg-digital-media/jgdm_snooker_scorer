@@ -1,6 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Last Updated: 10/06/2025 - 16:25`
++ `Last Updated: 13/06/2025 - 16:35`
 ## Sections
 
 [Intro](#intro
@@ -732,6 +732,7 @@ After 15 reds potted and the last colour
   + `cueball hits colour before hitting a red` - value of colour awared to opponemt
   + `cue ball hits red before hitting a colour` - penalty of 4 points awarded to opponent
   + `potting the cue ball is a foul, regardless of whether a red or color ball is also potted in the same shot`. The opponent receives a penalty of four points plus the value of any additional balls potted in the same stroke
+  + A red ball going off the table is considered a foul and the opponent receives a penalty of 4 points plus the value of any additional balls potted in the same stroke. Note:  There is nothing in the UI as yet for this eventuality.
 
  + `scenario:` (`points remaining` - `score difference`) 
 
@@ -993,22 +994,23 @@ The development of this application is currently in progress.
 + `COMPLETED: 10-06-2025` BUG: Players apply 2 successful red ball scores and then miss on following colour. A reduction of 16 points should be applied to 
 `#points_remaining` (The colour not shot for followed by the missed colour)
 
-+ `TODO:` Restore playing through the final colour sequence for player 2.
++ `COMPLETED: 13-06-2025` Restore playing through the final colour sequence for player 2.
+
++ `COMPLETED: 13-06-2025` Ensure that at no point does the number of red balls potted by both players exceed 15.
+
++ `TODO:` BUG: Red Ball tallies for players 1 and 2 should be incremented independently of each other like the colour balls.  Red balls for both players should add up to 15 for the number of balls potted.
 
 + `TODO:` Missing the last colour after the last red should take the points remaining straight to 27 points and therefore into the final colour sequence.
 
 + `TODO:` To get to the final colour sequence, players 1 or 2, or both between them must have potted 15 red balls. In theory, either player could possibly pot these red balls but not pot the following colour before they reach the colour sequence.
 
++ `TODO:` If a player misses the next colour after the 15th red the next player starts shooting for the yellow ball as part of the colour sequence. (27 points remaining)
 
-+ `TODO:` If a player misses a colour after the 15th red the next player starts shotting for the yellow ball as part of the colour sequence. (27 points remaining)
-
-+ `TODO:` If a player misses a colour after the 15th red the next player starts shotting for the yellow ball as part of the colour sequence. (27 points remaining)
-
-+ `TODO:` BUG: Red Ball tallies for players 1 and 2 should be incremented independently of each other like the colour balls.
-
-+ `TODO:` Ensure that at no point do the number of red balls potted by both players exceeds 15.
++ `TODO:` If a player misses a colour after the 15th red the next player starts shooting for the yellow ball as part of the colour sequence. (27 points remaining)
 
 + `TODO:` Refactor code generated so far to reduce total lines in the script, make it more readable and easier to maintain.
+
++ `TODO:` BUG: Player 2 Cursor pointer missing from red ball icon after the first successful colour pot attempt.
 
 + `TODO:` BUG: "Last Break" should not be reset to 0 until a player makes their first successful pot attempt after returning to the table
 
@@ -1154,7 +1156,7 @@ ayer 2.
 
 + `6` - The link `#apply_tally---red--p2` 2 does not apply the correct number of points for multiple reds potted in the same shot.  e.g. applying 2 red ball points gives us only 1 point `Resolved: 09-06-2025`
 
-+ `7` - BUG: Red Ball tallies for players 1 and 2 should be incremented independently of each other like the colour balls.
++ `7` - BUG: Red Ball tallies for players 1 and 2 should be incremented independently of each other like the colour balls.  Red balls for both players should add up to 15 for the number of balls potted.
 
 + `8` - Red ball tallies in player 1 are no longer incremented correctly after player 1 misses a pot attempt.
 
@@ -1178,6 +1180,7 @@ ayer 2.
 
 + `13` - Players apply 2 successful red ball scores and then miss on following colour. A reduction of 16 points should be applied to `#points_remaining` (The colour not shot for followed by the missed colour)
 
++ `14` - Player 2 Cursor pointer missing from red ball icon  after the first successful colour pot attempt.
 
 ### Future Improvements
 
@@ -1521,6 +1524,26 @@ last---break--p2
 
 + It took a lot of testing and prompting of the AI to get this working.
 
-+ I had wanted to sort out the colour sequence for player 2 but this is proving difficult for the AI to understand.  It's like Harry Potter trying find different ways of saying "let me into the Room of Requirement". Extensive testing has also uncovered a couple of new issues to sort out - including the need to take the player straight into the final colour sequence when when missing the colour after the last red.
++ I had wanted to sort out the colour sequence for player 2 but this is proving difficult for the AI to understand. It's like Harry Potter trying find different ways of saying "let me into the Room of Requirement". Extensive testing has also uncovered a couple of new issues to sort out - including the need to take the player straight into the final colour sequence when when missing the colour after the last red.
 
 [Back to Top](#comments)
+
+#### v1.0.16
+
++ Now this is very interesting.
+
++ I've been attempting to vibe code the solution this problem "colour sequence handling for player 2" for a few days now. I go back to the Harry Potter analogy I used in `v1.0.15`.  I tried every combination of words I could think of and more to make the model understand what I was trying to do. The model I was using (on auto) was `claude-3.7-sonnet`. It claimed to diagnose the issues and gave me more generated code and claimed solutions than I can count. What always transpired was more bugs returned than any fixed issues or no effect to the code whatsoever.
+
++ So... I did the only other thing that made sense to me. I changed the model in Cursor AI to `claude-4-sonnet`. I shied away from doing that before now because I didn't want to be charged any extra money than the subscription I'm paying for using the latest available model (I don't pretend to be on top of the specifics of Cursor's pricing structure.) but I got the impression that further charges would be payable.
+
++ Anyway, I started a new chat and asked claude 4 to do this...
+
+  `"build the colour sequence for player 1 so it works the same way as it does when player 1 goes through it.  Make sure misses are taken into account  e.g. if player 1 misses on green, player 2 shoots for green etc"`
+
++ It took a few minutes but it got it working at the first attempt. Worth every penny (or cent) extra I might be charged in the end. I've lost a bit of time and almost lost my will to carry on with this project but it's another big step.
+
++ I think it's worth noting what changes have been made to the code.
+  + Removed redundant `updatePlayer2BallAvailability()` and `updatePlayer2BallStyling()` functions
+  + The main `updateAvailableBalls()` function now properly handles both players. This ensures consistent behavior between player 1 and player 2
+
+  + So the sonnet has handled all redundant code, any references to redundant functions and applied the changes accordingly. 
