@@ -1,4 +1,4 @@
-console.log("app.js connected - 13-06-2025 - 16:28");
+console.log("app.js connected - 16-06-2025 - 15:43");
 
 // Set the points remaining to 147
 document.getElementById('points_remaining').textContent = '147';
@@ -24,6 +24,8 @@ let multiRedShotCountP2 = 0;
 let currentPlayer = 1;
 let lastRedTallyP1 = 0;
 let lastRedTallyP2 = 0;
+let p1RedBallsTotal = 0; // Total red balls potted by player 1
+let p2RedBallsTotal = 0; // Total red balls potted by player 2
 
 // Define global references to DOM elements
 let playerNumber, player1Table, player2Table, missP1, missP2, pointsRemaining;
@@ -631,9 +633,9 @@ document.addEventListener("DOMContentLoaded", function() {
     
     // shoot attempt - red ball - player 1
     redBallP1.addEventListener("click", function() {
-        // Check if we've already clicked the red ball 15 times in total
-        if (redClickCount + tempRedTally >= 15) {
-            console.log("Maximum number of red ball clicks (15) reached");
+        // Check if we've already clicked the red ball 15 times in total across both players
+        if (p1RedBallsTotal + p2RedBallsTotal + tempRedTally + tempRedTallyP2 >= 15) {
+            console.log("Maximum number of red ball clicks (15) reached across both players");
             return; // Exit the function early
         }
         
@@ -644,8 +646,8 @@ document.addEventListener("DOMContentLoaded", function() {
         redTallyP1.style.visibility = "visible";
         redTallyP1.style.opacity = "1";
         
-        // Show the current tally plus the existing count
-        redTallyP1.textContent = redClickCount + tempRedTally;
+        // Show only player 1's red ball count (their total plus current temporary tally)
+        redTallyP1.textContent = p1RedBallsTotal + tempRedTally;
         
         // Make the apply button visible
         applyRedTallyP1.style.visibility = "visible";
@@ -685,7 +687,10 @@ document.addEventListener("DOMContentLoaded", function() {
             multiRedShotCount += (tempRedTally - 1);
         }
         
-        // Update red click count (add the temporary tally)
+        // Update player 1's individual red ball total
+        p1RedBallsTotal += tempRedTally;
+        
+        // Update total red click count (add the temporary tally)
         redClickCount += tempRedTally;
         
         // Set lastBallWasRed to true
@@ -1182,6 +1187,8 @@ document.addEventListener("DOMContentLoaded", function() {
         p2RedTallyTotal = 0; // Reset player 2's cumulative red tally
         multiRedShotCount = 0;
         multiRedShotCountP2 = 0;
+        p1RedBallsTotal = 0; // Reset player 1's individual red ball total
+        p2RedBallsTotal = 0; // Reset player 2's individual red ball total
         
         // Reset score displays
         document.getElementById("p1---score").textContent = "0";
@@ -1315,11 +1322,14 @@ document.addEventListener("DOMContentLoaded", function() {
                     console.log(`Updated points remaining to ${remainingPoints}`);
                 }
                 
-                // 5. Update red click count (total reds potted in frame)
+                // 5. Update player 2's individual red ball total
+                p2RedBallsTotal += tempRedTallyP2;
+                
+                // 6. Update red click count (total reds potted in frame)
                 redClickCount += tempRedTallyP2;
                 console.log(`Updated total red click count to ${redClickCount}`);
                 
-                // 6. Update player 2's cumulative red tally
+                // 7. Update player 2's cumulative red tally
                 p2RedTallyTotal += tempRedTallyP2;
                 
                 // 7. If this is a multi-red shot, track the extra reds
@@ -1383,43 +1393,43 @@ document.addEventListener("DOMContentLoaded", function() {
         if (redBall) {
             console.log("Found player 2 red ball element");
             
-            // Add a simple click handler
-            redBall.addEventListener("click", function() {
-                console.log("Player 2 red ball clicked");
+                    // Add a simple click handler
+        redBall.addEventListener("click", function() {
+            console.log("Player 2 red ball clicked");
+            
+            // Check if we've already clicked the red ball 15 times in total across both players
+            if (p1RedBallsTotal + p2RedBallsTotal + tempRedTally + tempRedTallyP2 >= 15) {
+                console.log("Maximum number of red ball clicks (15) reached across both players");
+                return; // Exit the function early
+            }
+            
+            // Increment temporary tally
+            tempRedTallyP2++;
+            
+            // Get the tally element
+            const tally = document.getElementById("tally---potted--red-p2");
+            
+            if (tally) {
+                // Make it visible
+                tally.style.visibility = "visible";
+                tally.style.opacity = "1";
                 
-                // Check if we've already clicked the red ball 15 times in total
-                if (redClickCount + tempRedTallyP2 >= 15) {
-                    console.log("Maximum number of red ball clicks (15) reached");
-                    return; // Exit the function early
+                // Show only player 2's red ball count (their total plus current temporary tally)
+                tally.textContent = p2RedBallsTotal + tempRedTallyP2;
+                console.log(`Updated player 2 red tally to ${p2RedBallsTotal + tempRedTallyP2}`);
+                
+                // Show the apply button
+                const applyButton = document.getElementById("apply_tally---red--p2");
+                if (applyButton) {
+                    applyButton.style.visibility = "visible";
+                    applyButton.style.opacity = "1";
+                    applyButton.style.pointerEvents = "auto";
+                    console.log("Made apply button visible");
                 }
-                
-                // Increment temporary tally
-                tempRedTallyP2++;
-                
-                // Get the tally element
-                const tally = document.getElementById("tally---potted--red-p2");
-                
-                if (tally) {
-                    // Make it visible
-                    tally.style.visibility = "visible";
-                    tally.style.opacity = "1";
-                    
-                    // Update the display with the total number of reds potted
-                    tally.textContent = redClickCount + tempRedTallyP2;
-                    console.log(`Updated player 2 red tally to ${redClickCount + tempRedTallyP2}`);
-                    
-                    // Show the apply button
-                    const applyButton = document.getElementById("apply_tally---red--p2");
-                    if (applyButton) {
-                        applyButton.style.visibility = "visible";
-                        applyButton.style.opacity = "1";
-                        applyButton.style.pointerEvents = "auto";
-                        console.log("Made apply button visible");
-                    }
-                } else {
-                    console.log("Could not find player 2 red tally element");
-                }
-            });
+            } else {
+                console.log("Could not find player 2 red tally element");
+            }
+        });
             
             console.log("Added click handler to player 2 red ball");
         } else {
