@@ -1,6 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Last Updated: 13/06/2025 - 16:37`
++ `Last Updated: 13/06/2025 - 16:57`
 ## Sections
 
 [Intro](#intro
@@ -728,13 +728,18 @@ After 15 reds potted and the last colour
 
 + `Foul scenarios`
 
-  + `foul and a miss` - opponent awarded 4 points or the valu of the colour ball if higher than 4
-  + `cueball hits colour before hitting a red` - value of colour awared to opponemt
-  + `cue ball hits red before hitting a colour` - penalty of 4 points awarded to opponent
-  + `potting the cue ball is a foul, regardless of whether a red or color ball is also potted in the same shot`. The opponent receives a penalty of four points plus the value of any additional balls potted in the same stroke
-  + A red ball going off the table is considered a foul and the opponent receives a penalty of 4 points plus the value of any additional balls potted in the same stroke. Note:  There is nothing in the UI as yet for this eventuality.
+  + `Foul` - Hits red ball when aiming for a colour ball. Opponent receives a penalty of 4 points.
+  + `Foul` - Hits colour ball when aiming for a red ball. Opponent receives a penalty of the value of the colour ball.
+  + `` - Hits red ball when aiming for a colour ball.
+  + `Foul and a Miss`- Player fails to hit target ball when shotting for red.
+  + `Foul and a miss`- Player fails to hit target ball when shooting for a colour ball.
+    + Opponent awarded 4 points or the value of the colour ball if higher than 4
+  + `Cueball hits colour before hitting a red` - Value of colour awared to opponent. For the purposes of this app, we use the player's FOUL button.
+  + `Cue ball hits red before hitting a colour` - Penalty of 4 points awarded to opponent. For the purposes of this app, we use the player's FOUL button 
+  + `Potting the cue ball is a foul, regardless of whether a red or color ball is also potted in the same shot`. The opponent receives a penalty of four points plus the value of any additional balls potted in the same stroke
+  + A red ball going off the table is considered a foul and the opponent receives a penalty of 4 points plus the value of any additional balls potted in the same stroke. **Note:**: There is nothing in the UI as yet for this eventuality.
 
- + `scenario:` (`points remaining` - `score difference`) 
+ + `scenario:` (`points remaining` - `score difference`) - A means to calculate how many snookers a player might require to win a frame.
 
 ```
 points	scores	score difference
