@@ -1,12 +1,12 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Last Updated: 13/06/2025 - 16:35`
++ `Last Updated: 13/06/2025 - 16:37`
 ## Sections
 
 [Intro](#intro
 ) | [Planning User Flows](#planning-user-flows) | [Use Cases](#use-cases) | [Technologies Used](#technologies-used) | [Development](#development) | [Bugs](#identified-bugs) | [Comments](#comments) | [Online](https://projects.jonniegrieve.co.uk/snooker_scorer)* External
 
-Clone to your system `git clone https://github.com/jg-digital-media/jgdm_snooker_scorer.git`
+Clone to your system with Git Bash: `git clone https://github.com/jg-digital-media/jgdm_snooker_scorer.git`
 
 ## Intro
 
@@ -762,7 +762,7 @@ This application is built using the following technologies:
 ## Development
 [Back to Top](#sections)
 
-### Tasks - 148 completed items
+### Tasks - 153 completed items
 
 The development of this application is currently in progress.
 
@@ -887,7 +887,6 @@ The development of this application is currently in progress.
 
 + `COMPLETED: 15-05-2025` Apply button for more than 1 red ball potted. Click red ball icon twice to pot 2 red balls and move to shooting for a colour ball.
 
-
 + `COMPLETED: 19-05-2025` Revert between player 1 and player 2 at the table via the "Miss" buttons `#tally---potted--miss-p1` and `#tally---potted--miss-p2`.
 + `COMPLETED: 19-05-2025` Player does not make a pot when making a break - a "MISS". (Player 1)
 + `COMPLETED: 19-05-2025` Track which player is at the table
@@ -998,9 +997,13 @@ The development of this application is currently in progress.
 
 + `COMPLETED: 13-06-2025` Ensure that at no point does the number of red balls potted by both players exceed 15.
 
-+ `TODO:` BUG: Red Ball tallies for players 1 and 2 should be incremented independently of each other like the colour balls.  Red balls for both players should add up to 15 for the number of balls potted.
++ `COMPLETED: 16-06-2025` BUG: Red Ball tallies for players 1 and 2 should be incremented independently of each other like the colour balls.  Red balls for both players should add up to 15 for the number of balls potted.
 
-+ `TODO:` Missing the last colour after the last red should take the points remaining straight to 27 points and therefore into the final colour sequence.
++ `COMPLETED: 16-06-2025` BUG: Red ball tallies in player 1 are no longer incremented correctly after player 1 misses a pot attempt.
+
++ `COMPLETED: 16-06-2025` Missing the last colour after the last red should take the points remaining straight to 27 points and therefore into the final colour sequence.
+
++ `TODO: ` Clicking `#app-app` should take the user to a new browser tab so game progress is not lost.
 
 + `TODO:` To get to the final colour sequence, players 1 or 2, or both between them must have potted 15 red balls. In theory, either player could possibly pot these red balls but not pot the following colour before they reach the colour sequence.
 
@@ -1024,7 +1027,6 @@ The development of this application is currently in progress.
 
 + `TODO:` BUG: Player 2 red ball does not factor in 2 red balls potted in the same shot.
 
-+ `TODO:` BUG: Red ball tallies in player 1 are no longer incremented correctly after player 1 misses a pot attempt.
 
 + `TODO:` Next player reverts to shooting for a red ball after a foul. 
 + `TODO:` Revert to shooting for a red ball after a foul. 
@@ -1154,11 +1156,11 @@ ayer 2.
 
 + `5` - ball tally for brown ball player 2 needs to be fixed as a duplicate of the brown ball tally attribute for player 2. `Resolved: 03-06-2025`
 
-+ `6` - The link `#apply_tally---red--p2` 2 does not apply the correct number of points for multiple reds potted in the same shot.  e.g. applying 2 red ball points gives us only 1 point `Resolved: 09-06-2025`
++ `6` - The link `#apply_tally---red--p2` 2 does not apply the correct number of points for multiple reds potted in the same shot.  e.g. applying 2 red ball points gives us only 1 point. `Resolved: 09-06-2025`
 
-+ `7` - BUG: Red Ball tallies for players 1 and 2 should be incremented independently of each other like the colour balls.  Red balls for both players should add up to 15 for the number of balls potted.
++ `7` - Red Ball tallies for players 1 and 2 should be incremented independently of each other like the colour balls.  Red balls for both players should add up to 15 for the number of balls potted.  `Resolved: 16-06-2025`
 
-+ `8` - Red ball tallies in player 1 are no longer incremented correctly after player 1 misses a pot attempt.
++ `8` - Red ball tallies in player 1 are no longer incremented correctly after player 1 misses a pot attempt. `Resolved: 16-06-2025`
 
   e.g. 
     + Red Ball Player 1:  1
@@ -1193,7 +1195,7 @@ ayer 2.
 
 [Back to Sections](#sections)
 
-[v1.0.0](#v100) --- [v1.0.1](#v101) --- [v1.0.2](#v102) --- [v1.0.3](#v103) --- [v1.0.4](#v104) --- [v1.0.5](#v105) --- [v1.0.6](#v106) --- [v1.0.7](#v107) --- [v1.0.8](#v108) --- [v1.0.9](#v109) --- [v1.0.10](#v1010) --- [v1.0.11](#v1011) --- [v1.0.12](#v1012) --- [v1.0.13](#v1013) --- [v1.0.14](#v1014)
+[v1.0.0](#v100) --- [v1.0.1](#v101) --- [v1.0.2](#v102) --- [v1.0.3](#v103) --- [v1.0.4](#v104) --- [v1.0.5](#v105) --- [v1.0.6](#v106) --- [v1.0.7](#v107) --- [v1.0.8](#v108) --- [v1.0.9](#v109) --- [v1.0.10](#v1010) --- [v1.0.11](#v1011) --- [v1.0.12](#v1012) --- [v1.0.13](#v1013) --- [v1.0.14](#v1014) --- [v1.0.15](#v1015) --- [v1.0.16](#v1016) --- [v1.0.17](#v1017)
  
 #### v1.0.0
 
@@ -1547,3 +1549,58 @@ last---break--p2
   + The main `updateAvailableBalls()` function now properly handles both players. This ensures consistent behavior between player 1 and player 2
 
   + So the sonnet has handled all redundant code, any references to redundant functions and applied the changes accordingly. 
+
+[Back to Top](#comments)
+
+#### v1.0.17
+
++ In this update, I've finally (Well... `claude-sonnet-4` has) converted the Red ball pot tallies to count incrementally and independently of each other. What was happening before today, (`16-05-2024`) was that the numbers were doing the wrong kind of counting. 
+
++ If say I'd simulated player 1 potting 5 reds and missing the next colour, player 2 potting their first red would indicate 6, even though it was their first Red. Sonnet tells me that this is because "both players are displaying the total red count (`redClickCount`). 
+
++ Naturally the fix involves changes to multiple areas of the codebase. To update the red ball click handler for Player 1 to show only their individual count. To update the apply button handler for Player 1 to track their individual red ball total; to update the Player 2 apply button handler to track their individual red ball total. Finally to update the reset function to also reset the individual player red ball totals
+
++ A summary of these changes 
+
+```text
+1. Added Independent Red Ball Tracking Variables
+
+    p1RedBallsTotal - tracks only Player 1's red balls potted
+    p2RedBallsTotal - tracks only Player 2's red balls potted
+
+2. Updated Red Ball Click Handlers
+
+   + Player 1: Now checks total across both players before allowing more reds, but displays only Player 1's count (p1RedBallsTotal + tempRedTally)
+   + Player 2: Now checks total across both players before allowing more reds, but displays only Player 2's count (p2RedBallsTotal + tempRedTallyP2)
+3. Updated Apply Button Handlers
+   + Both players now update their individual red ball totals when applying their shots
+   + The global redClickCount still tracks the combined total for game logic purposes
+4. Updated Reset Function
+   + Resets both p1RedBallsTotal and p2RedBallsTotal when the game is reset
+```
+
++ The second thing I managed to get sorted out was the MISS button handlers, forcing the code to transition the next player to the colour sequence  (`27 points remaining`).
+
++ This issue was fixed by modifying the miss button handlers which required specific handling for MISS scenarios - with additional checks required on the number of reds potted allowing us to determine when the players should be playing the colour sequence following a red ball pot.
+
++ I'll let the AI summarise the rest.
+
+```text
+
+Key Changes Made:
+1. Added Special Handling for Missing After the 15th Red
+  + Both miss button handlers now check if:
+  + Player is shooting for a color (!shootingForRed)
+  + All 15 reds have been potted (redClickCount >= 15)
+2. Direct Transition to Final Color Sequence
+  + When a player misses the color after the 15th red:
+  + Points remaining is set directly to 27
+  + Game mode stays as shooting for colors (shootingForRed = false)
+  + Next player will enter the final color sequence starting with yellow
+3. Preserved Normal Miss Logic
+  + For misses during normal play (when reds are still available):
+  + Points are reduced by 7 (or more for multi-red shots)
+  + Next player shoots for red if reds are available
+```
+
+[Back to Top](#comments)
