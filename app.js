@@ -1,4 +1,4 @@
-console.log("app.js connected - 16-06-2025 - 15:43");
+console.log("app.js connected - 16-06-2025 - 16:11");
 
 // Set the points remaining to 147
 document.getElementById('points_remaining').textContent = '147';
@@ -722,8 +722,15 @@ document.addEventListener("DOMContentLoaded", function() {
     missP1.addEventListener("click", function() {
         console.log("Player 1 miss button clicked");
         
-        // If player was shooting for a color (not in final sequence), reduce points
-        if (!shootingForRed && redClickCount < 15) {
+        // Check if this is a miss after the last red (15th red)
+        if (!shootingForRed && redClickCount >= 15) {
+            // Missing the color after the last red - go straight to final sequence
+            remainingPoints = 27;
+            pointsRemaining.textContent = remainingPoints;
+            shootingForRed = false;
+            console.log("Missed color after last red - setting up final color sequence (27 points)");
+        } else if (!shootingForRed && redClickCount < 15) {
+            // Normal miss during regular play - reduce points
             // Calculate points to reduce based on the last red potted
             // Each red potted means we need to reduce by 7 (color value) for each red
             let pointsToReduce = 7; // Base reduction for the current color
@@ -745,10 +752,10 @@ document.addEventListener("DOMContentLoaded", function() {
         if (redClickCount < 15) {
             shootingForRed = true;
             console.log("Player 2 will shoot for red (reds available)");
-        } else if (remainingPoints <= 27) {
-            // In the final color sequence
+        } else {
+            // All reds are potted - player 2 shoots for colors in sequence
             shootingForRed = false;
-            console.log("Player 2 will shoot for next color in sequence");
+            console.log("Player 2 will shoot for colors in final sequence");
         }
         
         // Disable all player 1 elements
@@ -770,8 +777,15 @@ document.addEventListener("DOMContentLoaded", function() {
     missP2.addEventListener("click", function() {
         console.log("Player 2 miss button clicked");
         
-        // If player was shooting for a color (not in final sequence), reduce points
-        if (!shootingForRed && redClickCount < 15) {
+        // Check if this is a miss after the last red (15th red)
+        if (!shootingForRed && redClickCount >= 15) {
+            // Missing the color after the last red - go straight to final sequence
+            remainingPoints = 27;
+            pointsRemaining.textContent = remainingPoints;
+            shootingForRed = false;
+            console.log("Missed color after last red - setting up final color sequence (27 points)");
+        } else if (!shootingForRed && redClickCount < 15) {
+            // Normal miss during regular play - reduce points
             // Calculate points to reduce based on the last red potted
             // Each red potted means we need to reduce by 7 (color value) for each red
             let pointsToReduce = 7; // Base reduction for the current color
@@ -796,10 +810,10 @@ document.addEventListener("DOMContentLoaded", function() {
         if (redClickCount < 15) {
             shootingForRed = true;
             console.log("Player 1 will shoot for red (reds available)");
-        } else if (remainingPoints <= 27) {
-            // In the final color sequence
+        } else {
+            // All reds are potted - player 1 shoots for colors in sequence
             shootingForRed = false;
-            console.log("Player 1 will shoot for next color in sequence");
+            console.log("Player 1 will shoot for colors in final sequence");
         }
         
         // Disable all player 2 elements
