@@ -1,6 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Last Updated: 13/06/2025 - 16:57`
++ `Last Updated: 13/06/2025 - 17:03`
 ## Sections
 
 [Intro](#intro
@@ -767,7 +767,7 @@ This application is built using the following technologies:
 ## Development
 [Back to Top](#sections)
 
-### Tasks - 153 completed items
+### Tasks - 156 completed items
 
 The development of this application is currently in progress.
 
@@ -1008,13 +1008,14 @@ The development of this application is currently in progress.
 
 + `COMPLETED: 16-06-2025` Missing the last colour after the last red should take the points remaining straight to 27 points and therefore into the final colour sequence.
 
++ `COMPLETED: 16-06-2025` If a player misses the next colour after the 15th red the next player starts shooting for the yellow ball as part of the colour sequence. (27 points remaining)
+
++ `COMPLETED: 16-06-2025` If a player misses a colour after the 15th red the next player starts shooting for the yellow ball as part of the colour sequence. (27 points remaining)
+
++ `COMPLETED: 16-06-2025` To get to the final colour sequence, players 1 or 2, or both between them must have potted 15 red balls. In theory, either player could possibly pot these red balls but not pot the following colour before they reach the colour sequence.
+
 + `TODO: ` Clicking `#app-app` should take the user to a new browser tab so game progress is not lost.
 
-+ `TODO:` To get to the final colour sequence, players 1 or 2, or both between them must have potted 15 red balls. In theory, either player could possibly pot these red balls but not pot the following colour before they reach the colour sequence.
-
-+ `TODO:` If a player misses the next colour after the 15th red the next player starts shooting for the yellow ball as part of the colour sequence. (27 points remaining)
-
-+ `TODO:` If a player misses a colour after the 15th red the next player starts shooting for the yellow ball as part of the colour sequence. (27 points remaining)
 
 + `TODO:` Refactor code generated so far to reduce total lines in the script, make it more readable and easier to maintain.
 
