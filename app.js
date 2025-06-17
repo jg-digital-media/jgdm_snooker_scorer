@@ -1,4 +1,4 @@
-console.log("app.js connected - 16-06-2025 - 16:11");
+console.log("app.js connected - 17-06-2025 - 13:05");
 
 // Set the points remaining to 147
 document.getElementById('points_remaining').textContent = '147';
@@ -830,6 +830,139 @@ document.addEventListener("DOMContentLoaded", function() {
             console.log(`Forced disable of player 2 tally: ${tally.id}`);
         });
     });
+
+    // Add event listeners for foul buttons
+    const foulP1 = document.getElementById("pot---foul--one");
+    const foulP2 = document.getElementById("pot---foul--two");
+
+    if (foulP1) {
+        foulP1.addEventListener("click", function() {
+            console.log("Player 1 foul button clicked");
+            
+            // Award 4 penalty points to player 2
+            p2CurrentScore += 4;
+            if (p2Score) {
+                p2Score.textContent = p2CurrentScore;
+            }
+            console.log(`Awarded 4 penalty points to player 2 (total: ${p2CurrentScore})`);
+            
+            // Handle points remaining based on what player was shooting for
+            if (!shootingForRed && redClickCount < 15) {
+                // Fouling while shooting for a color - deduct 7 points
+                let pointsToReduce = 7;
+                if (lastRedTallyP1 > 1) {
+                    // If we had multiple reds potted, reduce by 7 for each additional red
+                    pointsToReduce += (lastRedTallyP1 - 1) * 7;
+                }
+                remainingPoints -= pointsToReduce;
+                pointsRemaining.textContent = remainingPoints;
+                console.log(`Reduced remaining points by ${pointsToReduce} (fouled on color after ${lastRedTallyP1} reds)`);
+            } else if (!shootingForRed && redClickCount >= 15) {
+                // Fouling on a color after all 15 reds - go straight to color sequence
+                remainingPoints = 27;
+                pointsRemaining.textContent = remainingPoints;
+                shootingForRed = false;
+                console.log("Fouled on color after 15th red - setting points to 27 for final color sequence");
+            }
+            // If shooting for red, no points deducted (red remains available)
+            else {
+                console.log("Fouled on red - no points deducted from remaining points");
+            }
+            
+            // Reset current break for player 1
+            p1CurrentBreak = 0;
+            lastBreakP1.textContent = "0";
+            console.log("Reset player 1 current break");
+            
+            // Reset red tally for next visit
+            lastRedTallyP1 = 0;
+            
+            // Force player 2 to shoot for red if there are reds left
+            if (redClickCount < 15) {
+                shootingForRed = true;
+                console.log("Player 2 will shoot for red (reds available)");
+            } else {
+                // All reds are potted - player 2 shoots for colors in sequence
+                shootingForRed = false;
+                console.log("Player 2 will shoot for colors in final sequence");
+            }
+            
+            // Disable all player 1 elements
+            disablePlayerButtons(1);
+            
+            // Switch to player 2
+            switchPlayer(2);
+            
+            // Update available balls
+            updateAvailableBalls();
+        });
+    }
+
+    if (foulP2) {
+        foulP2.addEventListener("click", function() {
+            console.log("Player 2 foul button clicked");
+            
+            // Award 4 penalty points to player 1
+            p1CurrentScore += 4;
+            if (p1Score) {
+                p1Score.textContent = p1CurrentScore;
+            }
+            console.log(`Awarded 4 penalty points to player 1 (total: ${p1CurrentScore})`);
+            
+            // Handle points remaining based on what player was shooting for
+            if (!shootingForRed && redClickCount < 15) {
+                // Fouling while shooting for a color - deduct 7 points
+                let pointsToReduce = 7;
+                if (lastRedTallyP2 > 1) {
+                    // If we had multiple reds potted, reduce by 7 for each additional red
+                    pointsToReduce += (lastRedTallyP2 - 1) * 7;
+                }
+                remainingPoints -= pointsToReduce;
+                pointsRemaining.textContent = remainingPoints;
+                console.log(`Reduced remaining points by ${pointsToReduce} (fouled on color after ${lastRedTallyP2} reds)`);
+            } else if (!shootingForRed && redClickCount >= 15) {
+                // Fouling on a color after all 15 reds - go straight to color sequence
+                remainingPoints = 27;
+                pointsRemaining.textContent = remainingPoints;
+                shootingForRed = false;
+                console.log("Fouled on color after 15th red - setting points to 27 for final color sequence");
+            }
+            // If shooting for red, no points deducted (red remains available)
+            else {
+                console.log("Fouled on red - no points deducted from remaining points");
+            }
+            
+            // Reset current break for player 2
+            p2CurrentBreak = 0;
+            const lastBreakP2 = document.getElementById("last---break--p2");
+            if (lastBreakP2) {
+                lastBreakP2.textContent = "0";
+            }
+            console.log("Reset player 2 current break");
+            
+            // Reset red tally for next visit
+            lastRedTallyP2 = 0;
+            
+            // Force player 1 to shoot for red if there are reds left
+            if (redClickCount < 15) {
+                shootingForRed = true;
+                console.log("Player 1 will shoot for red (reds available)");
+            } else {
+                // All reds are potted - player 1 shoots for colors in sequence
+                shootingForRed = false;
+                console.log("Player 1 will shoot for colors in final sequence");
+            }
+            
+            // Disable all player 2 elements
+            disablePlayerButtons(2);
+            
+            // Switch to player 1
+            switchPlayer(1);
+            
+            // Update available balls
+            updateAvailableBalls();
+        });
+    }
 
     // Yellow ball event listener
     yellowBallP1.addEventListener("click", function() {
