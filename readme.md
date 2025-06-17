@@ -1,6 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Last Updated: 17/06/2025 - 10:50`
++ `Last Updated: 17/06/2025 - 14:03`
 ## Sections
 
 [Intro](#intro
@@ -1104,9 +1104,19 @@ The development of this application is currently in progress.
 + `COMPLETED: 17-06-2025` Next player reverts to shooting for a red ball after a foul. 
 + `COMPLETED: 17-06-2025` Revert to shooting for a red ball after a foul. 
 
-+ `TODO: ` Players presented with the option to force the opponent to retake the shot after a FOUL+MISS..
++ `TODO:` BUG:  Missing colour balls in the colour sequence reverts users to the yellow ball - #points_remaining = 27 - Both players
 
-+ `TODO: ` Clicking `#app-app` should take the user to a new browser tab so game progress is not lost.
++ `TODO:` Players presented with the option to force the opponent to retake the shot after a FOUL+MISS.
+
++ `TODO:` Event listener for `#pot---forfeit--one` and `#pot---forfeit--two` should be added.
+
++ `TODO:` Forfeit button  - ask user to confirm forfeit for that player before clicking to confirm.
+    + Display the scores to indicate end of the frame. 
+    + Same details as end of frame: #points_remaining == 0 - "Frame Complete - Player N Wins!
+Player 1: 24 | Player 2: 40
+Highest Breaks - Player 1: 15 | Player 2: 27
+
++ `TODO:` Clicking `#app-app` should take the user to a new browser tab so game progress is not lost.
 
 + `TODO:` Refactor code generated so far to reduce total lines in the script, make it more readable and easier to maintain.
 
@@ -1122,8 +1132,6 @@ ayer 2.
 + `TODO:` BUG: Player 2 colour balls should be disabled when the table is cleared (frame ends - `#points_remaining` = 0 and player 2 has won the game).
 
 + `TODO:` "Frame Complete" Tooltip can probably be dismissed automatically after a given number of seconds - e.g. 5 seconds.
-
-
     
 + it's possible, however unlikely it might be that a player can pot a colour ball 16 times, including the colour sequence. A 147 Break (15 reds, 15 of a single colour and the colour sequence e.g. 15 Reds, 15 Yellows, Yellow, Green, Brown, Blue, Pink, Black)
 
@@ -1728,6 +1736,6 @@ updateAvailableBalls() function manages ball availability after fouls
 
 #### v1.0.19
 
-+ Working on more of the logic for the foul and foul+miss buttons.
++ `17-06-2025` - Working on more of the logic for the foul and foul+miss buttons.  Noticed a new bug that has crept in - the foul button on the colour sequence reverts play to 27 points and back to yellow ball (both players) ... 
 
 [Back to Top](#comments)
