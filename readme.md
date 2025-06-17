@@ -1,6 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Last Updated: 13/06/2025 - 17:03`
++ `Last Updated: 17/06/2025 - 10:48`
 ## Sections
 
 [Intro](#intro
@@ -728,16 +728,50 @@ After 15 reds potted and the last colour
 
 + `Foul scenarios`
 
-  + `Foul` - Hits red ball when aiming for a colour ball. Opponent receives a penalty of 4 points.
-  + `Foul` - Hits colour ball when aiming for a red ball. Opponent receives a penalty of the value of the colour ball.
-  + `` - Hits red ball when aiming for a colour ball.
-  + `Foul and a Miss`- Player fails to hit target ball when shotting for red.
-  + `Foul and a miss`- Player fails to hit target ball when shooting for a colour ball.
-    + Opponent awarded 4 points or the value of the colour ball if higher than 4
-  + `Cueball hits colour before hitting a red` - Value of colour awared to opponent. For the purposes of this app, we use the player's FOUL button.
-  + `Cue ball hits red before hitting a colour` - Penalty of 4 points awarded to opponent. For the purposes of this app, we use the player's FOUL button 
+  + `Foul - Hits red ball when aiming for a colour ball.` - Penalty of `4 points`.
+    + Recommended Action:
+        + FOUL: `#tally---potted--foul-p1` or `pot---miss--one`
+        + FOUL: `#tally---potted--foul-p2` or `pot---miss--one`
+        
+  + `Foul - Hits colour ball when aiming for a red ball.` - Penalty of `4+ (4 or the higher value of the colour ball)`.
+    + Recommended Action:  
+        + FOUL: `#tally---potted--foul-p1`
+        + FOUL: `#tally---potted--foul-p2`
+        
+  + `Foul and a Miss`- Player fails to hit target ball when shooting for red - Penalty of `4 points`.
+    + Recommended Action:
+        + FOUL+MISS: `#pot---foulmiss--one`  
+        + FOUL+MISS: `#pot---foulmiss--two`
+        + Worth noting that with a FOUL+MISS a player can choose to make the opponent retake the shot.
+
+  + `Foul and a Miss`- Player fails to hit target ball when shooting for a colour ball - Penalty of `4+ (4 or the higher value of the colour ball`.
+    + Recommended Action:
+        + FOUL+MISS: `#pot---foulmiss--one`  
+        + FOUL+MISS: `#pot---foulmiss--two`
+        + With a FOUL+MISS a player can choose to make the opponent retake the shot.
+
+  + `Misfiring the cue ball` - Such as a double hit is a foul - Penalty of `4+ points (if higher value colour)`.
+    + Recommended Action:
+        + FOUL: `#tally---potted--foul-p1`  
+        + FOUL: `#tally---potted--foul-p2`
+
+  + `Potting the cue ball is a foul`
   + `Potting the cue ball is a foul, regardless of whether a red or color ball is also potted in the same shot`. The opponent receives a penalty of four points plus the value of any additional balls potted in the same stroke
-  + A red ball going off the table is considered a foul and the opponent receives a penalty of 4 points plus the value of any additional balls potted in the same stroke. **Note:**: There is nothing in the UI as yet for this eventuality.
+    + Recommended Action:
+        + FOUL: `#tally---potted--foul-p1`  
+        + FOUL: `#tally---potted--foul-p2`
+     
+  + `A red ball going off the table` is considered a `foul` and the opponent receives a penalty of `4 points` plus the value of any additional balls potted in the same stroke. **Note:**: There is nothing in the UI as yet for this eventuality.
+    + Recommended Action:
+        + FOUL: `#tally---potted--foul-p1`  
+        + FOUL: `#tally---potted--foul-p2`
+
+  + If a red ball is potted during a foul, `it is NOT respotted`.
+  + If a colour is potted during a foul, `it is respotted` (*unless* it's the final colour sequence).
+  + A foul wipes out any score that a player would have gained from legally potting a red or colour.
+
+
++ Snookers Required Scenarios
 
  + `scenario:` (`points remaining` - `score difference`) - A means to calculate how many snookers a player might require to win a frame.
 
@@ -767,7 +801,7 @@ This application is built using the following technologies:
 ## Development
 [Back to Top](#sections)
 
-### Tasks - 156 completed items
+### Tasks - 170 completed items
 
 The development of this application is currently in progress.
 
@@ -1014,8 +1048,30 @@ The development of this application is currently in progress.
 
 + `COMPLETED: 16-06-2025` To get to the final colour sequence, players 1 or 2, or both between them must have potted 15 red balls. In theory, either player could possibly pot these red balls but not pot the following colour before they reach the colour sequence.
 
-+ `TODO: ` Clicking `#app-app` should take the user to a new browser tab so game progress is not lost.
++ `COMPLETED: 16-06-2025` Replicate functionality of player 1 in player 2.
 
++ `COMPLETED: 16-06-2025` Take into account the number red balls in the frame that have been potted - by both players. They need to be incremented independently of each other, but the tallies never be allowed to go above 15 clicks between them. 
+
++ `COMPLETED: 16-06-2025` Take into account the number red balls in the frame that have been potted - by both players. They need to be incremented independently of each other, but the tallies never be allowed to go above 15 clicks between them.  BUG: When missing a colour on the colour sequence, the next player must shoot for that colour. (Player 2)  e.g. if Player 1 misses a pot attempt on Green, player 2 must shoot for Green.
+
++ `COMPLETED: 16-06-2025` BUG: Player 2 does not follow the colour sequence when Player 1 misses a pot attempt within 27 points remaining. 
+
++ `COMPLETED: 17-06-2025` BUG: Player 2 red ball does not factor in 2 red balls potted in the same shot. 
+
++ `COMPLETED: 17-06-2025` Track number of times Red ball has been potted `#pot---red--one` (no more than 15)
++ `COMPLETED: 17-06-2025` Track number of times Yellow ball has been potted `#pot---red--yellow` (no more than 16)
++ `COMPLETED: 17-06-2025` Track number of times Green ball has been potted `#pot---red--green` (no more than 16)
++ `COMPLETED: 17-06-2025` Track number of times Brown ball has been potted `#pot---red--brown` (no more than 16)
++ `COMPLETED: 17-06-2025` Track number of times Black ball has been potted `#pot---red--blue` (no more than 16)
++ `COMPLETED: 17-06-2025` Track number of times Pink ball has been potted `#pot---red--pink` (no more than 16)
++ `COMPLETED: 17-06-2025` Track number of times Black ball has been potted `#pot---red--black` (no more than 16)
+
++ `COMPLETED: 17-06-2025` Stop counting highest and last break when `#points_remaining`is at 0 (Player 2).
+
++ `COMPLETED: 17-06-2025` Stop counting highest and last break when `#points_remaining`is at 0 (Player 1).
+
+
++ `TODO: ` Clicking `#app-app` should take the user to a new browser tab so game progress is not lost.
 
 + `TODO:` Refactor code generated so far to reduce total lines in the script, make it more readable and easier to maintain.
 
@@ -1023,42 +1079,20 @@ The development of this application is currently in progress.
 
 + `TODO:` BUG: "Last Break" should not be reset to 0 until a player makes their first successful pot attempt after returning to the table
 
++ `TODO:` Last break for player 1 resets when player 1 misses a pot attempt.  Keep this number until the player makes successful pot after returning to the table.
+ayer 2. 
+
 + `TODO:` BUG: Player 1 clicks "MISS" without applying their Redball pot(s).  
-
-+ `TODO:` Replicate functionality of player 1 in player 2.
-
-+ `TODO:` Take into account the number red balls in the frame that have been potted - by both players. They need to be incremented independently of each other, but the tallies never be allowed to go above 15 clicks between them. 
-
-+ `TODO:` BUG: When missing a colour on the colour sequence, the next player must shoot for that colour. (Player 2)  e.g. if Player 1 misses a pot attempt on Green, player 2 must shoot for Green.
-
-+ `TODO:` BUG: Player 2 red ball does not factor in 2 red balls potted in the same shot.
-
 
 + `TODO:` Next player reverts to shooting for a red ball after a foul. 
 + `TODO:` Revert to shooting for a red ball after a foul. 
 + `TODO:` Shouldn't take the missed points into account until I simulate shooting for a colour after the 2 reds at once.
-
-+ `TODO:` Last break for player 1 resets when player 1 misses a pot attempt.  Keep this number until the player makes successful pot after returning to the table.
-ayer 2. 
-
-+ `TODO:` Stop counting highest and last break when `#points_remaining`is at 0 (Player 2).
-
-+ `TODO:` Stop counting highest and last break when `#points_remaining`is at 0 (Player 1).
-
-+ `TODO:` BUG: Player 2 does not follow the colour sequence when Player 1 misses a pot attempt within 27 points remaining.
 
 + `TODO:` BUG: Player 2 colour balls should be disabled when the table is cleared (frame ends - `#points_remaining` = 0 and player 2 has won the game).
 
 + `TODO:` "Frame Complete" Tooltip can probably be dismissed automatically after a given number of seconds - e.g. 5 seconds.
 
 
-+ `TODO:` Track number of times Red ball has been potted `#pot---red--one` (no more than 15)
-+ `TODO:` Track number of times Yellow ball has been potted `#pot---red--yellow` (no more than 16)
-+ `TODO:` Track number of times Green ball has been potted `#pot---red--green` (no more than 16)
-+ `TODO:` Track number of times Brown ball has been potted `#pot---red--brown` (no more than 16)
-+ `TODO:` Track number of times Black ball has been potted `#pot---red--blue` (no more than 16)
-+ `TODO:` Track number of times Pink ball has been potted `#pot---red--pink` (no more than 16)
-+ `TODO:` Track number of times Black ball has been potted `#pot---red--black` (no more than 16)
     
 + it's possible, however unlikely it might be that a player can pot a colour ball 16 times, including the colour sequence. A 147 Break (15 reds, 15 of a single colour and the colour sequence e.g. 15 Reds, 15 Yellows, Yellow, Green, Brown, Blue, Pink, Black)
 
@@ -1164,7 +1198,7 @@ ayer 2.
 
 + `6` - The link `#apply_tally---red--p2` 2 does not apply the correct number of points for multiple reds potted in the same shot.  e.g. applying 2 red ball points gives us only 1 point. `Resolved: 09-06-2025`
 
-+ `7` - Red Ball tallies for players 1 and 2 should be incremented independently of each other like the colour balls.  Red balls for both players should add up to 15 for the number of balls potted.  `Resolved: 16-06-2025`
++ `7` - Red Ball tallies for players 1 and 2 should be incremented independently of each other like the colour balls.  Red balls for both players should add up to 15 for the number of balls potted. `Resolved: 16-06-2025`
 
 + `8` - Red ball tallies in player 1 are no longer incremented correctly after player 1 misses a pot attempt. `Resolved: 16-06-2025`
 
@@ -1177,18 +1211,19 @@ ayer 2.
     + MISS 
     + Red Ball Player
 
++ `9` - When missing a colour on the colour sequence, the next player must shoot for that colour. (Player 2)  e.g. if Player 1 misses a pot attempt on Green, player 2 must shoot for Green. `Resolved: 16-06-2025`
 
-+ `9` - "Last Break" should not be reset to 0 until a player makes their first successful pot attempt after returning to the table.
++ `10` - Player 2 red ball does not factor in 2 red balls potted in the same shot. `Resolved: 17-06-2025`
 
-+ `10` - Player 1 clicks "MISS" without applying their Redball pot(s). 
++ `11` - Player 2 does not follow the colour sequence when Player 1 misses a pot attempt within 27 points remaining. `Resolved: 16-06-2025`
 
-+ `11` - When missing a colour on the colour sequence, the next player must shoot for that colour. (Player 2)  e.g. if Player 1 misses a pot attempt on Green, player 2 must shoot for Green.
++ `12` - "Last Break" should not be reset to 0 until a player makes their first successful pot attempt after returning to the table.
 
-+ `12` - Player 2 does not follow the colour sequence when Player 1 misses a pot attempt within 27 points remaining.
++ `13` - Player 1 clicks "MISS" without applying their Redball pot(s). 
 
-+ `13` - Players apply 2 successful red ball scores and then miss on following colour. A reduction of 16 points should be applied to `#points_remaining` (The colour not shot for followed by the missed colour)
++ `14` - Players apply 2 successful red ball scores and then miss on following colour. A reduction of 16 points should be applied to `#points_remaining` (The colour not shot for followed by the missed colour)
 
-+ `14` - Player 2 Cursor pointer missing from red ball icon  after the first successful colour pot attempt.
++ `15` - Player 2 Cursor pointer missing from red ball icon  after the first successful colour pot attempt.
 
 ### Future Improvements
 
