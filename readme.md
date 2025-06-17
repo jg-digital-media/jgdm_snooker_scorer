@@ -1,6 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Last Updated: 17/06/2025 - 10:48`
++ `Last Updated: 17/06/2025 - 10:50`
 ## Sections
 
 [Intro](#intro
@@ -801,7 +801,7 @@ This application is built using the following technologies:
 ## Development
 [Back to Top](#sections)
 
-### Tasks - 170 completed items
+### Tasks - 193 completed items
 
 The development of this application is currently in progress.
 
@@ -1070,6 +1070,41 @@ The development of this application is currently in progress.
 
 + `COMPLETED: 17-06-2025` Stop counting highest and last break when `#points_remaining`is at 0 (Player 1).
 
++ `COMPLETED: 17-06-2025` Shouldn't take the missed points into account until I simulate shooting for a colour after the 2 reds at once.
+
++ `COMPLETED: 17-06-2025` Implement the "FOUL" button for player 1.
+  + `COMPLETED: 17-06-2025` Add event listener for `#pot---foul--one`
+  + `COMPLETED: 17-06-2025` Check that the player is shooting for a red ball or a colour ball.
+  + `COMPLETED: 17-06-2025` The opposite player is awarded 4 penalty points - no effect in the current or highest break.
+  + `COMPLETED: 17-06-2025` Play switches to the opponent who will shoot for the next red.
+  + `TODO:` BUG: Foul button on the colour sequence reverts play to 27 points and back to yellow ball (Player 1) 
+
++ `COMPLETED: 17-06-2025` Implement the "FOUL+MISS" button for player 1.
+  + `COMPLETED: 17-06-2025` Add event listener for `#pot---foulmiss--one`
+  + `COMPLETED: 17-06-2025` Check that the player is shooting for a red ball or a colour ball.
+  + `COMPLETED: 17-06-2025` The opposite player is awarded 4 penalty points - no effect in the current or highest break.
+  + `COMPLETED: 17-06-2025` Play switches to the opponent who will shoot for the next red.
+
+
++ `COMPLETED: 17-06-2025` Implement the "FOUL" button for player 2.
+  + `COMPLETED: 17-06-2025` Add event listener for `#pot---foul--two`
+  + `COMPLETED: 17-06-2025` Check that the player is shooting for a red ball or a colour ball.
+  + `COMPLETED: 17-06-2025` The opposite player is awarded 4 penalty points - no effect in the current or highest break.
+  + `COMPLETED: 17-06-2025` Play switches to the opponent who will shoot for the next red.
+  +  `TODO:` BUG: Foul button on the colour sequence reverts play to 27 points and back to yellow ball (Player 1)
+
++ `COMPLETED: 17-06-2025` Implement the "FOUL+MISS" button for player 2.
+  + `COMPLETED: 17-06-2025` Add event listener for `#pot---foulmiss--two`
+  + `COMPLETED: 17-06-2025` Check that the player is shooting for a red ball or a colour ball.
+  + `COMPLETED: 17-06-2025` The opposite player is awarded 4 penalty points - no effect in the current or highest break.
+  + `COMPLETED: 17-06-2025` Play switches to the opponent who will shoot for the next red.
+  + `TODO:` BUG: Foul button on the colour sequence reverts play to 27 points and back to yellow ball (Player 2)
+
+
++ `COMPLETED: 17-06-2025` Next player reverts to shooting for a red ball after a foul. 
++ `COMPLETED: 17-06-2025` Revert to shooting for a red ball after a foul. 
+
++ `TODO: ` Players presented with the option to force the opponent to retake the shot after a FOUL+MISS..
 
 + `TODO: ` Clicking `#app-app` should take the user to a new browser tab so game progress is not lost.
 
@@ -1083,10 +1118,6 @@ The development of this application is currently in progress.
 ayer 2. 
 
 + `TODO:` BUG: Player 1 clicks "MISS" without applying their Redball pot(s).  
-
-+ `TODO:` Next player reverts to shooting for a red ball after a foul. 
-+ `TODO:` Revert to shooting for a red ball after a foul. 
-+ `TODO:` Shouldn't take the missed points into account until I simulate shooting for a colour after the 2 reds at once.
 
 + `TODO:` BUG: Player 2 colour balls should be disabled when the table is cleared (frame ends - `#points_remaining` = 0 and player 2 has won the game).
 
@@ -1225,6 +1256,9 @@ ayer 2.
 
 + `15` - Player 2 Cursor pointer missing from red ball icon  after the first successful colour pot attempt.
 
++ `16` - Foul button on the colour sequence reverts play to 27 points and back to yellow ball (Player 1)
++ `17` - Foul button on the colour sequence reverts play to 27 points and back to yellow ball (Player 2)
+
 ### Future Improvements
 
 + Identify how many points ahead or behind a player is - changing depending on point score - to be compared with the points available.
@@ -1236,11 +1270,11 @@ ayer 2.
 
 [Back to Sections](#sections)
 
-[v1.0.0](#v100) --- [v1.0.1](#v101) --- [v1.0.2](#v102) --- [v1.0.3](#v103) --- [v1.0.4](#v104) --- [v1.0.5](#v105) --- [v1.0.6](#v106) --- [v1.0.7](#v107) --- [v1.0.8](#v108) --- [v1.0.9](#v109) --- [v1.0.10](#v1010) --- [v1.0.11](#v1011) --- [v1.0.12](#v1012) --- [v1.0.13](#v1013) --- [v1.0.14](#v1014) --- [v1.0.15](#v1015) --- [v1.0.16](#v1016) --- [v1.0.17](#v1017)
+[v1.0.0](#v100) --- [v1.0.1](#v101) --- [v1.0.2](#v102) --- [v1.0.3](#v103) --- [v1.0.4](#v104) --- [v1.0.5](#v105) --- [v1.0.6](#v106) --- [v1.0.7](#v107) --- [v1.0.8](#v108) --- [v1.0.9](#v109) --- [v1.0.10](#v1010) --- [v1.0.11](#v1011) --- [v1.0.12](#v1012) --- [v1.0.13](#v1013) --- [v1.0.14](#v1014) --- [v1.0.15](#v1015) --- [v1.0.16](#v1016) --- [v1.0.17](#v1017) --- [v1.0.18](#v1018)
  
 #### v1.0.0
 
-+ `v100` - This is probably the most complex and involving application I've ever got myself into. After all the planning I've done and is still to be done I'm now left with trying to decide where and how to start. Because one thing I do will effect the next thing at various times in the weeks and months to come. Several things link together. As an example. The user clicks the Red ball icon for player 1. This action effects many moving parts. 1. The player 1 score is increased by 1. 2. The points remaining is reduced by 1. 3. The last break is increased by 1. 4. The highest break is increased by 1. 5. A number 1 is added to the red ball representing the number of times that player 1 has potted a red ball.
++ `v1.0.0` - This is probably the most complex and involving application I've ever got myself into. After all the planning I've done and is still to be done I'm now left with trying to decide where and how to start. Because one thing I do will effect the next thing at various times in the weeks and months to come. Several things link together. As an example. The user clicks the Red ball icon for player 1. This action effects many moving parts. 1. The player 1 score is increased by 1. 2. The points remaining is reduced by 1. 3. The last break is increased by 1. 4. The highest break is increased by 1. 5. A number 1 is added to the red ball representing the number of times that player 1 has potted a red ball.
 
 + And since we're representing a potted ball, player 1 remains at the table and in the game; they will now be shooting for a colour ball.  
 
@@ -1643,5 +1677,57 @@ Key Changes Made:
   + Points are reduced by 7 (or more for multi-red shots)
   + Next player shoots for red if reds are available
 ```
+
+#### v1.0.18
+
++ As far as I can see, the rest of the development of this app should be relatively straightforward, having now done the bulk of the work, which is based on the main scoring logic. Potting balls, missing shots, accumulating points per player; calculating the remaining points to be played for; calculating the current break and highest break in a visit.  All of that has been taken care of.
+
++ I say "relatively straightforward but I've been spending a bit of time thinking about 'foul scenarios' in Snooker player and how they might be applied to this app. Most of them can be settled by simply clicking/pressing for FOUL or FOUL+MISS. There are a certain number of things to think about.  Is it a foul on a red or a colour ball? Is the value of the colour ball higher than 4?  Is it a foul and a miss?  Did the cue ball get potted? Did the player touch a ball with anything other than the snooker cue?
+
++ I have planned for most, if not all of those scenarios. But I think we can press ahead with the basics and then build on the more complex scenarios as we go.  And that's what I did. I've added the event listeners and logic for the foul and foul+miss buttons. In each case, when the FOUL buttons are clicked, the opposing player is awarded 4 points. And for now, ONLY 4 points. We are going to have to do some checking later on for colour balls and values so that the correct penalty points are awarded.
+
++ It's worth again summarising the steps taken.  I used ```claude-4-sonnet``` again and it hasn't failed me up to this point. Although it did introduce a bug for the foul event listeners on the colour sequence. That's okay, we can sort that later.  But the model sorted out everythng it needed to do. For both Foul and Foul and a Miss.
+
+```text
+
+A summary as provided by claude-4-sonnet
+
+1. Event Listeners Added
+  + Added event listeners for #pot---foul--one (Player 1 foul button)
+  + Added event listeners for #pot---foul--two (Player 2 foul button)
+
+2. Penalty Points System
+  + 4 penalty points are awarded to the opposing player when a foul is committed
+  + Points are added directly to the opponent's total score
+  + No points are added to the fouling player's break (break is reset to 0)
+
+3. Points Remaining Logic
+  + When fouling on a red ball: No points are deducted from points remaining (red ball remains available)
+  + When fouling on a colour ball during normal play: 7 points are deducted from points remaining (accounts for the missed colour opportunity)
+  + When fouling during final colour sequence: Points remaining is set to 27 to maintain the colour sequence
+
+
+4. Player Switching
+  + Fouling player's break is reset to 0
+  + Game switches to the opposing player
+  + Next player shoots for red balls (if available) or continues the colour sequence
+
+5. Integration with Existing Systems
+  + The existing disablePlayerButtons() and enablePlayerButtons() functions already handle the foul buttons
+  + Foul buttons are properly disabled/enabled during player switches
+updateAvailableBalls() function manages ball availability after fouls
+
+6. Game State Management
+  + Handles multi-red shot scenarios correctly
+  + Manages final colour sequence transitions properly
+  + Maintains all existing game logic while adding foul functionality
+  + The FOUL buttons now work seamlessly with the existing miss buttons and ball potting system, providing a complete foul handling mechanism for the snooker scorer application.
+```
+
++ But... at least at this point the buttons are working and doing something. 
+
+#### v1.0.19
+
++ Working on more of the logic for the foul and foul+miss buttons.
 
 [Back to Top](#comments)
