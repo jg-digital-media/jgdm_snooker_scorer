@@ -1,6 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Last Updated: 17/06/2025 - 14:03`
++ `Last Updated: 18/06/2025 - 16:53`
 ## Sections
 
 [Intro](#intro
@@ -801,7 +801,7 @@ This application is built using the following technologies:
 ## Development
 [Back to Top](#sections)
 
-### Tasks - 193 completed items
+### Tasks - 201 completed items
 
 The development of this application is currently in progress.
 
@@ -1077,7 +1077,7 @@ The development of this application is currently in progress.
   + `COMPLETED: 17-06-2025` Check that the player is shooting for a red ball or a colour ball.
   + `COMPLETED: 17-06-2025` The opposite player is awarded 4 penalty points - no effect in the current or highest break.
   + `COMPLETED: 17-06-2025` Play switches to the opponent who will shoot for the next red.
-  + `TODO:` BUG: Foul button on the colour sequence reverts play to 27 points and back to yellow ball (Player 1) 
+  
 
 + `COMPLETED: 17-06-2025` Implement the "FOUL+MISS" button for player 1.
   + `COMPLETED: 17-06-2025` Add event listener for `#pot---foulmiss--one`
@@ -1091,30 +1091,38 @@ The development of this application is currently in progress.
   + `COMPLETED: 17-06-2025` Check that the player is shooting for a red ball or a colour ball.
   + `COMPLETED: 17-06-2025` The opposite player is awarded 4 penalty points - no effect in the current or highest break.
   + `COMPLETED: 17-06-2025` Play switches to the opponent who will shoot for the next red.
-  +  `TODO:` BUG: Foul button on the colour sequence reverts play to 27 points and back to yellow ball (Player 1)
+  + `COMPLETED: 18-06-2025` BUG: Foul button on the colour sequence reverts play to 27 points and back to yellow ball (Player 1)
 
 + `COMPLETED: 17-06-2025` Implement the "FOUL+MISS" button for player 2.
   + `COMPLETED: 17-06-2025` Add event listener for `#pot---foulmiss--two`
   + `COMPLETED: 17-06-2025` Check that the player is shooting for a red ball or a colour ball.
   + `COMPLETED: 17-06-2025` The opposite player is awarded 4 penalty points - no effect in the current or highest break.
   + `COMPLETED: 17-06-2025` Play switches to the opponent who will shoot for the next red.
-  + `TODO:` BUG: Foul button on the colour sequence reverts play to 27 points and back to yellow ball (Player 2)
+  + `COMPLETED: 18-06-2025` BUG: Foul button on the colour sequence reverts play to 27 points and back to yellow ball (Player 2)
 
 
 + `COMPLETED: 17-06-2025` Next player reverts to shooting for a red ball after a foul. 
 + `COMPLETED: 17-06-2025` Revert to shooting for a red ball after a foul. 
 
-+ `TODO:` BUG:  Missing colour balls in the colour sequence reverts users to the yellow ball - #points_remaining = 27 - Both players
++ `COMPLETED: 18-06-2025:` BUG:  Missing colour balls in the colour sequence reverts users to the yellow ball - #points_remaining = 27 - Both players
 
-+ `TODO:` Players presented with the option to force the opponent to retake the shot after a FOUL+MISS.
++ `COMPLETED: 18-06-2025:` Event listener for `#pot---forfeit--one` and `#pot---forfeit--two` should be added.
 
-+ `TODO:` Event listener for `#pot---forfeit--one` and `#pot---forfeit--two` should be added.
++ `COMPLETED: 18-06-2025:` Players presented with the option to force the opponent to retake the shot after a FOUL+MISS.
 
-+ `TODO:` Forfeit button  - ask user to confirm forfeit for that player before clicking to confirm.
-    + Display the scores to indicate end of the frame. 
-    + Same details as end of frame: #points_remaining == 0 - "Frame Complete - Player N Wins!
-Player 1: 24 | Player 2: 40
-Highest Breaks - Player 1: 15 | Player 2: 27
++ `TODO:` Forfeit button  
+
+    + `COMPLETED: 18-06-2025:` ask user to confirm forfeit for that player before clicking to confirm.
+    + `COMPLETED: 18-06-2025:` Display the scores to indicate end of the frame. 
+    + `COMPLETED: 18-06-2025:` Same details as end of frame: #points_remaining == 0 - "Frame Complete - Player N Wins!
+
+    ```
+        Player 1: 24 | Player 2: 40
+        Highest Breaks - Player 1: 15 | Player 2: 27
+    ``` 
+
+    + `TODO:` Implement a custom tooltip/dialog box to display the confirmation dialog box
+
 
 + `TODO:` Clicking `#app-app` should take the user to a new browser tab so game progress is not lost.
 
@@ -1256,16 +1264,19 @@ ayer 2.
 
 + `11` - Player 2 does not follow the colour sequence when Player 1 misses a pot attempt within 27 points remaining. `Resolved: 16-06-2025`
 
-+ `12` - "Last Break" should not be reset to 0 until a player makes their first successful pot attempt after returning to the table.
++ `12` - Missing colour balls in the colour sequence reverts users to the yellow ball - #points_remaining = 27 - Both players. `Resolved: 18-06-2025`
 
-+ `13` - Player 1 clicks "MISS" without applying their Redball pot(s). 
++ `13` - Foul button on the colour sequence reverts play to 27 points and back to yellow ball (Player 1). `Resolved: 18-06-2025`
 
-+ `14` - Players apply 2 successful red ball scores and then miss on following colour. A reduction of 16 points should be applied to `#points_remaining` (The colour not shot for followed by the missed colour)
++ `14` - Foul button on the colour sequence reverts play to 27 points and back to yellow ball (Player 2). `Resolved: 18-06-2025`
 
-+ `15` - Player 2 Cursor pointer missing from red ball icon  after the first successful colour pot attempt.
++ `15` - "Last Break" should not be reset to 0 until a player makes their first successful pot attempt after returning to the table.
 
-+ `16` - Foul button on the colour sequence reverts play to 27 points and back to yellow ball (Player 1)
-+ `17` - Foul button on the colour sequence reverts play to 27 points and back to yellow ball (Player 2)
++ `16` - Player 1 clicks "MISS" without applying their Redball pot(s). 
+
++ `17` - Players apply 2 successful red ball scores and then miss on following colour. A reduction of 16 points should be applied to `#points_remaining` (The colour not shot for followed by the missed colour)
+
++ `18` - Player 2 Cursor pointer missing from red ball icon  after the first successful colour pot attempt.
 
 ### Future Improvements
 
@@ -1737,5 +1748,19 @@ updateAvailableBalls() function manages ball availability after fouls
 #### v1.0.19
 
 + `17-06-2025` - Working on more of the logic for the foul and foul+miss buttons.  Noticed a new bug that has crept in - the foul button on the colour sequence reverts play to 27 points and back to yellow ball (both players) ... 
+
+went in and fixed several event handlers and added a new condition to differentiate between normal play and the final color sequence.  
+
+```
+   if (!shootingForRed && redClickCount >= 15 && remainingPoints <= 27) → No change to points during final sequence
+```
+
+   It's a bit like something a human would do in a way because by introducing code that does one thing it can have a negative impact; an unintended consequence for another thing.  So that's why we kept going back to 27 points because the new condition checks we made were not robust enough.  We fixed that on `18-06-2025`.
+
+
++ worked on player forfeiting  functionality which works with the Alert dialog of the user agent (browser) to give user the chance to either correct a mistake and cancel the forfeit confir4m that the player did indeed forfeit the frame.  This works for us because if the does not forfeit they get the chance to indicate the correct player action and move on with the frame.
+
++ I do get the sense that we'll want to move away from using the alert dialog box and instead use a more custom JavaScript solution. So I might ask about how to use that next.
+
 
 [Back to Top](#comments)
