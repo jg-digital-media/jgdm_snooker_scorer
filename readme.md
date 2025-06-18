@@ -1,6 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Last Updated: 18/06/2025 - 16:53`
++ `Last Updated: 18/06/2025 - 17:07`
 ## Sections
 
 [Intro](#intro
@@ -1289,7 +1289,7 @@ ayer 2.
 
 [Back to Sections](#sections)
 
-[v1.0.0](#v100) --- [v1.0.1](#v101) --- [v1.0.2](#v102) --- [v1.0.3](#v103) --- [v1.0.4](#v104) --- [v1.0.5](#v105) --- [v1.0.6](#v106) --- [v1.0.7](#v107) --- [v1.0.8](#v108) --- [v1.0.9](#v109) --- [v1.0.10](#v1010) --- [v1.0.11](#v1011) --- [v1.0.12](#v1012) --- [v1.0.13](#v1013) --- [v1.0.14](#v1014) --- [v1.0.15](#v1015) --- [v1.0.16](#v1016) --- [v1.0.17](#v1017) --- [v1.0.18](#v1018)
+[v1.0.0](#v100) --- [v1.0.1](#v101) --- [v1.0.2](#v102) --- [v1.0.3](#v103) --- [v1.0.4](#v104) --- [v1.0.5](#v105) --- [v1.0.6](#v106) --- [v1.0.7](#v107) --- [v1.0.8](#v108) --- [v1.0.9](#v109) --- [v1.0.10](#v1010) --- [v1.0.11](#v1011) --- [v1.0.12](#v1012) --- [v1.0.13](#v1013) --- [v1.0.14](#v1014) --- [v1.0.15](#v1015) --- [v1.0.16](#v1016) --- [v1.0.17](#v1017) --- [v1.0.18](#v1018) --- [v1.0.19](#v1019)
  
 #### v1.0.0
 
@@ -1747,20 +1747,25 @@ updateAvailableBalls() function manages ball availability after fouls
 
 #### v1.0.19
 
-+ `17-06-2025` - Working on more of the logic for the foul and foul+miss buttons.  Noticed a new bug that has crept in - the foul button on the colour sequence reverts play to 27 points and back to yellow ball (both players) ... 
++ `17-06-2025` - In these number of days, I've been working on more of the logic for the foul and foul+miss buttons. In doing this I noticed a new bug that crept in - the foul button on the colour sequence reverts play to 27 points and back to yellow ball (both players).  In fact, this was the case for every MISS, every FOUL and every FOUL+MISS button.
 
-went in and fixed several event handlers and added a new condition to differentiate between normal play and the final color sequence.  
++ Now that we've moved on to using the `claude-4-sonnet` model, these fixes have been somewhat seamless. Without going into too much detail, we were able go in and identify where the bug was; fixed several event handlers and added a new condition to differentiate between normal play and the final color sequence.  
 
 ```
-   if (!shootingForRed && redClickCount >= 15 && remainingPoints <= 27) → No change to points during final sequence
+    if (!shootingForRed && redClickCount >= 15 && remainingPoints <= 27) → No change to points during final sequence
 ```
 
-   It's a bit like something a human would do in a way because by introducing code that does one thing it can have a negative impact; an unintended consequence for another thing.  So that's why we kept going back to 27 points because the new condition checks we made were not robust enough.  We fixed that on `18-06-2025`.
+Rather than 
 
+```
+    if (!shootingForRed && redClickCount >= 15)
+```
 
-+ worked on player forfeiting  functionality which works with the Alert dialog of the user agent (browser) to give user the chance to either correct a mistake and cancel the forfeit confir4m that the player did indeed forfeit the frame.  This works for us because if the does not forfeit they get the chance to indicate the correct player action and move on with the frame.
++ It's a bit like something a human would do in a way because by introducing code that does one thing it can have a negative impact; an unintended consequence for another thing.  So that's why we kept going back to 27 points because the new condition checks we made were not robust enough.  We fixed that on `18-06-2025`.
 
-+ I do get the sense that we'll want to move away from using the alert dialog box and instead use a more custom JavaScript solution. So I might ask about how to use that next.
++ The second thing we worked on in this iteration of the app is player forfeiting  functionality. The generated solution works with the Alert dialog of the user agent (the browser) to give user the chance to either correct a mistake and cancel the forfeit confirm that the player did indeed forfeit the frame. This works for us because if the does not forfeit they get the chance to indicate the correct player action and move on with the frame.
+
++ I do get the sense that we'll want to move away from using the alert dialog box and instead use a more custom JavaScript solution. So I might ask about how to use that next. It would provide a framework for letting the user select the proper penalty points for fouls on higher value colours.
 
 
 [Back to Top](#comments)
