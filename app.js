@@ -1,4 +1,4 @@
-console.log("app.js connected - 17-06-2025 - 13:48");
+console.log("app.js connected - 18-06-2025 - 16:21");
 
 // Set the points remaining to 147
 document.getElementById('points_remaining').textContent = '147';
@@ -722,13 +722,17 @@ document.addEventListener("DOMContentLoaded", function() {
     missP1.addEventListener("click", function() {
         console.log("Player 1 miss button clicked");
         
-        // Check if this is a miss after the last red (15th red)
-        if (!shootingForRed && redClickCount >= 15) {
+        // Check if this is a miss after the last red (15th red) but NOT during final sequence
+        if (!shootingForRed && redClickCount >= 15 && remainingPoints > 27) {
             // Missing the color after the last red - go straight to final sequence
             remainingPoints = 27;
             pointsRemaining.textContent = remainingPoints;
             shootingForRed = false;
             console.log("Missed color after last red - setting up final color sequence (27 points)");
+        } else if (!shootingForRed && redClickCount >= 15 && remainingPoints <= 27) {
+            // Missing during final color sequence - no change to points remaining
+            // Next player shoots for the same color
+            console.log("Missed during final color sequence - no change to points remaining");
         } else if (!shootingForRed && redClickCount < 15) {
             // Normal miss during regular play - reduce points
             // Calculate points to reduce based on the last red potted
@@ -777,13 +781,17 @@ document.addEventListener("DOMContentLoaded", function() {
     missP2.addEventListener("click", function() {
         console.log("Player 2 miss button clicked");
         
-        // Check if this is a miss after the last red (15th red)
-        if (!shootingForRed && redClickCount >= 15) {
+        // Check if this is a miss after the last red (15th red) but NOT during final sequence
+        if (!shootingForRed && redClickCount >= 15 && remainingPoints > 27) {
             // Missing the color after the last red - go straight to final sequence
             remainingPoints = 27;
             pointsRemaining.textContent = remainingPoints;
             shootingForRed = false;
             console.log("Missed color after last red - setting up final color sequence (27 points)");
+        } else if (!shootingForRed && redClickCount >= 15 && remainingPoints <= 27) {
+            // Missing during final color sequence - no change to points remaining
+            // Next player shoots for the same color
+            console.log("Missed during final color sequence - no change to points remaining");
         } else if (!shootingForRed && redClickCount < 15) {
             // Normal miss during regular play - reduce points
             // Calculate points to reduce based on the last red potted
@@ -857,12 +865,16 @@ document.addEventListener("DOMContentLoaded", function() {
                 remainingPoints -= pointsToReduce;
                 pointsRemaining.textContent = remainingPoints;
                 console.log(`Reduced remaining points by ${pointsToReduce} (fouled on color after ${lastRedTallyP1} reds)`);
-            } else if (!shootingForRed && redClickCount >= 15) {
+            } else if (!shootingForRed && redClickCount >= 15 && remainingPoints > 27) {
                 // Fouling on a color after all 15 reds - go straight to color sequence
                 remainingPoints = 27;
                 pointsRemaining.textContent = remainingPoints;
                 shootingForRed = false;
                 console.log("Fouled on color after 15th red - setting points to 27 for final color sequence");
+            } else if (!shootingForRed && redClickCount >= 15 && remainingPoints <= 27) {
+                // Fouling during final color sequence - no change to points remaining
+                // Next player shoots for the same color
+                console.log("Fouled during final color sequence - no change to points remaining");
             }
             // If shooting for red, no points deducted (red remains available)
             else {
@@ -920,12 +932,16 @@ document.addEventListener("DOMContentLoaded", function() {
                 remainingPoints -= pointsToReduce;
                 pointsRemaining.textContent = remainingPoints;
                 console.log(`Reduced remaining points by ${pointsToReduce} (fouled on color after ${lastRedTallyP2} reds)`);
-            } else if (!shootingForRed && redClickCount >= 15) {
+            } else if (!shootingForRed && redClickCount >= 15 && remainingPoints > 27) {
                 // Fouling on a color after all 15 reds - go straight to color sequence
                 remainingPoints = 27;
                 pointsRemaining.textContent = remainingPoints;
                 shootingForRed = false;
                 console.log("Fouled on color after 15th red - setting points to 27 for final color sequence");
+            } else if (!shootingForRed && redClickCount >= 15 && remainingPoints <= 27) {
+                // Fouling during final color sequence - no change to points remaining
+                // Next player shoots for the same color
+                console.log("Fouled during final color sequence - no change to points remaining");
             }
             // If shooting for red, no points deducted (red remains available)
             else {
@@ -991,12 +1007,16 @@ document.addEventListener("DOMContentLoaded", function() {
                 remainingPoints -= pointsToReduce;
                 pointsRemaining.textContent = remainingPoints;
                 console.log(`Reduced remaining points by ${pointsToReduce} (foul+miss on color after ${lastRedTallyP1} reds)`);
-            } else if (!shootingForRed && redClickCount >= 15) {
+            } else if (!shootingForRed && redClickCount >= 15 && remainingPoints > 27) {
                 // Fouling on a color after all 15 reds - go straight to color sequence
                 remainingPoints = 27;
                 pointsRemaining.textContent = remainingPoints;
                 shootingForRed = false;
                 console.log("Foul+miss on color after 15th red - setting points to 27 for final color sequence");
+            } else if (!shootingForRed && redClickCount >= 15 && remainingPoints <= 27) {
+                // Foul+miss during final color sequence - no change to points remaining
+                // Next player shoots for the same color
+                console.log("Foul+miss during final color sequence - no change to points remaining");
             }
             // If shooting for red, no points deducted (red remains available)
             else {
@@ -1057,12 +1077,16 @@ document.addEventListener("DOMContentLoaded", function() {
                 remainingPoints -= pointsToReduce;
                 pointsRemaining.textContent = remainingPoints;
                 console.log(`Reduced remaining points by ${pointsToReduce} (foul+miss on color after ${lastRedTallyP2} reds)`);
-            } else if (!shootingForRed && redClickCount >= 15) {
+            } else if (!shootingForRed && redClickCount >= 15 && remainingPoints > 27) {
                 // Fouling on a color after all 15 reds - go straight to color sequence
                 remainingPoints = 27;
                 pointsRemaining.textContent = remainingPoints;
                 shootingForRed = false;
                 console.log("Foul+miss on color after 15th red - setting points to 27 for final color sequence");
+            } else if (!shootingForRed && redClickCount >= 15 && remainingPoints <= 27) {
+                // Foul+miss during final color sequence - no change to points remaining
+                // Next player shoots for the same color
+                console.log("Foul+miss during final color sequence - no change to points remaining");
             }
             // If shooting for red, no points deducted (red remains available)
             else {
