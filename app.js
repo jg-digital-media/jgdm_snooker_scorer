@@ -1,4 +1,4 @@
-console.log("app.js connected - 18-06-2025 - 16:21");
+console.log("app.js connected - 18-06-2025 - 16:52");
 
 // Set the points remaining to 147
 document.getElementById('points_remaining').textContent = '147';
@@ -146,6 +146,118 @@ function endFrame() {
     }
     
     console.log("Frame complete - all elements disabled");
+}
+
+// Function to handle player forfeit
+function forfeitFrame(forfeitingPlayer) {
+    console.log(`Player ${forfeitingPlayer} has forfeited the frame`);
+    
+    // Disable all interactive elements (same as endFrame)
+    const allInteractiveElements = document.querySelectorAll("*");
+    allInteractiveElements.forEach(element => {
+        const tagName = element.tagName.toLowerCase();
+        if (tagName === 'button' || tagName === 'a' || tagName === 'input' || 
+            tagName === 'select' || tagName === 'textarea' || 
+            element.id.includes('pot') || element.id.includes('tally') || 
+            element.id.includes('apply') || element.id.includes('miss')) {
+            
+            element.style.pointerEvents = "none";
+            
+            if (element.id.includes('pot') || element.id.includes('tally') || 
+                element.id.includes('apply') || element.id.includes('miss')) {
+                element.style.opacity = "0.5";
+            }
+        }
+    });
+    
+    // Disable player break elements
+    const playerBreaksP1 = document.getElementById("player---breaks--p1");
+    const playerBreaksP2 = document.getElementById("player---breaks--p2");
+    
+    if (playerBreaksP1) {
+        playerBreaksP1.style.pointerEvents = "none";
+        playerBreaksP1.style.opacity = "0.5";
+    }
+    
+    if (playerBreaksP2) {
+        playerBreaksP2.style.pointerEvents = "none";
+        playerBreaksP2.style.opacity = "0.5";
+    }
+    
+    // Hide all apply buttons
+    const applyButtons = document.querySelectorAll('[id^="apply_tally"]');
+    applyButtons.forEach(button => {
+        button.style.visibility = "hidden";
+        button.style.opacity = "0";
+    });
+    
+    // Determine the winner (opposite of forfeiting player)
+    const winner = forfeitingPlayer === 1 ? 2 : 1;
+    console.log(`Frame won by forfeit - Player ${winner} wins`);
+    
+    // Create a frame complete message with forfeit information
+    const frameOverMessage = document.createElement("div");
+    frameOverMessage.textContent = `Frame Complete - Player ${winner} Wins by Forfeit!`;
+    
+    // Add forfeit information
+    const forfeitInfo = document.createElement("div");
+    forfeitInfo.textContent = `Player ${forfeitingPlayer} forfeited the frame`;
+    forfeitInfo.style.marginTop = "10px";
+    forfeitInfo.style.fontSize = "16px";
+    forfeitInfo.style.color = "#ff6b6b";
+    frameOverMessage.appendChild(forfeitInfo);
+    
+    // Add score information
+    const scoreInfo = document.createElement("div");
+    scoreInfo.textContent = `Player 1: ${p1CurrentScore} | Player 2: ${p2CurrentScore}`;
+    scoreInfo.style.marginTop = "10px";
+    scoreInfo.style.fontSize = "18px";
+    frameOverMessage.appendChild(scoreInfo);
+    
+    // Add highest break information
+    const breakInfo = document.createElement("div");
+    breakInfo.textContent = `Highest Breaks - Player 1: ${p1HighestBreak} | Player 2: ${p2HighestBreak}`;
+    breakInfo.style.marginTop = "5px";
+    breakInfo.style.fontSize = "16px";
+    frameOverMessage.appendChild(breakInfo);
+    
+    // Add a new frame button
+    const newFrameButton = document.createElement("button");
+    newFrameButton.textContent = "Start New Frame";
+    newFrameButton.style.marginTop = "15px";
+    newFrameButton.style.padding = "10px 20px";
+    newFrameButton.style.fontSize = "16px";
+    newFrameButton.style.backgroundColor = "#4CAF50";
+    newFrameButton.style.color = "white";
+    newFrameButton.style.border = "none";
+    newFrameButton.style.borderRadius = "5px";
+    newFrameButton.style.cursor = "pointer";
+    newFrameButton.onclick = function() {
+        location.reload(); // Reload the page to start a new frame
+    };
+    frameOverMessage.appendChild(newFrameButton);
+    
+    // Style the message
+    frameOverMessage.style.position = "fixed";
+    frameOverMessage.style.top = "50%";
+    frameOverMessage.style.left = "50%";
+    frameOverMessage.style.transform = "translate(-50%, -50%)";
+    frameOverMessage.style.backgroundColor = "rgba(0, 0, 0, 0.9)";
+    frameOverMessage.style.color = "white";
+    frameOverMessage.style.padding = "30px";
+    frameOverMessage.style.borderRadius = "10px";
+    frameOverMessage.style.fontSize = "24px";
+    frameOverMessage.style.textAlign = "center";
+    frameOverMessage.style.zIndex = "1000";
+    frameOverMessage.style.boxShadow = "0 0 20px rgba(255, 255, 255, 0.3)";
+    
+    // Only add the message if it doesn't already exist
+    if (!document.getElementById("frame-over-message")) {
+        frameOverMessage.id = "frame-over-message";
+        document.body.appendChild(frameOverMessage);
+    }
+    
+    console.log(`Frame forfeited by Player ${forfeitingPlayer} - all elements disabled`);
 }
 
 // Function to update which balls are enabled/disabled based on game state
@@ -977,6 +1089,42 @@ document.addEventListener("DOMContentLoaded", function() {
             
             // Update available balls
             updateAvailableBalls();
+        });
+    }
+
+    // Add event listeners for forfeit buttons
+    const forfeitP1 = document.getElementById("pot---forfeit--one");
+    const forfeitP2 = document.getElementById("pot---forfeit--two");
+
+    if (forfeitP1) {
+        forfeitP1.addEventListener("click", function() {
+            console.log("Player 1 forfeit button clicked");
+            
+            // Show confirmation dialog
+            if (confirm("Are you sure Player 1 wants to forfeit this frame?")) {
+                console.log("Player 1 forfeit confirmed");
+                
+                // Player 1 forfeits, so Player 2 wins
+                forfeitFrame(1);
+            } else {
+                console.log("Player 1 forfeit cancelled");
+            }
+        });
+    }
+
+    if (forfeitP2) {
+        forfeitP2.addEventListener("click", function() {
+            console.log("Player 2 forfeit button clicked");
+            
+            // Show confirmation dialog
+            if (confirm("Are you sure Player 2 wants to forfeit this frame?")) {
+                console.log("Player 2 forfeit confirmed");
+                
+                // Player 2 forfeits, so Player 1 wins
+                forfeitFrame(2);
+            } else {
+                console.log("Player 2 forfeit cancelled");
+            }
         });
     }
 
