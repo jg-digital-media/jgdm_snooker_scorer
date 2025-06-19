@@ -1,6 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Last Updated: 19/06/2025 - 13:51`
++ `Last Updated: 19/06/2025 - 16:51`
 ## Sections
 
 [Intro](#intro
@@ -770,6 +770,7 @@ After 15 reds potted and the last colour
   + If a colour is potted during a foul, `it is respotted` (*unless* it's the final colour sequence).
   + A foul wipes out any score that a player would have gained from legally potting a red or colour.
 
+  + Once a red is potted, foul or not, it’s considered "off the table".
 
 + Snookers Required Scenarios
 
@@ -1289,7 +1290,7 @@ ayer 2.
 
 [Back to Sections](#sections)
 
-[v1.0.0](#v100) --- [v1.0.1](#v101) --- [v1.0.2](#v102) --- [v1.0.3](#v103) --- [v1.0.4](#v104) --- [v1.0.5](#v105) --- [v1.0.6](#v106) --- [v1.0.7](#v107) --- [v1.0.8](#v108) --- [v1.0.9](#v109) --- [v1.0.10](#v1010) --- [v1.0.11](#v1011) --- [v1.0.12](#v1012) --- [v1.0.13](#v1013) --- [v1.0.14](#v1014) --- [v1.0.15](#v1015) --- [v1.0.16](#v1016) --- [v1.0.17](#v1017) --- [v1.0.18](#v1018) --- [v1.0.19](#v1019)
+[v1.0.0](#v100) --- [v1.0.1](#v101) --- [v1.0.2](#v102) --- [v1.0.3](#v103) --- [v1.0.4](#v104) --- [v1.0.5](#v105) --- [v1.0.6](#v106) --- [v1.0.7](#v107) --- [v1.0.8](#v108) --- [v1.0.9](#v109) --- [v1.0.10](#v1010) --- [v1.0.11](#v1011) --- [v1.0.12](#v1012) --- [v1.0.13](#v1013) --- [v1.0.14](#v1014) --- [v1.0.15](#v1015) --- [v1.0.16](#v1016) --- [v1.0.17](#v1017) --- [v1.0.18](#v1018) --- [v1.0.19](#v1019) --- [v1.0.20](#v1020)
  
 #### v1.0.0
 
@@ -1697,6 +1698,8 @@ Key Changes Made:
   + Next player shoots for red if reds are available
 ```
 
+[Back to Top](#comments)
+
 #### v1.0.18
 
 + As far as I can see, the rest of the development of this app should be relatively straightforward, having now done the bulk of the work, which is based on the main scoring logic. Potting balls, missing shots, accumulating points per player; calculating the remaining points to be played for; calculating the current break and highest break in a visit.  All of that has been taken care of.
@@ -1745,6 +1748,8 @@ updateAvailableBalls() function manages ball availability after fouls
 
 + But... at least at this point the buttons are working and doing something. 
 
+[Back to Top](#comments)
+
 #### v1.0.19
 
 + `17-06-2025` - In these number of days, I've been working on more of the logic for the foul and foul+miss buttons. In doing this I noticed a new bug that crept in - the foul button on the colour sequence reverts play to 27 points and back to yellow ball (both players).  In fact, this was the case for every MISS, every FOUL and every FOUL+MISS button.
@@ -1767,12 +1772,16 @@ Rather than
 
 + I do get the sense that we'll want to move away from using the alert dialog box and instead use a more custom JavaScript solution. So I might ask about how to use that next. It would provide a framework for letting the user select the proper penalty points for fouls on higher value colours.
 
+[Back to Top](#comments)
+
 
 #### v1.0.20 
 
-+ "Is there a way, " I asked " to modify this [Forfeit dialog box], so it uses a custom element, a tooltip that does the same confirmation process but takes it out of the browser functionality. This is for aesthetics.. something that better plends in with the app".  And well.. I knew the answer was "yes" of course. And within a few minutes I had a working solution generated for me; for both forfeit buttons.
++ "Is there a way", I asked, "to modify this [Forfeit dialog box], so it uses a custom element, a tooltip that does the same confirmation process but takes it out of the browser functionality. This is for aesthetics.. something that better plends in with the app"  
 
-+ A got a nice modal area generated for me with an aesthetic that Claude analysed and made to suit the rest of the app. I can read and understand what `sonnet` has done. But given the task, I could not have thought to make the dialog box out a modal area with buttons you can do something with.
++ And well.. I knew the answer was "yes", of course. Within a few minutes, I had a working solution generated for me, for both of the forfeit buttons..
+
++ I got a nice modal area generated for me with an aesthetic that Claude analysed and made to suit the rest of the app. I can read and understand what `claude-4-sonnet` has done. But given the task, I could not have thought to make the dialog box a modal area with buttons you can do something with.
 
 ```javascript
 
@@ -1796,11 +1805,109 @@ function showForfeitModal(playerNumber) {
 
     function handleModalCancel() {
 
-```
-+ in the `forfeitframe()` method, you can see how the end frame elements and modal is created.
+    
+    // Execute the forfeit
+    forfeitFrame(forfeitingPlayer);
 
-+ 
+    
+    // Function to handle player forfeit
+    function forfeitFrame(forfeitingPlayer) {
+        console.log(`Player ${forfeitingPlayer} has forfeited the frame`);
+
+        // . . . 
+
+
+    }
 
 ```
++ In the `forfeitframe()` method, you can see how the end frame elements and modal are created.
+
++ Now we can try and work on the remaining required modals and bring all the foul scenarios into play. For instance, we need to award the apppropriate penalty points to the opponent player, depending on whether the foul took place on a red ball, or a higher value colour ball than the 4 points.
+
++ Let's review the foul scenarios:
+
+```text
+
+PLAYER IS ON A RED BALL BUT HITS A COLOUR FIRST
+PLAYER ON COLOUR BALL BUT HITS A RED
+FOUL AND A MISS - FAILS TO HIT A RED OR ANY OTHER BALL
+MISFIRING THE CUE BALL: DOUBLE HIT (ON COLOUR BALL)
+MISFIRING THE CUE BALL: DOUBLE HIT (ON RED BALL)
+POTTING THE CUE BALL IS A FOUL
+POTTING THE CUE BALL IS A FOUL, EVEN IF A RED OR A COLOUR IS ALSO POTTED
+Red ball goes off the table
+
+```
+
++ That presents a number of combinations and we need to get right. Are we fouling on a red or a colour. And which colour have we fouled on, etc. And then I thought of another way.  
+
++ For fouls on a red ball, we need to award 4 penalty points to the opponent. But for colour balls, it will he up to the scorer, that is the user of the application to award the correct penalty points. That seems to be to be a better idea than letting the user select a prefined number of points. It might also make for a cleaner user experience.
+
++ So what we will have is a new modal area that will contain a dropbox of a number spinner element to help the user to select a number and the confirm those points.
+
+e.g. 
+
+```text
+
+Algorithmic Thinking:
+
+
+Player is shooting for a red and commits a foul by cue ball hitting a colour ball first.  4 penalty points (or the value of the colour ball hit higher than 4).
+
+  1) PLAYER IS ON A RED BALL BUT HITS A COLOUR FIRST 
+  
+    - if (shootingForRed == true) ----> FOUL (potFoulOne or foulP1) (on red)   
+    - selectPenaltyPoints: ----> Select value of colour ball hit: 4 points (red, yellow, green, brown), 5 points (blue), 6 points (pink), 7 points (black)
+    - BTN: Confirm Penalty Points --> Confirm
+
+  2) PLAYER ON COLOUR BALL BUT HITS A RED 
+    - if (shootingForRed == false) ----> FOUL (potFoulOne or foulP1 ) (on colour)  
+    - selectPenaltyPoints: ----> 4 points (for hitting red with cue ball)
+    - BTN: Confirm Penalty Points --> Confirm
+
+  3) FOUL AND A MISS - FAILS TO HIT A RED OR ANY OTHER BALL 
+    - if (shootingForRed == true) ---->  FOUL+MISS (potFoulMissOne or foulMissP1)      
+    - selectPenaltyPoints: ----> Select value of colour ball hit: 4 points (red, yellow, green, brown), 5 points (blue), 6 points (pink), 7 points (black).
+    - With FOUL+MISS a player can choose to make the opponent retake the shot.  
+    -----> "Make opponent retake the shot?" ----> YES/NO
+            Yes: currentPlayer  (1 or 2)
+
+            No: currentPlayer (1 or 2)
+
+  4) MISFIRING THE CUE BALL: DOUBLE HIT 
+    - if (shootingForRed == true) ----> FOUL (potFoulOne or foulP1 )  (on red)  ----> 4 points (for hitting red with cue ball)
+    - selectPenaltyPoints: ----> Select value of colour ball hit: 4 points (red, yellow, green, brown), 5 points (blue), 6 points (pink), 7 points (black).    
+    - BTN: Confirm Penalty Points --> Confirm
+
+  5) MISFIRING THE CUE BALL: DOUBLE HIT 
+    - if (shootingForRed == false) ----> FOUL (potFoulOne or foulP1 )  (on colour)  ----> 4 points (for hitting red with cue ball)    
+    - BTN: Confirm Penalty Points --> Confirm
+
+  6) POTTING THE CUE BALL IS A FOUL 
+    - if (shootingForRed == true)  ---->  FOUL (potFoulOne or foulP1 )  (on red)  ----> Select value of colour ball hit 4 points (red, yellow, green, brown), 5 points (blue), 6 points (pink), 7 points (black)    
+    - BTN: Confirm Penalty Points --> Confirm
+
+  7) POTTING THE CUE BALL IS A FOUL 
+   - if (shootingForRed == false)  ---->  FOUL (potFoulOne or foulP1 )  (on colour)  ----> Select value of colour ball hit 4 points (red, yellow, green, brown), 5 points (blue), 6 points (pink), 7 points (black)  
+   - BTN: Confirm Penalty Points --> Confirm
+
+  8) POTTING THE CUE BALL IS A FOUL, EVEN IF A RED OR A COLOUR IS ALSO POTTED
+   - if (shootingForRed == true) ---->  FOUL (potFoulOne or foulP1 )
+   - selectPenaltyPoints: ----> Select value of colour ball hit: 4 points (red, yellow, green, brown), 5 points (blue), 6 points (pink), 7 points (black).
+   - BTN: Confirm Penalty Points --> Confirm
+
+  9) POTTING THE CUE BALL IS A FOUL, EVEN IF A RED OR A COLOUR IS ALSO POTTED 
+   - if (shootingForRed == false) ---->  FOUL (potFoulOne or foulP1 )
+   - selectPenaltyPoints: ----> Select value of colour ball hit: 4 points (red, yellow, green, brown), 5 points (blue), 6 points (pink), 7 points (black).
+   - BTN: Confirm Penalty Points --> Confirm
+
+  10) Red ball goes off the table
+
+```
+
++  So... we can account for the vast majority of these scenarios by...
+
+   + A modal area with a dropdown box or other element that the user and add or reduce a number of penalty points to award.
+   + and a button within that modal to then confirm the points.
 
 [Back to Top](#comments)
