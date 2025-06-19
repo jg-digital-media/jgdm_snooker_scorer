@@ -1,6 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Last Updated: 18/06/2025 - 17:07`
++ `Last Updated: 19/06/2025 - 13:51`
 ## Sections
 
 [Intro](#intro
@@ -801,7 +801,7 @@ This application is built using the following technologies:
 ## Development
 [Back to Top](#sections)
 
-### Tasks - 201 completed items
+### Tasks - 203 completed items
 
 The development of this application is currently in progress.
 
@@ -1104,24 +1104,24 @@ The development of this application is currently in progress.
 + `COMPLETED: 17-06-2025` Next player reverts to shooting for a red ball after a foul. 
 + `COMPLETED: 17-06-2025` Revert to shooting for a red ball after a foul. 
 
-+ `COMPLETED: 18-06-2025:` BUG:  Missing colour balls in the colour sequence reverts users to the yellow ball - #points_remaining = 27 - Both players
++ `COMPLETED: 18-06-2025` BUG:  Missing colour balls in the colour sequence reverts users to the yellow ball - #points_remaining = 27 - Both players
 
-+ `COMPLETED: 18-06-2025:` Event listener for `#pot---forfeit--one` and `#pot---forfeit--two` should be added.
++ `COMPLETED: 18-06-2025` Event listener for `#pot---forfeit--one` and `#pot---forfeit--two` should be added.
 
-+ `COMPLETED: 18-06-2025:` Players presented with the option to force the opponent to retake the shot after a FOUL+MISS.
++ `COMPLETED: 18-06-2025` Players presented with the option to force the opponent to retake the shot after a FOUL+MISS.
 
-+ `TODO:` Forfeit button  
++ `COMPLETED: 19-06-2025` Forfeit button  
 
-    + `COMPLETED: 18-06-2025:` ask user to confirm forfeit for that player before clicking to confirm.
-    + `COMPLETED: 18-06-2025:` Display the scores to indicate end of the frame. 
-    + `COMPLETED: 18-06-2025:` Same details as end of frame: #points_remaining == 0 - "Frame Complete - Player N Wins!
+    + `COMPLETED: 18-06-2025` ask user to confirm forfeit for that player before clicking to confirm.
+    + `COMPLETED: 18-06-2025` Display the scores to indicate end of the frame. 
+    + `COMPLETED: 18-06-2025` Same details as end of frame: #points_remaining == 0 - "Frame Complete - Player N Wins!
 
     ```
         Player 1: 24 | Player 2: 40
         Highest Breaks - Player 1: 15 | Player 2: 27
     ``` 
 
-    + `TODO:` Implement a custom tooltip/dialog box to display the confirmation dialog box
+    + `COMPLETED: 19-06-2025` Implement a custom tooltip/dialog box to display the confirmation dialog box
 
 
 + `TODO:` Clicking `#app-app` should take the user to a new browser tab so game progress is not lost.
@@ -1767,5 +1767,40 @@ Rather than
 
 + I do get the sense that we'll want to move away from using the alert dialog box and instead use a more custom JavaScript solution. So I might ask about how to use that next. It would provide a framework for letting the user select the proper penalty points for fouls on higher value colours.
 
+
+#### v1.0.20 
+
++ "Is there a way, " I asked " to modify this [Forfeit dialog box], so it uses a custom element, a tooltip that does the same confirmation process but takes it out of the browser functionality. This is for aesthetics.. something that better plends in with the app".  And well.. I knew the answer was "yes" of course. And within a few minutes I had a working solution generated for me; for both forfeit buttons.
+
++ A got a nice modal area generated for me with an aesthetic that Claude analysed and made to suit the rest of the app. I can read and understand what `sonnet` has done. But given the task, I could not have thought to make the dialog box out a modal area with buttons you can do something with.
+
+```javascript
+
+function showForfeitModal(playerNumber) {
+        const modal = document.getElementById('modalOverlay');
+        const playerIndicator = document.getElementById('modalPlayerNumber');
+        
+        if (modal && playerIndicator) {
+            playerIndicator.textContent = playerNumber;
+            modal.classList.add('show');
+            
+            // Store the player number for use in the confirmation
+            modal.dataset.forfeitingPlayer = playerNumber;
+        }
+    }
+
+
+    function hideForfeitModal() {
+
+    function handleModalConfirm() {
+
+    function handleModalCancel() {
+
+```
++ in the `forfeitframe()` method, you can see how the end frame elements and modal is created.
+
++ 
+
+```
 
 [Back to Top](#comments)
