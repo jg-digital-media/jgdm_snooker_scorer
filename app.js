@@ -1,4 +1,4 @@
-console.log("app.js connected - 18-06-2025 - 16:52");
+console.log("app.js connected - 19-06-2025 - 13:49");
 
 // Set the points remaining to 147
 document.getElementById('points_remaining').textContent = '147';
@@ -1092,6 +1092,81 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
+    // Custom Modal Functions
+    function showForfeitModal(playerNumber) {
+        const modal = document.getElementById('modalOverlay');
+        const playerIndicator = document.getElementById('modalPlayerNumber');
+        
+        if (modal && playerIndicator) {
+            playerIndicator.textContent = playerNumber;
+            modal.classList.add('show');
+            
+            // Store the player number for use in the confirmation
+            modal.dataset.forfeitingPlayer = playerNumber;
+        }
+    }
+
+    function hideForfeitModal() {
+        const modal = document.getElementById('modalOverlay');
+        if (modal) {
+            modal.classList.remove('show');
+            delete modal.dataset.forfeitingPlayer;
+        }
+    }
+
+    function handleModalConfirm() {
+        const modal = document.getElementById('modalOverlay');
+        const forfeitingPlayer = parseInt(modal.dataset.forfeitingPlayer);
+        
+        console.log(`Player ${forfeitingPlayer} forfeit confirmed via custom modal`);
+        
+        // Hide the modal
+        hideForfeitModal();
+        
+        // Execute the forfeit
+        forfeitFrame(forfeitingPlayer);
+    }
+
+    function handleModalCancel() {
+        const forfeitingPlayer = document.getElementById('modalOverlay').dataset.forfeitingPlayer;
+        console.log(`Player ${forfeitingPlayer} forfeit cancelled via custom modal`);
+        
+        // Hide the modal
+        hideForfeitModal();
+    }
+
+    // Set up modal event listeners
+    const modalOverlay = document.getElementById('modalOverlay');
+    const modalConfirm = document.getElementById('modalConfirm');
+    const modalCancel = document.getElementById('modalCancel');
+
+    if (modalConfirm) {
+        modalConfirm.addEventListener('click', handleModalConfirm);
+    }
+
+    if (modalCancel) {
+        modalCancel.addEventListener('click', handleModalCancel);
+    }
+
+    // Close modal when clicking outside of it
+    if (modalOverlay) {
+        modalOverlay.addEventListener('click', function(e) {
+            if (e.target === modalOverlay) {
+                handleModalCancel();
+            }
+        });
+    }
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            const modal = document.getElementById('modalOverlay');
+            if (modal && modal.classList.contains('show')) {
+                handleModalCancel();
+            }
+        }
+    });
+
     // Add event listeners for forfeit buttons
     const forfeitP1 = document.getElementById("pot---forfeit--one");
     const forfeitP2 = document.getElementById("pot---forfeit--two");
@@ -1099,32 +1174,14 @@ document.addEventListener("DOMContentLoaded", function() {
     if (forfeitP1) {
         forfeitP1.addEventListener("click", function() {
             console.log("Player 1 forfeit button clicked");
-            
-            // Show confirmation dialog
-            if (confirm("Are you sure Player 1 wants to forfeit this frame?")) {
-                console.log("Player 1 forfeit confirmed");
-                
-                // Player 1 forfeits, so Player 2 wins
-                forfeitFrame(1);
-            } else {
-                console.log("Player 1 forfeit cancelled");
-            }
+            showForfeitModal(1);
         });
     }
 
     if (forfeitP2) {
         forfeitP2.addEventListener("click", function() {
             console.log("Player 2 forfeit button clicked");
-            
-            // Show confirmation dialog
-            if (confirm("Are you sure Player 2 wants to forfeit this frame?")) {
-                console.log("Player 2 forfeit confirmed");
-                
-                // Player 2 forfeits, so Player 1 wins
-                forfeitFrame(2);
-            } else {
-                console.log("Player 2 forfeit cancelled");
-            }
+            showForfeitModal(2);
         });
     }
 
