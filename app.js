@@ -1,4 +1,4 @@
-console.log("app.js connected - 20-06-2025 - 10:09");
+console.log("app.js connected - 20-06-2025 - 10:34");
 
 // Set the points remaining to 147
 document.getElementById('points_remaining').textContent = '147';
@@ -952,6 +952,113 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
+    // Enhanced Foul Modal Functions
+    let currentFoulPenaltyPoints = 4;
+    let foulPlayer = null;
+
+    function showFoulModal(playerNumber) {
+        console.log(`Showing foul modal for player ${playerNumber}`);
+        const modal = document.getElementById('foulModal');
+        const playerIndicator = document.getElementById('foulPlayerNumber');
+        
+        if (modal && playerIndicator) {
+            playerIndicator.textContent = playerNumber;
+            modal.classList.add('show');
+            
+            // Store the player number for use in the confirmation
+            foulPlayer = playerNumber;
+            
+            // Reset penalty points to default
+            currentFoulPenaltyPoints = 4;
+            document.getElementById('foulPenaltyValue').textContent = currentFoulPenaltyPoints;
+            
+            // Update button states
+            updateFoulPenaltyButtons();
+        }
+    }
+
+    function hideFoulModal() {
+        const modal = document.getElementById('foulModal');
+        if (modal) {
+            modal.classList.remove('show');
+            foulPlayer = null;
+        }
+    }
+
+    function updateFoulPenaltyButtons() {
+        const decreaseBtn = document.getElementById('decreaseFoulPenalty');
+        const increaseBtn = document.getElementById('increaseFoulPenalty');
+        
+        // Disable decrease if at minimum (4)
+        decreaseBtn.disabled = currentFoulPenaltyPoints <= 4;
+        
+        // Disable increase if at maximum (7)
+        increaseBtn.disabled = currentFoulPenaltyPoints >= 7;
+    }
+
+    function handleFoulConfirm() {
+        console.log(`Player ${foulPlayer} foul confirmed`);
+        console.log(`Penalty points: ${currentFoulPenaltyPoints}`);
+        
+        // Store the player before hiding modal
+        const foulingPlayer = foulPlayer;
+        
+        // Hide the modal
+        hideFoulModal();
+        
+        // Apply the penalty (no retake for regular fouls)
+        applyFoulMissPenalty(foulingPlayer, currentFoulPenaltyPoints, false);
+    }
+
+    // Set up foul modal event listeners
+    const foulModal = document.getElementById('foulModal');
+    const foulConfirm = document.getElementById('foulConfirm');
+    const foulCancel = document.getElementById('foulCancel');
+    const decreaseFoulPenalty = document.getElementById('decreaseFoulPenalty');
+    const increaseFoulPenalty = document.getElementById('increaseFoulPenalty');
+
+    if (foulConfirm) {
+        foulConfirm.addEventListener('click', handleFoulConfirm);
+    }
+
+    if (foulCancel) {
+        foulCancel.addEventListener('click', function() {
+            console.log(`Player ${foulPlayer} foul cancelled`);
+            hideFoulModal();
+        });
+    }
+
+    if (decreaseFoulPenalty) {
+        decreaseFoulPenalty.addEventListener('click', function() {
+            if (currentFoulPenaltyPoints > 4) {
+                currentFoulPenaltyPoints--;
+                document.getElementById('foulPenaltyValue').textContent = currentFoulPenaltyPoints;
+                updateFoulPenaltyButtons();
+                console.log(`Decreased foul penalty to ${currentFoulPenaltyPoints} points`);
+            }
+        });
+    }
+
+    if (increaseFoulPenalty) {
+        increaseFoulPenalty.addEventListener('click', function() {
+            if (currentFoulPenaltyPoints < 7) {
+                currentFoulPenaltyPoints++;
+                document.getElementById('foulPenaltyValue').textContent = currentFoulPenaltyPoints;
+                updateFoulPenaltyButtons();
+                console.log(`Increased foul penalty to ${currentFoulPenaltyPoints} points`);
+            }
+        });
+    }
+
+    // Close foul modal when clicking outside of it
+    if (foulModal) {
+        foulModal.addEventListener('click', function(e) {
+            if (e.target === foulModal) {
+                hideFoulModal();
+            }
+        });
+    }
+
     // Add event listeners for foul buttons
     const foulP1 = document.getElementById("pot---foul--one");
     const foulP2 = document.getElementById("pot---foul--two");
@@ -959,137 +1066,20 @@ document.addEventListener("DOMContentLoaded", function() {
     if (foulP1) {
         foulP1.addEventListener("click", function() {
             console.log("Player 1 foul button clicked");
-            
-            // Award 4 penalty points to player 2
-            p2CurrentScore += 4;
-            if (p2Score) {
-                p2Score.textContent = p2CurrentScore;
+            // Only show modal if player 1 is currently at the table
+            if (currentPlayer === 1) {
+                showFoulModal(1);
             }
-            console.log(`Awarded 4 penalty points to player 2 (total: ${p2CurrentScore})`);
-            
-            // Handle points remaining based on what player was shooting for
-            if (!shootingForRed && redClickCount < 15) {
-                // Fouling while shooting for a color - deduct 7 points
-                let pointsToReduce = 7;
-                if (lastRedTallyP1 > 1) {
-                    // If we had multiple reds potted, reduce by 7 for each additional red
-                    pointsToReduce += (lastRedTallyP1 - 1) * 7;
-                }
-                remainingPoints -= pointsToReduce;
-                pointsRemaining.textContent = remainingPoints;
-                console.log(`Reduced remaining points by ${pointsToReduce} (fouled on color after ${lastRedTallyP1} reds)`);
-            } else if (!shootingForRed && redClickCount >= 15 && remainingPoints > 27) {
-                // Fouling on a color after all 15 reds - go straight to color sequence
-                remainingPoints = 27;
-                pointsRemaining.textContent = remainingPoints;
-                shootingForRed = false;
-                console.log("Fouled on color after 15th red - setting points to 27 for final color sequence");
-            } else if (!shootingForRed && redClickCount >= 15 && remainingPoints <= 27) {
-                // Fouling during final color sequence - no change to points remaining
-                // Next player shoots for the same color
-                console.log("Fouled during final color sequence - no change to points remaining");
-            }
-            // If shooting for red, no points deducted (red remains available)
-            else {
-                console.log("Fouled on red - no points deducted from remaining points");
-            }
-            
-            // Reset current break for player 1
-            p1CurrentBreak = 0;
-            lastBreakP1.textContent = "0";
-            console.log("Reset player 1 current break");
-            
-            // Reset red tally for next visit
-            lastRedTallyP1 = 0;
-            
-            // Force player 2 to shoot for red if there are reds left
-            if (redClickCount < 15) {
-                shootingForRed = true;
-                console.log("Player 2 will shoot for red (reds available)");
-            } else {
-                // All reds are potted - player 2 shoots for colors in sequence
-                shootingForRed = false;
-                console.log("Player 2 will shoot for colors in final sequence");
-            }
-            
-            // Disable all player 1 elements
-            disablePlayerButtons(1);
-            
-            // Switch to player 2
-            switchPlayer(2);
-            
-            // Update available balls
-            updateAvailableBalls();
         });
     }
 
     if (foulP2) {
         foulP2.addEventListener("click", function() {
             console.log("Player 2 foul button clicked");
-            
-            // Award 4 penalty points to player 1
-            p1CurrentScore += 4;
-            if (p1Score) {
-                p1Score.textContent = p1CurrentScore;
+            // Only show modal if player 2 is currently at the table
+            if (currentPlayer === 2) {
+                showFoulModal(2);
             }
-            console.log(`Awarded 4 penalty points to player 1 (total: ${p1CurrentScore})`);
-            
-            // Handle points remaining based on what player was shooting for
-            if (!shootingForRed && redClickCount < 15) {
-                // Fouling while shooting for a color - deduct 7 points
-                let pointsToReduce = 7;
-                if (lastRedTallyP2 > 1) {
-                    // If we had multiple reds potted, reduce by 7 for each additional red
-                    pointsToReduce += (lastRedTallyP2 - 1) * 7;
-                }
-                remainingPoints -= pointsToReduce;
-                pointsRemaining.textContent = remainingPoints;
-                console.log(`Reduced remaining points by ${pointsToReduce} (fouled on color after ${lastRedTallyP2} reds)`);
-            } else if (!shootingForRed && redClickCount >= 15 && remainingPoints > 27) {
-                // Fouling on a color after all 15 reds - go straight to color sequence
-                remainingPoints = 27;
-                pointsRemaining.textContent = remainingPoints;
-                shootingForRed = false;
-                console.log("Fouled on color after 15th red - setting points to 27 for final color sequence");
-            } else if (!shootingForRed && redClickCount >= 15 && remainingPoints <= 27) {
-                // Fouling during final color sequence - no change to points remaining
-                // Next player shoots for the same color
-                console.log("Fouled during final color sequence - no change to points remaining");
-            }
-            // If shooting for red, no points deducted (red remains available)
-            else {
-                console.log("Fouled on red - no points deducted from remaining points");
-            }
-            
-            // Reset current break for player 2
-            p2CurrentBreak = 0;
-            const lastBreakP2 = document.getElementById("last---break--p2");
-            if (lastBreakP2) {
-                lastBreakP2.textContent = "0";
-            }
-            console.log("Reset player 2 current break");
-            
-            // Reset red tally for next visit
-            lastRedTallyP2 = 0;
-            
-            // Force player 1 to shoot for red if there are reds left
-            if (redClickCount < 15) {
-                shootingForRed = true;
-                console.log("Player 1 will shoot for red (reds available)");
-            } else {
-                // All reds are potted - player 1 shoots for colors in sequence
-                shootingForRed = false;
-                console.log("Player 1 will shoot for colors in final sequence");
-            }
-            
-            // Disable all player 2 elements
-            disablePlayerButtons(2);
-            
-            // Switch to player 1
-            switchPlayer(1);
-            
-            // Update available balls
-            updateAvailableBalls();
         });
     }
 
@@ -1161,9 +1151,16 @@ document.addEventListener("DOMContentLoaded", function() {
     // Close modal with Escape key
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
-            const modal = document.getElementById('modalOverlay');
-            if (modal && modal.classList.contains('show')) {
+            const forfeitModal = document.getElementById('modalOverlay');
+            const foulModal = document.getElementById('foulModal');
+            const foulMissModal = document.getElementById('foulMissModal');
+            
+            if (forfeitModal && forfeitModal.classList.contains('show')) {
                 handleModalCancel();
+            } else if (foulModal && foulModal.classList.contains('show')) {
+                hideFoulModal();
+            } else if (foulMissModal && foulMissModal.classList.contains('show')) {
+                hideFoulMissModal();
             }
         }
     });
