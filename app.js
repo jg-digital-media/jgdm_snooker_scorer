@@ -1,4 +1,4 @@
-console.log("app.js connected - 19-06-2025 - 13:49");
+console.log("app.js connected - 20-06-2025 - 09:32");
 
 // Set the points remaining to 147
 document.getElementById('points_remaining').textContent = '147';
@@ -1185,6 +1185,224 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
+    // Enhanced Foul + Miss Modal Functions
+    let currentPenaltyPoints = 4;
+    let foulMissPlayer = null;
+
+    function showFoulMissModal(playerNumber) {
+        console.log(`Showing foul+miss modal for player ${playerNumber}`);
+        const modal = document.getElementById('foulMissModal');
+        const playerIndicator = document.getElementById('foulMissPlayerNumber');
+        
+        if (modal && playerIndicator) {
+            playerIndicator.textContent = playerNumber;
+            modal.classList.add('show');
+            
+            // Store the player number for use in the confirmation
+            foulMissPlayer = playerNumber;
+            
+            // Reset penalty points to default
+            currentPenaltyPoints = 4;
+            document.getElementById('penaltyValue').textContent = currentPenaltyPoints;
+            
+            // Reset retake checkbox
+            document.getElementById('forceRetake').checked = false;
+            
+            // Update button states
+            updatePenaltyButtons();
+        }
+    }
+
+    function hideFoulMissModal() {
+        const modal = document.getElementById('foulMissModal');
+        if (modal) {
+            modal.classList.remove('show');
+            foulMissPlayer = null;
+        }
+    }
+
+    function updatePenaltyButtons() {
+        const decreaseBtn = document.getElementById('decreasePenalty');
+        const increaseBtn = document.getElementById('increasePenalty');
+        
+        // Disable decrease if at minimum (4)
+        decreaseBtn.disabled = currentPenaltyPoints <= 4;
+        
+        // Disable increase if at maximum (7)
+        increaseBtn.disabled = currentPenaltyPoints >= 7;
+    }
+
+    function handleFoulMissConfirm() {
+        const forceRetake = document.getElementById('forceRetake').checked;
+        
+        console.log(`Player ${foulMissPlayer} foul+miss confirmed`);
+        console.log(`Penalty points: ${currentPenaltyPoints}`);
+        console.log(`Force retake: ${forceRetake}`);
+        
+        // Hide the modal
+        hideFoulMissModal();
+        
+        // Apply the penalty
+        applyFoulMissPenalty(foulMissPlayer, currentPenaltyPoints, forceRetake);
+    }
+
+    function applyFoulMissPenalty(foulingPlayer, penaltyPoints, forceRetake) {
+        const opponentPlayer = foulingPlayer === 1 ? 2 : 1;
+        
+        // Award penalty points to opponent
+        if (foulingPlayer === 1) {
+            p2CurrentScore += penaltyPoints;
+            if (p2Score) {
+                p2Score.textContent = p2CurrentScore;
+            }
+            console.log(`Awarded ${penaltyPoints} penalty points to player 2 (total: ${p2CurrentScore})`);
+        } else {
+            p1CurrentScore += penaltyPoints;
+            if (p1Score) {
+                p1Score.textContent = p1CurrentScore;
+            }
+            console.log(`Awarded ${penaltyPoints} penalty points to player 1 (total: ${p1CurrentScore})`);
+        }
+        
+        // Handle points remaining based on what player was shooting for
+        const lastRedTally = foulingPlayer === 1 ? lastRedTallyP1 : lastRedTallyP2;
+        
+        if (!shootingForRed && redClickCount < 15) {
+            // Fouling while shooting for a color - deduct 7 points
+            let pointsToReduce = 7;
+            if (lastRedTally > 1) {
+                // If we had multiple reds potted, reduce by 7 for each additional red
+                pointsToReduce += (lastRedTally - 1) * 7;
+            }
+            remainingPoints -= pointsToReduce;
+            pointsRemaining.textContent = remainingPoints;
+            console.log(`Reduced remaining points by ${pointsToReduce} (foul+miss on color after ${lastRedTally} reds)`);
+        } else if (!shootingForRed && redClickCount >= 15 && remainingPoints > 27) {
+            // Fouling on a color after all 15 reds - go straight to color sequence
+            remainingPoints = 27;
+            pointsRemaining.textContent = remainingPoints;
+            shootingForRed = false;
+            console.log("Foul+miss on color after 15th red - setting points to 27 for final color sequence");
+        } else if (!shootingForRed && redClickCount >= 15 && remainingPoints <= 27) {
+            // Foul+miss during final color sequence - no change to points remaining
+            // Next player shoots for the same color
+            console.log("Foul+miss during final color sequence - no change to points remaining");
+        }
+        // If shooting for red, no points deducted (red remains available)
+        else {
+            console.log("Foul+miss on red - no points deducted from remaining points");
+        }
+        
+        // Reset current break for fouling player
+        if (foulingPlayer === 1) {
+            p1CurrentBreak = 0;
+            lastBreakP1.textContent = "0";
+            lastRedTallyP1 = 0;
+            console.log("Reset player 1 current break");
+        } else {
+            p2CurrentBreak = 0;
+            const lastBreakP2 = document.getElementById("last---break--p2");
+            if (lastBreakP2) {
+                lastBreakP2.textContent = "0";
+            }
+            lastRedTallyP2 = 0;
+            console.log("Reset player 2 current break");
+        }
+        
+        // Handle retake or player switch
+        if (forceRetake) {
+            console.log(`Player ${foulingPlayer} must retake the shot`);
+            // Fouling player stays at the table and retakes
+            // No player switch, just update available balls
+            updateAvailableBalls();
+        } else {
+            // Normal player switch
+            // Force opponent to shoot for red if there are reds left
+            if (redClickCount < 15) {
+                shootingForRed = true;
+                console.log(`Player ${opponentPlayer} will shoot for red (reds available)`);
+            } else {
+                // All reds are potted - opponent shoots for colors in sequence
+                shootingForRed = false;
+                console.log(`Player ${opponentPlayer} will shoot for colors in final sequence`);
+            }
+            
+            // Disable fouling player elements
+            disablePlayerButtons(foulingPlayer);
+            
+            // Switch to opponent
+            switchPlayer(opponentPlayer);
+            
+            // Update available balls
+            updateAvailableBalls();
+        }
+        
+        console.log(`FOUL+MISS: ${penaltyPoints} penalty points applied. Retake: ${forceRetake ? 'Yes' : 'No'}`);
+    }
+
+    // Set up foul+miss modal event listeners
+    const foulMissModal = document.getElementById('foulMissModal');
+    const foulMissConfirm = document.getElementById('foulMissConfirm');
+    const foulMissCancel = document.getElementById('foulMissCancel');
+    const decreasePenalty = document.getElementById('decreasePenalty');
+    const increasePenalty = document.getElementById('increasePenalty');
+
+    if (foulMissConfirm) {
+        foulMissConfirm.addEventListener('click', handleFoulMissConfirm);
+    }
+
+    if (foulMissCancel) {
+        foulMissCancel.addEventListener('click', function() {
+            console.log(`Player ${foulMissPlayer} foul+miss cancelled`);
+            hideFoulMissModal();
+        });
+    }
+
+    if (decreasePenalty) {
+        decreasePenalty.addEventListener('click', function() {
+            if (currentPenaltyPoints > 4) {
+                currentPenaltyPoints--;
+                document.getElementById('penaltyValue').textContent = currentPenaltyPoints;
+                updatePenaltyButtons();
+                console.log(`Decreased penalty to ${currentPenaltyPoints} points`);
+            }
+        });
+    }
+
+    if (increasePenalty) {
+        increasePenalty.addEventListener('click', function() {
+            if (currentPenaltyPoints < 7) {
+                currentPenaltyPoints++;
+                document.getElementById('penaltyValue').textContent = currentPenaltyPoints;
+                updatePenaltyButtons();
+                console.log(`Increased penalty to ${currentPenaltyPoints} points`);
+            }
+        });
+    }
+
+    // Close modal when clicking outside of it
+    if (foulMissModal) {
+        foulMissModal.addEventListener('click', function(e) {
+            if (e.target === foulMissModal) {
+                hideFoulMissModal();
+            }
+        });
+    }
+
+    // Close modal with Escape key (enhanced to handle both modals)
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            const forfeitModal = document.getElementById('modalOverlay');
+            const foulMissModal = document.getElementById('foulMissModal');
+            
+            if (forfeitModal && forfeitModal.classList.contains('show')) {
+                handleModalCancel();
+            } else if (foulMissModal && foulMissModal.classList.contains('show')) {
+                hideFoulMissModal();
+            }
+        }
+    });
+
     // Add event listeners for foul+miss buttons
     const foulMissP1 = document.getElementById("pot---foulmiss--one");
     const foulMissP2 = document.getElementById("pot---foulmiss--two");
@@ -1192,143 +1410,14 @@ document.addEventListener("DOMContentLoaded", function() {
     if (foulMissP1) {
         foulMissP1.addEventListener("click", function() {
             console.log("Player 1 foul+miss button clicked");
-            console.log("FOUL+MISS: Further action will be taken - receiving player can force opponent to retake shot");
-            
-            // Award 4 penalty points to player 2
-            p2CurrentScore += 4;
-            if (p2Score) {
-                p2Score.textContent = p2CurrentScore;
-            }
-            console.log(`Awarded 4 penalty points to player 2 (total: ${p2CurrentScore})`);
-            
-            // Handle points remaining based on what player was shooting for
-            if (!shootingForRed && redClickCount < 15) {
-                // Fouling while shooting for a color - deduct 7 points
-                let pointsToReduce = 7;
-                if (lastRedTallyP1 > 1) {
-                    // If we had multiple reds potted, reduce by 7 for each additional red
-                    pointsToReduce += (lastRedTallyP1 - 1) * 7;
-                }
-                remainingPoints -= pointsToReduce;
-                pointsRemaining.textContent = remainingPoints;
-                console.log(`Reduced remaining points by ${pointsToReduce} (foul+miss on color after ${lastRedTallyP1} reds)`);
-            } else if (!shootingForRed && redClickCount >= 15 && remainingPoints > 27) {
-                // Fouling on a color after all 15 reds - go straight to color sequence
-                remainingPoints = 27;
-                pointsRemaining.textContent = remainingPoints;
-                shootingForRed = false;
-                console.log("Foul+miss on color after 15th red - setting points to 27 for final color sequence");
-            } else if (!shootingForRed && redClickCount >= 15 && remainingPoints <= 27) {
-                // Foul+miss during final color sequence - no change to points remaining
-                // Next player shoots for the same color
-                console.log("Foul+miss during final color sequence - no change to points remaining");
-            }
-            // If shooting for red, no points deducted (red remains available)
-            else {
-                console.log("Foul+miss on red - no points deducted from remaining points");
-            }
-            
-            // Reset current break for player 1
-            p1CurrentBreak = 0;
-            lastBreakP1.textContent = "0";
-            console.log("Reset player 1 current break");
-            
-            // Reset red tally for next visit
-            lastRedTallyP1 = 0;
-            
-            // Force player 2 to shoot for red if there are reds left
-            if (redClickCount < 15) {
-                shootingForRed = true;
-                console.log("Player 2 will shoot for red (reds available)");
-            } else {
-                // All reds are potted - player 2 shoots for colors in sequence
-                shootingForRed = false;
-                console.log("Player 2 will shoot for colors in final sequence");
-            }
-            
-            // Disable all player 1 elements
-            disablePlayerButtons(1);
-            
-            // Switch to player 2
-            switchPlayer(2);
-            
-            // Update available balls
-            updateAvailableBalls();
-            
-            console.log("FOUL+MISS: Player 2 now has the option to force Player 1 to retake the shot");
+            showFoulMissModal(1);
         });
     }
 
     if (foulMissP2) {
         foulMissP2.addEventListener("click", function() {
             console.log("Player 2 foul+miss button clicked");
-            console.log("FOUL+MISS: Further action will be taken - receiving player can force opponent to retake shot");
-            
-            // Award 4 penalty points to player 1
-            p1CurrentScore += 4;
-            if (p1Score) {
-                p1Score.textContent = p1CurrentScore;
-            }
-            console.log(`Awarded 4 penalty points to player 1 (total: ${p1CurrentScore})`);
-            
-            // Handle points remaining based on what player was shooting for
-            if (!shootingForRed && redClickCount < 15) {
-                // Fouling while shooting for a color - deduct 7 points
-                let pointsToReduce = 7;
-                if (lastRedTallyP2 > 1) {
-                    // If we had multiple reds potted, reduce by 7 for each additional red
-                    pointsToReduce += (lastRedTallyP2 - 1) * 7;
-                }
-                remainingPoints -= pointsToReduce;
-                pointsRemaining.textContent = remainingPoints;
-                console.log(`Reduced remaining points by ${pointsToReduce} (foul+miss on color after ${lastRedTallyP2} reds)`);
-            } else if (!shootingForRed && redClickCount >= 15 && remainingPoints > 27) {
-                // Fouling on a color after all 15 reds - go straight to color sequence
-                remainingPoints = 27;
-                pointsRemaining.textContent = remainingPoints;
-                shootingForRed = false;
-                console.log("Foul+miss on color after 15th red - setting points to 27 for final color sequence");
-            } else if (!shootingForRed && redClickCount >= 15 && remainingPoints <= 27) {
-                // Foul+miss during final color sequence - no change to points remaining
-                // Next player shoots for the same color
-                console.log("Foul+miss during final color sequence - no change to points remaining");
-            }
-            // If shooting for red, no points deducted (red remains available)
-            else {
-                console.log("Foul+miss on red - no points deducted from remaining points");
-            }
-            
-            // Reset current break for player 2
-            p2CurrentBreak = 0;
-            const lastBreakP2 = document.getElementById("last---break--p2");
-            if (lastBreakP2) {
-                lastBreakP2.textContent = "0";
-            }
-            console.log("Reset player 2 current break");
-            
-            // Reset red tally for next visit
-            lastRedTallyP2 = 0;
-            
-            // Force player 1 to shoot for red if there are reds left
-            if (redClickCount < 15) {
-                shootingForRed = true;
-                console.log("Player 1 will shoot for red (reds available)");
-            } else {
-                // All reds are potted - player 1 shoots for colors in sequence
-                shootingForRed = false;
-                console.log("Player 1 will shoot for colors in final sequence");
-            }
-            
-            // Disable all player 2 elements
-            disablePlayerButtons(2);
-            
-            // Switch to player 1
-            switchPlayer(1);
-            
-            // Update available balls
-            updateAvailableBalls();
-            
-            console.log("FOUL+MISS: Player 1 now has the option to force Player 2 to retake the shot");
+            showFoulMissModal(2);
         });
     }
 
