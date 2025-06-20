@@ -1,4 +1,4 @@
-console.log("app.js connected - 20-06-2025 - 09:32");
+console.log("app.js connected - 20-06-2025 - 10:09");
 
 // Set the points remaining to 147
 document.getElementById('points_remaining').textContent = '147';
@@ -679,6 +679,7 @@ document.addEventListener("DOMContentLoaded", function() {
     yellowBallP1 = document.getElementById("pot---yellow--one");
 
     p1Score = document.getElementById("p1---score");
+    p2Score = document.getElementById("p2---score");
     pointsRemaining = document.getElementById("points_remaining");
     highestBreakP1 = document.getElementById("highest---break--p1");
     lastBreakP1 = document.getElementById("last---break--p1");
@@ -1239,11 +1240,14 @@ document.addEventListener("DOMContentLoaded", function() {
         console.log(`Penalty points: ${currentPenaltyPoints}`);
         console.log(`Force retake: ${forceRetake}`);
         
+        // Store the player before hiding modal (which sets foulMissPlayer to null)
+        const foulingPlayer = foulMissPlayer;
+        
         // Hide the modal
         hideFoulMissModal();
         
-        // Apply the penalty
-        applyFoulMissPenalty(foulMissPlayer, currentPenaltyPoints, forceRetake);
+        // Apply the penalty with the stored player value
+        applyFoulMissPenalty(foulingPlayer, currentPenaltyPoints, forceRetake);
     }
 
     function applyFoulMissPenalty(foulingPlayer, penaltyPoints, forceRetake) {
@@ -1309,33 +1313,30 @@ document.addEventListener("DOMContentLoaded", function() {
             console.log("Reset player 2 current break");
         }
         
-        // Handle retake or player switch
-        if (forceRetake) {
-            console.log(`Player ${foulingPlayer} must retake the shot`);
-            // Fouling player stays at the table and retakes
-            // No player switch, just update available balls
-            updateAvailableBalls();
-        } else {
-            // Normal player switch
-            // Force opponent to shoot for red if there are reds left
-            if (redClickCount < 15) {
-                shootingForRed = true;
-                console.log(`Player ${opponentPlayer} will shoot for red (reds available)`);
-            } else {
-                // All reds are potted - opponent shoots for colors in sequence
-                shootingForRed = false;
-                console.log(`Player ${opponentPlayer} will shoot for colors in final sequence`);
-            }
-            
-            // Disable fouling player elements
-            disablePlayerButtons(foulingPlayer);
-            
-            // Switch to opponent
-            switchPlayer(opponentPlayer);
-            
-            // Update available balls
-            updateAvailableBalls();
-        }
+                 // Handle retake or player switch
+         if (forceRetake) {
+             console.log(`Player ${foulingPlayer} must retake the shot`);
+             // Fouling player stays at the table and retakes
+             // Keep the current player as the fouling player
+             console.log(`Player ${foulingPlayer} retakes - no player switch`);
+             updateAvailableBalls();
+         } else {
+             console.log(`Player ${foulingPlayer} fouled - switching to Player ${opponentPlayer} who received penalty points`);
+             
+             // Normal player switch - opponent who received penalty points comes to table
+             // Determine what the next player should shoot for
+             if (redClickCount < 15) {
+                 shootingForRed = true;
+                 console.log(`Player ${opponentPlayer} will shoot for red (reds available)`);
+             } else {
+                 // All reds are potted - opponent shoots for colors in sequence
+                 shootingForRed = false;
+                 console.log(`Player ${opponentPlayer} will shoot for colors in final sequence`);
+             }
+             
+             // Switch to the opponent (who received the penalty points)
+             switchPlayer(opponentPlayer);
+         }
         
         console.log(`FOUL+MISS: ${penaltyPoints} penalty points applied. Retake: ${forceRetake ? 'Yes' : 'No'}`);
     }
@@ -1410,14 +1411,20 @@ document.addEventListener("DOMContentLoaded", function() {
     if (foulMissP1) {
         foulMissP1.addEventListener("click", function() {
             console.log("Player 1 foul+miss button clicked");
-            showFoulMissModal(1);
+            // Only show modal if player 1 is currently at the table
+            if (currentPlayer === 1) {
+                showFoulMissModal(1);
+            }
         });
     }
 
     if (foulMissP2) {
         foulMissP2.addEventListener("click", function() {
             console.log("Player 2 foul+miss button clicked");
-            showFoulMissModal(2);
+            // Only show modal if player 2 is currently at the table
+            if (currentPlayer === 2) {
+                showFoulMissModal(2);
+            }
         });
     }
 
@@ -2055,8 +2062,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const pinkBallP2 = document.getElementById("pot---pink--two");
     const blackBallP2 = document.getElementById("pot---black--two");
 
-    // Define p2Score to avoid the TypeError
-    const p2Score = document.getElementById("p2---score");
+    // p2Score is now defined globally above
 
     // Only add the event listener if the element exists
     if (yellowBallP2) {

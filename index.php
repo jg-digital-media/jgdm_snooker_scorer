@@ -19,7 +19,8 @@
         <div class="foul-miss-modal">
             <div class="modal-title">Foul + Miss Penalty</div>
             <div class="modal-message">
-                Player <span class="player-indicator" id="foulMissPlayerNumber">1</span> committed a foul and miss.
+                Player <span class="player-indicator" id="foulMissPlayerNumber">1</span> committed a foul and miss.<br>
+                <small>Penalty points will be awarded to the opponent.</small>
             </div>
             
             <div class="penalty-selection">
