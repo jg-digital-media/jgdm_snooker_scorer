@@ -522,6 +522,9 @@ body main.interface-container .about---the---app-section h2.about---the--app-sub
   margin-top: 0;
   color: #e5ff61;
 }
+body main.interface-container .about---the---app-section h3.about---subheadings {
+  margin: 15px 0;
+}
 body main.interface-container .about---the---app-section .foul---scenario--list {
   list-style-type: none;
   padding-left: 0;
