@@ -1,6 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Last Updated: 20/06/2025 - 10:12`
++ `Last Updated: 20/06/2025 - 10:54`
 ## Sections
 
 [Intro](#intro
@@ -788,6 +788,20 @@ points	scores	score difference
 
 ```
 
++ When can you get >7 foul points
+
+```
+Scenario	Points
+Normal foul hitting/potting highest ball (e.g. black)	Max 7
+
+Deliberate misuse of object balls (e.g. striking red as cue ball)	More than 7 (e.g. 14)
+
+Multiple fouls in a shot — highest ball value still caps at 7	Still 7
+
+Ungentlemanly conduct or frame forfeit (at referee’s discretion)	Frame loss or more points awarded
+```
+
+
 ## Technologies Used
 [Back to Top](#sections)
 
@@ -1157,12 +1171,6 @@ ayer 2.
 
 + `TODO:` about.php should include instructions on what each button does - e.g. "Miss" button refers to a failed pot but legal hit and ends visit to the table.
 
-+ `TODO:` Shoot for red - MISS button
-+ `TODO:` Shoot for colour - MISS button
-+ `TODO:` Shoot for red - FOUL button
-+ `TODO:` Shoot for colour - FOUL button    
-+ `TODO:` Shoot for red - FOUL + MISS button
-+ `TODO:` Shoot for colour - FOUL + MISS button
 
 + `TODO:` Consider reworking about.php and its content as a modal area for index.php
 
@@ -1915,8 +1923,16 @@ Player is shooting for a red and commits a foul by cue ball hitting a colour bal
 
 #### v1.0.21
 
-+ At this stage, we're finally coming to the end of the initial release of the application - making it ready and suitable for public use.  There are 2 more ewvent listeners to edit the penalty points for fouls and misses.  I spent a lot of time doing the algoritmic thinking for it but most cases can be covered by either of the 2 "foul" buttons for each player.
++ At this stage, we're finally coming to the end of the initial release of the application, making it ready and suitable for public use. There are 2 more event listeners to edit the penalty points for fouls and misses.  I spent a lot of time doing the algorithmic thinking for i,t but most cases can be covered by either of the 2 "foul" buttons for each player.
 
-+ It does mean 2 more modal areas - FOULS and FOULS+MISS. 
++ It does mean 2 more modal areas - FOULS and FOULS+MISS. We added 2 new modal areas to the top of index.php.  I think a better place for those modals would be somewhere in *header.php* in their own template parts so they don't bloat so much code in index.php.
+
++ The biggest issue with this section, even with `claude-4-sonnet`, is that we, as in myself and the LLM, had to "collaborate" to work out why the penalty points were being **not** applied to the opponent player other than the player that fouled.  It turned out that this was an issue, foulMissPlayer = null, which caused a cascade of issues, meaning the code was getting confused about who to apply penalty points to and when to switch players. Not to do with the logic of the functions, but a new issue with the ordering of functions and variables.
+
++ But... that was all solved in the end, and that wraps us up for the initial build of the application; certainly when it comes to the scoring, fouling and general application mechanics. All that remains is to remove certain things from view that haven't yet been developed (but will be). There's enough here to get people using the app for the vast vast majority of gameplay situations.  For no,w I'll be removing the use of "Undo" and Snooker counts.  They'll come back in the future.
+
++ This application has been a genesis of an idea of mine for a long, long time. It's been lying dormant in my head for a while, waiting for the tools and the knowledge and the experience to come together to build it. AI has helped make it a reality.  
+
++ Now this, of course, as I keep saying, does bring with it its own challenges, questions, advantages and pitfalls. I discuss some of these on my homepage for Cursor AI and other projects I've worked on using AI. My focus from here on in wull be about adding feature improements, and improving the scability and meaintainability of the code.
 
 [Back to Top](#comments)
