@@ -277,7 +277,7 @@
                     <a href="#" id="apply_tally---red--p2" class="potting---tally">Apply</a>
                 <br />
 
-                <article class="player---two--pot player---pot--miss player---two--pot-undo" id="put---undo--two">
+                <article class="player---two--pot player---pot--miss player---two--pot-undo" id="pot---undo--two">
 
                     <p class="pot---tally" id="tally---potted--undo-p2">Undo</p>
 
@@ -336,7 +336,7 @@
         <section class="app---buttons">
 
             <a href="#" class="app---button" id="reset---app">Re-rack</a>
-            <a href="about.php" class="app---button" id="app--app">About</a>
+            <a href="about.php" class="app---button" id="app--app" target="_blank">About</a>
             
         </section>
 
