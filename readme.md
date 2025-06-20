@@ -816,7 +816,7 @@ This application is built using the following technologies:
 ## Development
 [Back to Top](#sections)
 
-### Tasks - 204 completed items
+### Tasks - 205 completed items
 
 The development of this application is currently in progress.
 
@@ -1140,7 +1140,9 @@ The development of this application is currently in progress.
 
 + `COMPLETED: 20-06-2025`  BUG: Foul and Penalty Points are being be applied to the opponent player not the player that fouled.  Also active play should revert to the other player -if- that player has not opted to make opponent replay the shot!
 
-+ `TODO:` Clicking `#app-app` should take the user to a new browser tab so game progress is not lost.
++ `COMPLETED: 20-06-2025` Clicking `#app-app` should take the user to a new browser tab so game progress is not lost.
+
++ `TODO:` Tidy up CSS/Sass code.
 
 + `TODO:` Refactor code generated so far to reduce total lines in the script, make it more readable and easier to maintain.
 
@@ -1171,12 +1173,11 @@ ayer 2.
 
 + `TODO:` about.php should include instructions on what each button does - e.g. "Miss" button refers to a failed pot but legal hit and ends visit to the table.
 
-
 + `TODO:` Consider reworking about.php and its content as a modal area for index.php
 
 + `TODO:` Both players want to end the frame.  Develop a button that ends the frame and calculates the score as it is at that time. 
 
-+ `TODO: Add a note about vibe coding. Why I'm doing it this way.
++ `TODO:` Add a note about vibe coding. Why I'm doing it this way.
 
 ### Identified Bugs
 [Back to Top](#sections)
@@ -1301,7 +1302,7 @@ ayer 2.
 
 [Back to Sections](#sections)
 
-[v1.0.0](#v100) --- [v1.0.1](#v101) --- [v1.0.2](#v102) --- [v1.0.3](#v103) --- [v1.0.4](#v104) --- [v1.0.5](#v105) --- [v1.0.6](#v106) --- [v1.0.7](#v107) --- [v1.0.8](#v108) --- [v1.0.9](#v109) --- [v1.0.10](#v1010) --- [v1.0.11](#v1011) --- [v1.0.12](#v1012) --- [v1.0.13](#v1013) --- [v1.0.14](#v1014) --- [v1.0.15](#v1015) --- [v1.0.16](#v1016) --- [v1.0.17](#v1017) --- [v1.0.18](#v1018) --- [v1.0.19](#v1019) --- [v1.0.20](#v1020)
+[v1.0.0](#v100) --- [v1.0.1](#v101) --- [v1.0.2](#v102) --- [v1.0.3](#v103) --- [v1.0.4](#v104) --- [v1.0.5](#v105) --- [v1.0.6](#v106) --- [v1.0.7](#v107) --- [v1.0.8](#v108) --- [v1.0.9](#v109) --- [v1.0.10](#v1010) --- [v1.0.11](#v1011) --- [v1.0.12](#v1012) --- [v1.0.13](#v1013) --- [v1.0.14](#v1014) --- [v1.0.15](#v1015) --- [v1.0.16](#v1016) --- [v1.0.17](#v1017) --- [v1.0.18](#v1018) --- [v1.0.19](#v1019) --- [v1.0.20](#v1020) --- [v1.0.21](#v1021)
  
 #### v1.0.0
 
@@ -1920,6 +1921,8 @@ Player is shooting for a red and commits a foul by cue ball hitting a colour bal
 
    + A modal area with a dropdown box or other element that the user and add or reduce a number of penalty points to award.
    + and a button within that modal to then confirm the points.
+
+[Back to Top](#comments)
 
 #### v1.0.21
 
