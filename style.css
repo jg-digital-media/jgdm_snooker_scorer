@@ -1,7 +1,7 @@
 /******************************
 
 Snooker Scorer App: 
-Last Update: 19/06/2025 - 13:59
+Last Update: 20/06/2025 - 09:32
 ******************************/
 * {
   padding: 0;
@@ -707,128 +707,47 @@ body footer a:hover {
   .modal-btn {
     width: 100%;
   }
-  
- 
 }
-
-/* Foul + Miss Modal Styles */
+/* Foul+Miss Modal Responsive Styles */
 .foul-miss-modal {
-  background: linear-gradient(145deg, #014819, #016c26);
-  border: 2px solid #21a20d;
-  border-radius: 12px;
-  padding: 30px;
-  max-width: 450px;
-  width: 90%;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  text-align: center;
-  position: relative;
-  animation: modalSlideIn 0.3s ease-out;
+  padding: 20px;
+  margin: 20px;
+  max-width: 95%;
 }
 
 .penalty-selection {
-  background: rgba(0, 0, 0, 0.2);
-  border-radius: 8px;
-  padding: 20px;
-  margin: 20px 0;
-  border: 1px solid #21a20d;
-}
-
-.penalty-selection label {
-  display: block;
-  color: #e5ff61;
-  font-size: 16px;
-  font-weight: bold;
-  margin-bottom: 15px;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  padding: 15px;
 }
 
 .penalty-controls {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 15px;
-  margin-bottom: 10px;
+  gap: 10px;
 }
 
 .penalty-btn {
-  background: linear-gradient(145deg, #21a20d, #34ff29);
-  color: #014819;
-  border: 2px solid #21a20d;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  font-size: 20px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.penalty-btn:hover {
-  background: linear-gradient(145deg, #34ff29, #21a20d);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(33, 162, 13, 0.4);
-}
-
-.penalty-btn:disabled {
-  background: #555;
-  color: #999;
-  cursor: not-allowed;
-  transform: none;
-  box-shadow: none;
+  width: 35px;
+  height: 35px;
+  font-size: 18px;
 }
 
 .penalty-value {
-  background: radial-gradient(farthest-corner at 30% 7%, white, #cd0000 27%, #cd0000);
-  color: #e5ff61;
-  font-size: 24px;
-  font-weight: bold;
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  line-height: 60px;
-  border: 3px solid #000000;
-  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
-}
-
-.penalty-note {
-  color: #ccc;
-  font-size: 12px;
-  font-style: italic;
-  margin-top: 5px;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  font-size: 20px;
 }
 
 .retake-option {
-  background: rgba(0, 0, 0, 0.2);
-  border-radius: 8px;
-  padding: 15px;
-  margin: 20px 0;
-  border: 1px solid #21a20d;
+  padding: 12px;
 }
 
 .retake-option label {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-  transition: color 0.3s ease;
+  font-size: 14px;
+  gap: 8px;
 }
 
-.retake-option label:hover {
-  color: #e5ff61;
-}
-
-.retake-option input[type="checkbox"] {
-  width: 20px;
-  height: 20px;
-  accent-color: #21a20d;
-  cursor: pointer;
+.retake-option input[type=checkbox] {
+  width: 18px;
+  height: 18px;
 }
 
 /*# sourceMappingURL=style.css.map */
