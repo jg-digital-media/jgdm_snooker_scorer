@@ -450,6 +450,7 @@ body {
                         /* color: #ff2f00; */
                         color: $display---ball--red;
                         color: $col---secondary;
+                        display: none;
 
                         span {
 
@@ -483,6 +484,12 @@ body {
 
                 width: 100%;
                 text-align: left;
+            }
+
+            #pot---undo--one,
+            #pot---undo--two {
+
+                display: none;
             }
 
             .player---pot--miss {
@@ -689,6 +696,28 @@ body {
                 margin-top: 0;
                 color: #e5ff61;
             }
+            
+
+            h3.about---subheadings {
+
+
+            }
+
+            .foul---scenario--list {
+
+                list-style-type: none;                
+                padding-left: 0;                
+                margin-left: 0;
+
+                li {
+                    margin-bottom: 10px;
+
+                    span {
+
+                        color: #e2ff70;
+                    }
+                }
+            }
 
             p {
 
@@ -822,9 +851,11 @@ body {
 }
 
 .modal-title {
+
     color: #e5ff61;
     font-size: 24px;
     font-weight: bold;
+    text-align: center;
     margin-bottom: 15px;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
@@ -892,6 +923,7 @@ body {
     height: 30px;
     line-height: 30px;
     color: #e5ff61;
+    text-align: center;
     font-weight: bold;
     margin: 0 5px;
     border: 2px solid #000000;
@@ -925,13 +957,19 @@ body {
 
 /* Foul+Miss Modal Responsive Styles */
 .foul-miss-modal {
-padding: 20px;
-margin: 20px;
-max-width: 95%;
+    padding: 15px;
+    margin: 20px;
+    max-width: 95%;
+    background: green;
+    border: yellow 1px solid;
+    border-radius: 5px;
+
 }
 
 .penalty-selection {
-padding: 15px;
+
+    text-align: center;
+    padding: 15px;
 }
 
 .penalty-controls {
@@ -939,9 +977,13 @@ gap: 10px;
 }
 
 .penalty-btn {
-width: 35px;
-height: 35px;
-font-size: 18px;
+    width: 35px;
+    height: 35px;
+    font-size: 18px;
+    border-radius: 3px;
+    border: 0;
+    background: #e9e948;
+    border: solid 1px #7fb16f;
 }
 
 .penalty-value {

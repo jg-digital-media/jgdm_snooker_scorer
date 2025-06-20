@@ -344,6 +344,7 @@ body main.interface-container .player---section .breaks---and--snookers div.snoo
   /* color: #ff2f00; */
   color: #cd0000;
   color: white;
+  display: none;
 }
 body main.interface-container .player---section .breaks---and--snookers div.snookers---required span {
   color: #ff5e00;
@@ -364,6 +365,10 @@ body main.interface-container .player---potting {
     width: 100%;
     text-align: left;
   }
+}
+body main.interface-container .player---potting #pot---undo--one,
+body main.interface-container .player---potting #pot---undo--two {
+  display: none;
 }
 body main.interface-container .player---potting .player---pot--miss {
   display: inline-block;
@@ -517,6 +522,17 @@ body main.interface-container .about---the---app-section h2.about---the--app-sub
   margin-top: 0;
   color: #e5ff61;
 }
+body main.interface-container .about---the---app-section .foul---scenario--list {
+  list-style-type: none;
+  padding-left: 0;
+  margin-left: 0;
+}
+body main.interface-container .about---the---app-section .foul---scenario--list li {
+  margin-bottom: 10px;
+}
+body main.interface-container .about---the---app-section .foul---scenario--list li span {
+  color: #e2ff70;
+}
 body main.interface-container .about---the---app-section p {
   margin: 9pt 0;
   line-height: 2.1;
@@ -616,6 +632,7 @@ body footer a:hover {
   color: #e5ff61;
   font-size: 24px;
   font-weight: bold;
+  text-align: center;
   margin-bottom: 15px;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
@@ -683,6 +700,7 @@ body footer a:hover {
   height: 30px;
   line-height: 30px;
   color: #e5ff61;
+  text-align: center;
   font-weight: bold;
   margin: 0 5px;
   border: 2px solid #000000;
@@ -710,12 +728,16 @@ body footer a:hover {
 }
 /* Foul+Miss Modal Responsive Styles */
 .foul-miss-modal {
-  padding: 20px;
+  padding: 15px;
   margin: 20px;
   max-width: 95%;
+  background: green;
+  border: yellow 1px solid;
+  border-radius: 5px;
 }
 
 .penalty-selection {
+  text-align: center;
   padding: 15px;
 }
 
@@ -727,6 +749,10 @@ body footer a:hover {
   width: 35px;
   height: 35px;
   font-size: 18px;
+  border-radius: 3px;
+  border: 0;
+  background: #e9e948;
+  border: solid 1px #7fb16f;
 }
 
 .penalty-value {
