@@ -1,6 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Last Updated: 19/06/2025 - 16:51`
++ `Last Updated: 20/06/2025 - 10:12`
 ## Sections
 
 [Intro](#intro
@@ -802,7 +802,7 @@ This application is built using the following technologies:
 ## Development
 [Back to Top](#sections)
 
-### Tasks - 203 completed items
+### Tasks - 204 completed items
 
 The development of this application is currently in progress.
 
@@ -1124,6 +1124,7 @@ The development of this application is currently in progress.
 
     + `COMPLETED: 19-06-2025` Implement a custom tooltip/dialog box to display the confirmation dialog box
 
++ `COMPLETED: 20-06-2025`  BUG: Foul and Penalty Points are being be applied to the opponent player not the player that fouled.  Also active play should revert to the other player -if- that player has not opted to make opponent replay the shot!
 
 + `TODO:` Clicking `#app-app` should take the user to a new browser tab so game progress is not lost.
 
@@ -1271,13 +1272,15 @@ ayer 2.
 
 + `14` - Foul button on the colour sequence reverts play to 27 points and back to yellow ball (Player 2). `Resolved: 18-06-2025`
 
-+ `15` - "Last Break" should not be reset to 0 until a player makes their first successful pot attempt after returning to the table.
++ `15` - Foul and Penalty Points are being applied to the opponent player not the player that fouled.  Also active play should revert to the other player -if- that player has not opted to make opponent replay the shot! `Resolved: 20-06-2025`
 
-+ `16` - Player 1 clicks "MISS" without applying their Redball pot(s). 
++ `16` - "Last Break" should not be reset to 0 until a player makes their first successful pot attempt after returning to the table.
 
-+ `17` - Players apply 2 successful red ball scores and then miss on following colour. A reduction of 16 points should be applied to `#points_remaining` (The colour not shot for followed by the missed colour)
++ `17` - Player 1 clicks "MISS" without applying their Redball pot(s). 
 
-+ `18` - Player 2 Cursor pointer missing from red ball icon  after the first successful colour pot attempt.
++ `18` - Players apply 2 successful red ball scores and then miss on following colour. A reduction of 16 points should be applied to `#points_remaining` (The colour not shot for followed by the missed colour)
+
++ `19` - Player 2 Cursor pointer missing from red ball icon  after the first successful colour pot attempt.
 
 ### Future Improvements
 
@@ -1909,5 +1912,11 @@ Player is shooting for a red and commits a foul by cue ball hitting a colour bal
 
    + A modal area with a dropdown box or other element that the user and add or reduce a number of penalty points to award.
    + and a button within that modal to then confirm the points.
+
+#### v1.0.21
+
++ At this stage, we're finally coming to the end of the initial release of the application - making it ready and suitable for public use.  There are 2 more ewvent listeners to edit the penalty points for fouls and misses.  I spent a lot of time doing the algoritmic thinking for it but most cases can be covered by either of the 2 "foul" buttons for each player.
+
++ It does mean 2 more modal areas - FOULS and FOULS+MISS. 
 
 [Back to Top](#comments)
