@@ -920,4 +920,47 @@ body {
     .modal-btn {
         width: 100%;
     }
+   
+}
+
+/* Foul+Miss Modal Responsive Styles */
+.foul-miss-modal {
+padding: 20px;
+margin: 20px;
+max-width: 95%;
+}
+
+.penalty-selection {
+padding: 15px;
+}
+
+.penalty-controls {
+gap: 10px;
+}
+
+.penalty-btn {
+width: 35px;
+height: 35px;
+font-size: 18px;
+}
+
+.penalty-value {
+width: 50px;
+height: 50px;
+line-height: 50px;
+font-size: 20px;
+}
+
+.retake-option {
+padding: 12px;
+}
+
+.retake-option label {
+font-size: 14px;
+gap: 8px;
+}
+
+.retake-option input[type="checkbox"] {
+width: 18px;
+height: 18px;
 }
