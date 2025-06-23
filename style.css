@@ -1,7 +1,7 @@
 /******************************
 
 Snooker Scorer App: 
-Last Update: 20/06/2025 - 09:32
+Last Update: 23/06/2025 - 16:45
 ******************************/
 * {
   padding: 0;
@@ -19,6 +19,8 @@ body header {
   background: black;
   color: white;
   /* border: 3px white solid; */
+  /* border-bottom: #e5ff61 solid 2px; */
+  /* border-bottom: $col---tertiary solid 2px; */
   height: 42px;
   height: auto;
   width: 100%;
@@ -70,13 +72,12 @@ body main.interface-container .player---points--status {
   display: flex;
   font-size: 30px;
   margin: 14pt auto;
-  /* justify-content: space-between; */
-  align-items: center;
+  /* align-items: center; */
   /* border: solid yellow 1px; */
 }
 @media (max-width: 1223px) {
   body main.interface-container .player---points--status {
-    font-size: 3.3vw;
+    font-size: 3.4vw;
   }
 }
 @media (max-width: 560px) {
@@ -93,12 +94,11 @@ body main.interface-container .player---points--status {
   }
 }
 body main.interface-container .active--player {
-  /* font-size: $font---size--h2; */
-  text-align: center;
-  margin: 0 auto;
-  width: 100%;
-  margin: 0pt auto;
+  display: block;
   /* line-height: 0.1; */
+  width: 100%;
+  text-align: center;
+  vertical-align: middle;
 }
 @media (max-width: 560px) {
   body main.interface-container .active--player {
@@ -117,9 +117,16 @@ body main.interface-container .active--player #player_number {
   border-radius: 50%;
   position: relative;
   top: 1px;
+  bottom: 7px;
   font-size: 30px;
   border: solid #000000 1px;
   box-shadow: black 2px 2px 4px 0px;
+  vertical-align: top;
+}
+@media (max-width: 560px) {
+  body main.interface-container .active--player #player_number {
+    font-size: 6vw;
+  }
 }
 body main.interface-container .points--remaining {
   /* font-size: $font---size--h2; */
@@ -130,7 +137,7 @@ body main.interface-container .points--remaining {
 @media (max-width: 560px) {
   body main.interface-container .points--remaining {
     margin: 10pt auto;
-    font-size: 12px;
+    font-size: 20px;
   }
 }
 body main.interface-container .points--remaining #points_remaining {
