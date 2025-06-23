@@ -1,6 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Last Updated: 20/06/2025 - 10:54`
++ `Last Updated: 23/06/2025 - 16:47`
 ## Sections
 
 [Intro](#intro
@@ -1144,9 +1144,13 @@ The development of this application is currently in progress.
 
 + `TODO:` Tidy up CSS/Sass code.
 
++ `TODO:` Ask for confirmation before initiating a "re-rack" (new frame)
+
 + `TODO:` Refactor code generated so far to reduce total lines in the script, make it more readable and easier to maintain.
 
 + `TODO:` BUG: Player 2 Cursor pointer missing from red ball icon after the first successful colour pot attempt.
+
++ `TODO`: On smaller screens, the "apply" link for red balls bleeds below colour balls that also bleed the line below. Not ideal for clarity about which ball it is linked to.
 
 + `TODO:` BUG: "Last Break" should not be reset to 0 until a player makes their first successful pot attempt after returning to the table
 
@@ -1937,5 +1941,13 @@ Player is shooting for a red and commits a foul by cue ball hitting a colour bal
 + This application has been a genesis of an idea of mine for a long, long time. It's been lying dormant in my head for a while, waiting for the tools and the knowledge and the experience to come together to build it. AI has helped make it a reality.  
 
 + Now this, of course, as I keep saying, does bring with it its own challenges, questions, advantages and pitfalls. I discuss some of these on my homepage for Cursor AI and other projects I've worked on using AI. My focus from here on in wull be about adding feature improements, and improving the scability and meaintainability of the code.
+
+[Back to Top](#comments)
+
+#### v1.1.0
+
++ Now that the application is functional and stable, ready for public use (with further features to be added in the future), it's a good time to take a step back and look at the existing code; look for way to make it more readable and easier to maintain. I'm going to start by looking at the SASS and CSS code. At the moment, the bulk of it is in a single `body` selector. But some styles, like button styling and animation controls are probably better off in their own partials.  `e.g _animations.scss`.
+
++ But the first thing to do is look at the code and convert CSS selectors into nested SASS selectors.
 
 [Back to Top](#comments)
