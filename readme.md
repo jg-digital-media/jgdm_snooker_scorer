@@ -1,6 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Last Updated: 23/06/2025 - 16:47`
++ `Last Updated: 23/06/2025 - 16:56`
 ## Sections
 
 [Intro](#intro
@@ -1948,6 +1948,6 @@ Player is shooting for a red and commits a foul by cue ball hitting a colour bal
 
 + Now that the application is functional and stable, ready for public use (with further features to be added in the future), it's a good time to take a step back and look at the existing code; look for way to make it more readable and easier to maintain. I'm going to start by looking at the SASS and CSS code. At the moment, the bulk of it is in a single `body` selector. But some styles, like button styling and animation controls are probably better off in their own partials.  `e.g _animations.scss`.
 
-+ But the first thing to do is look at the code and convert CSS selectors into nested SASS selectors.
++ But the first thing to do is look at the code and convert CSS selectors into nested SASS selectors.  I've completed a minor enhancement "active-points section" so the 2 sections text content stays in sync, on the same line. The player status indicator way making that a tricky UI problem.
 
 [Back to Top](#comments)
