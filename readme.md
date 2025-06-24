@@ -1,6 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Last Updated: 23/06/2025 - 16:56`
++ `Last Updated: 24/06/2025 - 16:14`
 ## Sections
 
 [Intro](#intro
@@ -816,7 +816,7 @@ This application is built using the following technologies:
 ## Development
 [Back to Top](#sections)
 
-### Tasks - 205 completed items
+### Tasks - 206 completed items
 
 The development of this application is currently in progress.
 
@@ -1150,7 +1150,7 @@ The development of this application is currently in progress.
 
 + `TODO:` BUG: Player 2 Cursor pointer missing from red ball icon after the first successful colour pot attempt.
 
-+ `TODO`: On smaller screens, the "apply" link for red balls bleeds below colour balls that also bleed the line below. Not ideal for clarity about which ball it is linked to.
++ `COMPLETED: 24-06-2025` On smaller screens, the "apply" link for red balls bleeds below colour balls that also bleed the line below. Not ideal for clarity about which ball it is linked to.
 
 + `TODO:` BUG: "Last Break" should not be reset to 0 until a player makes their first successful pot attempt after returning to the table
 
