@@ -1307,6 +1307,8 @@ ayer 2.
 [Back to Sections](#sections)
 
 [v1.0.0](#v100) --- [v1.0.1](#v101) --- [v1.0.2](#v102) --- [v1.0.3](#v103) --- [v1.0.4](#v104) --- [v1.0.5](#v105) --- [v1.0.6](#v106) --- [v1.0.7](#v107) --- [v1.0.8](#v108) --- [v1.0.9](#v109) --- [v1.0.10](#v1010) --- [v1.0.11](#v1011) --- [v1.0.12](#v1012) --- [v1.0.13](#v1013) --- [v1.0.14](#v1014) --- [v1.0.15](#v1015) --- [v1.0.16](#v1016) --- [v1.0.17](#v1017) --- [v1.0.18](#v1018) --- [v1.0.19](#v1019) --- [v1.0.20](#v1020) --- [v1.0.21](#v1021)
+
+[v1.1.0](#v110) --- [v1.1.1](#v111)
  
 #### v1.0.0
 
@@ -1948,6 +1950,10 @@ Player is shooting for a red and commits a foul by cue ball hitting a colour bal
 
 + Now that the application is functional and stable, ready for public use (with further features to be added in the future), it's a good time to take a step back and look at the existing code; look for way to make it more readable and easier to maintain. I'm going to start by looking at the SASS and CSS code. At the moment, the bulk of it is in a single `body` selector. But some styles, like button styling and animation controls are probably better off in their own partials.  `e.g _animations.scss`.
 
-+ But the first thing to do is look at the code and convert CSS selectors into nested SASS selectors.  I've completed a minor enhancement "active-points section" so the 2 sections text content stays in sync, on the same line. The player status indicator way making that a tricky UI problem.
++ But the first thing to do is look at the code and convert CSS selectors into nested SASS selectors. Well.. it's all very well saying that, but you look at the code and you test and you check and you find things to distract you from the other.  I've completed a minor enhancement "active-points section" so the 2 sections text content stays in sync, on the same line. The player status indicator way making that a tricky UI problem.
+
+#### v1.1.1
+
++ Reduced the size of the colour balls to try and fix an issue where the the "apply" link for the red ball was being pushed to a new line so it appeared below one of the colour balls.  Not ideal.  It needs to some refinement but it has resolved the issue I described.
 
 [Back to Top](#comments)
