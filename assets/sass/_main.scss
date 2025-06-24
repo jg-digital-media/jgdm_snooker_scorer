@@ -242,10 +242,17 @@ body {
                     border-radius: 50%;
                     height: 28px;
                     width: 28px;
-                    margin: 10px;
+                    margin: 10px 5px;
                     display: inline-block;
                     transition: box-shadow 0.3s ease-in-out;
                     cursor: pointer;
+
+                    @media (max-width: $breakpoint---sm) {
+
+                        width: 20px;
+                        height: 20px;
+                        margin: 4px;
+                    }
 
                     &:hover {
 
@@ -263,6 +270,12 @@ body {
                         font-weight: bold;
                         letter-spacing: 0px;
                         font-size: 15px;
+
+                        @media (max-width: $breakpoint---sm) {
+
+                            font-size: 12px;
+                            top: 4px;
+                        }
                     }
 
                 }
@@ -395,6 +408,12 @@ body {
                     visibility: hidden;
                     /* visibility: visible; */
 
+                    @media (max-width: $breakpoint---sm) {
+
+                        font-size: 9px;
+                        margin: 0 5px;
+                    }   
+
                 }
                 
             }
@@ -507,7 +526,7 @@ body {
                 border: solid #647a63 1px;
                 border-radius: 6px;
                 background: $bg---button--one;
-                font-size: 13px;
+                /* font-size: 13px; */
                 margin: 4px;
                 padding: 0 6px;
                 /* width: 59px; */
@@ -545,6 +564,11 @@ body {
                     font-size: 13px;
                     position: relative;
                     top: 7px;
+
+                    @media (max-width: $breakpoint---sm) {
+                        
+                        font-size: 10px;
+                    }
                 }
 
                 #tally---potted--black-p1,
@@ -591,7 +615,7 @@ body {
                 .pot---tally {
                     /* color: white; */
                     text-align: center;
-                    font-size: 13px;
+                    /* font-size: 13px; */
                     position: relative;
                     top: 7px;
                 }
