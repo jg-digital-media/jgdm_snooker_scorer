@@ -1,76 +1,13 @@
-<?php require "template-parts/inc/header.php"; ?>
+<?php require "assets/template-parts/inc/header.php"; ?>
 
-    <!-- Custom Confirmation Modal - Player forfeit buttons -->
-    <div id="modalOverlay" class="modal-overlay">
-        <div class="confirm-modal">
-            <div class="modal-title">Forfeit Frame</div>
-            <div class="modal-message">
-                Are you sure <span class="player-indicator" id="modalPlayerNumber">1</span> wants to forfeit this frame?
-            </div>
-            <div class="modal-buttons">
-                <button class="modal-btn cancel" id="modalCancel">Cancel</button>
-                <button class="modal-btn confirm" id="modalConfirm">Yes, Forfeit</button>
-            </div>
-        </div>
-    </div>
+<!-- Custom Confirmation Modal - Player forfeit buttons -->
+<?php require "assets/template-parts/part-forfeit-modal.php"; ?>
 
-    <!-- Foul + Miss Penalty Selection Modal -->
-    <div id="foulMissModal" class="modal-overlay">
-        <div class="foul-miss-modal">
-            <div class="modal-title">Foul + Miss Penalty</div>
-            <div class="modal-message">
-                Player <span class="player-indicator" id="foulMissPlayerNumber">1</span> committed a foul and miss.<br>
-                <small>Penalty points will be awarded to the opponent.</small>
-            </div>
-            
-            <div class="penalty-selection">
-                <label>Penalty Points:</label>
-                <div class="penalty-controls">
-                    <button type="button" class="penalty-btn decrease" id="decreasePenalty">-</button>
-                    <span class="penalty-value" id="penaltyValue">4</span>
-                    <button type="button" class="penalty-btn increase" id="increasePenalty">+</button>
-                </div>
-                <div class="penalty-note">Minimum: 4 points, Maximum: 7 points</div>
-            </div>
+<!-- Foul + Miss Penalty Selection Modal -->
+<?php require "assets/template-parts/part-foulmiss-modal.php"; ?>
 
-            <div class="retake-option">
-                <label>
-                    <input type="checkbox" id="forceRetake"> Force opponent to retake the shot
-                </label>
-            </div>
-
-            <div class="modal-buttons">
-                <button class="modal-btn cancel" id="foulMissCancel">Cancel</button>
-                <button class="modal-btn confirm" id="foulMissConfirm">Apply Penalty</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Foul Penalty Selection Modal (No Retake) -->
-    <div id="foulModal" class="modal-overlay">
-        <div class="foul-miss-modal">
-            <div class="modal-title">Foul Penalty</div>
-            <div class="modal-message">
-                Player <span class="player-indicator" id="foulPlayerNumber">1</span> committed a foul.<br>
-                <small>Penalty points will be awarded to the opponent.</small>
-            </div>
-            
-            <div class="penalty-selection">
-                <label>Penalty Points:</label>
-                <div class="penalty-controls">
-                    <button type="button" class="penalty-btn decrease" id="decreaseFoulPenalty">-</button>
-                    <span class="penalty-value" id="foulPenaltyValue">4</span>
-                    <button type="button" class="penalty-btn increase" id="increaseFoulPenalty">+</button>
-                </div>
-                <div class="penalty-note">Minimum: 4 points, Maximum: 7 points</div>
-            </div>
-
-            <div class="modal-buttons">
-                <button class="modal-btn cancel" id="foulCancel">Cancel</button>
-                <button class="modal-btn confirm" id="foulConfirm">Apply Penalty</button>
-            </div>
-        </div>
-    </div>
+<!-- Foul Penalty Selection Modal (No Retake) -->    
+<?php require "assets/template-parts/part-foul-modal.php"; ?>
 
     <main class="interface-container">
 
@@ -342,4 +279,4 @@
 
     </main>
 
-<?php require "template-parts/inc/footer.php"; ?>
+<?php require "assets/template-parts/inc/footer.php"; ?>
