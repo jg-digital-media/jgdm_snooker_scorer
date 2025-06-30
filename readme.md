@@ -1,6 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Last Updated: 30/06/2025 - 14:27`
++ `Last Updated: 30/06/2025 - 14:29`
 ## Sections
 
 [Intro](#intro
@@ -816,7 +816,7 @@ This application is built using the following technologies:
 ## Development
 [Back to Top](#sections)
 
-### Tasks - 206 completed items
+### Tasks - 207 completed items
 
 The development of this application is currently in progress.
 
@@ -1142,13 +1142,13 @@ The development of this application is currently in progress.
 
 + `COMPLETED: 20-06-2025` Clicking `#app-app` should take the user to a new browser tab so game progress is not lost.
 
-+ `TODO:` Tidy up CSS/Sass code.
++ `COMPLETED: 30-06-2025` Tidy up CSS/Sass code.
+
++ `TODO:` Refactor code generated so far to reduce total lines in the script, make it more readable and easier to maintain.
 
 + `TODO:` MISS buttons do not not always fire correctly. Miss text triggers the action, but not the whole button.
 
 + `TODO:` Ask for confirmation before initiating a "re-rack" (new frame)
-
-+ `TODO:` Refactor code generated so far to reduce total lines in the script, make it more readable and easier to maintain.
 
 + `TODO:` BUG: Player 2 Cursor pointer missing from red ball icon after the first successful colour pot attempt.
 
