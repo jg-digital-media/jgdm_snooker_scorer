@@ -1,7 +1,7 @@
 /******************************
 
 Snooker Scorer App: 
-Last Update: 24/06/2025 - 16:16
+Last Update: 30/06/2025 - 13:37
 ******************************/
 * {
   padding: 0;
@@ -98,7 +98,6 @@ body main.interface-container .active--player {
   /* line-height: 0.1; */
   width: 100%;
   text-align: center;
-  vertical-align: middle;
 }
 @media (max-width: 680px) {
   body main.interface-container .active--player {
@@ -125,7 +124,12 @@ body main.interface-container .active--player #player_number {
 }
 @media (max-width: 680px) {
   body main.interface-container .active--player #player_number {
-    font-size: 6vw;
+    font-size: 5vw;
+  }
+}
+@media (max-width: 560px) {
+  body main.interface-container .active--player #player_number {
+    font-size: 5.6vw;
   }
 }
 body main.interface-container .points--remaining {
@@ -204,11 +208,11 @@ body main.interface-container .player---section .player---potting .player---pot-
   transition: box-shadow 0.3s ease-in-out;
   cursor: pointer;
 }
-@media (max-width: 560px) {
+@media (max-width: 680px) {
   body main.interface-container .player---section .player---potting .player---pot--score {
-    width: 20px;
-    height: 20px;
-    margin: 4px;
+    width: 24px;
+    height: 24px;
+    margin: 9px 4px;
   }
 }
 body main.interface-container .player---section .player---potting .player---pot--score:hover {
@@ -225,10 +229,10 @@ body main.interface-container .player---section .player---potting .player---pot-
   letter-spacing: 0px;
   font-size: 15px;
 }
-@media (max-width: 560px) {
+@media (max-width: 680px) {
   body main.interface-container .player---section .player---potting .player---pot--score p {
     font-size: 12px;
-    top: 4px;
+    /* top: 4px; */
   }
 }
 body main.interface-container .player---section .player---potting .player---pot--red {
@@ -327,31 +331,20 @@ body main.interface-container .player---section .breaks---and--snookers {
   font-size: 20px;
   vertical-align: top;
 }
-@media (max-width: 620px) {
-  body main.interface-container .player---section .breaks---and--snookers {
-    width: 100%;
-    text-align: center;
-  }
-}
-@media (max-width: 680px) {
-  body main.interface-container .player---section .breaks---and--snookers {
-    font-size: 12px;
-  }
-}
-@media (max-width: 620px) {
-  body main.interface-container .player---section .breaks---and--snookers {
-    width: 100%;
-    text-align: center;
-  }
-}
 @media (max-width: 680px) {
   body main.interface-container .player---section .breaks---and--snookers {
     display: inline-block;
-    font-size: 12px;
-    font-size: 12px;
     /* padding: 0 31px; */
     text-align: center;
     margin: 0 auto;
+  }
+}
+@media (max-width: 620px) {
+  body main.interface-container .player---section .breaks---and--snookers {
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+    margin: 10pt 0 8px 0px;
   }
 }
 body main.interface-container .player---section .breaks---and--snookers div {
@@ -360,10 +353,14 @@ body main.interface-container .player---section .breaks---and--snookers div {
 @media (max-width: 680px) {
   body main.interface-container .player---section .breaks---and--snookers div {
     display: inline-block;
-    font-size: 12px;
     padding: 0 31px;
     text-align: center;
     margin: 0 auto;
+  }
+}
+@media (max-width: 620px) {
+  body main.interface-container .player---section .breaks---and--snookers div {
+    font-size: 12px;
   }
 }
 body main.interface-container .player---section .breaks---and--snookers div.snookers---required {
@@ -621,111 +618,6 @@ body footer a:hover {
   color: #fff041;
 }
 
-/* Custom Confirmation Modal Styles */
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.8);
-  display: none;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-  backdrop-filter: blur(3px);
-}
-
-.modal-overlay.show {
-  display: flex;
-}
-
-.confirm-modal {
-  background: linear-gradient(145deg, #014819, #016c26);
-  border: 2px solid #21a20d;
-  border-radius: 12px;
-  padding: 30px;
-  max-width: 400px;
-  width: 90%;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  text-align: center;
-  position: relative;
-  animation: modalSlideIn 0.3s ease-out;
-}
-
-@keyframes modalSlideIn {
-  from {
-    transform: translateY(-50px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-.modal-title {
-  color: #e5ff61;
-  font-size: 24px;
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 15px;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-}
-
-.modal-message {
-  color: white;
-  font-size: 18px;
-  margin-bottom: 25px;
-  line-height: 1.4;
-}
-
-.modal-buttons {
-  display: flex;
-  gap: 15px;
-  justify-content: center;
-}
-
-.modal-btn {
-  padding: 12px 24px;
-  border: none;
-  border-radius: 25px;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  min-width: 100px;
-}
-
-.modal-btn.confirm {
-  background: linear-gradient(145deg, #cd0000, #ff4444);
-  color: white;
-  border: 2px solid #972828;
-  box-shadow: 0 4px 8px rgba(205, 0, 0, 0.3);
-}
-
-.modal-btn.confirm:hover {
-  background: linear-gradient(145deg, #ff4444, #cd0000);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(205, 0, 0, 0.4);
-}
-
-.modal-btn.cancel {
-  background: linear-gradient(145deg, #21a20d, #34ff29);
-  color: #014819;
-  border: 2px solid #21a20d;
-  box-shadow: 0 4px 8px rgba(33, 162, 13, 0.3);
-}
-
-.modal-btn.cancel:hover {
-  background: linear-gradient(145deg, #34ff29, #21a20d);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(33, 162, 13, 0.4);
-}
-
-.modal-btn:active {
-  transform: translateY(0);
-}
-
 /* Player indicator in modal */
 .player-indicator {
   display: inline-block;
@@ -742,32 +634,130 @@ body footer a:hover {
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
+/* Custom Confirmation Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(3px);
+  animation: modalSlideIn 0.3s ease-out;
+}
+.modal-overlay.show {
+  display: flex;
+}
+
+.confirm-modal {
+  background: linear-gradient(145deg, #014819, #016c26);
+  border: 2px solid #21a20d;
+  border-radius: 12px;
+  padding: 30px;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  position: relative;
+  animation: modalSlideIn 0.3s ease-out;
+}
 @media (max-width: 560px) {
   .confirm-modal {
     padding: 20px;
     margin: 20px;
   }
+}
+
+.modal-title {
+  color: #e5ff61;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 15px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+@media (max-width: 560px) {
   .modal-title {
     font-size: 20px;
   }
+}
+
+.modal-message {
+  color: white;
+  font-size: 18px;
+  margin-bottom: 25px;
+  line-height: 1.4;
+}
+@media (max-width: 560px) {
   .modal-message {
     font-size: 16px;
   }
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+@media (max-width: 560px) {
   .modal-buttons {
     flex-direction: column;
     gap: 10px;
   }
+}
+
+.modal-btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 100px;
+}
+@media (max-width: 560px) {
   .modal-btn {
     width: 100%;
   }
 }
-/* Foul+Miss Modal Responsive Styles */
+.modal-btn.confirm {
+  background: linear-gradient(145deg, #cd0000, #ff4444);
+  color: white;
+  border: 2px solid #972828;
+  box-shadow: 0 4px 8px rgba(205, 0, 0, 0.3);
+}
+.modal-btn.confirm:hover {
+  background: linear-gradient(145deg, #ff4444, #cd0000);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(205, 0, 0, 0.4);
+}
+.modal-btn.cancel {
+  background: linear-gradient(145deg, #21a20d, #34ff29);
+  color: #014819;
+  border: 2px solid #21a20d;
+  box-shadow: 0 4px 8px rgba(33, 162, 13, 0.3);
+}
+.modal-btn.cancel:hover {
+  background: linear-gradient(145deg, #34ff29, #21a20d);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(33, 162, 13, 0.4);
+}
+.modal-btn:active {
+  transform: translateY(0);
+}
+
+/* Foul & Foul+Miss Modal Responsive Styles */
 .foul-miss-modal {
   padding: 15px;
   margin: 20px;
   max-width: 95%;
-  background: green;
-  border: yellow 1px solid;
+  background: linear-gradient(145deg, #014819, #016c26);
+  border: 2px solid #21a20d;
   border-radius: 5px;
 }
 
@@ -775,40 +765,63 @@ body footer a:hover {
   text-align: center;
   padding: 15px;
 }
-
-.penalty-controls {
+.penalty-selection .penalty-controls {
   gap: 10px;
 }
-
-.penalty-btn {
-  width: 35px;
-  height: 35px;
+.penalty-selection .penalty-controls .penalty-btn {
+  width: 39px;
+  /* height: 35px; */
   font-size: 18px;
-  border-radius: 3px;
+  border-radius: 6px;
   border: 0;
-  background: #e9e948;
-  border: solid 1px #7fb16f;
+  background: #00ff43;
+  padding: 3px;
+  cursor: pointer;
 }
-
-.penalty-value {
+.penalty-selection .penalty-controls .penalty-btn:disabled {
+  background: #fc3535;
+  /* border: solid 1px #ee0d0d; */
+  cursor: default;
+  color: white;
+}
+.penalty-selection .penalty-controls #increase {
+  border: solid 1px #60f81f;
+}
+.penalty-selection .penalty-controls #decrease {
+  background: #e9e948;
+  border: solid 1px #ee0d0d;
+}
+.penalty-selection .penalty-controls .penalty-value {
   width: 50px;
   height: 50px;
   line-height: 50px;
   font-size: 20px;
 }
+.penalty-selection .penalty-note {
+  border: solid 1px #7fb16f;
+}
 
 .retake-option {
   padding: 12px;
 }
-
 .retake-option label {
   font-size: 14px;
   gap: 8px;
 }
-
 .retake-option input[type=checkbox] {
   width: 18px;
   height: 18px;
+}
+
+@keyframes modalSlideIn {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
