@@ -852,6 +852,7 @@ body {
     margin: 0 5px;
     border: 2px solid #000000;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+
 }
 
 /* Custom Confirmation Modal Styles */
@@ -875,120 +876,121 @@ body {
         display: flex;
     }
 
-}
+    
+    
+    .confirm-modal {
 
-.confirm-modal {
-
-    background: linear-gradient(145deg, #014819, #016c26);
-    border: 2px solid #21a20d;
-    border-radius: 12px;
-    padding: 30px;
-    max-width: 400px;
-    width: 90%;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    text-align: center;
-    position: relative;
-    animation: modalSlideIn 0.3s ease-out;
-
-    @media (max-width: $breakpoint---sm) {
-
-        padding: 20px;
-        margin: 20px;
-    }
-}
-
-.modal-title {
-
-    color: #e5ff61;
-    font-size: 24px;
-    font-weight: bold;
-    text-align: center;
-    margin-bottom: 15px;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-
-    @media (max-width: $breakpoint---sm) {
-
-        font-size: 20px;
-    }
-}
-
-.modal-message {
-
-    color: white;
-    font-size: 18px;
-    margin-bottom: 25px;
-    line-height: 1.4;
-
-    @media (max-width: $breakpoint---sm) {
-
-        font-size: 16px;
-    }
-}
-
-.modal-buttons {
-
-    display: flex;
-    gap: 15px;
-    justify-content: center;
-
-    @media (max-width: $breakpoint---sm) {
-
-        flex-direction: column;
-        gap: 10px;
-    }
-}
-
-.modal-btn {
-
-    padding: 12px 24px;
-    border: none;
-    border-radius: 25px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    min-width: 100px;
-
-    @media (max-width: $breakpoint---sm) {  
-
-        width: 100%;
-    }
-
-    &.confirm {
-
-        background: linear-gradient(145deg, #cd0000, #ff4444);
-        color: white;
-        border: 2px solid #972828;
-        box-shadow: 0 4px 8px rgba(205, 0, 0, 0.3);
-
-        &:hover {
-
-            background: linear-gradient(145deg, #ff4444, #cd0000);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(205, 0, 0, 0.4);
-        }
-    }
-
-    &.cancel {
-
-        background: linear-gradient(145deg, #21a20d, #34ff29);
-        color: #014819;
+        background: linear-gradient(145deg, #014819, #016c26);
         border: 2px solid #21a20d;
-        box-shadow: 0 4px 8px rgba(33, 162, 13, 0.3);
+        border-radius: 12px;
+        padding: 30px;
+        max-width: 400px;
+        width: 90%;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        text-align: center;
+        position: relative;
+        animation: modalSlideIn 0.3s ease-out;
 
-        &:hover {
+        @media (max-width: $breakpoint---sm) {
 
-            background: linear-gradient(145deg, #34ff29, #21a20d);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(33, 162, 13, 0.4);
+            padding: 20px;
+            margin: 20px;
         }
     }
 
-    &:active {
-        transform: translateY(0);
-    }
-}
+    .modal-title {
 
+        color: #e5ff61;
+        font-size: 24px;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 15px;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+
+        @media (max-width: $breakpoint---sm) {
+
+            font-size: 20px;
+        }
+    }
+
+    .modal-message {
+
+        color: white;
+        font-size: 18px;
+        margin-bottom: 25px;
+        line-height: 1.4;
+
+        @media (max-width: $breakpoint---sm) {
+
+            font-size: 16px;
+        }
+    }
+
+    .modal-buttons {
+
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+
+        @media (max-width: $breakpoint---sm) {
+
+            flex-direction: column;
+            gap: 10px;
+        }
+            
+        .modal-btn {
+
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 100px;
+
+            @media (max-width: $breakpoint---sm) {  
+
+                width: 100%;
+            }
+
+            &.confirm {
+
+                background: linear-gradient(145deg, #cd0000, #ff4444);
+                color: white;
+                border: 2px solid #972828;
+                box-shadow: 0 4px 8px rgba(205, 0, 0, 0.3);
+
+                &:hover {
+
+                    background: linear-gradient(145deg, #ff4444, #cd0000);
+                    transform: translateY(-2px);
+                    box-shadow: 0 6px 12px rgba(205, 0, 0, 0.4);
+                }
+            }
+
+            &.cancel {
+
+                background: linear-gradient(145deg, #21a20d, #34ff29);
+                color: #014819;
+                border: 2px solid #21a20d;
+                box-shadow: 0 4px 8px rgba(33, 162, 13, 0.3);
+
+                &:hover {
+
+                    background: linear-gradient(145deg, #34ff29, #21a20d);
+                    transform: translateY(-2px);
+                    box-shadow: 0 6px 12px rgba(33, 162, 13, 0.4);
+                }
+            }
+
+            &:active {
+                transform: translateY(0);
+            }
+        }
+    }
+
+}
 
 /* Foul & Foul+Miss Modal Responsive Styles */
 .foul-miss-modal {
@@ -999,84 +1001,83 @@ body {
     background: linear-gradient(145deg, #014819, #016c26);
     border: 2px solid #21a20d;
     border-radius: 5px;
-
-}
-
-.penalty-selection {
-
-    text-align: center;
-    padding: 15px;
     
-    .penalty-controls {
+    .penalty-selection {
 
-        gap: 10px;
+        text-align: center;
+        padding: 15px;
+        
+        .penalty-controls {
 
-        .penalty-btn {
+            gap: 10px;
 
-            width: 39px;
-            /* height: 35px; */
-            font-size: 18px;
-            border-radius: 6px;
-            border: 0;
-            background: #00ff43;
-            padding: 3px;
-            cursor: pointer;
+            .penalty-btn {
 
-            &:disabled {
-                
-                background: #fc3535;
-                /* border: solid 1px #ee0d0d; */
-                cursor: default;
-                color: white;
+                width: 39px;
+                /* height: 35px; */
+                font-size: 18px;
+                border-radius: 6px;
+                border: 0;
+                background: #00ff43;
+                padding: 3px;
+                cursor: pointer;
+
+                &:disabled {
+                    
+                    background: #fc3535;
+                    /* border: solid 1px #ee0d0d; */
+                    cursor: default;
+                    color: white;
+                }
             }
+
+            #increase {
+
+
+                border: solid 1px #60f81f;
+            }
+
+            #decrease {
+
+                background: #e9e948;
+                border: solid 1px #ee0d0d;
+            }
+
+            .penalty-value {
+
+                width: 50px;
+                height: 50px;
+                line-height: 50px;
+                font-size: 20px;
+            }
+
         }
 
-        #increase {
+        .penalty-note {
 
-
-            border: solid 1px #60f81f;
+            border: solid 1px #7fb16f;
         }
-
-        #decrease {
-
-            background: #e9e948;
-            border: solid 1px #ee0d0d;
-        }
-
-        .penalty-value {
-
-            width: 50px;
-            height: 50px;
-            line-height: 50px;
-            font-size: 20px;
-        }
-
-    }
-
-    .penalty-note {
-
-        border: solid 1px #7fb16f;
-    }
-
-   
-}
-
-.retake-option {
-
-    padding: 12px;
-
-    label {
-
-        font-size: 14px;
-        gap: 8px;
-    }
-
-    input[type="checkbox"] {
-
-        width: 18px;
-        height: 18px;
-    }
     
+    }
+
+    .retake-option {
+
+        padding: 12px;
+
+        label {
+
+            font-size: 14px;
+            gap: 8px;
+        }
+
+        input[type="checkbox"] {
+
+            width: 18px;
+            height: 18px;
+        }
+        
+    }
+
 }
 
 // Slide in keyframe animation for modals
