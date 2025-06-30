@@ -104,7 +104,6 @@ body {
             /* line-height: 0.1; */
             width: 100%;
             text-align: center;
-            vertical-align: middle;
 
             @media (max-width: $breakpoint---md) {
 
@@ -128,17 +127,16 @@ body {
                     font-size: 30px;
                     border: solid #000000 1px;
                     box-shadow: black 2px 2px 4px 0px;
-                    vertical-align: top;
-
-                    
-                    @media (max-width: $breakpoint---lg) {
-
-                        
-                    }   
+                    vertical-align: top;                    
                     
                     @media (max-width: $breakpoint---md) {
 
-                            font-size: 6vw;                            
+                            font-size: 5vw;
+                    }   
+                    
+                    @media (max-width: $breakpoint---sm) {
+
+                            font-size: 5.6vw;
                     }   
 
             }
