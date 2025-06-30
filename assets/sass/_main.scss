@@ -838,6 +838,7 @@ body {
 
 /* Custom Confirmation Modal Styles */
 .modal-overlay {
+
     position: fixed;
     top: 0;
     left: 0;
@@ -849,13 +850,22 @@ body {
     align-items: center;
     z-index: 1000;
     backdrop-filter: blur(3px);
+    animation: modalSlideIn 0.3s ease-out;
+
+    &.show {
+
+        display: flex;
+    }
+
 }
 
 .modal-overlay.show {
+
     display: flex;
 }
 
 .confirm-modal {
+
     background: linear-gradient(145deg, #014819, #016c26);
     border: 2px solid #21a20d;
     border-radius: 12px;
@@ -869,14 +879,19 @@ body {
 }
 
 @keyframes modalSlideIn {
+
     from {
+
         transform: translateY(-50px);
         opacity: 0;
     }
+
     to {
+
         transform: translateY(0);
         opacity: 1;
     }
+
 }
 
 .modal-title {
@@ -890,6 +905,7 @@ body {
 }
 
 .modal-message {
+
     color: white;
     font-size: 18px;
     margin-bottom: 25px;
@@ -897,12 +913,14 @@ body {
 }
 
 .modal-buttons {
+
     display: flex;
     gap: 15px;
     justify-content: center;
 }
 
 .modal-btn {
+
     padding: 12px 24px;
     border: none;
     border-radius: 25px;
@@ -914,6 +932,7 @@ body {
 }
 
 .modal-btn.confirm {
+
     background: linear-gradient(145deg, #cd0000, #ff4444);
     color: white;
     border: 2px solid #972828;
@@ -921,12 +940,14 @@ body {
 }
 
 .modal-btn.confirm:hover {
+
     background: linear-gradient(145deg, #ff4444, #cd0000);
     transform: translateY(-2px);
     box-shadow: 0 6px 12px rgba(205, 0, 0, 0.4);
 }
 
 .modal-btn.cancel {
+
     background: linear-gradient(145deg, #21a20d, #34ff29);
     color: #014819;
     border: 2px solid #21a20d;
@@ -934,12 +955,14 @@ body {
 }
 
 .modal-btn.cancel:hover {
+
     background: linear-gradient(145deg, #34ff29, #21a20d);
     transform: translateY(-2px);
     box-shadow: 0 6px 12px rgba(33, 162, 13, 0.4);
 }
 
 .modal-btn:active {
+
     transform: translateY(0);
 }
 
