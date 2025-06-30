@@ -1,6 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Last Updated: 24/06/2025 - 16:14`
++ `Last Updated: 30/06/2025 - 14:27`
 ## Sections
 
 [Intro](#intro
@@ -1144,6 +1144,8 @@ The development of this application is currently in progress.
 
 + `TODO:` Tidy up CSS/Sass code.
 
++ `TODO:` MISS buttons do not not always fire correctly. Miss text triggers the action, but not the whole button.
+
 + `TODO:` Ask for confirmation before initiating a "re-rack" (new frame)
 
 + `TODO:` Refactor code generated so far to reduce total lines in the script, make it more readable and easier to maintain.
@@ -1308,7 +1310,7 @@ ayer 2.
 
 [v1.0.0](#v100) --- [v1.0.1](#v101) --- [v1.0.2](#v102) --- [v1.0.3](#v103) --- [v1.0.4](#v104) --- [v1.0.5](#v105) --- [v1.0.6](#v106) --- [v1.0.7](#v107) --- [v1.0.8](#v108) --- [v1.0.9](#v109) --- [v1.0.10](#v1010) --- [v1.0.11](#v1011) --- [v1.0.12](#v1012) --- [v1.0.13](#v1013) --- [v1.0.14](#v1014) --- [v1.0.15](#v1015) --- [v1.0.16](#v1016) --- [v1.0.17](#v1017) --- [v1.0.18](#v1018) --- [v1.0.19](#v1019) --- [v1.0.20](#v1020) --- [v1.0.21](#v1021)
 
-[v1.1.0](#v110) --- [v1.1.1](#v111)
+[v1.1.0](#v110) --- [v1.1.1](#v111) --- [v1.1.2](#v112)
  
 #### v1.0.0
 
@@ -1954,6 +1956,16 @@ Player is shooting for a red and commits a foul by cue ball hitting a colour bal
 
 #### v1.1.1
 
-+ Reduced the size of the colour balls to try and fix an issue where the the "apply" link for the red ball was being pushed to a new line so it appeared below one of the colour balls.  Not ideal.  It needs to some refinement but it has resolved the issue I described.
++ Reduced the size of the colour balls to try and fix an issue where the the "apply" link for the red ball was being pushed to a new line so it appeared below one of the colour balls.  Not ideal.  It needs to some refinement to it still, but it has resolved the issue I described.
+
+[Back to Top](#comments)
+
+#### v1.1.2
+
++ Completed general improvements to the responsive design that prevents bleeding of the colours onto a new line on smaller screens.
+
++ Reduced lines of code for modal areas on CSS and made them uniform - I prefer the lighter green border than the lighter yellow so I changed them all to look the same.  Next, I studied the penalty point buttons on the Foul+Miss modal areas and improved their styling.
+
++ Finally, to provide some separation between the modals and the rest of the page, I've moved the modals into their own template parts.
 
 [Back to Top](#comments)
