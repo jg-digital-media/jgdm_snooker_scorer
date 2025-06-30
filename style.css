@@ -1,7 +1,7 @@
 /******************************
 
 Snooker Scorer App: 
-Last Update: 30/06/2025 - 13:37
+Last Update: 30/06/2025 - 14:30
 ******************************/
 * {
   padding: 0;
@@ -652,8 +652,7 @@ body footer a:hover {
 .modal-overlay.show {
   display: flex;
 }
-
-.confirm-modal {
+.modal-overlay .confirm-modal {
   background: linear-gradient(145deg, #014819, #016c26);
   border: 2px solid #21a20d;
   border-radius: 12px;
@@ -666,13 +665,12 @@ body footer a:hover {
   animation: modalSlideIn 0.3s ease-out;
 }
 @media (max-width: 560px) {
-  .confirm-modal {
+  .modal-overlay .confirm-modal {
     padding: 20px;
     margin: 20px;
   }
 }
-
-.modal-title {
+.modal-overlay .modal-title {
   color: #e5ff61;
   font-size: 24px;
   font-weight: bold;
@@ -681,36 +679,33 @@ body footer a:hover {
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 @media (max-width: 560px) {
-  .modal-title {
+  .modal-overlay .modal-title {
     font-size: 20px;
   }
 }
-
-.modal-message {
+.modal-overlay .modal-message {
   color: white;
   font-size: 18px;
   margin-bottom: 25px;
   line-height: 1.4;
 }
 @media (max-width: 560px) {
-  .modal-message {
+  .modal-overlay .modal-message {
     font-size: 16px;
   }
 }
-
-.modal-buttons {
+.modal-overlay .modal-buttons {
   display: flex;
   gap: 15px;
   justify-content: center;
 }
 @media (max-width: 560px) {
-  .modal-buttons {
+  .modal-overlay .modal-buttons {
     flex-direction: column;
     gap: 10px;
   }
 }
-
-.modal-btn {
+.modal-overlay .modal-buttons .modal-btn {
   padding: 12px 24px;
   border: none;
   border-radius: 25px;
@@ -721,33 +716,33 @@ body footer a:hover {
   min-width: 100px;
 }
 @media (max-width: 560px) {
-  .modal-btn {
+  .modal-overlay .modal-buttons .modal-btn {
     width: 100%;
   }
 }
-.modal-btn.confirm {
+.modal-overlay .modal-buttons .modal-btn.confirm {
   background: linear-gradient(145deg, #cd0000, #ff4444);
   color: white;
   border: 2px solid #972828;
   box-shadow: 0 4px 8px rgba(205, 0, 0, 0.3);
 }
-.modal-btn.confirm:hover {
+.modal-overlay .modal-buttons .modal-btn.confirm:hover {
   background: linear-gradient(145deg, #ff4444, #cd0000);
   transform: translateY(-2px);
   box-shadow: 0 6px 12px rgba(205, 0, 0, 0.4);
 }
-.modal-btn.cancel {
+.modal-overlay .modal-buttons .modal-btn.cancel {
   background: linear-gradient(145deg, #21a20d, #34ff29);
   color: #014819;
   border: 2px solid #21a20d;
   box-shadow: 0 4px 8px rgba(33, 162, 13, 0.3);
 }
-.modal-btn.cancel:hover {
+.modal-overlay .modal-buttons .modal-btn.cancel:hover {
   background: linear-gradient(145deg, #34ff29, #21a20d);
   transform: translateY(-2px);
   box-shadow: 0 6px 12px rgba(33, 162, 13, 0.4);
 }
-.modal-btn:active {
+.modal-overlay .modal-buttons .modal-btn:active {
   transform: translateY(0);
 }
 
@@ -760,15 +755,14 @@ body footer a:hover {
   border: 2px solid #21a20d;
   border-radius: 5px;
 }
-
-.penalty-selection {
+.foul-miss-modal .penalty-selection {
   text-align: center;
   padding: 15px;
 }
-.penalty-selection .penalty-controls {
+.foul-miss-modal .penalty-selection .penalty-controls {
   gap: 10px;
 }
-.penalty-selection .penalty-controls .penalty-btn {
+.foul-miss-modal .penalty-selection .penalty-controls .penalty-btn {
   width: 39px;
   /* height: 35px; */
   font-size: 18px;
@@ -778,37 +772,36 @@ body footer a:hover {
   padding: 3px;
   cursor: pointer;
 }
-.penalty-selection .penalty-controls .penalty-btn:disabled {
+.foul-miss-modal .penalty-selection .penalty-controls .penalty-btn:disabled {
   background: #fc3535;
   /* border: solid 1px #ee0d0d; */
   cursor: default;
   color: white;
 }
-.penalty-selection .penalty-controls #increase {
+.foul-miss-modal .penalty-selection .penalty-controls #increase {
   border: solid 1px #60f81f;
 }
-.penalty-selection .penalty-controls #decrease {
+.foul-miss-modal .penalty-selection .penalty-controls #decrease {
   background: #e9e948;
   border: solid 1px #ee0d0d;
 }
-.penalty-selection .penalty-controls .penalty-value {
+.foul-miss-modal .penalty-selection .penalty-controls .penalty-value {
   width: 50px;
   height: 50px;
   line-height: 50px;
   font-size: 20px;
 }
-.penalty-selection .penalty-note {
+.foul-miss-modal .penalty-selection .penalty-note {
   border: solid 1px #7fb16f;
 }
-
-.retake-option {
+.foul-miss-modal .retake-option {
   padding: 12px;
 }
-.retake-option label {
+.foul-miss-modal .retake-option label {
   font-size: 14px;
   gap: 8px;
 }
-.retake-option input[type=checkbox] {
+.foul-miss-modal .retake-option input[type=checkbox] {
   width: 18px;
   height: 18px;
 }
