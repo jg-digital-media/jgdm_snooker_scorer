@@ -1,4 +1,4 @@
-console.log("app.js connected - 01-07-2025 - 13:38");
+console.log("app.js connected - 01-07-2025 - 16:23");
 
 // Set the points remaining to 147
 document.getElementById('points_remaining').textContent = '147';
@@ -31,7 +31,6 @@ let lastBreakP2, highestBreakP2, p2Score, applyRedTallyP2;
 
 // Function to disable all interactive elements when the frame is over
 function endFrame() {
-    console.log("Ending frame - disabling all interactive elements");
     
     // Disable all elements with pointer events
     const allInteractiveElements = document.querySelectorAll("*");
@@ -52,7 +51,7 @@ function endFrame() {
                 element.style.opacity = "0.5";
             }
             
-            console.log(`Disabled element: ${element.id || element.tagName}`);
+
         }
     });
     
@@ -63,13 +62,13 @@ function endFrame() {
     if (playerBreaksP1) {
         playerBreaksP1.style.pointerEvents = "none";
         playerBreaksP1.style.opacity = "0.5";
-        console.log("Disabled player 1 breaks element");
+
     }
     
     if (playerBreaksP2) {
         playerBreaksP2.style.pointerEvents = "none";
         playerBreaksP2.style.opacity = "0.5";
-        console.log("Disabled player 2 breaks element");
+
     }
     
     // Hide all apply buttons
@@ -77,7 +76,7 @@ function endFrame() {
     applyButtons.forEach(button => {
         button.style.visibility = "hidden";
         button.style.opacity = "0";
-        console.log(`Hidden apply button: ${button.id}`);
+
     });
     
     // Determine the winner
@@ -140,7 +139,7 @@ function endFrame() {
         document.body.appendChild(frameOverMessage);
     }
     
-    console.log("Frame complete - all elements disabled");
+
 }
 
 // Function to handle player forfeit
@@ -252,21 +251,22 @@ function forfeitFrame(forfeitingPlayer) {
         document.body.appendChild(frameOverMessage);
     }
     
-    console.log(`Frame forfeited by Player ${forfeitingPlayer} - all elements disabled`);
+
 }
 
 // Function to update which balls are enabled/disabled based on game state
 function updateAvailableBalls() {
-    console.log("Updating available balls");
-    console.log(`Current player: ${currentPlayer}, Shooting for red: ${shootingForRed}`);
-    console.log(`Red count: ${redClickCount}, Remaining points: ${remainingPoints}`);
+
+
     
     // If there are no points remaining, end the frame
     if (remainingPoints === 0) {
-        console.log("No points remaining - ending frame");
+
+
         endFrame();
         return;
     } else {
+        
         // Remove the frame over message if it exists
         const existingMessage = document.getElementById("frame-over-message");
         if (existingMessage) {
@@ -358,50 +358,45 @@ function updateAvailableBalls() {
         }
     });
     
-    console.log(`Current player red ball:`, currentPlayerRedBall);
-    console.log(`Current player apply button:`, currentPlayerApplyButton);
+
     
     // Apply game-state-specific restrictions for the current player
     if (shootingForRed) {
-        console.log("Shooting for red - enabling red ball, disabling colors");
+
         
         // If shooting for red, enable red and disable colors
         if (redClickCount < 15) {
             if (currentPlayerRedBall) {
                 currentPlayerRedBall.style.pointerEvents = "auto";
                 currentPlayerRedBall.style.opacity = "1";
-                console.log("Red ball enabled");
+
             }
             if (currentPlayerRedTally) {
                 currentPlayerRedTally.style.pointerEvents = "auto";
                 currentPlayerRedTally.style.opacity = "1";
-                console.log("Red tally enabled");
+
             }
             
             // If there's only one red left, hide the apply button
             if (redClickCount === 14 && currentPlayerApplyButton) {
                 currentPlayerApplyButton.style.visibility = "hidden";
                 currentPlayerApplyButton.style.opacity = "0";
-                console.log("Last red - hiding apply button");
             }
         } else {
             // If all reds are potted, disable red
             if (currentPlayerRedBall) {
                 currentPlayerRedBall.style.pointerEvents = "none";
                 currentPlayerRedBall.style.opacity = "0.5";
-                console.log("All reds potted - disabling red ball");
             }
             if (currentPlayerRedTally) {
                 currentPlayerRedTally.style.pointerEvents = "none";
                 currentPlayerRedTally.style.opacity = "0.5";
-                console.log("All reds potted - disabling red tally");
             }
             
             // Hide the apply button
             if (currentPlayerApplyButton) {
                 currentPlayerApplyButton.style.visibility = "hidden";
                 currentPlayerApplyButton.style.opacity = "0";
-                console.log("All reds potted - hiding apply button");
             }
         }
         
@@ -416,32 +411,29 @@ function updateAvailableBalls() {
                 currentPlayerColorTallies[index].style.opacity = "0.5";
             }
         });
-        console.log("All color balls and tallies disabled");
+
     } else {
-        console.log("Shooting for color - disabling red ball, enabling colors");
         
         // If shooting for color, disable red and enable colors
         if (currentPlayerRedBall) {
             currentPlayerRedBall.style.pointerEvents = "none";
             currentPlayerRedBall.style.opacity = "0.5";
-            console.log("Red ball disabled");
+
         }
         if (currentPlayerRedTally) {
             currentPlayerRedTally.style.pointerEvents = "none";
             currentPlayerRedTally.style.opacity = "0.5";
-            console.log("Red tally disabled");
+
         }
         
         // Hide the apply button when shooting for color
         if (currentPlayerApplyButton) {
             currentPlayerApplyButton.style.visibility = "hidden";
             currentPlayerApplyButton.style.opacity = "0";
-            console.log("Shooting for color - hiding apply button");
         }
         
         // If in final sequence (all reds potted), handle colors differently
         if (redClickCount >= 15 && remainingPoints <= 27) {
-            console.log("In final color sequence");
             
             // In the final sequence, colors must be potted in order
             // Yellow, Green, Brown, Blue, Pink, Black
@@ -449,32 +441,25 @@ function updateAvailableBalls() {
             // Determine which color should be enabled based on remaining points
             if (remainingPoints === 27) {
                 // Only yellow is available (27 points remaining)
-                console.log("Enabling yellow (27 points remaining)");
                 enableOnlyBallAndTally(0, currentPlayerColorBalls, currentPlayerColorTallies);
             } else if (remainingPoints === 25) {
                 // Only green is available (25 points remaining)
-                console.log("Enabling green (25 points remaining)");
                 enableOnlyBallAndTally(1, currentPlayerColorBalls, currentPlayerColorTallies);
             } else if (remainingPoints === 22) {
                 // Only brown is available (22 points remaining)
-                console.log("Enabling brown (22 points remaining)");
                 enableOnlyBallAndTally(2, currentPlayerColorBalls, currentPlayerColorTallies);
             } else if (remainingPoints === 18) {
                 // Only blue is available (18 points remaining)
-                console.log("Enabling blue (18 points remaining)");
                 enableOnlyBallAndTally(3, currentPlayerColorBalls, currentPlayerColorTallies);
             } else if (remainingPoints === 13) {
                 // Only pink is available (13 points remaining)
-                console.log("Enabling pink (13 points remaining)");
                 enableOnlyBallAndTally(4, currentPlayerColorBalls, currentPlayerColorTallies);
             } else if (remainingPoints === 7) {
                 // Only black is available (7 points remaining)
-                console.log("Enabling black (7 points remaining)");
                 enableOnlyBallAndTally(5, currentPlayerColorBalls, currentPlayerColorTallies);
             }
         } else {
             // During normal play, enable all color balls and tallies
-            console.log("Normal play - enabling all color balls and tallies");
             currentPlayerColorBalls.forEach((ball, index) => {
                 if (ball) {
                     ball.style.pointerEvents = "auto";
@@ -493,7 +478,6 @@ function updateAvailableBalls() {
     if (missButton) {
         missButton.style.pointerEvents = "auto";
         missButton.style.opacity = "1";
-        console.log(`Miss button for player ${currentPlayer} enabled`);
     }
 }
 
@@ -526,14 +510,12 @@ function enableOnlyBallAndTally(index, allBalls, allTallies) {
 
 // Function to disable all buttons for a specific player
 function disablePlayerButtons(playerNum) {
-    console.log(`Disabling all buttons for player ${playerNum}`);
     
     // Disable all elements with IDs containing the player number
     const allPlayerElements = document.querySelectorAll(`[id*="p${playerNum}"], [id*="${playerNum === 1 ? 'one' : 'two'}"]`);
     allPlayerElements.forEach(element => {
         element.style.pointerEvents = "none";
         element.style.opacity = "0.5";
-        console.log(`Disabled element: ${element.id}`);
     });
     
     // Specifically disable all tally elements
@@ -541,7 +523,6 @@ function disablePlayerButtons(playerNum) {
     tallyElements.forEach(element => {
         element.style.pointerEvents = "none";
         element.style.opacity = "0.5";
-        console.log(`Disabled tally element: ${element.id}`);
     });
     
     // Specifically disable all pot elements
@@ -549,7 +530,6 @@ function disablePlayerButtons(playerNum) {
     potElements.forEach(element => {
         element.style.pointerEvents = "none";
         element.style.opacity = "0.5";
-        console.log(`Disabled pot element: ${element.id}`);
     });
     
     // Specifically disable the apply button
@@ -558,20 +538,17 @@ function disablePlayerButtons(playerNum) {
         applyButton.style.pointerEvents = "none";
         applyButton.style.opacity = "0";
         applyButton.style.visibility = "hidden";
-        console.log(`Disabled apply button: ${applyButton.id}`);
     }
 }
 
 // Function to enable all buttons for a specific player
 function enablePlayerButtons(playerNum) {
-    console.log(`Enabling buttons for player ${playerNum}`);
     
     // Enable all elements with IDs containing the player number
     const allPlayerElements = document.querySelectorAll(`[id*="p${playerNum}"], [id*="${playerNum === 1 ? 'one' : 'two'}"]`);
     allPlayerElements.forEach(element => {
         element.style.pointerEvents = "auto";
         element.style.opacity = "1";
-        console.log(`Enabled element: ${element.id}`);
     });
     
     // The updateAvailableBalls function will handle specific game-state restrictions
@@ -615,7 +592,6 @@ function switchPlayer(newPlayer) {
     if (redClickCount < 15) {
         // If there are reds left, always shoot for red first
         shootingForRed = true;
-        console.log("Reds available - shooting for red");
     } else if (remainingPoints <= 27) {
         // In the final color sequence
         shootingForRed = false;
@@ -631,13 +607,11 @@ function switchPlayer(newPlayer) {
     inactiveTallies.forEach(tally => {
         tally.style.pointerEvents = "none";
         tally.style.opacity = "0.5";
-        console.log(`Forced disable of inactive tally: ${tally.id}`);
     });
 }
 
 // Function to make color balls available for player 2
 function makeColorBallsAvailableForPlayer2() {
-    console.log("Making color balls available for player 2");
     
     const colorBalls = ["yellow", "green", "brown", "blue", "pink", "black"];
     
@@ -647,7 +621,6 @@ function makeColorBallsAvailableForPlayer2() {
             colorBall.style.visibility = "visible";
             colorBall.style.opacity = "1";
             colorBall.style.pointerEvents = "auto";
-            console.log(`Made ${color} ball available for player 2`);
         }
     });
 }
@@ -1900,7 +1873,6 @@ document.addEventListener("DOMContentLoaded", function() {
                     score += tempRedTallyP2; // Add all reds potted in this shot
                     scoreElement.textContent = score;
                     p2CurrentScore = score;
-                    console.log(`Updated player 2 score to ${score}`);
                 }
                 
                 // 2. Update player 2's break
@@ -1920,7 +1892,6 @@ document.addEventListener("DOMContentLoaded", function() {
                     if (p2CurrentBreak > p2HighestBreak) {
                         p2HighestBreak = p2CurrentBreak;
                         highestBreakElement.textContent = p2HighestBreak;
-                        console.log(`Updated player 2 highest break to ${p2HighestBreak}`);
                     }
                 }
                 
@@ -1929,7 +1900,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 if (pointsRemainingElement) {
                     remainingPoints -= tempRedTallyP2; // Deduct all reds potted in this shot
                     pointsRemainingElement.textContent = remainingPoints;
-                    console.log(`Updated points remaining to ${remainingPoints}`);
                 }
                 
                 // 5. Update player 2's individual red ball total
@@ -1937,7 +1907,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 
                 // 6. Update red click count (total reds potted in frame)
                 redClickCount += tempRedTallyP2;
-                console.log(`Updated total red click count to ${redClickCount}`);
                 
                 // 7. If this is a multi-red shot (tracking for potential future use)
                 if (isMultiRedShot) {
@@ -1981,7 +1950,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 // 14. Update available balls
                 updateAvailableBalls();
                 
-                console.log("Player 2 now shooting for color");
             });
             
             console.log("Added click handler to player 2 apply button");
@@ -2072,7 +2040,6 @@ document.addEventListener("DOMContentLoaded", function() {
             if (p2Score) {
                 p2Score.textContent = p2CurrentScore;
             } else {
-                console.error("Player 2 score element not found");
             }
             
             // Add 2 to current break
@@ -2081,7 +2048,6 @@ document.addEventListener("DOMContentLoaded", function() {
             if (lastBreakP2) {
                 lastBreakP2.textContent = p2CurrentBreak;
             } else {
-                console.error("Player 2 last break element not found");
             }
             
             // Update highest break if needed
@@ -2091,7 +2057,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 if (highestBreakP2) {
                     highestBreakP2.textContent = p2HighestBreak;
                 } else {
-                    console.error("Player 2 highest break element not found");
                 }
             }
             
@@ -2175,7 +2140,6 @@ document.addEventListener("DOMContentLoaded", function() {
             if (p2Score) {
                 p2Score.textContent = p2CurrentScore;
             } else {
-                console.error("Player 2 score element not found");
             }
             
             // Add 3 to current break
@@ -2184,7 +2148,6 @@ document.addEventListener("DOMContentLoaded", function() {
             if (lastBreakP2) {
                 lastBreakP2.textContent = p2CurrentBreak;
             } else {
-                console.error("Player 2 last break element not found");
             }
             
             // Update highest break if needed
@@ -2261,7 +2224,6 @@ document.addEventListener("DOMContentLoaded", function() {
             if (p2Score) {
                 p2Score.textContent = p2CurrentScore;
             } else {
-                console.error("Player 2 score element not found");
             }
             
             // Add 4 to current break
@@ -2270,7 +2232,6 @@ document.addEventListener("DOMContentLoaded", function() {
             if (lastBreakP2) {
                 lastBreakP2.textContent = p2CurrentBreak;
             } else {
-                console.error("Player 2 last break element not found");
             }
             
             // Update highest break if needed
@@ -2280,7 +2241,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 if (highestBreakP2) {
                     highestBreakP2.textContent = p2HighestBreak;
                 } else {
-                    console.error("Player 2 highest break element not found");
                 }
             }
             
@@ -2348,7 +2308,6 @@ document.addEventListener("DOMContentLoaded", function() {
             if (p2Score) {
                 p2Score.textContent = p2CurrentScore;
             } else {
-                console.error("Player 2 score element not found");
             }
             
             // Add 5 to current break
@@ -2357,7 +2316,6 @@ document.addEventListener("DOMContentLoaded", function() {
             if (lastBreakP2) {
                 lastBreakP2.textContent = p2CurrentBreak;
             } else {
-                console.error("Player 2 last break element not found");
             }
             
             // Update highest break if needed
@@ -2434,7 +2392,6 @@ document.addEventListener("DOMContentLoaded", function() {
             if (p2Score) {
                 p2Score.textContent = p2CurrentScore;
             } else {
-                console.error("Player 2 score element not found");
             }
             
             // Add 6 to current break
@@ -2443,7 +2400,6 @@ document.addEventListener("DOMContentLoaded", function() {
             if (lastBreakP2) {
                 lastBreakP2.textContent = p2CurrentBreak;
             } else {
-                console.error("Player 2 last break element not found");
             }
             
             // Update highest break if needed
@@ -2520,7 +2476,6 @@ document.addEventListener("DOMContentLoaded", function() {
             if (p2Score) {
                 p2Score.textContent = p2CurrentScore;
             } else {
-                console.error("Player 2 score element not found");
             }
             
             // Add 7 to current break
@@ -2529,7 +2484,6 @@ document.addEventListener("DOMContentLoaded", function() {
             if (lastBreakP2) {
                 lastBreakP2.textContent = p2CurrentBreak;
             } else {
-                console.error("Player 2 last break element not found");
             }
             
             // Update highest break if needed
