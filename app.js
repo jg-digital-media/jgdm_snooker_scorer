@@ -1,4 +1,4 @@
-console.log("app.js connected - 20-06-2025 - 10:34");
+console.log("app.js connected - 01-07-2025 - 13:38");
 
 // Set the points remaining to 147
 document.getElementById('points_remaining').textContent = '147';
@@ -12,15 +12,10 @@ let p1HighestBreak = 0;
 let p2HighestBreak = 0;
 let remainingPoints = 147;
 let lastBallWasRed = false;
-let consecutiveRedCount = 0;
-let totalRedsPotted = 0;
 let redClickCount = 0;
 let shootingForRed = true;
 let tempRedTally = 0;
 let tempRedTallyP2 = 0; // Temporary tally for current shot
-let p2RedTallyTotal = 0; // Cumulative tally for player 2's reds
-let multiRedShotCount = 0;
-let multiRedShotCountP2 = 0;
 let currentPlayer = 1;
 let lastRedTallyP1 = 0;
 let lastRedTallyP2 = 0;
@@ -312,10 +307,6 @@ function updateAvailableBalls() {
     const blueTallyP2 = document.getElementById("tally---potted--blue-p2");
     const pinkTallyP2 = document.getElementById("tally---potted--pink-p2");
     const blackTallyP2 = document.getElementById("tally---potted--black-p2");
-    
-    // Get miss buttons
-    const missP1 = document.getElementById("pot---miss--one");
-    const missP2 = document.getElementById("pot---miss--two");
     
     // Arrays of all color balls and tallies for both players
     const colorBallsP1 = [yellowBallP1, greenBallP1, brownBallP1, blueBallP1, pinkBallP1, blackBallP1];
@@ -644,6 +635,25 @@ function switchPlayer(newPlayer) {
     });
 }
 
+// Function to make color balls available for player 2
+function makeColorBallsAvailableForPlayer2() {
+    console.log("Making color balls available for player 2");
+    
+    const colorBalls = ["yellow", "green", "brown", "blue", "pink", "black"];
+    
+    colorBalls.forEach(color => {
+        const colorBall = document.getElementById(`pot---${color}--two`);
+        if (colorBall) {
+            colorBall.style.visibility = "visible";
+            colorBall.style.opacity = "1";
+            colorBall.style.pointerEvents = "auto";
+            console.log(`Made ${color} ball available for player 2`);
+        }
+    });
+}
+
+// Helper functions for improved maintainability
+
 // Wait for DOM to be fully loaded before adding event listeners
 document.addEventListener("DOMContentLoaded", function() {
     // Initialize player elements
@@ -793,11 +803,11 @@ document.addEventListener("DOMContentLoaded", function() {
             highestBreakP1.textContent = p1HighestBreak;
         }
         
-        // If this is a multi-red shot, track the extra reds
+        // If this is a multi-red shot (tracking for potential future use)
         if (isMultiRedShot) {
             // Each extra red means one less red+color combo
             // This affects the final calculation to ensure we end with 27 points
-            multiRedShotCount += (tempRedTally - 1);
+            // Note: Multi-red shot tracking removed for simplification
         }
         
         // Update player 1's individual red ball total
@@ -1786,15 +1796,10 @@ document.addEventListener("DOMContentLoaded", function() {
         p2HighestBreak = 0;
         remainingPoints = 147;
         lastBallWasRed = false;
-        consecutiveRedCount = 0;
-        totalRedsPotted = 0;
         redClickCount = 0;
         shootingForRed = true;
         tempRedTally = 0;
         tempRedTallyP2 = 0;
-        p2RedTallyTotal = 0; // Reset player 2's cumulative red tally
-        multiRedShotCount = 0;
-        multiRedShotCountP2 = 0;
         p1RedBallsTotal = 0; // Reset player 1's individual red ball total
         p2RedBallsTotal = 0; // Reset player 2's individual red ball total
         
@@ -1809,11 +1814,8 @@ document.addEventListener("DOMContentLoaded", function() {
         
         // Reset game state variables
         lastBallWasRed = false;
-        consecutiveRedCount = 0;
-        totalRedsPotted = 0;
         redClickCount = 0;
         shootingForRed = true;
-        multiRedShotCount = 0;
         tempRedTally = 0;
         tempRedTallyP2 = 0; // Add temporary tally for player 2
         
@@ -1937,12 +1939,9 @@ document.addEventListener("DOMContentLoaded", function() {
                 redClickCount += tempRedTallyP2;
                 console.log(`Updated total red click count to ${redClickCount}`);
                 
-                // 7. Update player 2's cumulative red tally
-                p2RedTallyTotal += tempRedTallyP2;
-                
-                // 7. If this is a multi-red shot, track the extra reds
+                // 7. If this is a multi-red shot (tracking for potential future use)
                 if (isMultiRedShot) {
-                    multiRedShotCountP2 += (tempRedTallyP2 - 1);
+                    // Note: Multi-red shot tracking removed for simplification
                 }
                 
                 // 8. Store the number of reds potted for miss calculation
@@ -2596,91 +2595,3 @@ document.addEventListener("DOMContentLoaded", function() {
         console.error("Black ball element for player 2 not found in the DOM");
     }
 });
-
-/* document.addEventListener("DOMContentLoaded", function() {
-    // Get elements
-    const pointsRemaining = document.getElementById("points_remaining");
-    const playerOneInput = document.getElementById("player_one");
-    const playerTwoInput = document.getElementById("player_two");
-
-    // Initial points value
-    let totalPoints = 147;
-
-    // Function to update pointsRemaining
-    function updatePointsRemaining() {
-        // Calculate totalPoints based on player inputs
-        totalPoints = 147 - (parseInt(playerOneInput.value) || 0) - (parseInt(playerTwoInput.value) || 0);
-
-        // Ensure totalPoints is not less than 0
-        totalPoints = Math.max(totalPoints, 0);
-
-        // Update pointsRemaining element
-        pointsRemaining.textContent = totalPoints;
-
-        // Enable inputs regardless of the sum
-        playerOneInput.disabled = false;
-        playerTwoInput.disabled = false;
-    }
-
-    // Event listener for player_one input
-    playerOneInput.addEventListener("input", updatePointsRemaining);
-
-    // Event listener for player_two input
-    playerTwoInput.addEventListener("input", updatePointsRemaining);
-});
- */
-
-// Function to make color balls available for player 2
-function makeColorBallsAvailableForPlayer2() {
-    console.log("Making color balls available for player 2");
-    
-    const colorBalls = ["yellow", "green", "brown", "blue", "pink", "black"];
-    
-    colorBalls.forEach(color => {
-        const colorBall = document.getElementById(`pot---${color}--two`);
-        if (colorBall) {
-            colorBall.style.visibility = "visible";
-            colorBall.style.opacity = "1";
-            colorBall.style.pointerEvents = "auto";
-            console.log(`Made ${color} ball available for player 2`);
-        }
-    });
-}
-
-// Helper function to disable red balls when 15 are potted
-function disableRedBalls() {
-    console.log("Disabling all red balls - 15 reds potted");
-    
-    // Disable red ball for player 1
-    const redBallP1 = document.getElementById("pot---red--one");
-    if (redBallP1) {
-        redBallP1.style.pointerEvents = "none";
-        redBallP1.style.opacity = "0.5";
-        redBallP1.style.cursor = "pointer";
-    }
-    
-    // Disable red ball for player 2
-    const redBallP2 = document.getElementById("pot---red--two");
-    if (redBallP2) {
-        redBallP2.style.pointerEvents = "none";
-        redBallP2.style.opacity = "0.5";
-        redBallP2.style.cursor = "pointer";
-    }
-    
-    // Hide apply buttons
-    const applyButtonP1 = document.getElementById("apply_tally---red--p1");
-    if (applyButtonP1) {
-        applyButtonP1.style.visibility = "hidden";
-    }
-    
-    const applyButtonP2 = document.getElementById("apply_tally---red--p2");
-    if (applyButtonP2) {
-        applyButtonP2.style.visibility = "hidden";
-    }
-}
-
-// This function is no longer needed as updateAvailableBalls() handles both players
-
-
-
-// The updateAvailableBalls() function now handles both players correctly
