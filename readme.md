@@ -1,6 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Last Updated: 30/06/2025 - 14:29`
++ `Last Updated: 01/07/2025 - 16:25`
 ## Sections
 
 [Intro](#intro
@@ -1310,7 +1310,7 @@ ayer 2.
 
 [v1.0.0](#v100) --- [v1.0.1](#v101) --- [v1.0.2](#v102) --- [v1.0.3](#v103) --- [v1.0.4](#v104) --- [v1.0.5](#v105) --- [v1.0.6](#v106) --- [v1.0.7](#v107) --- [v1.0.8](#v108) --- [v1.0.9](#v109) --- [v1.0.10](#v1010) --- [v1.0.11](#v1011) --- [v1.0.12](#v1012) --- [v1.0.13](#v1013) --- [v1.0.14](#v1014) --- [v1.0.15](#v1015) --- [v1.0.16](#v1016) --- [v1.0.17](#v1017) --- [v1.0.18](#v1018) --- [v1.0.19](#v1019) --- [v1.0.20](#v1020) --- [v1.0.21](#v1021)
 
-[v1.1.0](#v110) --- [v1.1.1](#v111) --- [v1.1.2](#v112)
+[v1.1.0](#v110) --- [v1.1.1](#v111) --- [v1.1.2](#v112) --- [v1.1.3](#v113)
  
 #### v1.0.0
 
@@ -1967,5 +1967,22 @@ Player is shooting for a red and commits a foul by cue ball hitting a colour bal
 + Reduced lines of code for modal areas on CSS and made them uniform - I prefer the lighter green border than the lighter yellow so I changed them all to look the same.  Next, I studied the penalty point buttons on the Foul+Miss modal areas and improved their styling.
 
 + Finally, to provide some separation between the modals and the rest of the page, I've moved the modals into their own template parts.
+
+[Back to Top](#comments)
+
+#### v1.1.3
+
++ We're now concentrating on reducing the code in the `app.js` and looking for ways to make it easier to read and maintain.  Ideally I would have done this as I was going on. But it's much more tempting, when you're using AI to let it do work for you; let it fix bugs and do the things and examine the results. so I'm afraid that's what I did. As of the start of today (01-07-2025), there are `2687` lines of code in `app.js` including white space, console logs and comments.
+
++ We can do things like putting the code into sections such as declared variables, functions, event listeners, etc.  We can work on seeing where we can have more descriptive names for variables and functions.
+
+I asked sonnet aboiut more ways we can improve the code readability. Once it had suggested variables not used that could be removed it offered future steps to consider
+
+ + Function organisation
+ + Variable grouping
+ + Consider using constant variables
+
++ Finally I removed most of the console logs- particularly verbose error logging ones. and used that to remove up to 100 lines of code. I'm not finished yet as there are still plenty of code comments I can remove or hopefully make more useful. 
+
 
 [Back to Top](#comments)
