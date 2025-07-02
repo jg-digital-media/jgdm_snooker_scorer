@@ -1,7 +1,4 @@
-console.log("app.js connected - 01-07-2025 - 16:23");
-
-// Set the points remaining to 147
-document.getElementById('points_remaining').textContent = '147';
+console.log("app.js connected - 02-07-2025 - 09:54");
 
 // Initialize variables
 let p1CurrentScore = 0;
@@ -28,6 +25,9 @@ let redBallP1, yellowBallP1, greenBallP1, brownBallP1, blueBallP1, pinkBallP1, b
 let redTallyP1, yellowTallyP1, greenTallyP1, brownTallyP1, blueTallyP1, pinkTallyP1, blackTallyP1;
 let lastBreakP1, highestBreakP1, p1Score, applyRedTallyP1;
 let lastBreakP2, highestBreakP2, p2Score, applyRedTallyP2;
+
+// Set the default text content of #points_remaining to 147
+document.getElementById('points_remaining').textContent = '147';
 
 // Function to disable all interactive elements when the frame is over
 function endFrame() {
@@ -357,12 +357,9 @@ function updateAvailableBalls() {
             inactivePlayerColorTallies[index].style.opacity = "0.5";
         }
     });
-    
-
-    
+        
     // Apply game-state-specific restrictions for the current player
     if (shootingForRed) {
-
         
         // If shooting for red, enable red and disable colors
         if (redClickCount < 15) {
@@ -729,6 +726,7 @@ document.addEventListener("DOMContentLoaded", function() {
     
     // shoot attempt - red ball - player 1
     redBallP1.addEventListener("click", function() {
+        
         // Check if we've already clicked the red ball 15 times in total across both players
         if (p1RedBallsTotal + p2RedBallsTotal + tempRedTally + tempRedTallyP2 >= 15) {
             console.log("Maximum number of red ball clicks (15) reached across both players");
@@ -1968,7 +1966,7 @@ document.addEventListener("DOMContentLoaded", function() {
         if (redBall) {
             console.log("Found player 2 red ball element");
             
-                    // Add a simple click handler
+        // Add a simple click handler
         redBall.addEventListener("click", function() {
             console.log("Player 2 red ball clicked");
             
@@ -2382,7 +2380,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     // pink  TODO
-     if (pinkBallP2) {
+    if (pinkBallP2) {
         pinkBallP2.addEventListener("click", function() {
 
             // Add 6 to player 2's score
@@ -2467,7 +2465,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     // black  TODO
-     if (blackBallP2) {
+    if (blackBallP2) {
         blackBallP2.addEventListener("click", function() {
             // Add 7 to player 2's score
             p2CurrentScore += 7;
