@@ -1,4 +1,4 @@
-console.log("app.js connected - 02-07-2025 - 11:17");
+console.log("app.js connected - 02-07-2025 - 11:32");
 
 // Initialize variables
 let p1CurrentScore = 0;
@@ -476,7 +476,6 @@ function forfeitFrame(forfeitingPlayer) {
 
 }
 
-
 // Helper function to enable only one ball and tally and disable others
 function enableOnlyBallAndTally(index, allBalls, allTallies) {
     allBalls.forEach((ball, i) => {
@@ -542,12 +541,12 @@ function enablePlayerButtons(playerNum) {
     
     // Enable all elements with IDs containing the player number
     const allPlayerElements = document.querySelectorAll(`[id*="p${playerNum}"], [id*="${playerNum === 1 ? 'one' : 'two'}"]`);
+
     allPlayerElements.forEach(element => {
+
         element.style.pointerEvents = "auto";
         element.style.opacity = "1";
     });
-    
-    // The updateAvailableBalls function will handle specific game-state restrictions
 }
 
 // Function to switch players in normal play and colour sequence
@@ -638,7 +637,7 @@ document.addEventListener("DOMContentLoaded", function() {
     player2Table.style.visibility = "hidden";
     player2Table.style.opacity = "0";
     
-    // Initially disable all Player 2 buttons
+    // Player 1 starts first - Initially disable all Player 2 buttons
     disablePlayerButtons(2);
     
     // Enable MISS button for player 1, disable for player 2
@@ -650,7 +649,7 @@ document.addEventListener("DOMContentLoaded", function() {
     missP2.style.pointerEvents = "none";
     missP2.style.opacity = "0.5";
     
-    // Get pot ball elements - player 1
+    // Get Ball icon elements - player 1
     redBallP1 = document.getElementById("pot---red--one");
     blackBallP1 = document.getElementById("pot---black--one");
     pinkBallP1 = document.getElementById("pot---pink--one");
@@ -665,7 +664,7 @@ document.addEventListener("DOMContentLoaded", function() {
     highestBreakP1 = document.getElementById("highest---break--p1");
     lastBreakP1 = document.getElementById("last---break--p1");
 
-    // ball potted tally elements for player 1
+    // Get Ball potted tally elements - player 1
     redTallyP1 = document.getElementById("tally---potted--red-p1")
     blackTallyP1 = document.getElementById("tally---potted--black-p1");
     pinkTallyP1 = document.getElementById("tally---potted--pink-p1");
@@ -744,6 +743,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Apply button event listener
     applyRedTallyP1.addEventListener("click", function(event) {
+        
         event.preventDefault(); // Prevent default link behavior
         
         // Only proceed if there are reds to apply
@@ -751,8 +751,7 @@ document.addEventListener("DOMContentLoaded", function() {
             return;
         }
         
-        // Check if this is a multi-red shot (more than 1 red)
-        let isMultiRedShot = tempRedTally > 1;
+
         
         // Add points to player's score (1 point per red)
         p1CurrentScore += tempRedTally;
@@ -768,12 +767,7 @@ document.addEventListener("DOMContentLoaded", function() {
             highestBreakP1.textContent = p1HighestBreak;
         }
         
-        // If this is a multi-red shot (tracking for potential future use)
-        if (isMultiRedShot) {
-            // Each extra red means one less red+color combo
-            // This affects the final calculation to ensure we end with 27 points
-            // Note: Multi-red shot tracking removed for simplification
-        }
+
         
         // Update player 1's individual red ball total
         p1RedBallsTotal += tempRedTally;
@@ -1785,9 +1779,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 event.preventDefault(); // Prevent default link behavior
                 console.log("Player 2 apply button clicked");
                 
-                // Check if this is a multi-red shot
-                let isMultiRedShot = tempRedTallyP2 > 1;
-                
                 // 1. Update player 2's score
                 const scoreElement = document.getElementById("p2---score");
                 if (scoreElement) {
@@ -1831,10 +1822,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 // 6. Update red click count (total reds potted in frame)
                 redClickCount += tempRedTallyP2;
                 
-                // 7. If this is a multi-red shot (tracking for potential future use)
-                if (isMultiRedShot) {
-                    // Note: Multi-red shot tracking removed for simplification
-                }
+
                 
                 // 8. Store the number of reds potted for miss calculation
                 lastRedTallyP2 = tempRedTallyP2;
