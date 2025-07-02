@@ -1,6 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Last Updated: 01/07/2025 - 16:25`
++ `Last Updated: 02/07/2025 - 13:38`
 ## Sections
 
 [Intro](#intro
@@ -1310,7 +1310,7 @@ ayer 2.
 
 [v1.0.0](#v100) --- [v1.0.1](#v101) --- [v1.0.2](#v102) --- [v1.0.3](#v103) --- [v1.0.4](#v104) --- [v1.0.5](#v105) --- [v1.0.6](#v106) --- [v1.0.7](#v107) --- [v1.0.8](#v108) --- [v1.0.9](#v109) --- [v1.0.10](#v1010) --- [v1.0.11](#v1011) --- [v1.0.12](#v1012) --- [v1.0.13](#v1013) --- [v1.0.14](#v1014) --- [v1.0.15](#v1015) --- [v1.0.16](#v1016) --- [v1.0.17](#v1017) --- [v1.0.18](#v1018) --- [v1.0.19](#v1019) --- [v1.0.20](#v1020) --- [v1.0.21](#v1021)
 
-[v1.1.0](#v110) --- [v1.1.1](#v111) --- [v1.1.2](#v112) --- [v1.1.3](#v113)
+[v1.1.0](#v110) --- [v1.1.1](#v111) --- [v1.1.2](#v112) --- [v1.1.3](#v113) --- [v1.1.4](#v114)
  
 #### v1.0.0
 
@@ -1984,5 +1984,15 @@ I asked sonnet aboiut more ways we can improve the code readability. Once it had
 
 + Finally I removed most of the console logs- particularly verbose error logging ones. and used that to remove up to 100 lines of code. I'm not finished yet as there are still plenty of code comments I can remove or hopefully make more useful. 
 
+[Back to Top](#comments)
+
+#### v1.1.4
+
++ I have been carrying out an extensive study of the code. Actions taken include:
+  + Removed `reRackTable()` function that has never been used - uses the reload() function instead.
+  + Remove red pot tracking variables and logic. These were originally created to track the number of times a red ball has been potted in the same shot but in the end they were not used.
+  + Refactored the player 2 colour ball handling with the goals to make the code cleaner, more readable and reduce lines of code  reported saving of 430 lines of code.  There may be more to save for red ball handling for player 2. That took some doing and a bit of back and forth with the AI. Which is a good thing as it kind of replicates the process a coder might actually go through when doing a refactor.
+
+  + After all of this, it looks like we've reduced lines of code to just over `2020` lines of code.
 
 [Back to Top](#comments)
