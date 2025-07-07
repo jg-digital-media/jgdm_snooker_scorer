@@ -1,4 +1,4 @@
-console.log("app.js connected - 02-07-2025 - 13:34");
+console.log("app.js connected - 07-07-2025 - 13:22");
 
 // Initialize variables
 let p1CurrentScore = 0;
@@ -140,11 +140,13 @@ function updateAvailableBalls() {
             if (currentPlayerRedBall) {
                 currentPlayerRedBall.style.pointerEvents = "auto";
                 currentPlayerRedBall.style.opacity = "1";
+                currentPlayerRedBall.style.cursor = "pointer";
 
             }
             if (currentPlayerRedTally) {
                 currentPlayerRedTally.style.pointerEvents = "auto";
                 currentPlayerRedTally.style.opacity = "1";
+                currentPlayerRedTally.style.cursor = "pointer";
 
             }
             
@@ -235,10 +237,12 @@ function updateAvailableBalls() {
                 if (ball) {
                     ball.style.pointerEvents = "auto";
                     ball.style.opacity = "1";
+                    ball.style.cursor = "pointer";
                 }
                 if (currentPlayerColorTallies[index]) {
                     currentPlayerColorTallies[index].style.pointerEvents = "auto";
                     currentPlayerColorTallies[index].style.opacity = "1";
+                    currentPlayerColorTallies[index].style.cursor = "pointer";
                 }
             });
         }
@@ -249,6 +253,7 @@ function updateAvailableBalls() {
     if (missButton) {
         missButton.style.pointerEvents = "auto";
         missButton.style.opacity = "1";
+        missButton.style.cursor = "pointer";
     }
 }
 
@@ -485,9 +490,11 @@ function enableOnlyBallAndTally(index, allBalls, allTallies) {
             if (i === index) {
                 ball.style.pointerEvents = "auto";
                 ball.style.opacity = "1";
+                ball.style.cursor = "pointer";
             } else {
                 ball.style.pointerEvents = "none";
                 ball.style.opacity = "0.5";
+                ball.style.cursor = "default";
             }
         }
     });
@@ -497,9 +504,11 @@ function enableOnlyBallAndTally(index, allBalls, allTallies) {
             if (i === index) {
                 tally.style.pointerEvents = "auto";
                 tally.style.opacity = "1";
+                tally.style.cursor = "pointer";
             } else {
                 tally.style.pointerEvents = "none";
                 tally.style.opacity = "0.5";
+                tally.style.cursor = "default";
             }
         }
     });
@@ -548,6 +557,7 @@ function enablePlayerButtons(playerNum) {
 
         element.style.pointerEvents = "auto";
         element.style.opacity = "1";
+        element.style.cursor = "pointer";
     });
 }
 
@@ -620,6 +630,7 @@ function makeColorBallsAvailableForPlayer2() {
             colorBall.style.visibility = "visible";
             colorBall.style.opacity = "1";
             colorBall.style.pointerEvents = "auto";
+            colorBall.style.cursor = "pointer";
         }
     });
 }
