@@ -1,4 +1,4 @@
-console.log("app.js connected - 07-07-2025 - 13:22");
+console.log("app.js connected - 07-07-2025 - 13:35");
 
 // Initialize variables
 let p1CurrentScore = 0;
@@ -1369,16 +1369,78 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
+    // Re-rack Modal Functions
+    function showRerackModal() {
+        const modal = document.getElementById('rerackModalOverlay');
+        if (modal) {
+            modal.classList.add('show');
+        }
+    }
+
+    function hideRerackModal() {
+        const modal = document.getElementById('rerackModalOverlay');
+        if (modal) {
+            modal.classList.remove('show');
+        }
+    }
+
+    function handleRerackConfirm() {
+        console.log("Re-rack confirmed - reloading page");
+        
+        // Hide the modal
+        hideRerackModal();
+        
+        // Reload the page to reset the game
+        setTimeout(function () {
+            location.reload();
+        }, 500);
+    }
+
+    function handleRerackCancel() {
+        console.log("Re-rack cancelled");
+        
+        // Hide the modal
+        hideRerackModal();
+    }
+
+    // Set up re-rack modal event listeners
+    const rerackModal = document.getElementById('rerackModalOverlay');
+    const rerackConfirm = document.getElementById('rerackModalConfirm');
+    const rerackCancel = document.getElementById('rerackModalCancel');
+
+    if (rerackConfirm) {
+        rerackConfirm.addEventListener('click', handleRerackConfirm);
+    }
+
+    if (rerackCancel) {
+        rerackCancel.addEventListener('click', handleRerackCancel);
+    }
+
+    // Close re-rack modal when clicking outside of it
+    if (rerackModal) {
+        rerackModal.addEventListener('click', function(e) {
+            if (e.target === rerackModal) {
+                handleRerackCancel();
+            }
+        });
+    }
+
     // Close modal with Escape key - Handles all Modals
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
             const forfeitModal = document.getElementById('modalOverlay');
+            const foulModal = document.getElementById('foulModal');
             const foulMissModal = document.getElementById('foulMissModal');
+            const rerackModal = document.getElementById('rerackModalOverlay');
             
             if (forfeitModal && forfeitModal.classList.contains('show')) {
                 handleModalCancel();
+            } else if (foulModal && foulModal.classList.contains('show')) {
+                hideFoulModal();
             } else if (foulMissModal && foulMissModal.classList.contains('show')) {
                 hideFoulMissModal();
+            } else if (rerackModal && rerackModal.classList.contains('show')) {
+                handleRerackCancel();
             }
         }
     });
@@ -1764,9 +1826,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
         event.preventDefault(); // Prevent default link behavior       
 
-        setTimeout(function () {
-            location.reload();
-        }, 1000); 
+        // Show the re-rack confirmation modal instead of immediately reloading
+        showRerackModal();
     });
 
     // Set initial available balls

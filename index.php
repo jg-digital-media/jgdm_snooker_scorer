@@ -9,6 +9,9 @@
 <!-- Foul Penalty Selection Modal (No Retake) -->    
 <?php require "assets/template-parts/part-foul-modal.php"; ?>
 
+<!-- Re-rack Confirmation Modal -->
+<?php require "assets/template-parts/part-rerack-modal.php"; ?>
+
     <main class="interface-container">
 
         <section class="player---points--status">
