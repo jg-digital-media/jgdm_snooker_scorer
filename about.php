@@ -1,4 +1,4 @@
-<?php require "template-parts/inc/header.php"; ?>
+<?php require "assets/template-parts/inc/header.php"; ?>
 
     <main class="interface-container">
 
@@ -77,5 +77,4 @@
             
     </main>
 
-
-<?php require "template-parts/inc/footer.php"; ?>
+<?php require "assets/template-parts/inc/footer.php"; ?>
