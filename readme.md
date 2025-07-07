@@ -1,6 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Last Updated: 02/07/2025 - 13:38`
++ `Last Updated: 07/07/2025 - 13:41`
 ## Sections
 
 [Intro](#intro
@@ -816,7 +816,7 @@ This application is built using the following technologies:
 ## Development
 [Back to Top](#sections)
 
-### Tasks - 207 completed items
+### Tasks - 210 completed items
 
 The development of this application is currently in progress.
 
@@ -1144,13 +1144,14 @@ The development of this application is currently in progress.
 
 + `COMPLETED: 30-06-2025` Tidy up CSS/Sass code.
 
-+ `TODO:` Refactor code generated so far to reduce total lines in the script, make it more readable and easier to maintain.
++ `COMPLETED: 07-07-2025` Refactor code generated so far to reduce total lines in the script, make it more readable and easier to maintain.
+
++ `COMPLETED: 07-07-2025` BUG: Player 2 Cursor pointer missing from red ball icon after the first successful colour pot attempt.
+
++ `COMPLETED: 07-07-2025:` Ask for confirmation before initiating a "re-rack" (new frame)
 
 + `TODO:` MISS buttons do not not always fire correctly. Miss text triggers the action, but not the whole button.
 
-+ `TODO:` Ask for confirmation before initiating a "re-rack" (new frame)
-
-+ `TODO:` BUG: Player 2 Cursor pointer missing from red ball icon after the first successful colour pot attempt.
 
 + `COMPLETED: 24-06-2025` On smaller screens, the "apply" link for red balls bleeds below colour balls that also bleed the line below. Not ideal for clarity about which ball it is linked to.
 
@@ -1310,7 +1311,7 @@ ayer 2.
 
 [v1.0.0](#v100) --- [v1.0.1](#v101) --- [v1.0.2](#v102) --- [v1.0.3](#v103) --- [v1.0.4](#v104) --- [v1.0.5](#v105) --- [v1.0.6](#v106) --- [v1.0.7](#v107) --- [v1.0.8](#v108) --- [v1.0.9](#v109) --- [v1.0.10](#v1010) --- [v1.0.11](#v1011) --- [v1.0.12](#v1012) --- [v1.0.13](#v1013) --- [v1.0.14](#v1014) --- [v1.0.15](#v1015) --- [v1.0.16](#v1016) --- [v1.0.17](#v1017) --- [v1.0.18](#v1018) --- [v1.0.19](#v1019) --- [v1.0.20](#v1020) --- [v1.0.21](#v1021)
 
-[v1.1.0](#v110) --- [v1.1.1](#v111) --- [v1.1.2](#v112) --- [v1.1.3](#v113) --- [v1.1.4](#v114)
+[v1.1.0](#v110) --- [v1.1.1](#v111) --- [v1.1.2](#v112) --- [v1.1.3](#v113) --- [v1.1.4](#v114) --- [v1.1.5](#v115)
  
 #### v1.0.0
 
@@ -1994,5 +1995,15 @@ I asked sonnet aboiut more ways we can improve the code readability. Once it had
   + Refactored the player 2 colour ball handling with the goals to make the code cleaner, more readable and reduce lines of code  reported saving of 430 lines of code.  There may be more to save for red ball handling for player 2. That took some doing and a bit of back and forth with the AI. Which is a good thing as it kind of replicates the process a coder might actually go through when doing a refactor.
 
   + After all of this, it looks like we've reduced lines of code to just over `2020` lines of code.
+
+  #### v1.1.5
+
+  + Fixed an issue where the red ball for player 2 did not display the pointer cursor correctly after a red and a colour are potted for the first time. This insolved more changes to JavaScript properties than I would have thought but that effect has now gone.
+
+  + Fixed an alignment issue with the yellow "Apply" hyperlinks under the red balls (for both players) by reducing the left and right margins to 5px from 10px;
+
+  + I added a new confirmation modal to ask before the user re-racking the table. This provides a safeguard against accidentally re-racking the table and resetting all progress mid frame.
+
+  + Finally I noticed an issue with about.php page not loading. It looks like I simply forget to update the template part paths in the about.php file after a file restructure.  
 
 [Back to Top](#comments)
