@@ -2028,7 +2028,7 @@ I asked sonnet aboiut more ways we can improve the code readability. Once it had
     @app.js @index.php 
     ```
       
-    So what I noticed is that the red ball tally is not being reset to its previous tally if the user clicks it and doesn't aply the number before hitting the MISS button.  So that's 7 points lost from the points available that should not be because of a mistake made.
++ So what I noticed is that the red ball tally is not being reset to its previous tally if the user clicks it and doesn't aply the number before hitting the MISS button.  So that's 7 points lost from the points available that should not be because of a mistake made.
 
 + I put the above chat prompt into Cursor AI with `claude-4-sonnet` and it did the following.
   + When Player 1 clicks MISS - resets tempRedTally to 0
