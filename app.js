@@ -1,4 +1,4 @@
-console.log("app.js connected - 07-07-2025 - 13:35");
+console.log("app.js connected - 29-07-2025 - 12:07");
 
 // Initialize variables
 let p1CurrentScore = 0;
@@ -817,6 +817,23 @@ document.addEventListener("DOMContentLoaded", function() {
     missP1.addEventListener("click", function() {
         console.log("Player 1 miss button clicked");
         
+        // Reset temporary red tally if player missed after clicking red ball but before applying
+        if (tempRedTally > 0) {
+            console.log(`Resetting Player 1 temporary red tally from ${tempRedTally} to 0`);
+            tempRedTally = 0;
+            
+            // Update the red tally display to show only the applied reds
+            redTallyP1.textContent = p1RedBallsTotal > 0 ? p1RedBallsTotal : "&nbsp;";
+            if (p1RedBallsTotal === 0) {
+                redTallyP1.style.visibility = "hidden";
+                redTallyP1.style.opacity = "0";
+            }
+            
+            // Hide the apply button since there's nothing to apply
+            applyRedTallyP1.style.visibility = "hidden";
+            applyRedTallyP1.style.opacity = "0";
+        }
+        
         // Check if this is a miss after the last red (15th red) but NOT during final sequence
         if (!shootingForRed && redClickCount >= 15 && remainingPoints > 27) {
             // Missing the color after the last red - go straight to final sequence
@@ -875,6 +892,29 @@ document.addEventListener("DOMContentLoaded", function() {
     // Add event listeners for miss buttons
     missP2.addEventListener("click", function() {
         console.log("Player 2 miss button clicked");
+        
+        // Reset temporary red tally if player missed after clicking red ball but before applying
+        if (tempRedTallyP2 > 0) {
+            console.log(`Resetting Player 2 temporary red tally from ${tempRedTallyP2} to 0`);
+            tempRedTallyP2 = 0;
+            
+            // Update the red tally display to show only the applied reds
+            const redTallyP2 = document.getElementById("tally---potted--red-p2");
+            if (redTallyP2) {
+                redTallyP2.textContent = p2RedBallsTotal > 0 ? p2RedBallsTotal : "&nbsp;";
+                if (p2RedBallsTotal === 0) {
+                    redTallyP2.style.visibility = "hidden";
+                    redTallyP2.style.opacity = "0";
+                }
+            }
+            
+            // Hide the apply button since there's nothing to apply
+            const applyRedTallyP2 = document.getElementById("apply_tally---red--p2");
+            if (applyRedTallyP2) {
+                applyRedTallyP2.style.visibility = "hidden";
+                applyRedTallyP2.style.opacity = "0";
+            }
+        }
         
         // Check if this is a miss after the last red (15th red) but NOT during final sequence
         if (!shootingForRed && redClickCount >= 15 && remainingPoints > 27) {
@@ -1281,6 +1321,24 @@ document.addEventListener("DOMContentLoaded", function() {
             p1CurrentBreak = 0;
             lastBreakP1.textContent = "0";
             lastRedTallyP1 = 0;
+            
+            // Reset temporary red tally if player fouled after clicking red ball but before applying
+            if (tempRedTally > 0) {
+                console.log(`Resetting Player 1 temporary red tally from ${tempRedTally} to 0 due to foul`);
+                tempRedTally = 0;
+                
+                // Update the red tally display to show only the applied reds
+                redTallyP1.textContent = p1RedBallsTotal > 0 ? p1RedBallsTotal : "&nbsp;";
+                if (p1RedBallsTotal === 0) {
+                    redTallyP1.style.visibility = "hidden";
+                    redTallyP1.style.opacity = "0";
+                }
+                
+                // Hide the apply button since there's nothing to apply
+                applyRedTallyP1.style.visibility = "hidden";
+                applyRedTallyP1.style.opacity = "0";
+            }
+            
             console.log("Reset player 1 current break");
         } else {
             p2CurrentBreak = 0;
@@ -1289,6 +1347,30 @@ document.addEventListener("DOMContentLoaded", function() {
                 lastBreakP2.textContent = "0";
             }
             lastRedTallyP2 = 0;
+            
+            // Reset temporary red tally if player fouled after clicking red ball but before applying
+            if (tempRedTallyP2 > 0) {
+                console.log(`Resetting Player 2 temporary red tally from ${tempRedTallyP2} to 0 due to foul`);
+                tempRedTallyP2 = 0;
+                
+                // Update the red tally display to show only the applied reds
+                const redTallyP2 = document.getElementById("tally---potted--red-p2");
+                if (redTallyP2) {
+                    redTallyP2.textContent = p2RedBallsTotal > 0 ? p2RedBallsTotal : "&nbsp;";
+                    if (p2RedBallsTotal === 0) {
+                        redTallyP2.style.visibility = "hidden";
+                        redTallyP2.style.opacity = "0";
+                    }
+                }
+                
+                // Hide the apply button since there's nothing to apply
+                const applyRedTallyP2 = document.getElementById("apply_tally---red--p2");
+                if (applyRedTallyP2) {
+                    applyRedTallyP2.style.visibility = "hidden";
+                    applyRedTallyP2.style.opacity = "0";
+                }
+            }
+            
             console.log("Reset player 2 current break");
         }
         
