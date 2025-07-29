@@ -1,6 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Last Updated: 29/07/2025 - 12:09`
++ `Last Updated: 29/07/2025 - 12:14`
 ## Sections
 
 [Intro](#intro
@@ -816,7 +816,7 @@ This application is built using the following technologies:
 ## Development
 [Back to Top](#sections)
 
-### Tasks - 210 completed items
+### Tasks - 211 completed items
 
 The development of this application is currently in progress.
 
@@ -1150,17 +1150,18 @@ The development of this application is currently in progress.
 
 + `COMPLETED: 07-07-2025:` Ask for confirmation before initiating a "re-rack" (new frame)
 
-+ `TODO:` BUG: MISS buttons do not not always fire correctly. Miss text triggers the action, but not the whole button.
-
-
 + `COMPLETED: 24-06-2025` On smaller screens, the "apply" link for red balls bleeds below colour balls that also bleed the line below. Not ideal for clarity about which ball it is linked to.
+
++ `COMPLETED: 29-07-2025` BUG: Player 1 clicks "MISS" without applying their Redball pot(s).  
+
+
++ `TODO:` BUG: MISS buttons do not not always fire correctly. Miss text triggers the action, but not the whole button.
 
 + `TODO:` BUG: "Last Break" should not be reset to 0 until a player makes their first successful pot attempt after returning to the table
 
 + `TODO:` Last break for player 1 resets when player 1 misses a pot attempt.  Keep this number until the player makes successful pot after returning to the table.
 ayer 2. 
 
-+ `TODO:` BUG: Player 1 clicks "MISS" without applying their Redball pot(s).  
 
 + `TODO:` BUG: Player 2 colour balls should be disabled when the table is cleared (frame ends - `#points_remaining` = 0 and player 2 has won the game).
 
@@ -1290,7 +1291,7 @@ ayer 2.
 
 + `15` - Foul and Penalty Points are being applied to the opponent player not the player that fouled.  Also active play should revert to the other player -if- that player has not opted to make opponent replay the shot! `Resolved: 20-06-2025`
 
-+ `16` - Player 1 clicks "MISS" without applying their Redball pot(s). 
++ `16` - Player 1 clicks "MISS" without applying their Redball pot(s). `Resolved: 29-07-2025`
 
 + `17` - "Last Break" should not be reset to 0 until a player makes their first successful pot attempt after returning to the table.
 
