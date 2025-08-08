@@ -1,4 +1,4 @@
-console.log("app.js connected - 08-08-2025 - 11:57");
+console.log("app.js connected - 08-08-2025 - 14:11");
 
 // Initialize variables
 let p1CurrentScore = 0;
@@ -860,7 +860,6 @@ document.addEventListener("DOMContentLoaded", function() {
         
         // Reset current break for player 1
         p1CurrentBreak = 0;
-        lastBreakP1.textContent = "0";
         console.log("Reset player 1 current break");
         
         // Force player 2 to shoot for red if there are reds left
@@ -942,10 +941,6 @@ document.addEventListener("DOMContentLoaded", function() {
         
         // Reset current break for player 2
         p2CurrentBreak = 0;
-        const lastBreakP2 = document.getElementById("last---break--p2");
-        if (lastBreakP2) {
-            lastBreakP2.textContent = "0";
-        }
         console.log("Reset player 2 current break");
         
         // Force player 1 to shoot for red if there are reds left
@@ -1318,7 +1313,6 @@ document.addEventListener("DOMContentLoaded", function() {
         // Reset current break for fouling player
         if (foulingPlayer === 1) {
             p1CurrentBreak = 0;
-            lastBreakP1.textContent = "0";
             lastRedTallyP1 = 0;
             
             // Reset temporary red tally if player fouled after clicking red ball but before applying
@@ -1341,10 +1335,6 @@ document.addEventListener("DOMContentLoaded", function() {
             console.log("Reset player 1 current break");
         } else {
             p2CurrentBreak = 0;
-            const lastBreakP2 = document.getElementById("last---break--p2");
-            if (lastBreakP2) {
-                lastBreakP2.textContent = "0";
-            }
             lastRedTallyP2 = 0;
             
             // Reset temporary red tally if player fouled after clicking red ball but before applying
@@ -1944,16 +1934,13 @@ document.addEventListener("DOMContentLoaded", function() {
                     p2CurrentScore = score;
                 }
                 
-                // Update player 2's break
+                // Update player 2's break (use state, not DOM)
+                p2CurrentBreak += tempRedTallyP2;
                 const breakElement = document.getElementById("last---break--p2");
                 if (breakElement) {
-                    let currentBreak = parseInt(breakElement.textContent);
-                    if (isNaN(currentBreak)) currentBreak = 0;
-                    currentBreak += tempRedTallyP2; // Add all reds potted in this shot
-                    breakElement.textContent = currentBreak;
-                    p2CurrentBreak = currentBreak;
-                    console.log(`Updated player 2 break to ${currentBreak}`);
+                    breakElement.textContent = p2CurrentBreak;
                 }
+                console.log(`Updated player 2 break to ${p2CurrentBreak}`);
                 
                 // Update highest break if needed
                 const highestBreakElement = document.getElementById("highest---break--p2");
