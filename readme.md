@@ -1,6 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Last Updated: 08/08/2025 - 14:26`
++ `Last Updated: 08/08/2025 - 14:53`
 ## Sections
 
 [Intro](#intro
@@ -2053,7 +2053,7 @@ I asked sonnet aboiut more ways we can improve the code readability. Once it had
 
   + Secondly, and this was interesting, I was able to use the new 'GPT-5` model rather than `claude-4-sonnet` to improve the "Last Break" display for player 1 and player 2. Rather than the last break count resetting to 0 when play switches between players, it now only resets to 1, when the returning player has a successful shot and thus begins a new break.
 
-  + This was a littlem more challenging and took a little more thinking from both myself and the AI. But it was interesting to look at how the AI modal "things".
+  + This was a little more challenging and took a little more thinking from both myself and the AI. But it was interesting to look at how the AI modal "things".
 
   + Lastly, I updated this note to include new bugs found and completed tasks.
 
