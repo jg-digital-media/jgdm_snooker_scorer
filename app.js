@@ -1,4 +1,4 @@
-console.log("app.js connected - 29-07-2025 - 12:07");
+console.log("app.js connected - 08-08-2025 - 11:57");
 
 // Initialize variables
 let p1CurrentScore = 0;
@@ -35,7 +35,6 @@ function updateAvailableBalls() {
     
     // If there are no points remaining, end the frame
     if (remainingPoints === 0) {
-
 
         endFrame();
         return;
@@ -654,8 +653,8 @@ document.addEventListener("DOMContentLoaded", function() {
     disablePlayerButtons(2);
     
     // Enable MISS button for player 1, disable for player 2
-    missP1 = document.getElementById("tally---potted--miss-p1");
-    missP2 = document.getElementById("tally---potted--miss-p2");
+    missP1 = document.getElementById("pot---miss--one");
+    missP2 = document.getElementById("pot---miss--two");
 
     missP1.style.pointerEvents = "auto";
     missP1.style.opacity = "1";
