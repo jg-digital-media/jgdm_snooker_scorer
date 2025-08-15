@@ -254,7 +254,7 @@ body {
 
                     &:hover {
 
-                        box-shadow: wheat 0 0 2px 2px;
+                        box-shadow: wheat 0 0 5px 4px;
                     }
 
                     p {
@@ -321,6 +321,7 @@ body {
                     p {
 
                         color: complement($display---ball--green);
+                        color: #ffffff;
                     }
 
                 }
@@ -337,6 +338,7 @@ body {
                     p {
 
                         color: complement($display---ball--brown);
+                        color: #4fffff;
                     }
 
                 }
@@ -352,7 +354,8 @@ body {
 
                     p {
 
-                        color: complement($display---ball--blue)
+                        color: complement($display---ball--blue);
+                        color: #ffff8b;
                     }
 
                 }
@@ -393,6 +396,93 @@ body {
                         color: ($col---secondary);                     
                     }
 
+                }
+
+                #pot---red--one,
+                #pot---red--two {
+
+                    &:hover {
+
+                        box-shadow: #ff4343 0px 0px 5px 4px;
+                    }
+                }
+
+                // box shadow on snooker balls on hover
+                #pot---yellow--one,
+                #pot---yellow--two {
+
+
+                    &:hover {
+
+                        box-shadow: #d79c2e 0px 0px 5px 4px;
+                        box-shadow: $display---ball--yellow 0px 0px 5px 4px;
+                        box-shadow: #fff26a 0px 0px 5px 4px;
+                    }
+                }                
+                
+                #pot---green--one,
+                #pot---green--two {
+
+
+                    &:hover {
+
+                        box-shadow: #d79c2e 0px 0px 5px 4px;
+                        box-shadow: lighten($display---ball--green, 6%) 0px 0px 5px 4px;
+                        box-shadow: #00ff00 0px 0px 5px 4px;
+                    }
+                }              
+                
+                #pot---brown--one,
+                #pot---brown--two {
+
+
+                    &:hover {
+
+                        box-shadow: #d79c2e 0px 0px 5px 4px;
+                        box-shadow: lighten($display---ball--brown, 6%) 0px 0px 5px 4px;
+                        box-shadow: #ff5555 0px 0px 5px 4px;
+                        
+                    }
+                }
+                              
+                
+                #pot---blue--one,
+                #pot---blue--two {
+
+
+                    &:hover {
+
+                        box-shadow: #d79c2e 0px 0px 5px 4px;
+                        box-shadow: lighten($display---ball--blue, 6%) 0px 0px 5px 4px;
+                        box-shadow: lighten(#4095ff, 6%) 0px 0px 5px 4px;
+                        
+                    }
+                }
+                              
+                
+                #pot---pink--one,
+                #pot---pink--two {
+
+
+                    &:hover {
+
+                        box-shadow: #d79c2e 0px 0px 5px 4px;
+                        box-shadow: $display---ball--pink 0px 0px 5px 4px;
+                    }
+                }
+
+                              
+                
+                #pot---black--one,
+                #pot---black--two {
+
+
+                    &:hover {
+
+                        box-shadow: #d79c2e 0px 0px 5px 4px;
+                        box-shadow: $display---ball--black 0px 0px 5px 4px;
+                        box-shadow: #aba3a3 0px 0px 5px 4px;
+                    }
                 }
 
                 a#apply_tally---red--p1,

@@ -1,7 +1,7 @@
 /******************************
 
 Snooker Scorer App: 
-Last Update: 07/07/2025 - 13:20
+Last Update: 15/08/2025 - 15:15
 ******************************/
 * {
   padding: 0;
@@ -216,7 +216,7 @@ body main.interface-container .player---section .player---potting .player---pot-
   }
 }
 body main.interface-container .player---section .player---potting .player---pot--score:hover {
-  box-shadow: wheat 0 0 2px 2px;
+  box-shadow: wheat 0 0 5px 4px;
 }
 body main.interface-container .player---section .player---potting .player---pot--score p {
   position: relative;
@@ -261,6 +261,7 @@ body main.interface-container .player---section .player---potting .player---pot-
 }
 body main.interface-container .player---section .player---potting .player---pot--green p {
   color: purple;
+  color: #ffffff;
 }
 body main.interface-container .player---section .player---potting .player---pot--brown {
   background: brown;
@@ -270,6 +271,7 @@ body main.interface-container .player---section .player---potting .player---pot-
 }
 body main.interface-container .player---section .player---potting .player---pot--brown p {
   color: #2aa5a5;
+  color: #4fffff;
 }
 body main.interface-container .player---section .player---potting .player---pot--blue {
   background: blue;
@@ -279,6 +281,7 @@ body main.interface-container .player---section .player---potting .player---pot-
 }
 body main.interface-container .player---section .player---potting .player---pot--blue p {
   color: yellow;
+  color: #ffff8b;
 }
 body main.interface-container .player---section .player---potting .player---pot--pink {
   background: pink;
@@ -301,6 +304,45 @@ body main.interface-container .player---section .player---potting .player---pot-
 body main.interface-container .player---section .player---potting .player---pot--black p {
   color: black;
   color: white;
+}
+body main.interface-container .player---section .player---potting #pot---red--one:hover,
+body main.interface-container .player---section .player---potting #pot---red--two:hover {
+  box-shadow: #ff4343 0px 0px 5px 4px;
+}
+body main.interface-container .player---section .player---potting #pot---yellow--one:hover,
+body main.interface-container .player---section .player---potting #pot---yellow--two:hover {
+  box-shadow: #d79c2e 0px 0px 5px 4px;
+  box-shadow: yellow 0px 0px 5px 4px;
+  box-shadow: #fff26a 0px 0px 5px 4px;
+}
+body main.interface-container .player---section .player---potting #pot---green--one:hover,
+body main.interface-container .player---section .player---potting #pot---green--two:hover {
+  box-shadow: #d79c2e 0px 0px 5px 4px;
+  box-shadow: #009f00 0px 0px 5px 4px;
+  box-shadow: #00ff00 0px 0px 5px 4px;
+}
+body main.interface-container .player---section .player---potting #pot---brown--one:hover,
+body main.interface-container .player---section .player---potting #pot---brown--two:hover {
+  box-shadow: #d79c2e 0px 0px 5px 4px;
+  box-shadow: #bd3030 0px 0px 5px 4px;
+  box-shadow: #ff5555 0px 0px 5px 4px;
+}
+body main.interface-container .player---section .player---potting #pot---blue--one:hover,
+body main.interface-container .player---section .player---potting #pot---blue--two:hover {
+  box-shadow: #d79c2e 0px 0px 5px 4px;
+  box-shadow: #1f1fff 0px 0px 5px 4px;
+  box-shadow: #5fa6ff 0px 0px 5px 4px;
+}
+body main.interface-container .player---section .player---potting #pot---pink--one:hover,
+body main.interface-container .player---section .player---potting #pot---pink--two:hover {
+  box-shadow: #d79c2e 0px 0px 5px 4px;
+  box-shadow: pink 0px 0px 5px 4px;
+}
+body main.interface-container .player---section .player---potting #pot---black--one:hover,
+body main.interface-container .player---section .player---potting #pot---black--two:hover {
+  box-shadow: #d79c2e 0px 0px 5px 4px;
+  box-shadow: #000000 0px 0px 5px 4px;
+  box-shadow: #aba3a3 0px 0px 5px 4px;
 }
 body main.interface-container .player---section .player---potting a#apply_tally---red--p1,
 body main.interface-container .player---section .player---potting a#apply_tally---red--p2 {
