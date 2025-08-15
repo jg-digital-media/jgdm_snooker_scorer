@@ -1,6 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Last Updated: 08/08/2025 - 14:53`
++ `Last Updated: 15/08/2025 - 15:48`
 ## Sections
 
 [Intro](#intro
@@ -816,7 +816,7 @@ This application is built using the following technologies:
 ## Development
 [Back to Top](#sections)
 
-### Tasks - 214 completed items
+### Tasks - 217 completed items
 
 The development of this application is currently in progress.
 
@@ -1160,16 +1160,16 @@ The development of this application is currently in progress.
 
 + `COMPLETED: 08-08-2025` It's possible, however unlikely it might be that a player can pot a colour ball less than 16 times, including the colour sequence. A 147 Break (15 reds, 15 of a single colour and the colour sequence e.g. 15 Reds, 15 Yellows, Yellow, Green, Brown, Blue, Pink, Black)
 
-+ `TODO:` BUG: "Last Break" should not be reset to 0 until a player makes their first successful pot attempt after returning to the table
++ `COMPLETED: 15-08-2025` BUG: "Last Break" should not be reset to 0 until a player makes their first successful pot attempt after returning to the table
 
-+ `TODO:` Last break for player 1 resets when player 1 misses a pot attempt.  Keep this number until the player makes successful pot after returning to the table.
-ayer 2. 
++ `COMPLETED: 15-08-2025` Last break for player 1 resets when player 1 misses a pot attempt. Keep this number until the player makes successful pot after returning to the table.
 
-+ `TODO:` BUG: Player 2 colour balls should be disabled when the table is cleared (frame ends - `#points_remaining` = 0 and player 2 has won the game).
++ `COMPLETED: 15-08-2025` Player 2 colour balls should be disabled when the table is cleared (frame ends - `#points_remaining` = 0 and player 2 has won the game).
+
++ `TODO:` Change the styling of the snooker ball icons so they stand out more - more visual clarity required against the main background and also as disabled elements. 
 
 + `TODO:` "Frame Complete" Tooltip can probably be dismissed automatically after a given number of seconds - e.g. 5 seconds.    
 
-+ `TODO:` Change the styling of the snooker ball icons so they stand out more - more visual clarity required against the main background and also as disabled elements. 
 
 + `TODO:` Highlight the next ball to be played in the colour sequence with the same CSS border that appears on hover. 
 
@@ -1297,9 +1297,9 @@ ayer 2.
 
 + `16` - Player 1 clicks "MISS" without applying their Redball pot(s). `Resolved: 29-07-2025`
 
-+ `17` - MISS buttons do not not always fire correctly. Miss text triggers the action, but not the whole button.`Resolved: 08-08-2025`
++ `17` - MISS buttons do not not always fire correctly. Miss text triggers the action, but not the whole button. `Resolved: 08-08-2025`
 
-+ `18` - "Last Break" should not be reset to 0 until a player makes their first successful pot attempt after returning to the table.
++ `18` - "Last Break" should not be reset to 0 until a player makes their first successful pot attempt after returning to the table. `Resolved: 15-08-2025`
 
 + `19` - Players apply 2 successful red ball scores and then miss on following colour. A reduction of 16 points should be applied to `#points_remaining` (The colour not shot for followed by the missed colour)
 
@@ -1320,7 +1320,7 @@ ayer 2.
 
 [v1.0.0](#v100) --- [v1.0.1](#v101) --- [v1.0.2](#v102) --- [v1.0.3](#v103) --- [v1.0.4](#v104) --- [v1.0.5](#v105) --- [v1.0.6](#v106) --- [v1.0.7](#v107) --- [v1.0.8](#v108) --- [v1.0.9](#v109) --- [v1.0.10](#v1010) --- [v1.0.11](#v1011) --- [v1.0.12](#v1012) --- [v1.0.13](#v1013) --- [v1.0.14](#v1014) --- [v1.0.15](#v1015) --- [v1.0.16](#v1016) --- [v1.0.17](#v1017) --- [v1.0.18](#v1018) --- [v1.0.19](#v1019) --- [v1.0.20](#v1020) --- [v1.0.21](#v1021)
 
-[v1.1.0](#v110) --- [v1.1.1](#v111) --- [v1.1.2](#v112) --- [v1.1.3](#v113) --- [v1.1.4](#v114) --- [v1.1.5](#v115) --- [v1.1.6](#v116) --- [v1.1.7](#v117)
+[v1.1.0](#v110) --- [v1.1.1](#v111) --- [v1.1.2](#v112) --- [v1.1.3](#v113) --- [v1.1.4](#v114) --- [v1.1.5](#v115) --- [v1.1.6](#v116) --- [v1.1.7](#v117) --- [v1.1.8](#v118)
  
 #### v1.0.0
 
@@ -1986,7 +1986,7 @@ Player is shooting for a red and commits a foul by cue ball hitting a colour bal
 
 + We can do things like putting the code into sections such as declared variables, functions, event listeners, etc.  We can work on seeing where we can have more descriptive names for variables and functions.
 
-I asked sonnet aboiut more ways we can improve the code readability. Once it had suggested variables not used that could be removed it offered future steps to consider
++ I asked sonnet aboiut more ways we can improve the code readability. Once it had suggested variables not used that could be removed it offered future steps to consider
 
  + Function organisation
  + Variable grouping
@@ -2005,19 +2005,23 @@ I asked sonnet aboiut more ways we can improve the code readability. Once it had
 
   + After all of this, it looks like we've reduced lines of code to just over `2020` lines of code.
 
+[Back to Top](#comments)
+
  #### v1.1.5
 
-  + Fixed an issue where the red ball for player 2 did not display the pointer cursor correctly after a red and a colour are potted for the first time. This insolved more changes to JavaScript properties than I would have thought but that effect has now gone.
++ Fixed an issue where the red ball for player 2 did not display the pointer cursor correctly after a red and a colour are potted for the first time. This insolved more changes to JavaScript properties than I would have thought but that effect has now gone.
 
-  + Fixed an alignment issue with the yellow "Apply" hyperlinks under the red balls (for both players) by reducing the left and right margins to 5px from 10px;
++ Fixed an alignment issue with the yellow "Apply" hyperlinks under the red balls (for both players) by reducing the left and right margins to 5px from 10px;
 
-  + I added a new confirmation modal to ask before the user re-racking the table. This provides a safeguard against accidentally re-racking the table and resetting all progress mid frame.
++ I added a new confirmation modal to ask before the user re-racking the table. This provides a safeguard against accidentally re-racking the table and resetting all progress mid frame.
 
-  + Finally I noticed an issue with about.php page not loading. It looks like I simply forget to update the template part paths in the about.php file after a file restructure.  
++ Finally I noticed an issue with about.php page not loading. It looks like I simply forget to update the template part paths in the about.php file after a file restructure.  
+  
+[Back to Top](#comments)
 
 #### v1.1.6
 
-  + Used this chat prompt to address an issue. 
++ Used this chat prompt to address an issue. 
 
     ```
     There's a bug in the app where a player might select to hit a red ball then MISS   on that.  This means that the tally goes up by 1 but a red score is never applied. Points are missed out on that shouldn't be.  
@@ -2033,9 +2037,9 @@ I asked sonnet aboiut more ways we can improve the code readability. Once it had
     @app.js @index.php 
     ```
       
-  + So what I noticed is that the red ball tally is not being reset to its previous tally if the user clicks it and doesn't aply the number before hitting the MISS button.  So that's 7 points lost from the points available that should not be because of a mistake made.
++ So what I noticed is that the red ball tally is not being reset to its previous tally if the user clicks it and doesn't aply the number before hitting the MISS button.  So that's 7 points lost from the points available that should not be because of a mistake made.
 
-  + I put the above chat prompt into Cursor AI with `claude-4-sonnet` and it did the following.
++ I put the above chat prompt into Cursor AI with `claude-4-sonnet` and it did the following.
     + When Player 1 clicks MISS - resets tempRedTally to 0
     + When Player 2 clicks MISS - resets tempRedTallyP2 to 0.  Since tempRedTally's for both players are temporary by nature temporaraily add to the current tally.  `7 + number of temp clicks e.g.2 - number of temp clicks = 7`
   + When either player commits a foul - resets the appropriate temporary tally to 0
@@ -2046,15 +2050,22 @@ I asked sonnet aboiut more ways we can improve the code readability. Once it had
 
   + I had thought about doing the same thing with forfeit buttons but that isn't necessary since a forfeit doesn't represent an attempted shot.
 
+[Back to Top](#comments)
 
 #### v1.1.7
 
-  + A few fixes made today. First, I fixed a little cosmetic bug where some attempts to trigger "MISS" buttons were not successful because the trigger element was the button content as opposed to the element itself. In the end simply switching to the correct ID attribute was enough to do this without affecting the rest of the application flow.
++ A few fixes made today. First, I fixed a little cosmetic bug where some attempts to trigger "MISS" buttons were not successful because the trigger element was the button content as opposed to the element itself. In the end simply switching to the correct ID attribute was enough to do this without affecting the rest of the application flow.
 
-  + Secondly, and this was interesting, I was able to use the new 'GPT-5` model rather than `claude-4-sonnet` to improve the "Last Break" display for player 1 and player 2. Rather than the last break count resetting to 0 when play switches between players, it now only resets to 1, when the returning player has a successful shot and thus begins a new break.
++ Secondly, and this was interesting, I was able to use the new 'GPT-5` model rather than `claude-4-sonnet` to improve the "Last Break" display for player 1 and player 2. Rather than the last break count resetting to 0 when play switches between players, it now only resets to 1, when the returning player has a successful shot and thus begins a new break.
 
-  + This was a little more challenging and took a little more thinking from both myself and the AI. But it was interesting to look at how the AI modal "things".
++ This was a little more challenging and took a little more thinking from both myself and the AI. But it was interesting to look at how the AI modal "things".
 
-  + Lastly, I updated this note to include new bugs found and completed tasks.
++ Lastly, I updated this note to include new bugs found and completed tasks.
+
+[Back to Top](#comments)
+
+#### v1.1.8
+
++ Spent time some improving the box shadows on the snooker ball icons which are now specific to each colour rather than just the one box shadow colour for all of them..
 
 [Back to Top](#comments)
