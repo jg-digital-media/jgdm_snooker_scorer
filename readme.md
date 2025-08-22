@@ -1,6 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Last Updated: 15/08/2025 - 15:48`
++ `Last Updated: 22/08/2025 - 12:41`
 ## Sections
 
 [Intro](#intro
@@ -816,7 +816,7 @@ This application is built using the following technologies:
 ## Development
 [Back to Top](#sections)
 
-### Tasks - 217 completed items
+### Tasks - 220 completed items
 
 The development of this application is currently in progress.
 
@@ -1166,10 +1166,11 @@ The development of this application is currently in progress.
 
 + `COMPLETED: 15-08-2025` Player 2 colour balls should be disabled when the table is cleared (frame ends - `#points_remaining` = 0 and player 2 has won the game).
 
-+ `TODO:` Change the styling of the snooker ball icons so they stand out more - more visual clarity required against the main background and also as disabled elements. 
++ `COMPLETED: 15-08-2025:` Change the styling of the snooker ball icons so they stand out more - more visual clarity required against the main background and also as disabled elements. 
 
-+ `TODO:` "Frame Complete" Tooltip can probably be dismissed automatically after a given number of seconds - e.g. 5 seconds.    
++ `COMPLETED: 15-08-2025:` "Frame Complete" Tooltip can probably be dismissed automatically after a given number of seconds - e.g. 5 seconds.   
 
++ `COMPLETED: 15-08-2025:` "Frame Complete" Tooltip dismissable with an X/Close button.   
 
 + `TODO:` Highlight the next ball to be played in the colour sequence with the same CSS border that appears on hover. 
 
@@ -2066,6 +2067,14 @@ Player is shooting for a red and commits a foul by cue ball hitting a colour bal
 
 #### v1.1.8
 
-+ Spent time some improving the box shadows on the snooker ball icons which are now specific to each colour rather than just the one box shadow colour for all of them..
++ Spent time some improving the box shadows on the snooker ball icons which are now specific to each colour rather than just the one box shadow colour for all of them.
+
+#### v1.1.9
+
++ In this update, I concentrated on a modal message for ending the frame and frame forfeits, specifically allowing he user to dismiss the messages once the user has read them.  Once I'd taken care of the styling and improved that (adding a linear gradient background), I managed to add a button to the modals.
+
++ This did create an issue. Once the messages were dismissed, the user was unable to click on the buttons to continue the game or re-rack the table. When the frame ends, all interactive elements are disabled (including the "Re-rack" button). Cursor attempted to get around this by adding a rerack button to the modal.  This didn't work either, as only the main rerack button did anything, and no buttons in the modal were clickable.
+
++ I suggested removing the edits Cursor made by re-creating the table on dismissing the modal and simply reloading the page when modals are dismissed. This works for us as they only come into play when the frame ends. There may be more work to be done in scoreboarding, but that's for another time.
 
 [Back to Top](#comments)
