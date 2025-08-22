@@ -1198,3 +1198,50 @@ body {
     }
     
 }
+
+/* Close button styles for frame-over-message modal */
+#frame-over-message {
+    
+    button[onclick*="remove"] {
+        position: absolute !important;
+        top: 10px !important;
+        right: 15px !important;
+        width: 30px !important;
+        height: 30px !important;
+        background-color: rgba(255, 255, 255, 0.2) !important;
+        color: white !important;
+        border: 2px solid rgba(255, 255, 255, 0.3) !important;
+        border-radius: 50% !important;
+        font-size: 18px !important;
+        font-weight: bold !important;
+        cursor: pointer !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        transition: all 0.2s ease !important;
+        z-index: 1001 !important;
+
+        :hover {
+
+            background-color: rgba(255, 255, 255, 0.3) !important;
+            border-color: rgba(255, 255, 255, 0.5) !important;
+            transform: scale(1.1) !important;
+        }
+    }
+}
+
+@media (max-width: 620px) {
+  #frame-over-message {
+    width: 78%;
+    margin: 0 auto;
+  }
+  
+  /* Adjust close button for mobile */
+  #frame-over-message button[onclick*="remove"] {
+    top: 8px !important;
+    right: 12px !important;
+    width: 28px !important;
+    height: 28px !important;
+    font-size: 16px !important;
+  }
+}
