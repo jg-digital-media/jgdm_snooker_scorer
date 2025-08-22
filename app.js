@@ -1,4 +1,4 @@
-console.log("app.js connected - 22-08-2025 - 11:58");
+console.log("app.js connected - 22-08-2025 - 12:24");
 
 // Initialize variables
 let p1CurrentScore = 0;
@@ -331,6 +331,41 @@ function endFrame() {
     breakInfo.style.fontSize = "16px";
     frameOverMessage.appendChild(breakInfo);
     
+    // Add a close button to the top right
+    const closeButton = document.createElement("button");
+    closeButton.textContent = "×";
+    closeButton.style.position = "absolute";
+    closeButton.style.top = "10px";
+    closeButton.style.right = "15px";
+    closeButton.style.width = "30px";
+    closeButton.style.height = "30px";
+    closeButton.style.backgroundColor = "rgba(255, 255, 255, 0.2)";
+    closeButton.style.color = "white";
+    closeButton.style.border = "2px solid rgba(255, 255, 255, 0.3)";
+    closeButton.style.borderRadius = "50%";
+    closeButton.style.fontSize = "18px";
+    closeButton.style.fontWeight = "bold";
+    closeButton.style.cursor = "pointer";
+    closeButton.style.display = "flex";
+    closeButton.style.alignItems = "center";
+    closeButton.style.justifyContent = "center";
+    closeButton.style.transition = "all 0.2s ease";
+    closeButton.onmouseover = function() {
+        this.style.backgroundColor = "rgba(255, 255, 255, 0.3)";
+        this.style.borderColor = "rgba(255, 255, 255, 0.5)";
+    };
+    closeButton.onmouseout = function() {
+        this.style.backgroundColor = "rgba(255, 255, 255, 0.2)";
+        this.style.borderColor = "rgba(255, 255, 255, 0.3)";
+    };
+    closeButton.onclick = function() {
+        const modal = document.getElementById("frame-over-message");
+        if (modal) {
+            modal.remove();
+        }
+    };
+    frameOverMessage.appendChild(closeButton);
+
     // Add a new frame button
     const newFrameButton = document.createElement("button");
     newFrameButton.textContent = "Start New Frame";
@@ -447,6 +482,41 @@ function forfeitFrame(forfeitingPlayer) {
     breakInfo.style.fontSize = "16px";
     frameOverMessage.appendChild(breakInfo);
     
+    // Add a close button to the top right
+    const closeButton = document.createElement("button");
+    closeButton.textContent = "×";
+    closeButton.style.position = "absolute";
+    closeButton.style.top = "10px";
+    closeButton.style.right = "15px";
+    closeButton.style.width = "30px";
+    closeButton.style.height = "30px";
+    closeButton.style.backgroundColor = "rgba(255, 255, 255, 0.2)";
+    closeButton.style.color = "white";
+    closeButton.style.border = "2px solid rgba(255, 255, 255, 0.3)";
+    closeButton.style.borderRadius = "50%";
+    closeButton.style.fontSize = "18px";
+    closeButton.style.fontWeight = "bold";
+    closeButton.style.cursor = "pointer";
+    closeButton.style.display = "flex";
+    closeButton.style.alignItems = "center";
+    closeButton.style.justifyContent = "center";
+    closeButton.style.transition = "all 0.2s ease";
+    closeButton.onmouseover = function() {
+        this.style.backgroundColor = "rgba(255, 255, 255, 0.3)";
+        this.style.borderColor = "rgba(255, 255, 255, 0.5)";
+    };
+    closeButton.onmouseout = function() {
+        this.style.backgroundColor = "rgba(255, 255, 255, 0.2)";
+        this.style.borderColor = "rgba(255, 255, 255, 0.3)";
+    };
+    closeButton.onclick = function() {
+        const modal = document.getElementById("frame-over-message");
+        if (modal) {
+            modal.remove();
+        }
+    };
+    frameOverMessage.appendChild(closeButton);
+
     // Add a new frame button
     const newFrameButton = document.createElement("button");
     newFrameButton.textContent = "Start New Frame";
