@@ -1,4 +1,4 @@
-console.log("app.js connected - 08-08-2025 - 14:11");
+console.log("app.js connected - 22-08-2025 - 11:58");
 
 // Initialize variables
 let p1CurrentScore = 0;
@@ -359,7 +359,10 @@ function endFrame() {
     frameOverMessage.style.fontSize = "24px";
     frameOverMessage.style.textAlign = "center";
     frameOverMessage.style.zIndex = "1000";
-    frameOverMessage.style.boxShadow = "0 0 20px rgba(255, 255, 255, 0.3)";
+    frameOverMessage.style.boxShadow = "#fff041 0px 0px 9px 4px";;
+    frameOverMessage.style.background = "linear-gradient(145deg, #014819, #1ea34c)";
+    frameOverMessage.style.border = "4px solid #fff041";
+    // border: 2px solid #21a20d;
     
     // Only add the message if it doesn't already exist
     if (!document.getElementById("frame-over-message")) {
@@ -425,8 +428,9 @@ function forfeitFrame(forfeitingPlayer) {
     const forfeitInfo = document.createElement("div");
     forfeitInfo.textContent = `Player ${forfeitingPlayer} forfeited the frame`;
     forfeitInfo.style.marginTop = "10px";
-    forfeitInfo.style.fontSize = "16px";
-    forfeitInfo.style.color = "#ff6b6b";
+    forfeitInfo.style.fontSize = "20px";
+    forfeitInfo.style.fontWeight = "bold";
+    forfeitInfo.style.color = "#ffec03";
     frameOverMessage.appendChild(forfeitInfo);
     
     // Add score information
@@ -471,7 +475,10 @@ function forfeitFrame(forfeitingPlayer) {
     frameOverMessage.style.fontSize = "24px";
     frameOverMessage.style.textAlign = "center";
     frameOverMessage.style.zIndex = "1000";
-    frameOverMessage.style.boxShadow = "0 0 20px rgba(255, 255, 255, 0.3)";
+    frameOverMessage.style.boxShadow = "#fff041 0px 0px 9px 4px";;
+    frameOverMessage.style.background = "linear-gradient(145deg, #014819, #1ea34c)";
+    frameOverMessage.style.border = "4px solid #fff041";
+    //border: 2px solid #21a20d;
     
     // Only add the message if it doesn't already exist
     if (!document.getElementById("frame-over-message")) {
