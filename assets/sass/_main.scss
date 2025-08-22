@@ -1186,3 +1186,15 @@ body {
     }
 
 }
+
+
+#frame-over-message {
+
+
+    @media ( max-width: $breakpoint---m ) {
+
+        width: 78%;
+        margin: 0 auto;
+    }
+    
+}
