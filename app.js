@@ -1,4 +1,4 @@
-console.log("app.js connected - 22-08-2025 - 12:24");
+console.log("app.js connected - 22-08-2025 - 12:37");
 
 // Initialize variables
 let p1CurrentScore = 0;
@@ -358,11 +358,10 @@ function endFrame() {
         this.style.backgroundColor = "rgba(255, 255, 255, 0.2)";
         this.style.borderColor = "rgba(255, 255, 255, 0.3)";
     };
+
     closeButton.onclick = function() {
-        const modal = document.getElementById("frame-over-message");
-        if (modal) {
-            modal.remove();
-        }
+        // Simply reload the page to restore full interface functionality
+        location.reload();
     };
     frameOverMessage.appendChild(closeButton);
 
@@ -510,10 +509,8 @@ function forfeitFrame(forfeitingPlayer) {
         this.style.borderColor = "rgba(255, 255, 255, 0.3)";
     };
     closeButton.onclick = function() {
-        const modal = document.getElementById("frame-over-message");
-        if (modal) {
-            modal.remove();
-        }
+        // Simply reload the page to restore full interface functionality
+        location.reload();
     };
     frameOverMessage.appendChild(closeButton);
 
