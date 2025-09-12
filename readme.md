@@ -1,6 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Last Updated: 22/08/2025 - 16:22`
++ `Last Updated: 22/08/2025 - 16:29`
 ## Sections
 
 [Intro](#intro
@@ -1324,7 +1324,7 @@ The development of this application is currently in progress.
 
 [v1.0.0](#v100) --- [v1.0.1](#v101) --- [v1.0.2](#v102) --- [v1.0.3](#v103) --- [v1.0.4](#v104) --- [v1.0.5](#v105) --- [v1.0.6](#v106) --- [v1.0.7](#v107) --- [v1.0.8](#v108) --- [v1.0.9](#v109) --- [v1.0.10](#v1010) --- [v1.0.11](#v1011) --- [v1.0.12](#v1012) --- [v1.0.13](#v1013) --- [v1.0.14](#v1014) --- [v1.0.15](#v1015) --- [v1.0.16](#v1016) --- [v1.0.17](#v1017) --- [v1.0.18](#v1018) --- [v1.0.19](#v1019) --- [v1.0.20](#v1020) --- [v1.0.21](#v1021)
 
-[v1.1.0](#v110) --- [v1.1.1](#v111) --- [v1.1.2](#v112) --- [v1.1.3](#v113) --- [v1.1.4](#v114) --- [v1.1.5](#v115) --- [v1.1.6](#v116) --- [v1.1.7](#v117) --- [v1.1.8](#v118) --- [v1.1.9](#v119)
+[v1.1.0](#v110) --- [v1.1.1](#v111) --- [v1.1.2](#v112) --- [v1.1.3](#v113) --- [v1.1.4](#v114) --- [v1.1.5](#v115) --- [v1.1.6](#v116) --- [v1.1.7](#v117) --- [v1.1.8](#v118) --- [v1.1.9](#v119) --- [v1.1.10](#v1110)
  
 #### v1.0.0
 
@@ -2072,6 +2072,8 @@ Player is shooting for a red and commits a foul by cue ball hitting a colour bal
 
 + Spent time some improving the box shadows on the snooker ball icons which are now specific to each colour rather than just the one box shadow colour for all of them.
 
+[Back to Top](#comments)
+
 #### v1.1.9
 
 + In this update, I concentrated on a modal message for ending the frame and frame forfeits, specifically allowing he user to dismiss the messages once the user has read them.  Once I'd taken care of the styling and improved that (adding a linear gradient background), I managed to add a button to the modals.
@@ -2079,5 +2081,11 @@ Player is shooting for a red and commits a foul by cue ball hitting a colour bal
 + This did create an issue. Once the messages were dismissed, the user was unable to click on the buttons to continue the game or re-rack the table. When the frame ends, all interactive elements are disabled (including the "Re-rack" button). Cursor attempted to get around this by adding a rerack button to the modal.  This didn't work either, as only the main rerack button did anything, and no buttons in the modal were clickable.
 
 + I suggested removing the edits Cursor made by re-creating the table on dismissing the modal and simply reloading the page when modals are dismissed. This works for us as they only come into play when the frame ends. There may be more work to be done in scoreboarding, but that's for another time.
+
+[Back to Top](#comments)
+
+#### v1.1.10
+
++ Fixed a bug in the snooker scorer application in which the .points---ahead element was no greyed out when the player it was associated with was not at the table. Both elements are still hidden with CSS by default but it was a good UX bug to fix.
 
 [Back to Top](#comments)
