@@ -1,4 +1,4 @@
-console.log("app.js connected - 22-08-2025 - 12:37");
+console.log("app.js connected - 12-09-2025 - 16:28");
 
 // Initialize variables
 let p1CurrentScore = 0;
@@ -618,6 +618,16 @@ function disablePlayerButtons(playerNum) {
         applyButton.style.opacity = "0";
         applyButton.style.visibility = "hidden";
     }
+    
+    // Disable the player---points--difference section for the inactive player
+    const playerSection = document.querySelector(`.player---${playerNum === 1 ? 'one' : 'two'}--section`);
+    if (playerSection) {
+        const pointsDifference = playerSection.querySelector('.player---points--difference');
+        if (pointsDifference) {
+            pointsDifference.style.pointerEvents = "none";
+            pointsDifference.style.opacity = "0.5";
+        }
+    }
 }
 
 // Function to enable all buttons for a specific player
@@ -632,6 +642,16 @@ function enablePlayerButtons(playerNum) {
         element.style.opacity = "1";
         element.style.cursor = "pointer";
     });
+    
+    // Enable the player---points--difference section for the active player
+    const playerSection = document.querySelector(`.player---${playerNum === 1 ? 'one' : 'two'}--section`);
+    if (playerSection) {
+        const pointsDifference = playerSection.querySelector('.player---points--difference');
+        if (pointsDifference) {
+            pointsDifference.style.pointerEvents = "auto";
+            pointsDifference.style.opacity = "1";
+        }
+    }
 }
 
 // Function to switch players in normal play and colour sequence
