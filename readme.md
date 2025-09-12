@@ -1,6 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Last Updated: 22/08/2025 - 16:29`
++ `Last Updated: 22/08/2025 - 16:33`
 ## Sections
 
 [Intro](#intro
@@ -2086,6 +2086,6 @@ Player is shooting for a red and commits a foul by cue ball hitting a colour bal
 
 #### v1.1.10
 
-+ Fixed a bug in the snooker scorer application in which the .points---ahead element was no greyed out when the player it was associated with was not at the table. Both elements are still hidden with CSS by default but it was a good UX bug to fix.
++ Fixed a bug in the snooker scorer application in which the `.points---ahead` element was not greyed out when the player it was associated with was not at the table. Both elements are still hidden with CSS by default, but it was a good UX bug to fix.
 
 [Back to Top](#comments)
