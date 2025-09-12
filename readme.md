@@ -1,6 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Last Updated: 22/08/2025 - 17:35`
++ `Last Updated: 22/08/2025 - 16:22`
 ## Sections
 
 [Intro](#intro
@@ -1172,9 +1172,10 @@ The development of this application is currently in progress.
 
 + `COMPLETED: 15-08-2025:` "Frame Complete" Tooltip dismissable with an X/Close button.   
 
++ `COMPLETED: 12-09-2025:` BUG `.points---ahead` for player 2 does not go into inactive state when the player 2 is not at the table. 
+
 + `TODO:` Highlight the next ball to be played in the colour sequence with the same CSS border that appears on hover. 
 
-+ `TODO:` BUG `.points---ahead` does not go into inactive state when the player is not at the table. 
 
 + `TODO:` Styling of scores and other elements in `.frame-over-message` element should be improved.
 
@@ -1302,11 +1303,13 @@ The development of this application is currently in progress.
 
 + `18` - "Last Break" should not be reset to 0 until a player makes their first successful pot attempt after returning to the table. `Resolved: 15-08-2025`
 
-+ `19` - Players apply 2 successful red ball scores and then miss on following colour. A reduction of 16 points should be applied to `#points_remaining` (The colour not shot for followed by the missed colour)
++ `19` - `.points---ahead` for player 2 does not go into inactive state when the player 2 is not at the table.
 
-+ `20` - Player 2 Cursor pointer missing from red ball icon  after the first successful colour pot attempt.
++ `20` - Players apply 2 successful red ball scores and then miss on following colour. A reduction of 16 points should be applied to `#points_remaining` (The colour not shot for followed by the missed colour)
 
-+ `21` - `.points---ahead` does not go into inactive state when the player is not at the table 
++ `21` - Player 2 Cursor pointer missing from red ball icon  after the first successful colour pot attempt.
+
++ `22` - `.points---ahead` does not go into inactive state when the player is not at the table 
 
 ### Future Improvements
 
