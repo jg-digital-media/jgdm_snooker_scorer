@@ -1,4 +1,4 @@
-console.log("app.js connected - 12-09-2025 - 16:28");
+console.log("app.js connected - 17-09-2025 - 13:25");
 
 // Initialize variables
 let p1CurrentScore = 0;
