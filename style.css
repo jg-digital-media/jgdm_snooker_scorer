@@ -1,7 +1,7 @@
 /******************************
 
 Snooker Scorer App: 
-Last Update: 22/08/2025 - 12:38
+Last Update: 24/09/2025 - 16:12
 ******************************/
 * {
   padding: 0;
@@ -889,6 +889,12 @@ body footer a:hover {
   background-color: rgba(255, 255, 255, 0.3) !important;
   border-color: rgba(255, 255, 255, 0.5) !important;
   transform: scale(1.1) !important;
+}
+#frame-over-message .frame-highscore-value-player1,
+#frame-over-message .frame-highscore-value-player2,
+#frame-over-message .frame-score-value-player1,
+#frame-over-message .frame-score-value-player2 {
+  color: #e5ff61;
 }
 
 @media (max-width: 620px) {
