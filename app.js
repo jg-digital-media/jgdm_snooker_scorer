@@ -1,4 +1,4 @@
-console.log("app.js connected - 17-09-2025 - 13:25");
+console.log("app.js connected - 24-09-2025 - 15:28");
 
 // Initialize variables
 let p1CurrentScore = 0;
@@ -317,11 +317,30 @@ function endFrame() {
         "Frame Complete - It's a Tie!" : 
         `Frame Complete - Player ${winner} Wins!`;
     
-    // Add score information
+    // Add score information with individual spans for better styling control
     const scoreInfo = document.createElement("div");
-    scoreInfo.textContent = `Player 1: ${p1CurrentScore} | Player 2: ${p2CurrentScore}`;
+    scoreInfo.className = "frame-scores-container";
     scoreInfo.style.marginTop = "10px";
     scoreInfo.style.fontSize = "18px";
+    
+    // Create individual spans for each player's score
+    const player1ScoreSpan = document.createElement("span");
+    player1ScoreSpan.className = "frame-score-player1";
+    player1ScoreSpan.innerHTML = `Player 1: <span class="frame-score-value-player1">${p1CurrentScore}</span>`;
+    
+    const scoreSeparator = document.createElement("span");
+    scoreSeparator.className = "frame-score-separator";
+    scoreSeparator.textContent = " | ";
+    
+    const player2ScoreSpan = document.createElement("span");
+    player2ScoreSpan.className = "frame-score-player2";
+    player2ScoreSpan.innerHTML = `Player 2: <span class="frame-score-value-player2">${p2CurrentScore}</span>`;
+    
+    // Append all score elements to the container
+    scoreInfo.appendChild(player1ScoreSpan);
+    scoreInfo.appendChild(scoreSeparator);
+    scoreInfo.appendChild(player2ScoreSpan);
+    
     frameOverMessage.appendChild(scoreInfo);
     
     // Add highest break information
@@ -467,11 +486,30 @@ function forfeitFrame(forfeitingPlayer) {
     forfeitInfo.style.color = "#ffec03";
     frameOverMessage.appendChild(forfeitInfo);
     
-    // Add score information
+    // Add score information with individual spans for better styling control
     const scoreInfo = document.createElement("div");
-    scoreInfo.textContent = `Player 1: ${p1CurrentScore} | Player 2: ${p2CurrentScore}`;
+    scoreInfo.className = "frame-scores-container";
     scoreInfo.style.marginTop = "10px";
     scoreInfo.style.fontSize = "18px";
+    
+    // Create individual spans for each player's score
+    const player1ScoreSpan = document.createElement("span");
+    player1ScoreSpan.className = "frame-score-player1";
+    player1ScoreSpan.innerHTML = `Player 1: <span class="frame-score-value-player1">${p1CurrentScore}</span>`;
+    
+    const scoreSeparator = document.createElement("span");
+    scoreSeparator.className = "frame-score-separator";
+    scoreSeparator.textContent = " | ";
+    
+    const player2ScoreSpan = document.createElement("span");
+    player2ScoreSpan.className = "frame-score-player2";
+    player2ScoreSpan.innerHTML = `Player 2: <span class="frame-score-value-player2">${p2CurrentScore}</span>`;
+    
+    // Append all score elements to the container
+    scoreInfo.appendChild(player1ScoreSpan);
+    scoreInfo.appendChild(scoreSeparator);
+    scoreInfo.appendChild(player2ScoreSpan);
+    
     frameOverMessage.appendChild(scoreInfo);
     
     // Add highest break information
