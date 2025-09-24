@@ -1,6 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Last Updated: 22/08/2025 - 16:33`
++ `Last Updated: 24/09/2025 - 16:08`
 ## Sections
 
 [Intro](#intro
@@ -816,7 +816,7 @@ This application is built using the following technologies:
 ## Development
 [Back to Top](#sections)
 
-### Tasks - 220 completed items
+### Tasks - 224 completed items
 
 The development of this application is currently in progress.
 
@@ -1174,14 +1174,14 @@ The development of this application is currently in progress.
 
 + `COMPLETED: 12-09-2025:` BUG `.points---ahead` for player 2 does not go into inactive state when the player 2 is not at the table. 
 
++ `COMPLETED: 24-09-2025:` Styling of scores and other elements in `.frame-over-message` element should be improved.
+
++ `COMPLETED: 24-09-2025` Check the highest break is updated correctly - player 1
+
++ `COMPLETED: 24-09-2025` Check the highest break is updated correctly - player 2
+
 + `TODO:` Highlight the next ball to be played in the colour sequence with the same CSS border that appears on hover. 
 
-
-+ `TODO:` Styling of scores and other elements in `.frame-over-message` element should be improved.
-
-* `TODO:` Check the highest break is updated correctly - player 1
-
-* `TODO:` Check the highest break is updated correctly - player 2
 
 + `TODO:` Click black ball icon `tally---potted--black-p1` (Player 1) to score 7 point player 1 - 
     + `TODO:` Adds 8 to last break `#last---break--p1`
