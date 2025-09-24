@@ -1,6 +1,6 @@
 # Snooker Scorer Application by Jonnie Grieve Digital Media
 
-+ `Last Updated: 24/09/2025 - 16:08`
++ `Last Updated: 24/09/2025 - 16:11`
 ## Sections
 
 [Intro](#intro
@@ -2087,5 +2087,11 @@ Player is shooting for a red and commits a foul by cue ball hitting a colour bal
 #### v1.1.10
 
 + Fixed a bug in the snooker scorer application in which the `.points---ahead` element was not greyed out when the player it was associated with was not at the table. Both elements are still hidden with CSS by default, but it was a good UX bug to fix.
+
+[Back to Top](#comments)
+
+#### v1.1.11
+
++ Added a UI improvement that highlights the player score and player high score for both players when a frame ends. This will make both messages more visible and easier to read.
 
 [Back to Top](#comments)
