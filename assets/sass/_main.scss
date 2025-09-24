@@ -1230,10 +1230,13 @@ body {
     }
 
 
+    // highlight frame scores and highest break values
+    // both players
+    .frame-highscore-value-player1,
+    .frame-highscore-value-player2,
     .frame-score-value-player1,
     .frame-score-value-player2 {
 
-        color: red;
         color: #e5ff61;
     }
     

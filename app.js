@@ -1,4 +1,4 @@
-console.log("app.js connected - 24-09-2025 - 15:28");
+console.log("app.js connected - 24-09-2025 - 15:59");
 
 // Initialize variables
 let p1CurrentScore = 0;
@@ -343,21 +343,40 @@ function endFrame() {
     
     frameOverMessage.appendChild(scoreInfo);
     
-    // Add highest break information
+    // Add highest break information with individual spans for better styling control
     const breakInfo = document.createElement("div");
-    breakInfo.textContent = `Highest Breaks - Player 1: ${p1HighestBreak} | Player 2: ${p2HighestBreak}`;
+    breakInfo.className = "frame-highscore-container";
     breakInfo.style.marginTop = "5px";
     breakInfo.style.fontSize = "16px";
+    
+    // Create individual spans for each player's highest break
+    const player1BreakSpan = document.createElement("span");
+    player1BreakSpan.className = "frame-highscore-player1";
+    player1BreakSpan.innerHTML = `Highest Breaks - Player 1: <span class="frame-highscore-value-player1">${p1HighestBreak}</span>`;
+    
+    const breakSeparator = document.createElement("span");
+    breakSeparator.className = "frame-highscore-separator";
+    breakSeparator.textContent = " | ";
+    
+    const player2BreakSpan = document.createElement("span");
+    player2BreakSpan.className = "frame-highscore-player2";
+    player2BreakSpan.innerHTML = `Player 2: <span class="frame-highscore-value-player2">${p2HighestBreak}</span>`;
+    
+    // Append all highest break elements to the container
+    breakInfo.appendChild(player1BreakSpan);
+    breakInfo.appendChild(breakSeparator);
+    breakInfo.appendChild(player2BreakSpan);
+    
     frameOverMessage.appendChild(breakInfo);
     
     // Add a close button to the top right
     const closeButton = document.createElement("button");
     closeButton.textContent = "×";
     closeButton.style.position = "absolute";
-    closeButton.style.top = "10px";
-    closeButton.style.right = "15px";
-    closeButton.style.width = "30px";
-    closeButton.style.height = "30px";
+    closeButton.style.top = "3px";
+    closeButton.style.right = "5px";
+    closeButton.style.width = "22px";
+    closeButton.style.height = "22px";
     closeButton.style.backgroundColor = "rgba(255, 255, 255, 0.2)";
     closeButton.style.color = "white";
     closeButton.style.border = "2px solid rgba(255, 255, 255, 0.3)";
@@ -491,6 +510,10 @@ function forfeitFrame(forfeitingPlayer) {
     scoreInfo.className = "frame-scores-container";
     scoreInfo.style.marginTop = "10px";
     scoreInfo.style.fontSize = "18px";
+
+    // add high score information with individual divs for better styling control
+    const highScoreInfo = document.createElement("div");
+    highScoreInfo.className = "frame-highscore-container";
     
     // Create individual spans for each player's score
     const player1ScoreSpan = document.createElement("span");
@@ -512,21 +535,40 @@ function forfeitFrame(forfeitingPlayer) {
     
     frameOverMessage.appendChild(scoreInfo);
     
-    // Add highest break information
+    // Add highest break information with individual spans for better styling control
     const breakInfo = document.createElement("div");
-    breakInfo.textContent = `Highest Breaks - Player 1: ${p1HighestBreak} | Player 2: ${p2HighestBreak}`;
+    breakInfo.className = "frame-highscore-container";
     breakInfo.style.marginTop = "5px";
     breakInfo.style.fontSize = "16px";
+    
+    // Create individual spans for each player's highest break
+    const player1BreakSpan = document.createElement("span");
+    player1BreakSpan.className = "frame-highscore-player1";
+    player1BreakSpan.innerHTML = `Highest Breaks - Player 1: <span class="frame-highscore-value-player1">${p1HighestBreak}</span>`;
+    
+    const breakSeparator = document.createElement("span");
+    breakSeparator.className = "frame-highscore-separator";
+    breakSeparator.textContent = " | ";
+    
+    const player2BreakSpan = document.createElement("span");
+    player2BreakSpan.className = "frame-highscore-player2";
+    player2BreakSpan.innerHTML = `Player 2: <span class="frame-highscore-value-player2">${p2HighestBreak}</span>`;
+    
+    // Append all highest break elements to the container
+    breakInfo.appendChild(player1BreakSpan);
+    breakInfo.appendChild(breakSeparator);
+    breakInfo.appendChild(player2BreakSpan);
+    
     frameOverMessage.appendChild(breakInfo);
     
     // Add a close button to the top right
     const closeButton = document.createElement("button");
     closeButton.textContent = "×";
     closeButton.style.position = "absolute";
-    closeButton.style.top = "10px";
-    closeButton.style.right = "15px";
-    closeButton.style.width = "30px";
-    closeButton.style.height = "30px";
+    closeButton.style.top = "3px";
+    closeButton.style.right = "5px";
+    closeButton.style.width = "22px";
+    closeButton.style.height = "22px";
     closeButton.style.backgroundColor = "rgba(255, 255, 255, 0.2)";
     closeButton.style.color = "white";
     closeButton.style.border = "2px solid rgba(255, 255, 255, 0.3)";
